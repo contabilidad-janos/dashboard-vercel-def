@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juntos Sales Dashboard</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Chart.js DataLabels Plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <!-- Google Fonts: Inter & Lora -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F9F6F2; /* Earthy off-white background */
+        }
+        .font-lora {
+            font-family: 'Lora', serif;
+        }
+        /* Custom scrollbar for a better look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e0e0e0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C4BFAA;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #AEA69A;
+        }
+        /* Styling for active tab */
+        .tab-active {
+            border-bottom: 2px solid #6E8C71;
+            color: #3D4C41;
+            font-weight: 600;
+        }
+        /* Styling for inactive tab */
+        .tab-inactive {
+            color: #6b7280;
+        }
+       
+        /* Chip Styles */
+        .bu-chip {
+            transition: all 0.2s ease;
+            border: 1px solid #d1d5db; /* Gray-300 */
+        }
+        .bu-chip:hover {
+            border-color: #6E8C71;
+            background-color: #f3f4f6;
+        }
+        .bu-chip.active {
+            background-color: #6E8C71;
+            color: white;
+            border-color: #6E8C71;
+            box-shadow: 0 2px 4px rgba(110, 140, 113, 0.3);
+        }
+        /* Ensure checkboxes have the brand color */
+        input[type="checkbox"] {
+            accent-color: #6E8C71;
+        }
+
+        /* Full Screen Styles */
+        .fullscreen-mode {
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 9999;
+            background-color: white;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+        .fullscreen-mode .chart-container {
+            height: 60vh !important; /* Taller chart in fullscreen */
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased relative">
+
+    <!-- Toast Notification Container -->
+    <div id="toast" class="fixed bottom-4 right-4 bg-[#3D4C41] text-white px-6 py-3 rounded-lg shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 z-50 font-medium">
+        Notification Message
+    </div>
+
+    <div class="container mx-auto p-4 md:p-8">
+        <!-- Dashboard Header -->
+        <header class="mb-4 text-center">
+            <div class="flex flex-col items-center justify-center mb-4">
+               
+                <!-- Static Logo Section -->
+                <div class="mb-4">
+                    <img id="dashboardLogo"
+                         src="Captura de pantalla 2025-11-24 095050.png"
+                         alt="Juntos Farm Logo"
+                         class="h-32 mx-auto object-contain mix-blend-multiply"
+                         onerror="this.style.display='none'; document.getElementById('textLogoFallback').style.display='block';">
+                   
+                    <!-- Fallback if image is missing -->
+                    <div id="textLogoFallback" style="display:none;" class="text-center py-4">
+                         <div class="font-lora text-6xl text-[#3D4C41]">Juntos</div>
+                         <div class="font-inter text-sm tracking-[0.3em] text-[#3D4C41] mt-2 font-semibold">FARM</div>
+                    </div>
+                </div>
+
+                <h1 class="font-lora text-5xl font-bold text-[#3D4C41] tracking-tight">Juntos Sales Dashboard</h1>
+            </div>
+            <p class="text-lg text-gray-500 mt-2">Interactive Sales Analysis</p>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="mb-8 flex flex-wrap justify-center border-b border-gray-200">
+            <button id="tab-2025" class="py-4 px-6 block focus:outline-none tab-active">2025 Overview</button>
+            <button id="tab-2024" class="py-4 px-6 block focus:outline-none tab-inactive">2024 Overview</button>
+            <button id="tab-details" class="py-4 px-6 block focus:outline-none tab-inactive">Detailed Sales & Comparison</button>
+        </nav>
+       
+        <!-- 2025 Overview Page -->
+        <div id="page-2025">
+             <h2 class="font-lora text-3xl text-center font-semibold text-[#3D4C41] mb-8">2025 Yearly Overview</h2>
+           
+            <!-- KPIs for 2025 -->
+             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div id="totalSales2025" class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm transition transform hover:scale-105"></div>
+                <div id="bestMonth2025" class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm transition transform hover:scale-105"></div>
+                <div id="worstMonth2025" class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm transition transform hover:scale-105"></div>
+            </div>
+             <!-- Second row of KPIs for 2025 -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div id="avgMonthlySales2025" class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm transition transform hover:scale-105"></div>
+                <div id="avgSpend2025" class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm transition transform hover:scale-105"></div>
+                <div id="totalTransactions2025" class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm transition transform hover:scale-105"></div>
+            </div>
+
+            <!-- Business Unit Focus Section -->
+            <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm mb-8 flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="w-full md:w-1/2">
+                    <label for="businessSelector2025" class="block text-lg font-medium text-gray-500 mb-2">Business Unit Focus</label>
+                    <div class="relative">
+                        <select id="businessSelector2025" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg px-4 py-2 appearance-none focus:outline-none focus:ring-2 focus:ring-[#6E8C71] cursor-pointer w-full">
+                            <!-- Options will be populated by JS -->
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
+                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                        </div>
+                    </div>
+                </div>
+                <div id="businessTotal2025" class="bg-gray-50 p-6 rounded-lg w-full md:w-1/2 text-center md:text-left h-[100px] flex flex-col justify-center">
+                    <!-- Total will be populated by JS -->
+                </div>
+            </div>
+
+            <!-- Charts for 2025 -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+                <div class="lg:col-span-2 bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                    <h2 class="font-lora text-2xl font-semibold text-[#3D4C41] mb-4">Monthly Sales Evolution (2025)</h2>
+                    <div class="h-96 relative"><canvas id="yearlyChart2025"></canvas></div>
+                </div>
+                <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                    <h2 class="font-lora text-2xl font-semibold text-[#3D4C41] mb-4">Annual Contribution (2025)</h2>
+                    <div class="h-96 relative"><canvas id="yearlyPieChart2025"></canvas></div>
+                </div>
+            </div>
+            <!-- Spend Evolution Chart 2025 -->
+            <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm mb-8">
+                <h2 class="font-lora text-2xl font-semibold text-[#3D4C41] mb-4">Average Spend per Customer Evolution 2025 (€)</h2>
+                <div class="h-[450px] relative"><canvas id="spendEvolutionChart2025"></canvas></div>
+            </div>
+             <!-- Year-over-Year Comparison -->
+            <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm mt-8">
+                <h2 class="font-lora text-2xl font-semibold text-[#3D4C41] mb-4">2024 vs 2025 Monthly Sales Comparison (€)</h2>
+                <div class="h-[450px] relative"><canvas id="salesComparisonChart"></canvas></div>
+            </div>
+        </div>
+       
+        <!-- 2024 Overview Page -->
+        <div id="page-2024" class="hidden">
+            <h2 class="font-lora text-3xl text-center font-semibold text-[#3D4C41] mb-8">2024 Yearly Overview</h2>
+           
+            <!-- KPIs for 2024 -->
+             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div id="totalSales2024" class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm transition transform hover:scale-105"></div>
+                <div id="bestMonth2024" class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm transition transform hover:scale-105"></div>
+                <div id="worstMonth2024" class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm transition transform hover:scale-105"></div>
+            </div>
+             <!-- Second row of KPIs for 2024 -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div id="avgMonthlySales2024" class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm transition transform hover:scale-105"></div>
+                <div id="avgSpend2024" class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm transition transform hover:scale-105"></div>
+                <div id="totalTransactions2024" class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm transition transform hover:scale-105"></div>
+            </div>
+
+            <!-- Business Unit Focus Section -->
+            <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm mb-8 flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="w-full md:w-1/2">
+                    <label for="businessSelector2024" class="block text-lg font-medium text-gray-500 mb-2">Business Unit Focus</label>
+                    <div class="relative">
+                        <select id="businessSelector2024" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg px-4 py-2 appearance-none focus:outline-none focus:ring-2 focus:ring-[#6E8C71] cursor-pointer w-full">
+                            <!-- Options will be populated by JS -->
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
+                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                        </div>
+                    </div>
+                </div>
+                <div id="businessTotal2024" class="bg-gray-50 p-6 rounded-lg w-full md:w-1/2 text-center md:text-left h-[100px] flex flex-col justify-center">
+                    <!-- Total will be populated by JS -->
+                </div>
+            </div>
+
+            <!-- Charts for 2024 -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+                <div class="lg:col-span-2 bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                    <h2 class="font-lora text-2xl font-semibold text-[#3D4C41] mb-4">Monthly Sales Evolution (2024)</h2>
+                    <div class="h-96 relative"><canvas id="yearlyChart2024"></canvas></div>
+                </div>
+                <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                    <h2 class="font-lora text-2xl font-semibold text-[#3D4C41] mb-4">Annual Contribution (2024)</h2>
+                    <div class="h-96 relative"><canvas id="yearlyPieChart2024"></canvas></div>
+                </div>
+            </div>
+            <!-- Spend Evolution Chart 2024 -->
+            <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm mb-8">
+                <h2 class="font-lora text-2xl font-semibold text-[#3D4C41] mb-4">Average Spend per Customer Evolution 2024 (€)</h2>
+                <div class="h-[450px] relative"><canvas id="spendEvolutionChart2024"></canvas></div>
+            </div>
+        </div>
+
+        <!-- Detailed Sales Page -->
+        <div id="page-details" class="hidden">
+            <h2 class="font-lora text-3xl text-center font-semibold text-[#3D4C41] mb-8">Detailed Sales Analysis & Comparison</h2>
+           
+            <!-- Full Screen Wrapper -->
+            <div id="detailsContainer" class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm mb-8 relative transition-all duration-300">
+               
+                <!-- Interactive Filter Controls -->
+                <div class="flex flex-col gap-6">
+                   
+                    <!-- Business Unit Chips Selection -->
+                    <div class="w-full">
+                        <label class="block text-sm font-medium text-gray-500 mb-3 uppercase tracking-wide">Select Business Units to Compare:</label>
+                        <div id="buChipsContainer" class="flex flex-wrap gap-2">
+                            <!-- Chips will be injected here dynamically -->
+                        </div>
+                    </div>
+
+                    <hr class="border-gray-100">
+
+                    <!-- Other Controls (View, Period, Toggles) -->
+                    <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
+                        <h2 id="detailsChartTitle" class="font-lora text-2xl font-semibold text-[#3D4C41]">Sales Evolution</h2>
+                       
+                        <div class="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-4 w-full lg:w-auto">
+                           
+                            <!-- Metric Selector (New) -->
+                            <div class="relative w-full sm:w-auto">
+                                <select id="metricSelector" class="bg-white border border-gray-300 text-gray-900 rounded-lg px-4 py-2 appearance-none focus:outline-none focus:ring-2 focus:ring-[#6E8C71] cursor-pointer pr-8 w-full">
+                                    <option value="sales">Total Sales (€)</option>
+                                    <option value="transactions">Volume (Pax/Tickets/Orders)</option>
+                                    <option value="spend">Average Spend (€)</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                                </div>
+                            </div>
+
+                            <!-- View Type Selector -->
+                            <div class="relative w-full sm:w-auto">
+                                <select id="viewTypeSelector" class="bg-white border border-gray-300 text-gray-900 rounded-lg px-4 py-2 appearance-none focus:outline-none focus:ring-2 focus:ring-[#6E8C71] cursor-pointer pr-8 w-full">
+                                    <option value="monthly">Monthly View</option>
+                                    <option value="weekly">Weekly View</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                                </div>
+                            </div>
+                           
+                             <!-- Recommended Periods Selector -->
+                             <div class="relative w-full sm:w-auto">
+                                <select id="recommendedPeriodSelector" class="bg-white border border-gray-300 text-gray-900 rounded-lg px-4 py-2 appearance-none focus:outline-none focus:ring-2 focus:ring-[#6E8C71] cursor-pointer pr-8 w-full">
+                                    <option value="custom">Custom Period</option>
+                                    <option value="q1">Q1 (Jan-Mar)</option>
+                                    <option value="q2">Q2 (Apr-Jun)</option>
+                                    <option value="q3">Q3 (Jul-Sep)</option>
+                                    <option value="q4">Q4 (Oct-Dec)</option>
+                                    <option value="summer">Summer Season (Apr-Oct)</option>
+                                    <option value="ytd">YTD (Year to Date)</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                                </div>
+                            </div>
+
+                            <!-- Chart Type Selector -->
+                            <div class="relative w-full sm:w-auto">
+                                <select id="chartTypeSelector" class="bg-white border border-gray-300 text-gray-900 rounded-lg px-4 py-2 appearance-none focus:outline-none focus:ring-2 focus:ring-[#6E8C71] cursor-pointer pr-8 w-full">
+                                    <option value="line">Line Chart</option>
+                                    <option value="bar">Bar Chart</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                                </div>
+                            </div>
+
+                            <!-- Period Range Selector -->
+                            <div class="flex gap-2 w-full sm:w-auto items-center">
+                                <div class="relative w-full sm:w-24">
+                                    <select id="startPeriodSelector" class="bg-white border border-gray-300 text-gray-900 rounded-lg px-2 py-2 appearance-none focus:outline-none focus:ring-2 focus:ring-[#6E8C71] cursor-pointer w-full text-sm"></select>
+                                </div>
+                                <span class="text-gray-500">-</span>
+                                <div class="relative w-full sm:w-24">
+                                    <select id="endPeriodSelector" class="bg-white border border-gray-300 text-gray-900 rounded-lg px-2 py-2 appearance-none focus:outline-none focus:ring-2 focus:ring-[#6E8C71] cursor-pointer w-full text-sm"></select>
+                                </div>
+                            </div>
+                           
+                            <!-- Comparison Toggles & Tools -->
+                            <div class="flex flex-wrap gap-2 items-center">
+                                <!-- Compare 2024 -->
+                                <div class="flex items-center bg-gray-50 rounded-lg p-2 border border-gray-200 cursor-pointer hover:bg-gray-100 transition-colors">
+                                    <input type="checkbox" id="compare2024Checkbox" class="w-4 h-4 text-[#6E8C71] focus:ring-[#6E8C71] border-gray-300 rounded cursor-pointer">
+                                    <label for="compare2024Checkbox" class="ml-2 text-sm font-medium text-gray-700 cursor-pointer select-none">vs '24</label>
+                                </div>
+                               
+                                <!-- Compare Budget -->
+                                <div class="flex items-center bg-gray-50 rounded-lg p-2 border border-gray-200 cursor-pointer hover:bg-gray-100 transition-colors">
+                                    <input type="checkbox" id="compareBudgetCheckbox" class="w-4 h-4 text-[#6E8C71] focus:ring-[#6E8C71] border-gray-300 rounded cursor-pointer">
+                                    <label for="compareBudgetCheckbox" class="ml-2 text-sm font-medium text-gray-700 cursor-pointer select-none">vs Bud.</label>
+                                </div>
+
+                                <!-- Data Labels Toggle -->
+                                <button id="toggleLabelsBtn" class="bg-gray-50 text-gray-500 hover:text-[#3D4C41] border border-gray-200 p-2 rounded-lg hover:bg-gray-100 focus:outline-none transition-colors" title="Show/Hide Data Labels">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                                    </svg>
+                                </button>
+                               
+                                <!-- Full Screen Button -->
+                                <button id="fullScreenBtn" class="bg-gray-50 text-gray-500 hover:text-[#3D4C41] border border-gray-200 p-2 rounded-lg hover:bg-gray-100 focus:outline-none transition-colors" title="Full Screen Mode">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                                    </svg>
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="h-96 relative mt-6 chart-container"><canvas id="detailsChart"></canvas></div>
+                <!-- CSV Download Button -->
+                <div class="mt-4 text-right">
+                    <button id="downloadCsvBtn" class="bg-[#3D4C41] hover:bg-[#2e3b32] text-white font-medium py-2 px-4 rounded inline-flex items-center transition duration-300">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                        Download Data (CSV)
+                    </button>
+                </div>
+            </div>
+             <!-- Detailed Data Table -->
+            <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                <h2 id="detailsTableName" class="font-lora text-2xl font-semibold text-[#3D4C41] mb-4"></h2>
+                <div class="overflow-x-auto max-h-96">
+                    <table class="w-full text-left relative" id="detailsTable">
+                        <thead class="bg-gray-50 text-gray-600 uppercase text-sm sticky top-0 z-10">
+                            <tr id="detailsTableHeadRow">
+                                <!-- Headers will be dynamic -->
+                            </tr>
+                        </thead>
+                        <tbody id="detailsTableBody" class="divide-y divide-gray-200"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Script was here, truncated for brevity in reference file -->
+</body>
+</html>

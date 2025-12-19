@@ -1,0 +1,113 @@
+{
+    "nodes": [
+        {
+            "parameters": {},
+            "id": "manual-trigger",
+            "name": "When clicking \"Execute Workflow\"",
+            "type": "n8n-nodes-base.manualTrigger",
+            "typeVersion": 1,
+            "position": [
+                200,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "operation": "get",
+                "docId": {
+                    "__rl": true,
+                    "mode": "fromNode"
+                },
+                "range": "A1:Z100",
+                "options": {
+                    "dataStartRow": 0,
+                    "keyRow": 0
+                }
+            },
+            "id": "google-sheets",
+            "name": "Google Sheets",
+            "type": "n8n-nodes-base.googleSheets",
+            "typeVersion": 4.1,
+            "position": [
+                420,
+                300
+            ],
+            "credentials": {
+                "googleSheetsOAuth2Api": {
+                    "id": "ENTER_YOUR_CREDENTIAL_ID_HERE",
+                    "name": "Google Sheets Account"
+                }
+            }
+        },
+        {
+            "parameters": {
+                "jsCode": "// Mappings (Adjust these if your names change!)\nconst revenueMap = {\n    'Juntos house': 'Juntos house',\n    'Juntos boutique': 'Juntos boutique',\n    'Picadeli': 'Picadeli',\n    'Juntos farm shop': 'Juntos farm shop',\n    'Tasting place': 'Tasting place',\n    'Distribution b2b': 'Distribution b2b',\n    'Experiences': 'Activities',\n    'Essential oils': 'Juntos Products'\n};\n\nconst volumeMap = {\n    'Juntos house pax': 'Juntos house',\n    'Juntos boutique tickets': 'Juntos boutique',\n    'Picadeli tickets': 'Picadeli',\n    'Juntos farm shop tickets': 'Juntos farm shop',\n    'Tasting place tickets': 'Tasting place',\n    'Distribution b2b orders': 'Distribution b2b',\n    'Experiences': 'Activities',\n    'Essential oils orders': 'Juntos Products'\n};\n\nconst items = $input.all(); \nconst data = items.map(item => item.json);\nconst results = [];\n\n// 1. FIND DATES (Row 2 -> Index 1)\nconst dateRow = data[1]; \nconst dates = {}; \n\nObject.keys(dateRow).forEach(key => {\n    // Only look at columns C onwards (skip A, B)\n    if (['A', 'B'].includes(key)) return;\n    \n    const val = dateRow[key];\n    if (val && (val.includes('/') || val.includes('-'))) {\n        // Parse \"01/01/2024\" -> \"2024-01-01\"\n        const parts = val.split(/[\\/\\-]/);\n        if(parts.length === 3) {\n             // Assuming DD/MM/YYYY\n             dates[key] = `${parts[2]}-${parts[1]}-${parts[0]}`;\n        }\n    }\n});\n\n// 2. PARSE REVENUE (Rows 3-11 approx -> Indices 2-10)\nconst revenueIndices = [2, 3, 4, 5, 6, 7, 8, 9, 10];\n\nrevenueIndices.forEach(idx => {\n    const row = data[idx];\n    if(!row) return;\n    const rawName = row['B']; // Column B has names\n    const unitName = revenueMap[rawName];\n    \n    if(unitName) {\n        Object.keys(dates).forEach(col => {\n            let val = row[col];\n            // Format \"5.315 €\" -> 5315.00\n            if(typeof val === 'string') {\n                 val = parseFloat(val.replace(/[^0-9,.-]/g, '').replace('.', '').replace(',', '.'));\n            }\n            if(val || val === 0) {\n                 getEntry(dates[col], unitName).amount = val;\n            }\n        });\n    }\n});\n\n// 3. PARSE VOLUME (Rows 33-41 approx -> Indices 32-40)\nconst volumeIndices = [32, 33, 34, 35, 36, 37, 38, 39, 40];\n\nvolumeIndices.forEach(idx => {\n    const row = data[idx];\n    if(!row) return;\n    const rawName = row['B'];\n    const unitName = volumeMap[rawName];\n    \n    if(unitName) {\n        Object.keys(dates).forEach(col => {\n            let val = row[col];\n             if(typeof val === 'string') {\n                 val = parseInt(val.replace(/[^0-9]/g, ''));\n            }\n            if(val || val === 0) {\n                 getEntry(dates[col], unitName).transaction_count = val;\n            }\n        });\n    }\n});\n\nfunction getEntry(date, unit) {\n    let entry = results.find(r => r.date === date && r.business_unit_name === unit);\n    if (!entry) {\n        entry = { date, business_unit_name: unit, amount: 0, transaction_count: 0 };\n        results.push(entry);\n    }\n    return entry;\n}\n\nreturn results;"
+            },
+            "id": "transform-script",
+            "name": "Transform Code",
+            "type": "n8n-nodes-base.code",
+            "typeVersion": 2,
+            "position": [
+                640,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "operation": "upsert",
+                "tableId": "sales_records",
+                "columns": "date, business_unit_name",
+                "fields": "amount, transaction_count"
+            },
+            "id": "supabase",
+            "name": "Supabase",
+            "type": "n8n-nodes-base.supabase",
+            "typeVersion": 1,
+            "position": [
+                860,
+                300
+            ],
+            "credentials": {
+                "supabaseApi": {
+                    "id": "ENTER_YOUR_CREDENTIAL_ID_HERE",
+                    "name": "Supabase Account"
+                }
+            }
+        }
+    ],
+    "connections": {
+        "When clicking \"Execute Workflow\"": {
+            "main": [
+                [
+                    {
+                        "node": "Google Sheets",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Google Sheets": {
+            "main": [
+                [
+                    {
+                        "node": "Transform Code",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Transform Code": {
+            "main": [
+                [
+                    {
+                        "node": "Supabase",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    }
+}

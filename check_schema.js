@@ -1,0 +1,1 @@
+import { createClient } from '@supabase/supabase-js'; const supabase = createClient('https://agjvhvjhrmwkvszyjitl.supabase.co', 'sb_publishable_cCZyt6Ty-V7OQ9hKwH8geQ_29UkfEI-'); async function check() { const { data } = await supabase.from('sales_daily_def').select('*').limit(1); console.log(Object.keys(data[0])); } check();

@@ -1,0 +1,1 @@
+import fs from 'fs'; import Papa from 'papaparse'; const csv = fs.readFileSync('downloadbyjanos/REPORTING PARA BASE DE DATOS - Sheet1 (4).csv', 'utf8'); const results = Papa.parse(csv, { header: true }); console.log('Keys:', JSON.stringify(Object.keys(results.data[0])));

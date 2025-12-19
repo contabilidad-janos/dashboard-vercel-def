@@ -1,0 +1,2921 @@
+old_date,DAY OF THE WEEK,business_unit,old_revenue,VOLUME,SPEND PER PERSON,date,revenue
+01/01/2025,Wednesday,Juntos house,"8,013.54",95,84.35,2025-01-01,8013.54
+01/01/2025,Wednesday,Juntos boutique,725.00,10,72.5,2025-01-01,725.00
+01/01/2025,Wednesday,Picadeli,0.00,0,0,2025-01-01,0.00
+01/01/2025,Wednesday,Juntos farm shop,0.00,0,0,2025-01-01,0.00
+01/01/2025,Wednesday,Tasting place,0.00,0,0,2025-01-01,0.00
+01/01/2025,Wednesday,Distribution b2b,0.00,0,0,2025-01-01,0.00
+01/01/2025,Wednesday,Activities,0.00,0,0,2025-01-01,0.00
+01/01/2025,Wednesday,Juntos Products,0.00,0,0,2025-01-01,0.00
+01/02/2025,Saturday,Juntos house,"3,774.80",54,69.9,2025-02-01,3774.80
+01/02/2025,Saturday,Juntos boutique,0.00,0,0,2025-02-01,0.00
+01/02/2025,Saturday,Picadeli,"1,682.84",94,17.9,2025-02-01,1682.84
+01/02/2025,Saturday,Juntos farm shop,"1,798.91",92,19.55,2025-02-01,1798.91
+01/02/2025,Saturday,Tasting place,"5,777.80",153,37.76,2025-02-01,5777.80
+01/02/2025,Saturday,Distribution b2b,0.00,0,0,2025-02-01,0.00
+01/02/2025,Saturday,Activities,374.00,0,0,2025-02-01,374.00
+01/02/2025,Saturday,Juntos Products,0.00,0,0,2025-02-01,0.00
+01/03/2025,Saturday,Juntos house,"5,257.00",79,66.54,2025-03-01,5257.00
+01/03/2025,Saturday,Juntos boutique,0.00,0,0,2025-03-01,0.00
+01/03/2025,Saturday,Picadeli,"1,696.00",87,19.49,2025-03-01,1696.00
+01/03/2025,Saturday,Juntos farm shop,645.38,52,12.41,2025-03-01,645.38
+01/03/2025,Saturday,Tasting place,"1,856.50",77,24.11,2025-03-01,1856.50
+01/03/2025,Saturday,Distribution b2b,0.00,0,0,2025-03-01,0.00
+01/03/2025,Saturday,Activities,0.00,0,0,2025-03-01,0.00
+01/03/2025,Saturday,Juntos Products,0.00,0,0,2025-03-01,0.00
+01/04/2025,Tuesday,Juntos house,0.00,0,0,2025-04-01,0.00
+01/04/2025,Tuesday,Juntos boutique,0.00,0,0,2025-04-01,0.00
+01/04/2025,Tuesday,Picadeli,"3,462.00",209,16.56,2025-04-01,3462.00
+01/04/2025,Tuesday,Juntos farm shop,598.91,27,22.18,2025-04-01,598.91
+01/04/2025,Tuesday,Tasting place,321.60,22,14.62,2025-04-01,321.60
+01/04/2025,Tuesday,Distribution b2b,"1,222.48",13,94.04,2025-04-01,1222.48
+01/04/2025,Tuesday,Activities,0.00,0,0,2025-04-01,0.00
+01/04/2025,Tuesday,Juntos Products,327.82,0,0,2025-04-01,327.82
+01/05/2025,Thursday,Juntos house,"5,776.00",73,79.12,2025-05-01,5776.00
+01/05/2025,Thursday,Juntos boutique,931.50,9,103.5,2025-05-01,931.50
+01/05/2025,Thursday,Picadeli,"2,595.00",127,20.43,2025-05-01,2595.00
+01/05/2025,Thursday,Juntos farm shop,462.47,18,25.69,2025-05-01,462.47
+01/05/2025,Thursday,Tasting place,359.50,20,17.98,2025-05-01,359.50
+01/05/2025,Thursday,Distribution b2b,0.00,0,0,2025-05-01,0.00
+01/05/2025,Thursday,Activities,0.00,0,0,2025-05-01,0.00
+01/05/2025,Thursday,Juntos Products,0.00,0,0,2025-05-01,0.00
+01/06/2025,Sunday,Juntos house,"6,167.20",83,74.3,2025-06-01,6167.20
+01/06/2025,Sunday,Juntos boutique,"1,206.10",14,86.15,2025-06-01,1206.10
+01/06/2025,Sunday,Picadeli,0.00,0,0,2025-06-01,0.00
+01/06/2025,Sunday,Juntos farm shop,0.00,0,0,2025-06-01,0.00
+01/06/2025,Sunday,Tasting place,0.00,0,0,2025-06-01,0.00
+01/06/2025,Sunday,Distribution b2b,0.00,0,0,2025-06-01,0.00
+01/06/2025,Sunday,Activities,0.00,0,0,2025-06-01,0.00
+01/06/2025,Sunday,Juntos Products,0.00,0,0,2025-06-01,0.00
+01/07/2025,Tuesday,Juntos house,"6,080.40",80,76.01,2025-07-01,6080.40
+01/07/2025,Tuesday,Juntos boutique,999.50,13,76.88,2025-07-01,999.50
+01/07/2025,Tuesday,Picadeli,"4,144.69",183,22.65,2025-07-01,4144.69
+01/07/2025,Tuesday,Juntos farm shop,"1,534.17",53,28.95,2025-07-01,1534.17
+01/07/2025,Tuesday,Tasting place,"1,958.00",110,17.8,2025-07-01,1958.00
+01/07/2025,Tuesday,Distribution b2b,"2,193.88",13,168.76,2025-07-01,2193.88
+01/07/2025,Tuesday,Activities,0.00,0,0,2025-07-01,0.00
+01/07/2025,Tuesday,Juntos Products,331.89,0,0,2025-07-01,331.89
+01/08/2025,Friday,Juntos house,"10,304.20",106,97.21,2025-08-01,10304.20
+01/08/2025,Friday,Juntos boutique,270.80,6,45.13,2025-08-01,270.80
+01/08/2025,Friday,Picadeli,"4,169.36",154,27.07,2025-08-01,4169.36
+01/08/2025,Friday,Juntos farm shop,"1,198.94",38,31.55,2025-08-01,1198.94
+01/08/2025,Friday,Tasting place,"2,909.80",114,25.52,2025-08-01,2909.80
+01/08/2025,Friday,Distribution b2b,"1,914.06",14,136.72,2025-08-01,1914.06
+01/08/2025,Friday,Activities,0.00,0,0,2025-08-01,0.00
+01/08/2025,Friday,Juntos Products,35.00,0,0,2025-08-01,35.00
+01/09/2025,Monday,Juntos house,"6,650.90",87,76.45,2025-09-01,6650.90
+01/09/2025,Monday,Juntos boutique,381.50,4,95.38,2025-09-01,381.50
+01/09/2025,Monday,Picadeli,"3,506.80",179,19.59,2025-09-01,3506.80
+01/09/2025,Monday,Juntos farm shop,0.00,0,0,2025-09-01,0.00
+01/09/2025,Monday,Tasting place,0.00,0,0,2025-09-01,0.00
+01/09/2025,Monday,Distribution b2b,"1,766.02",13,135.85,2025-09-01,1766.02
+01/09/2025,Monday,Activities,0.00,0,0,2025-09-01,0.00
+01/09/2025,Monday,Juntos Products,38.60,0,0,2025-09-01,38.60
+01/10/2025,Wednesday,Juntos house,"5,478.00",63,86.95,2025-10-01,5478.00
+01/10/2025,Wednesday,Juntos boutique,977.50,8,122.19,2025-10-01,977.50
+01/10/2025,Wednesday,Picadeli,"4,069.16",218,18.67,2025-10-01,4069.16
+01/10/2025,Wednesday,Juntos farm shop,871.69,37,23.56,2025-10-01,871.69
+01/10/2025,Wednesday,Tasting place,"1,205.00",0,0,2025-10-01,1205.00
+01/10/2025,Wednesday,Distribution b2b,"1,304.00",10,130.4,2025-10-01,1304.00
+01/10/2025,Wednesday,Activities,0.00,0,0,2025-10-01,0.00
+01/10/2025,Wednesday,Juntos Products,0.00,0,0,2025-10-01,0.00
+01/11/2025,Saturday,Juntos house,"7,736.00",84,92.1,2025-11-01,7736.00
+01/11/2025,Saturday,Juntos boutique,462.50,4,115.63,2025-11-01,462.50
+01/11/2025,Saturday,Picadeli,0.00,0,0,2025-11-01,0.00
+01/11/2025,Saturday,Juntos farm shop,935.00,49,19.08,2025-11-01,935.00
+01/11/2025,Saturday,Tasting place,"8,849.00",0,0,2025-11-01,8849.00
+01/11/2025,Saturday,Distribution b2b,0.00,0,0,2025-11-01,0.00
+01/11/2025,Saturday,Activities,"3,300.00",0,0,2025-11-01,3300.00
+01/11/2025,Saturday,Juntos Products,0.00,0,0,2025-11-01,0.00
+01/12/2025,Monday,Juntos house,0.00,0,0,2025-12-01,0.00
+01/12/2025,Monday,Juntos boutique,0.00,0,0,2025-12-01,0.00
+01/12/2025,Monday,Picadeli,"3,064.00",179,17.12,2025-12-01,3064.00
+01/12/2025,Monday,Juntos farm shop,262.00,17,15.41,2025-12-01,262.00
+01/12/2025,Monday,Tasting place,0.00,0,0,2025-12-01,0.00
+01/12/2025,Monday,Distribution b2b,626.00,8,78.25,2025-12-01,626.00
+01/12/2025,Monday,Activities,0.00,0,0,2025-12-01,0.00
+01/12/2025,Monday,Juntos Products,0.00,0,0,2025-12-01,0.00
+02/01/2025,Thursday,Juntos house,0.00,0.00,0,2025-01-02,0.00
+02/01/2025,Thursday,Juntos boutique,0.00,0.00,0,2025-01-02,0.00
+02/01/2025,Thursday,Picadeli,0.00,0.00,0,2025-01-02,0.00
+02/01/2025,Thursday,Juntos farm shop,0.00,0.00,0,2025-01-02,0.00
+02/01/2025,Thursday,Tasting place,0.00,0.00,0,2025-01-02,0.00
+02/01/2025,Thursday,Distribution b2b,0.00,0.00,0,2025-01-02,0.00
+02/01/2025,Thursday,Activities,0.00,0.00,0,2025-01-02,0.00
+02/01/2025,Thursday,Juntos Products,0.00,0.00,0,2025-01-02,0.00
+02/02/2025,Sunday,Juntos house,"3,058.00",33,92.67,2025-02-02,3058.00
+02/02/2025,Sunday,Juntos boutique,394.00,3,131.33,2025-02-02,394.00
+02/02/2025,Sunday,Picadeli,0.00,0,0,2025-02-02,0.00
+02/02/2025,Sunday,Juntos farm shop,0.00,0,0,2025-02-02,0.00
+02/02/2025,Sunday,Tasting place,0.00,0,0,2025-02-02,0.00
+02/02/2025,Sunday,Distribution b2b,0.00,0,0,2025-02-02,0.00
+02/02/2025,Sunday,Activities,0.00,0,0,2025-02-02,0.00
+02/02/2025,Sunday,Juntos Products,0.00,0,0,2025-02-02,0.00
+02/03/2025,Sunday,Juntos house,"7,485.00",63,118.81,2025-03-02,7485.00
+02/03/2025,Sunday,Juntos boutique,0.00,0,0,2025-03-02,0.00
+02/03/2025,Sunday,Picadeli,0.00,0,0,2025-03-02,0.00
+02/03/2025,Sunday,Juntos farm shop,0.00,0,0,2025-03-02,0.00
+02/03/2025,Sunday,Tasting place,0.00,0,0,2025-03-02,0.00
+02/03/2025,Sunday,Distribution b2b,0.00,0,0,2025-03-02,0.00
+02/03/2025,Sunday,Activities,0.00,0,0,2025-03-02,0.00
+02/03/2025,Sunday,Juntos Products,0.00,0,0,2025-03-02,0.00
+02/04/2025,Wednesday,Juntos house,"3,570.00",58,61.55,2025-04-02,3570.00
+02/04/2025,Wednesday,Juntos boutique,596.00,5,119.2,2025-04-02,596.00
+02/04/2025,Wednesday,Picadeli,"3,783.00",216,17.51,2025-04-02,3783.00
+02/04/2025,Wednesday,Juntos farm shop,118.85,7,16.98,2025-04-02,118.85
+02/04/2025,Wednesday,Tasting place,267.10,28,9.54,2025-04-02,267.10
+02/04/2025,Wednesday,Distribution b2b,244.26,6,40.71,2025-04-02,244.26
+02/04/2025,Wednesday,Activities,0.00,0,0,2025-04-02,0.00
+02/04/2025,Wednesday,Juntos Products,132.58,0,0,2025-04-02,132.58
+02/05/2025,Friday,Juntos house,"7,775.00",109,71.33,2025-05-02,7775.00
+02/05/2025,Friday,Juntos boutique,"2,078.00",11,188.91,2025-05-02,2078.00
+02/05/2025,Friday,Picadeli,"3,335.00",180,18.53,2025-05-02,3335.00
+02/05/2025,Friday,Juntos farm shop,652.72,31,21.06,2025-05-02,652.72
+02/05/2025,Friday,Tasting place,932.50,34,27.43,2025-05-02,932.50
+02/05/2025,Friday,Distribution b2b,"2,252.31",13,173.25,2025-05-02,2252.31
+02/05/2025,Friday,Activities,0.00,0,0,2025-05-02,0.00
+02/05/2025,Friday,Juntos Products,108.10,0,0,2025-05-02,108.10
+02/06/2025,Monday,Juntos house,"5,943.60",69,86.14,2025-06-02,5943.60
+02/06/2025,Monday,Juntos boutique,31.50,1,31.5,2025-06-02,31.50
+02/06/2025,Monday,Picadeli,"5,104.90",248,20.58,2025-06-02,5104.90
+02/06/2025,Monday,Juntos farm shop,0.00,0,0,2025-06-02,0.00
+02/06/2025,Monday,Tasting place,0.00,0,0,2025-06-02,0.00
+02/06/2025,Monday,Distribution b2b,"1,683.75",13,129.52,2025-06-02,1683.75
+02/06/2025,Monday,Activities,0.00,0,0,2025-06-02,0.00
+02/06/2025,Monday,Juntos Products,0.00,0,0,2025-06-02,0.00
+02/07/2025,Wednesday,Juntos house,"8,319.40",99,84.03,2025-07-02,8319.40
+02/07/2025,Wednesday,Juntos boutique,588.50,11,53.5,2025-07-02,588.50
+02/07/2025,Wednesday,Picadeli,"4,018.30",180,22.32,2025-07-02,4018.30
+02/07/2025,Wednesday,Juntos farm shop,951.11,39,24.39,2025-07-02,951.11
+02/07/2025,Wednesday,Tasting place,338.00,80,4.23,2025-07-02,338.00
+02/07/2025,Wednesday,Distribution b2b,"1,432.00",11,130.18,2025-07-02,1432.00
+02/07/2025,Wednesday,Activities,77.00,0,0,2025-07-02,77.00
+02/07/2025,Wednesday,Juntos Products,89.10,0,0,2025-07-02,89.10
+02/08/2025,Saturday,Juntos house,"10,877.72",112,97.12,2025-08-02,10877.72
+02/08/2025,Saturday,Juntos boutique,"2,221.00",24,92.54,2025-08-02,2221.00
+02/08/2025,Saturday,Picadeli,"2,799.33",105,26.66,2025-08-02,2799.33
+02/08/2025,Saturday,Juntos farm shop,"1,355.61",55,24.65,2025-08-02,1355.61
+02/08/2025,Saturday,Tasting place,"3,524.60",150,23.5,2025-08-02,3524.60
+02/08/2025,Saturday,Distribution b2b,"2,264.67",14,161.76,2025-08-02,2264.67
+02/08/2025,Saturday,Activities,0.00,0,0,2025-08-02,0.00
+02/08/2025,Saturday,Juntos Products,0.00,0,0,2025-08-02,0.00
+02/09/2025,Tuesday,Juntos house,"3,756.55",51,73.66,2025-09-02,3756.55
+02/09/2025,Tuesday,Juntos boutique,177.00,3,59,2025-09-02,177.00
+02/09/2025,Tuesday,Picadeli,"2,910.79",154,18.9,2025-09-02,2910.79
+02/09/2025,Tuesday,Juntos farm shop,"1,470.49",78,18.85,2025-09-02,1470.49
+02/09/2025,Tuesday,Tasting place,"1,411.00",43,32.81,2025-09-02,1411.00
+02/09/2025,Tuesday,Distribution b2b,"1,365.14",10,136.51,2025-09-02,1365.14
+02/09/2025,Tuesday,Activities,0.00,0,0,2025-09-02,0.00
+02/09/2025,Tuesday,Juntos Products,149.61,0,0,2025-09-02,149.61
+02/10/2025,Thursday,Juntos house,"6,632.30",82,80.88,2025-10-02,6632.30
+02/10/2025,Thursday,Juntos boutique,661.50,7,94.5,2025-10-02,661.50
+02/10/2025,Thursday,Picadeli,"3,767.20",193,19.52,2025-10-02,3767.20
+02/10/2025,Thursday,Juntos farm shop,612.47,33,18.56,2025-10-02,612.47
+02/10/2025,Thursday,Tasting place,948.54,45,21.08,2025-10-02,948.54
+02/10/2025,Thursday,Distribution b2b,"1,335.00",12,111.25,2025-10-02,1335.00
+02/10/2025,Thursday,Activities,0.00,0,0,2025-10-02,0.00
+02/10/2025,Thursday,Juntos Products,43.20,0,0,2025-10-02,43.20
+02/11/2025,Sunday,Juntos house,"4,882.00",65,75.11,2025-11-02,4882.00
+02/11/2025,Sunday,Juntos boutique,0.00,0,0,2025-11-02,0.00
+02/11/2025,Sunday,Picadeli,0.00,0,0,2025-11-02,0.00
+02/11/2025,Sunday,Juntos farm shop,0.00,0,0,2025-11-02,0.00
+02/11/2025,Sunday,Tasting place,0.00,0,0,2025-11-02,0.00
+02/11/2025,Sunday,Distribution b2b,0.00,0,0,2025-11-02,0.00
+02/11/2025,Sunday,Activities,0.00,0,0,2025-11-02,0.00
+02/11/2025,Sunday,Juntos Products,0.00,0,0,2025-11-02,0.00
+02/12/2025,Tuesday,Juntos house,0.00,0,0,2025-12-02,0.00
+02/12/2025,Tuesday,Juntos boutique,0.00,0,0,2025-12-02,0.00
+02/12/2025,Tuesday,Picadeli,"2,630.00",170,15.47,2025-12-02,2630.00
+02/12/2025,Tuesday,Juntos farm shop,405.00,21,19.29,2025-12-02,405.00
+02/12/2025,Tuesday,Tasting place,481.00,35,13.74,2025-12-02,481.00
+02/12/2025,Tuesday,Distribution b2b,363.00,5,72.6,2025-12-02,363.00
+02/12/2025,Tuesday,Activities,0.00,0,0,2025-12-02,0.00
+02/12/2025,Tuesday,Juntos Products,175.00,0,0,2025-12-02,175.00
+03/01/2025,Friday,Juntos house,"11,992.20",143,83.86,2025-01-03,11992.20
+03/01/2025,Friday,Juntos boutique,551.93,9,61.33,2025-01-03,551.93
+03/01/2025,Friday,Picadeli,"2,245.56",140,16.04,2025-01-03,2245.56
+03/01/2025,Friday,Juntos farm shop,247.35,19,13.02,2025-01-03,247.35
+03/01/2025,Friday,Tasting place,216.00,15,14.4,2025-01-03,216.00
+03/01/2025,Friday,Distribution b2b,940.57,10,94.06,2025-01-03,940.57
+03/01/2025,Friday,Activities,0.00,0,0,2025-01-03,0.00
+03/01/2025,Friday,Juntos Products,24.00,0,0,2025-01-03,24.00
+03/02/2025,Monday,Juntos house,0.00,0,0,2025-02-03,0.00
+03/02/2025,Monday,Juntos boutique,0.00,0,0,2025-02-03,0.00
+03/02/2025,Monday,Picadeli,"3,548.79",187,18.98,2025-02-03,3548.79
+03/02/2025,Monday,Juntos farm shop,0.00,0,0,2025-02-03,0.00
+03/02/2025,Monday,Tasting place,0.00,0,0,2025-02-03,0.00
+03/02/2025,Monday,Distribution b2b,326.80,5,65.36,2025-02-03,326.80
+03/02/2025,Monday,Activities,0.00,0,0,2025-02-03,0.00
+03/02/2025,Monday,Juntos Products,0.00,0,0,2025-02-03,0.00
+03/03/2025,Monday,Juntos house,0.00,0,0,2025-03-03,0.00
+03/03/2025,Monday,Juntos boutique,0.00,0,0,2025-03-03,0.00
+03/03/2025,Monday,Picadeli,"3,505.00",183,19.15,2025-03-03,3505.00
+03/03/2025,Monday,Juntos farm shop,0.00,0,0,2025-03-03,0.00
+03/03/2025,Monday,Tasting place,0.00,0,0,2025-03-03,0.00
+03/03/2025,Monday,Distribution b2b,189.66,3,63.22,2025-03-03,189.66
+03/03/2025,Monday,Activities,0.00,0,0,2025-03-03,0.00
+03/03/2025,Monday,Juntos Products,38.00,0,0,2025-03-03,38.00
+03/04/2025,Thursday,Juntos house,"5,193.00",66,78.68,2025-04-03,5193.00
+03/04/2025,Thursday,Juntos boutique,"1,110.00",13,85.38,2025-04-03,1110.00
+03/04/2025,Thursday,Picadeli,"3,740.00",187,20,2025-04-03,3740.00
+03/04/2025,Thursday,Juntos farm shop,425.96,20,21.3,2025-04-03,425.96
+03/04/2025,Thursday,Tasting place,331.00,29,11.41,2025-04-03,331.00
+03/04/2025,Thursday,Distribution b2b,520.99,7,74.43,2025-04-03,520.99
+03/04/2025,Thursday,Activities,0.00,0,0,2025-04-03,0.00
+03/04/2025,Thursday,Juntos Products,49.56,0,0,2025-04-03,49.56
+03/05/2025,Saturday,Juntos house,"7,651.00",93,82.27,2025-05-03,7651.00
+03/05/2025,Saturday,Juntos boutique,655.00,5,131,2025-05-03,655.00
+03/05/2025,Saturday,Picadeli,"2,017.00",90,22.41,2025-05-03,2017.00
+03/05/2025,Saturday,Juntos farm shop,"1,038.25",47,22.09,2025-05-03,1038.25
+03/05/2025,Saturday,Tasting place,"1,578.30",60,26.31,2025-05-03,1578.30
+03/05/2025,Saturday,Distribution b2b,0.00,0,0,2025-05-03,0.00
+03/05/2025,Saturday,Activities,0.00,0,0,2025-05-03,0.00
+03/05/2025,Saturday,Juntos Products,391.20,0,0,2025-05-03,391.20
+03/06/2025,Tuesday,Juntos house,"5,440.90",73,74.53,2025-06-03,5440.90
+03/06/2025,Tuesday,Juntos boutique,"1,358.50",15,90.57,2025-06-03,1358.50
+03/06/2025,Tuesday,Picadeli,"3,516.14",202,17.41,2025-06-03,3516.14
+03/06/2025,Tuesday,Juntos farm shop,"1,008.71",34,29.67,2025-06-03,1008.71
+03/06/2025,Tuesday,Tasting place,734.00,36,20.39,2025-06-03,734.00
+03/06/2025,Tuesday,Distribution b2b,999.89,11,90.9,2025-06-03,999.89
+03/06/2025,Tuesday,Activities,0.00,0,0,2025-06-03,0.00
+03/06/2025,Tuesday,Juntos Products,81.00,0,0,2025-06-03,81.00
+03/07/2025,Thursday,Juntos house,"8,654.52",105,82.42,2025-07-03,8654.52
+03/07/2025,Thursday,Juntos boutique,671.00,10,67.1,2025-07-03,671.00
+03/07/2025,Thursday,Picadeli,"3,549.73",180,19.72,2025-07-03,3549.73
+03/07/2025,Thursday,Juntos farm shop,"1,464.60",54,27.12,2025-07-03,1464.60
+03/07/2025,Thursday,Tasting place,"3,311.50",85,38.96,2025-07-03,3311.50
+03/07/2025,Thursday,Distribution b2b,"1,943.35",16,121.46,2025-07-03,1943.35
+03/07/2025,Thursday,Activities,"1,893.00",0,0,2025-07-03,1893.00
+03/07/2025,Thursday,Juntos Products,135.00,0,0,2025-07-03,135.00
+03/08/2025,Sunday,Juntos house,"11,143.90",130,85.72,2025-08-03,11143.90
+03/08/2025,Sunday,Juntos boutique,610.50,14,43.61,2025-08-03,610.50
+03/08/2025,Sunday,Picadeli,0.00,0,0,2025-08-03,0.00
+03/08/2025,Sunday,Juntos farm shop,0.00,0,0,2025-08-03,0.00
+03/08/2025,Sunday,Tasting place,0.00,0,0,2025-08-03,0.00
+03/08/2025,Sunday,Distribution b2b,0.00,0,0,2025-08-03,0.00
+03/08/2025,Sunday,Activities,0.00,0,0,2025-08-03,0.00
+03/08/2025,Sunday,Juntos Products,0.00,0,0,2025-08-03,0.00
+03/09/2025,Wednesday,Juntos house,"6,653.00",83,80.16,2025-09-03,6653.00
+03/09/2025,Wednesday,Juntos boutique,419.60,5,83.92,2025-09-03,419.60
+03/09/2025,Wednesday,Picadeli,"3,178.00",161,19.74,2025-09-03,3178.00
+03/09/2025,Wednesday,Juntos farm shop,"1,243.15",44,28.25,2025-09-03,1243.15
+03/09/2025,Wednesday,Tasting place,"1,215.00",45,27,2025-09-03,1215.00
+03/09/2025,Wednesday,Distribution b2b,"1,361.18",12,113.43,2025-09-03,1361.18
+03/09/2025,Wednesday,Activities,0.00,0,0,2025-09-03,0.00
+03/09/2025,Wednesday,Juntos Products,70.22,0,0,2025-09-03,70.22
+03/10/2025,Friday,Juntos house,"34,370.00",120,286.42,2025-10-03,34370.00
+03/10/2025,Friday,Juntos boutique,0.00,0,0,2025-10-03,0.00
+03/10/2025,Friday,Picadeli,"4,092.00",222,18.43,2025-10-03,4092.00
+03/10/2025,Friday,Juntos farm shop,"1,049.56",47,22.33,2025-10-03,1049.56
+03/10/2025,Friday,Tasting place,"1,335.40",65,20.54,2025-10-03,1335.40
+03/10/2025,Friday,Distribution b2b,"1,463.54",16,91.47,2025-10-03,1463.54
+03/10/2025,Friday,Activities,0.00,0,0,2025-10-03,0.00
+03/10/2025,Friday,Juntos Products,0.00,0,0,2025-10-03,0.00
+03/11/2025,Monday,Juntos house,0.00,0,0,2025-11-03,0.00
+03/11/2025,Monday,Juntos boutique,0.00,0,0,2025-11-03,0.00
+03/11/2025,Monday,Picadeli,"3,823.70",195,19.61,2025-11-03,3823.70
+03/11/2025,Monday,Juntos farm shop,656.03,33,19.88,2025-11-03,656.03
+03/11/2025,Monday,Tasting place,0.00,0,0,2025-11-03,0.00
+03/11/2025,Monday,Distribution b2b,307.48,6,51.25,2025-11-03,307.48
+03/11/2025,Monday,Activities,0.00,0,0,2025-11-03,0.00
+03/11/2025,Monday,Juntos Products,0.00,0,0,2025-11-03,0.00
+03/12/2025,Wednesday,Juntos house,"1,363.00",22,61.95,2025-12-03,1363.00
+03/12/2025,Wednesday,Juntos boutique,0.00,0,0,2025-12-03,0.00
+03/12/2025,Wednesday,Picadeli,"3,269.00",181,18.06,2025-12-03,3269.00
+03/12/2025,Wednesday,Juntos farm shop,399.00,21,19,2025-12-03,399.00
+03/12/2025,Wednesday,Tasting place,326.00,23,14.17,2025-12-03,326.00
+03/12/2025,Wednesday,Distribution b2b,192.00,3,64,2025-12-03,192.00
+03/12/2025,Wednesday,Activities,0.00,0,0,2025-12-03,0.00
+03/12/2025,Wednesday,Juntos Products,0.00,0,0,2025-12-03,0.00
+04/01/2025,Saturday,Juntos house,"9,458.05",127,74.47,2025-01-04,9458.05
+04/01/2025,Saturday,Juntos boutique,729.98,7,104.28,2025-01-04,729.98
+04/01/2025,Saturday,Picadeli,"2,494.64",115,21.69,2025-01-04,2494.64
+04/01/2025,Saturday,Juntos farm shop,"1,359.16",63,21.57,2025-01-04,1359.16
+04/01/2025,Saturday,Tasting place,"4,418.60",83,53.24,2025-01-04,4418.60
+04/01/2025,Saturday,Distribution b2b,0.00,0,0,2025-01-04,0.00
+04/01/2025,Saturday,Activities,65.00,0,0,2025-01-04,65.00
+04/01/2025,Saturday,Juntos Products,26.00,0,0,2025-01-04,26.00
+04/02/2025,Tuesday,Juntos house,0.00,0,0,2025-02-04,0.00
+04/02/2025,Tuesday,Juntos boutique,0.00,0,0,2025-02-04,0.00
+04/02/2025,Tuesday,Picadeli,"3,168.28",199,15.92,2025-02-04,3168.28
+04/02/2025,Tuesday,Juntos farm shop,310.55,17,18.27,2025-02-04,310.55
+04/02/2025,Tuesday,Tasting place,253.80,27,9.4,2025-02-04,253.80
+04/02/2025,Tuesday,Distribution b2b,501.97,5,100.39,2025-02-04,501.97
+04/02/2025,Tuesday,Activities,0.00,0,0,2025-02-04,0.00
+04/02/2025,Tuesday,Juntos Products,0.00,0,0,2025-02-04,0.00
+04/03/2025,Tuesday,Juntos house,0.00,0,0,2025-03-04,0.00
+04/03/2025,Tuesday,Juntos boutique,0.00,0,0,2025-03-04,0.00
+04/03/2025,Tuesday,Picadeli,"3,459.00",182,19.01,2025-03-04,3459.00
+04/03/2025,Tuesday,Juntos farm shop,383.59,26,14.75,2025-03-04,383.59
+04/03/2025,Tuesday,Tasting place,223.60,19,11.77,2025-03-04,223.60
+04/03/2025,Tuesday,Distribution b2b,261.38,5,52.28,2025-03-04,261.38
+04/03/2025,Tuesday,Activities,0.00,0,0,2025-03-04,0.00
+04/03/2025,Tuesday,Juntos Products,52.95,0,0,2025-03-04,52.95
+04/04/2025,Friday,Juntos house,"3,707.00",58,63.91,2025-04-04,3707.00
+04/04/2025,Friday,Juntos boutique,136.00,3,45.33,2025-04-04,136.00
+04/04/2025,Friday,Picadeli,"3,227.00",190,16.98,2025-04-04,3227.00
+04/04/2025,Friday,Juntos farm shop,538.62,21,25.65,2025-04-04,538.62
+04/04/2025,Friday,Tasting place,552.10,31,17.81,2025-04-04,552.10
+04/04/2025,Friday,Distribution b2b,956.02,7,136.57,2025-04-04,956.02
+04/04/2025,Friday,Activities,0.00,0,0,2025-04-04,0.00
+04/04/2025,Friday,Juntos Products,96.00,0,0,2025-04-04,96.00
+04/05/2025,Sunday,Juntos house,"7,807.00",117,66.73,2025-05-04,7807.00
+04/05/2025,Sunday,Juntos boutique,488.80,9,54.31,2025-05-04,488.80
+04/05/2025,Sunday,Picadeli,0.00,0,0,2025-05-04,0.00
+04/05/2025,Sunday,Juntos farm shop,0.00,0,0,2025-05-04,0.00
+04/05/2025,Sunday,Tasting place,0.00,0,0,2025-05-04,0.00
+04/05/2025,Sunday,Distribution b2b,0.00,0,0,2025-05-04,0.00
+04/05/2025,Sunday,Activities,0.00,0,0,2025-05-04,0.00
+04/05/2025,Sunday,Juntos Products,0.00,0,0,2025-05-04,0.00
+04/06/2025,Wednesday,Juntos house,"6,997.75",84,83.31,2025-06-04,6997.75
+04/06/2025,Wednesday,Juntos boutique,"1,861.00",10,186.1,2025-06-04,1861.00
+04/06/2025,Wednesday,Picadeli,"3,692.96",214,17.26,2025-06-04,3692.96
+04/06/2025,Wednesday,Juntos farm shop,451.43,24,18.81,2025-06-04,451.43
+04/06/2025,Wednesday,Tasting place,712.40,33,21.59,2025-06-04,712.40
+04/06/2025,Wednesday,Distribution b2b,"1,493.74",14,106.7,2025-06-04,1493.74
+04/06/2025,Wednesday,Activities,0.00,0,0,2025-06-04,0.00
+04/06/2025,Wednesday,Juntos Products,0.00,0,0,2025-06-04,0.00
+04/07/2025,Friday,Juntos house,"10,791.95",113,95.5,2025-07-04,10791.95
+04/07/2025,Friday,Juntos boutique,913.60,6,152.27,2025-07-04,913.60
+04/07/2025,Friday,Picadeli,"3,067.54",147,20.87,2025-07-04,3067.54
+04/07/2025,Friday,Juntos farm shop,"3,221.46",126,25.57,2025-07-04,3221.46
+04/07/2025,Friday,Tasting place,"4,010.00",52,77.12,2025-07-04,4010.00
+04/07/2025,Friday,Distribution b2b,"1,753.95",14,125.28,2025-07-04,1753.95
+04/07/2025,Friday,Activities,0.00,0,0,2025-07-04,0.00
+04/07/2025,Friday,Juntos Products,81.36,0,0,2025-07-04,81.36
+04/08/2025,Monday,Juntos house,"8,679.70",97,89.48,2025-08-04,8679.70
+04/08/2025,Monday,Juntos boutique,922.99,6,153.83,2025-08-04,922.99
+04/08/2025,Monday,Picadeli,"3,673.66",162,22.68,2025-08-04,3673.66
+04/08/2025,Monday,Juntos farm shop,0.00,0,0,2025-08-04,0.00
+04/08/2025,Monday,Tasting place,0.00,0,0,2025-08-04,0.00
+04/08/2025,Monday,Distribution b2b,"2,903.26",11,263.93,2025-08-04,2903.26
+04/08/2025,Monday,Activities,0.00,0,0,2025-08-04,0.00
+04/08/2025,Monday,Juntos Products,0.00,0,0,2025-08-04,0.00
+04/09/2025,Thursday,Juntos house,"5,890.00",79,74.56,2025-09-04,5890.00
+04/09/2025,Thursday,Juntos boutique,496.00,9,55.11,2025-09-04,496.00
+04/09/2025,Thursday,Picadeli,"2,709.50",178,15.22,2025-09-04,2709.50
+04/09/2025,Thursday,Juntos farm shop,"1,304.97",56,23.3,2025-09-04,1304.97
+04/09/2025,Thursday,Tasting place,"2,054.60",101,20.34,2025-09-04,2054.60
+04/09/2025,Thursday,Distribution b2b,"1,238.51",12,103.21,2025-09-04,1238.51
+04/09/2025,Thursday,Activities,0.00,0,0,2025-09-04,0.00
+04/09/2025,Thursday,Juntos Products,0.00,0,0,2025-09-04,0.00
+04/10/2025,Saturday,Juntos house,"22,830.00",72,317.08,2025-10-04,22830.00
+04/10/2025,Saturday,Juntos boutique,0.00,0,0,2025-10-04,0.00
+04/10/2025,Saturday,Picadeli,"2,386.00",109,21.89,2025-10-04,2386.00
+04/10/2025,Saturday,Juntos farm shop,984.00,45,21.87,2025-10-04,984.00
+04/10/2025,Saturday,Tasting place,"2,577.00",135,19.09,2025-10-04,2577.00
+04/10/2025,Saturday,Distribution b2b,0.00,0,0,2025-10-04,0.00
+04/10/2025,Saturday,Activities,0.00,0,0,2025-10-04,0.00
+04/10/2025,Saturday,Juntos Products,0.00,0,0,2025-10-04,0.00
+04/11/2025,Tuesday,Juntos house,0.00,0,0,2025-11-04,0.00
+04/11/2025,Tuesday,Juntos boutique,0.00,0,0,2025-11-04,0.00
+04/11/2025,Tuesday,Picadeli,"3,611.94",223,16.2,2025-11-04,3611.94
+04/11/2025,Tuesday,Juntos farm shop,860.44,44,19.56,2025-11-04,860.44
+04/11/2025,Tuesday,Tasting place,"1,446.08",46,31.44,2025-11-04,1446.08
+04/11/2025,Tuesday,Distribution b2b,780.64,7,111.52,2025-11-04,780.64
+04/11/2025,Tuesday,Activities,0.00,0,0,2025-11-04,0.00
+04/11/2025,Tuesday,Juntos Products,0.00,0,0,2025-11-04,0.00
+04/12/2025,Thursday,Juntos house,0.00,0,0,2025-12-04,0.00
+04/12/2025,Thursday,Juntos boutique,0.00,0,0,2025-12-04,0.00
+04/12/2025,Thursday,Picadeli,0.00,0,0,2025-12-04,0.00
+04/12/2025,Thursday,Juntos farm shop,0.00,0,0,2025-12-04,0.00
+04/12/2025,Thursday,Tasting place,0.00,0,0,2025-12-04,0.00
+04/12/2025,Thursday,Distribution b2b,0.00,0,0,2025-12-04,0.00
+04/12/2025,Thursday,Activities,0.00,0,0,2025-12-04,0.00
+04/12/2025,Thursday,Juntos Products,0.00,0,0,2025-12-04,0.00
+05/01/2025,Sunday,Juntos house,"7,562.00",95,79.6,2025-01-05,7562.00
+05/01/2025,Sunday,Juntos boutique,146.37,4,36.59,2025-01-05,146.37
+05/01/2025,Sunday,Picadeli,0.00,0,0,2025-01-05,0.00
+05/01/2025,Sunday,Juntos farm shop,0.00,0,0,2025-01-05,0.00
+05/01/2025,Sunday,Tasting place,0.00,0,0,2025-01-05,0.00
+05/01/2025,Sunday,Distribution b2b,0.00,0,0,2025-01-05,0.00
+05/01/2025,Sunday,Activities,0.00,0,0,2025-01-05,0.00
+05/01/2025,Sunday,Juntos Products,26.00,0,0,2025-01-05,26.00
+05/02/2025,Wednesday,Juntos house,"1,729.00",27,64.04,2025-02-05,1729.00
+05/02/2025,Wednesday,Juntos boutique,104.00,1,104,2025-02-05,104.00
+05/02/2025,Wednesday,Picadeli,"2,586.00",168,15.39,2025-02-05,2586.00
+05/02/2025,Wednesday,Juntos farm shop,449.91,15,29.99,2025-02-05,449.91
+05/02/2025,Wednesday,Tasting place,266.60,25,10.66,2025-02-05,266.60
+05/02/2025,Wednesday,Distribution b2b,430.04,8,53.76,2025-02-05,430.04
+05/02/2025,Wednesday,Activities,0.00,0,0,2025-02-05,0.00
+05/02/2025,Wednesday,Juntos Products,108.00,0,0,2025-02-05,108.00
+05/03/2025,Wednesday,Juntos house,"2,241.00",35,64.03,2025-03-05,2241.00
+05/03/2025,Wednesday,Juntos boutique,0.00,0,0,2025-03-05,0.00
+05/03/2025,Wednesday,Picadeli,"3,176.00",176,18.05,2025-03-05,3176.00
+05/03/2025,Wednesday,Juntos farm shop,566.30,29,19.53,2025-03-05,566.30
+05/03/2025,Wednesday,Tasting place,111.60,21,5.31,2025-03-05,111.60
+05/03/2025,Wednesday,Distribution b2b,459.14,6,76.52,2025-03-05,459.14
+05/03/2025,Wednesday,Activities,0.00,0,0,2025-03-05,0.00
+05/03/2025,Wednesday,Juntos Products,48.60,0,0,2025-03-05,48.60
+05/04/2025,Saturday,Juntos house,"9,282.00",121,76.71,2025-04-05,9282.00
+05/04/2025,Saturday,Juntos boutique,323.00,7,46.14,2025-04-05,323.00
+05/04/2025,Saturday,Picadeli,"2,278.00",109,20.9,2025-04-05,2278.00
+05/04/2025,Saturday,Juntos farm shop,"1,315.65",72,18.27,2025-04-05,1315.65
+05/04/2025,Saturday,Tasting place,"4,635.80",136,34.09,2025-04-05,4635.80
+05/04/2025,Saturday,Distribution b2b,340.00,0,0,2025-04-05,340.00
+05/04/2025,Saturday,Activities,0.00,0,0,2025-04-05,0.00
+05/04/2025,Saturday,Juntos Products,95.60,0,0,2025-04-05,95.60
+05/05/2025,Monday,Juntos house,"3,227.00",44,73.34,2025-05-05,3227.00
+05/05/2025,Monday,Juntos boutique,"1,028.50",6,171.42,2025-05-05,1028.50
+05/05/2025,Monday,Picadeli,"3,799.00",212,17.92,2025-05-05,3799.00
+05/05/2025,Monday,Juntos farm shop,0.00,0,0,2025-05-05,0.00
+05/05/2025,Monday,Tasting place,0.00,0,0,2025-05-05,0.00
+05/05/2025,Monday,Distribution b2b,997.21,12,83.1,2025-05-05,997.21
+05/05/2025,Monday,Activities,0.00,0,0,2025-05-05,0.00
+05/05/2025,Monday,Juntos Products,0.00,0,0,2025-05-05,0.00
+05/06/2025,Thursday,Juntos house,"6,194.70",78,79.42,2025-06-05,6194.70
+05/06/2025,Thursday,Juntos boutique,192.50,5,38.5,2025-06-05,192.50
+05/06/2025,Thursday,Picadeli,"3,501.55",203,17.25,2025-06-05,3501.55
+05/06/2025,Thursday,Juntos farm shop,406.18,20,20.31,2025-06-05,406.18
+05/06/2025,Thursday,Tasting place,322.50,29,11.12,2025-06-05,322.50
+05/06/2025,Thursday,Distribution b2b,"1,835.93",15,122.4,2025-06-05,1835.93
+05/06/2025,Thursday,Activities,0.00,0,0,2025-06-05,0.00
+05/06/2025,Thursday,Juntos Products,0.00,0,0,2025-06-05,0.00
+05/07/2025,Saturday,Juntos house,"10,092.80",105,96.12,2025-07-05,10092.80
+05/07/2025,Saturday,Juntos boutique,"1,858.00",13,142.92,2025-07-05,1858.00
+05/07/2025,Saturday,Picadeli,"3,208.26",121,26.51,2025-07-05,3208.26
+05/07/2025,Saturday,Juntos farm shop,0.00,0,0,2025-07-05,0.00
+05/07/2025,Saturday,Tasting place,"3,039.20",115,26.43,2025-07-05,3039.20
+05/07/2025,Saturday,Distribution b2b,"2,439.86",13,187.68,2025-07-05,2439.86
+05/07/2025,Saturday,Activities,0.00,0,0,2025-07-05,0.00
+05/07/2025,Saturday,Juntos Products,461.04,0,0,2025-07-05,461.04
+05/08/2025,Tuesday,Juntos house,"10,937.90",132,82.86,2025-08-05,10937.90
+05/08/2025,Tuesday,Juntos boutique,"2,212.00",13,170.15,2025-08-05,2212.00
+05/08/2025,Tuesday,Picadeli,"2,675.61",117,22.87,2025-08-05,2675.61
+05/08/2025,Tuesday,Juntos farm shop,"1,070.09",41,26.1,2025-08-05,1070.09
+05/08/2025,Tuesday,Tasting place,"3,168.00",148,21.41,2025-08-05,3168.00
+05/08/2025,Tuesday,Distribution b2b,0.00,0,0,2025-08-05,0.00
+05/08/2025,Tuesday,Activities,0.00,0,0,2025-08-05,0.00
+05/08/2025,Tuesday,Juntos Products,0.00,0,0,2025-08-05,0.00
+05/09/2025,Friday,Juntos house,"7,987.80",96,83.21,2025-09-05,7987.80
+05/09/2025,Friday,Juntos boutique,"1,080.00",14,77.14,2025-09-05,1080.00
+05/09/2025,Friday,Picadeli,"3,140.19",163,19.26,2025-09-05,3140.19
+05/09/2025,Friday,Juntos farm shop,931.71,52,17.92,2025-09-05,931.71
+05/09/2025,Friday,Tasting place,"2,254.00",57,39.54,2025-09-05,2254.00
+05/09/2025,Friday,Distribution b2b,"1,540.03",12,128.34,2025-09-05,1540.03
+05/09/2025,Friday,Activities,0.00,0,0,2025-09-05,0.00
+05/09/2025,Friday,Juntos Products,0.00,0,0,2025-09-05,0.00
+05/10/2025,Sunday,Juntos house,"4,874.00",56,87.04,2025-10-05,4874.00
+05/10/2025,Sunday,Juntos boutique,479.00,11,43.55,2025-10-05,479.00
+05/10/2025,Sunday,Picadeli,0.00,0,0,2025-10-05,0.00
+05/10/2025,Sunday,Juntos farm shop,0.00,0,0,2025-10-05,0.00
+05/10/2025,Sunday,Tasting place,0.00,0,0,2025-10-05,0.00
+05/10/2025,Sunday,Distribution b2b,0.00,0,0,2025-10-05,0.00
+05/10/2025,Sunday,Activities,0.00,0,0,2025-10-05,0.00
+05/10/2025,Sunday,Juntos Products,0.00,0,0,2025-10-05,0.00
+05/11/2025,Wednesday,Juntos house,"3,249.60",40,81.24,2025-11-05,3249.60
+05/11/2025,Wednesday,Juntos boutique,71.50,2,35.75,2025-11-05,71.50
+05/11/2025,Wednesday,Picadeli,"3,341.68",205,16.3,2025-11-05,3341.68
+05/11/2025,Wednesday,Juntos farm shop,721.18,24,30.05,2025-11-05,721.18
+05/11/2025,Wednesday,Tasting place,"4,089.42",33,123.92,2025-11-05,4089.42
+05/11/2025,Wednesday,Distribution b2b,351.20,5,70.24,2025-11-05,351.20
+05/11/2025,Wednesday,Activities,0.00,0,0,2025-11-05,0.00
+05/11/2025,Wednesday,Juntos Products,0.00,0,0,2025-11-05,0.00
+05/12/2025,Friday,Juntos house,0.00,0,0,2025-12-05,0.00
+05/12/2025,Friday,Juntos boutique,0.00,0,0,2025-12-05,0.00
+05/12/2025,Friday,Picadeli,0.00,0,0,2025-12-05,0.00
+05/12/2025,Friday,Juntos farm shop,0.00,0,0,2025-12-05,0.00
+05/12/2025,Friday,Tasting place,0.00,0,0,2025-12-05,0.00
+05/12/2025,Friday,Distribution b2b,0.00,0,0,2025-12-05,0.00
+05/12/2025,Friday,Activities,0.00,0,0,2025-12-05,0.00
+05/12/2025,Friday,Juntos Products,0.00,0,0,2025-12-05,0.00
+06/01/2025,Monday,Juntos house,"2,314.60",35,66.13,2025-01-06,2314.60
+06/01/2025,Monday,Juntos boutique,48.00,1,48,2025-01-06,48.00
+06/01/2025,Monday,Picadeli,0.00,0,0,2025-01-06,0.00
+06/01/2025,Monday,Juntos farm shop,0.00,0,0,2025-01-06,0.00
+06/01/2025,Monday,Tasting place,0.00,0,0,2025-01-06,0.00
+06/01/2025,Monday,Distribution b2b,0.00,0,0,2025-01-06,0.00
+06/01/2025,Monday,Activities,0.00,0,0,2025-01-06,0.00
+06/01/2025,Monday,Juntos Products,0.00,0,0,2025-01-06,0.00
+06/02/2025,Thursday,Juntos house,"2,377.10",29,81.97,2025-02-06,2377.10
+06/02/2025,Thursday,Juntos boutique,0.00,0,0,2025-02-06,0.00
+06/02/2025,Thursday,Picadeli,"2,935.16",173,16.97,2025-02-06,2935.16
+06/02/2025,Thursday,Juntos farm shop,278.80,17,16.4,2025-02-06,278.80
+06/02/2025,Thursday,Tasting place,417.40,32,13.04,2025-02-06,417.40
+06/02/2025,Thursday,Distribution b2b,330.57,7,47.22,2025-02-06,330.57
+06/02/2025,Thursday,Activities,0.00,0,0,2025-02-06,0.00
+06/02/2025,Thursday,Juntos Products,216.00,0,0,2025-02-06,216.00
+06/03/2025,Thursday,Juntos house,"1,455.00",27,53.89,2025-03-06,1455.00
+06/03/2025,Thursday,Juntos boutique,0.00,0,0,2025-03-06,0.00
+06/03/2025,Thursday,Picadeli,"3,539.00",175,20.22,2025-03-06,3539.00
+06/03/2025,Thursday,Juntos farm shop,292.44,22,13.29,2025-03-06,292.44
+06/03/2025,Thursday,Tasting place,338.20,26,13.01,2025-03-06,338.20
+06/03/2025,Thursday,Distribution b2b,249.78,7,35.68,2025-03-06,249.78
+06/03/2025,Thursday,Activities,0.00,0,0,2025-03-06,0.00
+06/03/2025,Thursday,Juntos Products,361.40,0,0,2025-03-06,361.40
+06/04/2025,Sunday,Juntos house,"6,361.00",95,66.96,2025-04-06,6361.00
+06/04/2025,Sunday,Juntos boutique,292.00,5,58.4,2025-04-06,292.00
+06/04/2025,Sunday,Picadeli,0.00,0,0,2025-04-06,0.00
+06/04/2025,Sunday,Juntos farm shop,0.00,0,0,2025-04-06,0.00
+06/04/2025,Sunday,Tasting place,0.00,0,0,2025-04-06,0.00
+06/04/2025,Sunday,Distribution b2b,0.00,0,0,2025-04-06,0.00
+06/04/2025,Sunday,Activities,0.00,0,0,2025-04-06,0.00
+06/04/2025,Sunday,Juntos Products,0.00,0,0,2025-04-06,0.00
+06/05/2025,Tuesday,Juntos house,"2,957.00",45,65.71,2025-05-06,2957.00
+06/05/2025,Tuesday,Juntos boutique,261.00,4,65.25,2025-05-06,261.00
+06/05/2025,Tuesday,Picadeli,"3,028.00",197,15.37,2025-05-06,3028.00
+06/05/2025,Tuesday,Juntos farm shop,573.55,24,23.9,2025-05-06,573.55
+06/05/2025,Tuesday,Tasting place,677.30,44,15.39,2025-05-06,677.30
+06/05/2025,Tuesday,Distribution b2b,"1,062.98",15,70.87,2025-05-06,1062.98
+06/05/2025,Tuesday,Activities,0.00,0,0,2025-05-06,0.00
+06/05/2025,Tuesday,Juntos Products,627.78,0,0,2025-05-06,627.78
+06/06/2025,Friday,Juntos house,"11,848.50",130,91.14,2025-06-06,11848.50
+06/06/2025,Friday,Juntos boutique,379.00,7,54.14,2025-06-06,379.00
+06/06/2025,Friday,Picadeli,"4,393.98",194,22.65,2025-06-06,4393.98
+06/06/2025,Friday,Juntos farm shop,773.83,29,26.68,2025-06-06,773.83
+06/06/2025,Friday,Tasting place,"1,112.10",32,34.75,2025-06-06,1112.10
+06/06/2025,Friday,Distribution b2b,"2,019.63",15,134.64,2025-06-06,2019.63
+06/06/2025,Friday,Activities,824.00,0,0,2025-06-06,824.00
+06/06/2025,Friday,Juntos Products,134.52,0,0,2025-06-06,134.52
+06/07/2025,Sunday,Juntos house,"8,214.00",97,84.68,2025-07-06,8214.00
+06/07/2025,Sunday,Juntos boutique,"2,536.00",18,140.89,2025-07-06,2536.00
+06/07/2025,Sunday,Picadeli,0.00,0,0,2025-07-06,0.00
+06/07/2025,Sunday,Juntos farm shop,0.00,0,0,2025-07-06,0.00
+06/07/2025,Sunday,Tasting place,0.00,0,0,2025-07-06,0.00
+06/07/2025,Sunday,Distribution b2b,0.00,0,0,2025-07-06,0.00
+06/07/2025,Sunday,Activities,0.00,0,0,2025-07-06,0.00
+06/07/2025,Sunday,Juntos Products,0.00,0,0,2025-07-06,0.00
+06/08/2025,Wednesday,Juntos house,"12,018.10",108,111.28,2025-08-06,12018.10
+06/08/2025,Wednesday,Juntos boutique,"2,478.30",14,177.02,2025-08-06,2478.30
+06/08/2025,Wednesday,Picadeli,"3,102.90",166,18.69,2025-08-06,3102.90
+06/08/2025,Wednesday,Juntos farm shop,"1,985.80",67,29.64,2025-08-06,1985.80
+06/08/2025,Wednesday,Tasting place,"2,950.60",113,26.11,2025-08-06,2950.60
+06/08/2025,Wednesday,Distribution b2b,"2,453.14",13,188.7,2025-08-06,2453.14
+06/08/2025,Wednesday,Activities,0.00,0,0,2025-08-06,0.00
+06/08/2025,Wednesday,Juntos Products,241.79,0,0,2025-08-06,241.79
+06/09/2025,Saturday,Juntos house,"22,961.00",63,364.46,2025-09-06,22961.00
+06/09/2025,Saturday,Juntos boutique,0.00,0,0,2025-09-06,0.00
+06/09/2025,Saturday,Picadeli,"1,847.38",89,20.76,2025-09-06,1847.38
+06/09/2025,Saturday,Juntos farm shop,"1,045.94",57,18.35,2025-09-06,1045.94
+06/09/2025,Saturday,Tasting place,"1,455.00",90,16.17,2025-09-06,1455.00
+06/09/2025,Saturday,Distribution b2b,0.00,0,0,2025-09-06,0.00
+06/09/2025,Saturday,Activities,0.00,0,0,2025-09-06,0.00
+06/09/2025,Saturday,Juntos Products,0.00,0,0,2025-09-06,0.00
+06/10/2025,Monday,Juntos house,0.00,0,0,2025-10-06,0.00
+06/10/2025,Monday,Juntos boutique,0.00,0,0,2025-10-06,0.00
+06/10/2025,Monday,Picadeli,"4,648.18",216,21.52,2025-10-06,4648.18
+06/10/2025,Monday,Juntos farm shop,384.23,19,20.22,2025-10-06,384.23
+06/10/2025,Monday,Tasting place,0.00,0,0,2025-10-06,0.00
+06/10/2025,Monday,Distribution b2b,863.24,14,61.66,2025-10-06,863.24
+06/10/2025,Monday,Activities,0.00,0,0,2025-10-06,0.00
+06/10/2025,Monday,Juntos Products,0.00,0,0,2025-10-06,0.00
+06/11/2025,Thursday,Juntos house,"2,093.50",28,74.77,2025-11-06,2093.50
+06/11/2025,Thursday,Juntos boutique,114.00,2,57,2025-11-06,114.00
+06/11/2025,Thursday,Picadeli,"3,538.57",186,19.02,2025-11-06,3538.57
+06/11/2025,Thursday,Juntos farm shop,983.10,31,31.71,2025-11-06,983.10
+06/11/2025,Thursday,Tasting place,"1,102.90",59,18.69,2025-11-06,1102.90
+06/11/2025,Thursday,Distribution b2b,268.09,3,89.36,2025-11-06,268.09
+06/11/2025,Thursday,Activities,0.00,0,0,2025-11-06,0.00
+06/11/2025,Thursday,Juntos Products,27.00,0,0,2025-11-06,27.00
+06/12/2025,Saturday,Juntos house,"2,479.00",37,67,2025-12-06,2479.00
+06/12/2025,Saturday,Juntos boutique,182.00,3,60.67,2025-12-06,182.00
+06/12/2025,Saturday,Picadeli,"1,376.00",79,17.42,2025-12-06,1376.00
+06/12/2025,Saturday,Juntos farm shop,807.00,34,23.74,2025-12-06,807.00
+06/12/2025,Saturday,Tasting place,"4,545.00",160,28.41,2025-12-06,4545.00
+06/12/2025,Saturday,Distribution b2b,0.00,0,0,2025-12-06,0.00
+06/12/2025,Saturday,Activities,0.00,0,0,2025-12-06,0.00
+06/12/2025,Saturday,Juntos Products,0.00,0,0,2025-12-06,0.00
+07/01/2025,Tuesday,Juntos house,0.00,0,0,2025-01-07,0.00
+07/01/2025,Tuesday,Juntos boutique,0.00,0,0,2025-01-07,0.00
+07/01/2025,Tuesday,Picadeli,"2,986.70",137,21.8,2025-01-07,2986.70
+07/01/2025,Tuesday,Juntos farm shop,358.82,14,25.63,2025-01-07,358.82
+07/01/2025,Tuesday,Tasting place,100.00,11,9.09,2025-01-07,100.00
+07/01/2025,Tuesday,Distribution b2b,599.89,9,66.65,2025-01-07,599.89
+07/01/2025,Tuesday,Activities,0.00,0,0,2025-01-07,0.00
+07/01/2025,Tuesday,Juntos Products,0.00,0,0,2025-01-07,0.00
+07/02/2025,Friday,Juntos house,"3,128.00",36,86.89,2025-02-07,3128.00
+07/02/2025,Friday,Juntos boutique,0.00,0,0,2025-02-07,0.00
+07/02/2025,Friday,Picadeli,"3,136.00",191,16.42,2025-02-07,3136.00
+07/02/2025,Friday,Juntos farm shop,320.97,16,20.06,2025-02-07,320.97
+07/02/2025,Friday,Tasting place,184.60,10,18.46,2025-02-07,184.60
+07/02/2025,Friday,Distribution b2b,614.11,9,68.23,2025-02-07,614.11
+07/02/2025,Friday,Activities,0.00,0,0,2025-02-07,0.00
+07/02/2025,Friday,Juntos Products,0.00,0,0,2025-02-07,0.00
+07/03/2025,Friday,Juntos house,"5,569.00",71,78.44,2025-03-07,5569.00
+07/03/2025,Friday,Juntos boutique,0.00,0,0,2025-03-07,0.00
+07/03/2025,Friday,Picadeli,"3,428.00",179,19.15,2025-03-07,3428.00
+07/03/2025,Friday,Juntos farm shop,403.82,22,18.36,2025-03-07,403.82
+07/03/2025,Friday,Tasting place,296.20,22,13.46,2025-03-07,296.20
+07/03/2025,Friday,Distribution b2b,464.35,7,66.34,2025-03-07,464.35
+07/03/2025,Friday,Activities,0.00,0,0,2025-03-07,0.00
+07/03/2025,Friday,Juntos Products,0.00,0,0,2025-03-07,0.00
+07/04/2025,Monday,Juntos house,0.00,0,0,2025-04-07,0.00
+07/04/2025,Monday,Juntos boutique,0.00,0,0,2025-04-07,0.00
+07/04/2025,Monday,Picadeli,"3,882.00",212,18.31,2025-04-07,3882.00
+07/04/2025,Monday,Juntos farm shop,0.00,25,0,2025-04-07,0.00
+07/04/2025,Monday,Tasting place,0.00,0,0,2025-04-07,0.00
+07/04/2025,Monday,Distribution b2b,477.36,7,68.19,2025-04-07,477.36
+07/04/2025,Monday,Activities,0.00,0,0,2025-04-07,0.00
+07/04/2025,Monday,Juntos Products,73.95,0,0,2025-04-07,73.95
+07/05/2025,Wednesday,Juntos house,"4,654.00",55,84.62,2025-05-07,4654.00
+07/05/2025,Wednesday,Juntos boutique,"1,274.30",11,115.85,2025-05-07,1274.30
+07/05/2025,Wednesday,Picadeli,"3,400.00",207,16.43,2025-05-07,3400.00
+07/05/2025,Wednesday,Juntos farm shop,301.92,23,13.13,2025-05-07,301.92
+07/05/2025,Wednesday,Tasting place,332.30,31,10.72,2025-05-07,332.30
+07/05/2025,Wednesday,Distribution b2b,648.00,11,58.91,2025-05-07,648.00
+07/05/2025,Wednesday,Activities,0.00,0,0,2025-05-07,0.00
+07/05/2025,Wednesday,Juntos Products,43.20,0,0,2025-05-07,43.20
+07/06/2025,Saturday,Juntos house,"16,409.00",68,241.31,2025-06-07,16409.00
+07/06/2025,Saturday,Juntos boutique,0.00,0,0,2025-06-07,0.00
+07/06/2025,Saturday,Picadeli,"3,362.25",102,32.96,2025-06-07,3362.25
+07/06/2025,Saturday,Juntos farm shop,"1,590.95",72,22.1,2025-06-07,1590.95
+07/06/2025,Saturday,Tasting place,"2,578.10",64,40.28,2025-06-07,2578.10
+07/06/2025,Saturday,Distribution b2b,"1,093.73",0,0,2025-06-07,1093.73
+07/06/2025,Saturday,Activities,"2,558.00",0,0,2025-06-07,2558.00
+07/06/2025,Saturday,Juntos Products,267.00,0,0,2025-06-07,267.00
+07/07/2025,Monday,Juntos house,"8,016.40",97,82.64,2025-07-07,8016.40
+07/07/2025,Monday,Juntos boutique,"1,100.50",16,68.78,2025-07-07,1100.50
+07/07/2025,Monday,Picadeli,"4,634.04",195,23.76,2025-07-07,4634.04
+07/07/2025,Monday,Juntos farm shop,0.00,0,0,2025-07-07,0.00
+07/07/2025,Monday,Tasting place,0.00,0,0,2025-07-07,0.00
+07/07/2025,Monday,Distribution b2b,"2,208.77",14,157.77,2025-07-07,2208.77
+07/07/2025,Monday,Activities,0.00,0,0,2025-07-07,0.00
+07/07/2025,Monday,Juntos Products,0.00,0,0,2025-07-07,0.00
+07/08/2025,Thursday,Juntos house,"11,171.62",127,87.97,2025-08-07,11171.62
+07/08/2025,Thursday,Juntos boutique,0.00,10,0,2025-08-07,0.00
+07/08/2025,Thursday,Picadeli,"2,757.12",153,18.02,2025-08-07,2757.12
+07/08/2025,Thursday,Juntos farm shop,"1,134.28",46,24.66,2025-08-07,1134.28
+07/08/2025,Thursday,Tasting place,"4,298.00",120,35.82,2025-08-07,4298.00
+07/08/2025,Thursday,Distribution b2b,"2,965.68",20,148.28,2025-08-07,2965.68
+07/08/2025,Thursday,Activities,0.00,0,0,2025-08-07,0.00
+07/08/2025,Thursday,Juntos Products,0.00,0,0,2025-08-07,0.00
+07/09/2025,Sunday,Juntos house,"8,005.30",95,84.27,2025-09-07,8005.30
+07/09/2025,Sunday,Juntos boutique,967.95,12,80.66,2025-09-07,967.95
+07/09/2025,Sunday,Picadeli,0.00,0,0,2025-09-07,0.00
+07/09/2025,Sunday,Juntos farm shop,0.00,0,0,2025-09-07,0.00
+07/09/2025,Sunday,Tasting place,0.00,0,0,2025-09-07,0.00
+07/09/2025,Sunday,Distribution b2b,0.00,0,0,2025-09-07,0.00
+07/09/2025,Sunday,Activities,0.00,0,0,2025-09-07,0.00
+07/09/2025,Sunday,Juntos Products,0.00,0,0,2025-09-07,0.00
+07/10/2025,Tuesday,Juntos house,0.00,0,0,2025-10-07,0.00
+07/10/2025,Tuesday,Juntos boutique,0.00,0,0,2025-10-07,0.00
+07/10/2025,Tuesday,Picadeli,"3,977.42",204,19.5,2025-10-07,3977.42
+07/10/2025,Tuesday,Juntos farm shop,563.68,31,18.18,2025-10-07,563.68
+07/10/2025,Tuesday,Tasting place,633.60,0,0,2025-10-07,633.60
+07/10/2025,Tuesday,Distribution b2b,988.76,10,98.88,2025-10-07,988.76
+07/10/2025,Tuesday,Activities,0.00,0,0,2025-10-07,0.00
+07/10/2025,Tuesday,Juntos Products,32.50,0,0,2025-10-07,32.50
+07/11/2025,Friday,Juntos house,"4,694.50",56,83.83,2025-11-07,4694.50
+07/11/2025,Friday,Juntos boutique,48.26,3,16.09,2025-11-07,48.26
+07/11/2025,Friday,Picadeli,"3,577.94",205,17.45,2025-11-07,3577.94
+07/11/2025,Friday,Juntos farm shop,850.43,34,25.01,2025-11-07,850.43
+07/11/2025,Friday,Tasting place,670.98,39,17.2,2025-11-07,670.98
+07/11/2025,Friday,Distribution b2b,"1,117.65",10,111.77,2025-11-07,1117.65
+07/11/2025,Friday,Activities,0.00,0,0,2025-11-07,0.00
+07/11/2025,Friday,Juntos Products,21.60,0,0,2025-11-07,21.60
+07/12/2025,Sunday,Juntos house,"1,638.00",31,52.84,2025-12-07,1638.00
+07/12/2025,Sunday,Juntos boutique,356.00,5,71.2,2025-12-07,356.00
+07/12/2025,Sunday,Picadeli,0.00,0,0,2025-12-07,0.00
+07/12/2025,Sunday,Juntos farm shop,0.00,0,0,2025-12-07,0.00
+07/12/2025,Sunday,Tasting place,0.00,0,0,2025-12-07,0.00
+07/12/2025,Sunday,Distribution b2b,0.00,0,0,2025-12-07,0.00
+07/12/2025,Sunday,Activities,0.00,0,0,2025-12-07,0.00
+07/12/2025,Sunday,Juntos Products,0.00,0,0,2025-12-07,0.00
+08/01/2025,Wednesday,Juntos house,0.00,0.00,0,2025-01-08,0.00
+08/01/2025,Wednesday,Juntos boutique,0.00,0.00,0,2025-01-08,0.00
+08/01/2025,Wednesday,Picadeli,0.00,0.00,0,2025-01-08,0.00
+08/01/2025,Wednesday,Juntos farm shop,0.00,0.00,0,2025-01-08,0.00
+08/01/2025,Wednesday,Tasting place,0.00,0.00,0,2025-01-08,0.00
+08/01/2025,Wednesday,Distribution b2b,0.00,0.00,0,2025-01-08,0.00
+08/01/2025,Wednesday,Activities,0.00,0.00,0,2025-01-08,0.00
+08/01/2025,Wednesday,Juntos Products,"1,579.47",0,0,2025-01-08,1579.47
+08/02/2025,Saturday,Juntos house,"5,119.00",66,77.56,2025-02-08,5119.00
+08/02/2025,Saturday,Juntos boutique,0.00,0,0,2025-02-08,0.00
+08/02/2025,Saturday,Picadeli,"2,832.00",103,27.5,2025-02-08,2832.00
+08/02/2025,Saturday,Juntos farm shop,"1,409.00",56,25.16,2025-02-08,1409.00
+08/02/2025,Saturday,Tasting place,"3,807.00",80,47.59,2025-02-08,3807.00
+08/02/2025,Saturday,Distribution b2b,0.00,0,0,2025-02-08,0.00
+08/02/2025,Saturday,Activities,416.00,0,0,2025-02-08,416.00
+08/02/2025,Saturday,Juntos Products,50.00,0,0,2025-02-08,50.00
+08/03/2025,Saturday,Juntos house,"6,401.00",78,82.06,2025-03-08,6401.00
+08/03/2025,Saturday,Juntos boutique,0.00,0,0,2025-03-08,0.00
+08/03/2025,Saturday,Picadeli,"2,005.00",102,19.66,2025-03-08,2005.00
+08/03/2025,Saturday,Juntos farm shop,"1,050.18",55,19.09,2025-03-08,1050.18
+08/03/2025,Saturday,Tasting place,"4,361.00",0,0,2025-03-08,4361.00
+08/03/2025,Saturday,Distribution b2b,0.00,0,0,2025-03-08,0.00
+08/03/2025,Saturday,Activities,0.00,0,0,2025-03-08,0.00
+08/03/2025,Saturday,Juntos Products,0.00,0,0,2025-03-08,0.00
+08/04/2025,Tuesday,Juntos house,0.00,0,0,2025-04-08,0.00
+08/04/2025,Tuesday,Juntos boutique,0.00,0,0,2025-04-08,0.00
+08/04/2025,Tuesday,Picadeli,"3,402.00",208,16.36,2025-04-08,3402.00
+08/04/2025,Tuesday,Juntos farm shop,415.96,22,18.91,2025-04-08,415.96
+08/04/2025,Tuesday,Tasting place,513.20,32,16.04,2025-04-08,513.20
+08/04/2025,Tuesday,Distribution b2b,587.76,7,83.97,2025-04-08,587.76
+08/04/2025,Tuesday,Activities,0.00,0,0,2025-04-08,0.00
+08/04/2025,Tuesday,Juntos Products,32.40,0,0,2025-04-08,32.40
+08/05/2025,Thursday,Juntos house,"3,701.00",40,92.53,2025-05-08,3701.00
+08/05/2025,Thursday,Juntos boutique,839.00,3,279.67,2025-05-08,839.00
+08/05/2025,Thursday,Picadeli,"3,066.00",195,15.72,2025-05-08,3066.00
+08/05/2025,Thursday,Juntos farm shop,"1,094.73",46,23.8,2025-05-08,1094.73
+08/05/2025,Thursday,Tasting place,668.20,42,15.91,2025-05-08,668.20
+08/05/2025,Thursday,Distribution b2b,"1,112.63",11,101.15,2025-05-08,1112.63
+08/05/2025,Thursday,Activities,0.00,0,0,2025-05-08,0.00
+08/05/2025,Thursday,Juntos Products,167.60,0,0,2025-05-08,167.60
+08/06/2025,Sunday,Juntos house,"6,546.30",93,70.39,2025-06-08,6546.30
+08/06/2025,Sunday,Juntos boutique,631.50,10,63.15,2025-06-08,631.50
+08/06/2025,Sunday,Picadeli,0.00,0,0,2025-06-08,0.00
+08/06/2025,Sunday,Juntos farm shop,0.00,0,0,2025-06-08,0.00
+08/06/2025,Sunday,Tasting place,0.00,0,0,2025-06-08,0.00
+08/06/2025,Sunday,Distribution b2b,0.00,0,0,2025-06-08,0.00
+08/06/2025,Sunday,Activities,0.00,0,0,2025-06-08,0.00
+08/06/2025,Sunday,Juntos Products,0.00,0,0,2025-06-08,0.00
+08/07/2025,Tuesday,Juntos house,"9,452.30",107,88.34,2025-07-08,9452.30
+08/07/2025,Tuesday,Juntos boutique,"1,160.00",16,72.5,2025-07-08,1160.00
+08/07/2025,Tuesday,Picadeli,"4,702.59",208,22.61,2025-07-08,4702.59
+08/07/2025,Tuesday,Juntos farm shop,"1,974.63",68,29.04,2025-07-08,1974.63
+08/07/2025,Tuesday,Tasting place,"1,896.80",0,0,2025-07-08,1896.80
+08/07/2025,Tuesday,Distribution b2b,"1,563.46",10,156.35,2025-07-08,1563.46
+08/07/2025,Tuesday,Activities,0.00,0,0,2025-07-08,0.00
+08/07/2025,Tuesday,Juntos Products,172.74,0,0,2025-07-08,172.74
+08/08/2025,Friday,Juntos house,"11,847.20",134,88.41,2025-08-08,11847.20
+08/08/2025,Friday,Juntos boutique,"1,902.00",18,105.67,2025-08-08,1902.00
+08/08/2025,Friday,Picadeli,"3,094.32",150,20.63,2025-08-08,3094.32
+08/08/2025,Friday,Juntos farm shop,"1,109.06",38,29.19,2025-08-08,1109.06
+08/08/2025,Friday,Tasting place,"2,842.00",79,35.97,2025-08-08,2842.00
+08/08/2025,Friday,Distribution b2b,"1,830.76",16,114.42,2025-08-08,1830.76
+08/08/2025,Friday,Activities,0.00,0,0,2025-08-08,0.00
+08/08/2025,Friday,Juntos Products,0.00,0,0,2025-08-08,0.00
+08/09/2025,Monday,Juntos house,"5,730.80",65,88.17,2025-09-08,5730.80
+08/09/2025,Monday,Juntos boutique,96.00,2,48,2025-09-08,96.00
+08/09/2025,Monday,Picadeli,"3,776.54",217,17.4,2025-09-08,3776.54
+08/09/2025,Monday,Juntos farm shop,0.00,0,0,2025-09-08,0.00
+08/09/2025,Monday,Tasting place,0.00,0,0,2025-09-08,0.00
+08/09/2025,Monday,Distribution b2b,"1,889.82",14,134.99,2025-09-08,1889.82
+08/09/2025,Monday,Activities,0.00,0,0,2025-09-08,0.00
+08/09/2025,Monday,Juntos Products,0.00,0,0,2025-09-08,0.00
+08/10/2025,Wednesday,Juntos house,"7,444.00",105,70.9,2025-10-08,7444.00
+08/10/2025,Wednesday,Juntos boutique,977.50,14,69.82,2025-10-08,977.50
+08/10/2025,Wednesday,Picadeli,"3,317.83",178,18.64,2025-10-08,3317.83
+08/10/2025,Wednesday,Juntos farm shop,756.00,29,26.07,2025-10-08,756.00
+08/10/2025,Wednesday,Tasting place,892.70,31,28.8,2025-10-08,892.70
+08/10/2025,Wednesday,Distribution b2b,366.00,7,52.29,2025-10-08,366.00
+08/10/2025,Wednesday,Activities,0.00,0,0,2025-10-08,0.00
+08/10/2025,Wednesday,Juntos Products,0.00,0,0,2025-10-08,0.00
+08/11/2025,Saturday,Juntos house,"4,143.70",49,84.57,2025-11-08,4143.70
+08/11/2025,Saturday,Juntos boutique,474.50,7,67.79,2025-11-08,474.50
+08/11/2025,Saturday,Picadeli,"2,085.27",94,22.18,2025-11-08,2085.27
+08/11/2025,Saturday,Juntos farm shop,385.98,19,20.31,2025-11-08,385.98
+08/11/2025,Saturday,Tasting place,"1,007.08",52,19.37,2025-11-08,1007.08
+08/11/2025,Saturday,Distribution b2b,0.00,0,0,2025-11-08,0.00
+08/11/2025,Saturday,Activities,0.00,0,0,2025-11-08,0.00
+08/11/2025,Saturday,Juntos Products,75.60,0,0,2025-11-08,75.60
+08/12/2025,Monday,Juntos house,0.00,0,0,2025-12-08,0.00
+08/12/2025,Monday,Juntos boutique,0.00,0,0,2025-12-08,0.00
+08/12/2025,Monday,Picadeli,0.00,0,0,2025-12-08,0.00
+08/12/2025,Monday,Juntos farm shop,0.00,0,0,2025-12-08,0.00
+08/12/2025,Monday,Tasting place,0.00,0,0,2025-12-08,0.00
+08/12/2025,Monday,Distribution b2b,0.00,0,0,2025-12-08,0.00
+08/12/2025,Monday,Activities,0.00,0,0,2025-12-08,0.00
+08/12/2025,Monday,Juntos Products,0.00,0,0,2025-12-08,0.00
+09/01/2025,Thursday,Juntos house,0.00,0,0,2025-01-09,0.00
+09/01/2025,Thursday,Juntos boutique,0.00,0,0,2025-01-09,0.00
+09/01/2025,Thursday,Picadeli,"2,778.04",167,16.63,2025-01-09,2778.04
+09/01/2025,Thursday,Juntos farm shop,337.61,19,17.77,2025-01-09,337.61
+09/01/2025,Thursday,Tasting place,206.00,22,9.36,2025-01-09,206.00
+09/01/2025,Thursday,Distribution b2b,465.00,6,77.5,2025-01-09,465.00
+09/01/2025,Thursday,Activities,0.00,0,0,2025-01-09,0.00
+09/01/2025,Thursday,Juntos Products,0.00,0,0,2025-01-09,0.00
+09/02/2025,Sunday,Juntos house,"6,424.00",86,74.7,2025-02-09,6424.00
+09/02/2025,Sunday,Juntos boutique,0.00,0,0,2025-02-09,0.00
+09/02/2025,Sunday,Picadeli,0.00,0,0,2025-02-09,0.00
+09/02/2025,Sunday,Juntos farm shop,0.00,0,0,2025-02-09,0.00
+09/02/2025,Sunday,Tasting place,0.00,0,0,2025-02-09,0.00
+09/02/2025,Sunday,Distribution b2b,0.00,0,0,2025-02-09,0.00
+09/02/2025,Sunday,Activities,0.00,0,0,2025-02-09,0.00
+09/02/2025,Sunday,Juntos Products,0.00,0,0,2025-02-09,0.00
+09/03/2025,Sunday,Juntos house,"3,563.00",45,79.18,2025-03-09,3563.00
+09/03/2025,Sunday,Juntos boutique,0.00,0,0,2025-03-09,0.00
+09/03/2025,Sunday,Picadeli,0.00,0,0,2025-03-09,0.00
+09/03/2025,Sunday,Juntos farm shop,0.00,0,0,2025-03-09,0.00
+09/03/2025,Sunday,Tasting place,0.00,0,0,2025-03-09,0.00
+09/03/2025,Sunday,Distribution b2b,0.00,0,0,2025-03-09,0.00
+09/03/2025,Sunday,Activities,0.00,0,0,2025-03-09,0.00
+09/03/2025,Sunday,Juntos Products,0.00,0,0,2025-03-09,0.00
+09/04/2025,Wednesday,Juntos house,"4,495.00",67,67.09,2025-04-09,4495.00
+09/04/2025,Wednesday,Juntos boutique,732.50,11,66.59,2025-04-09,732.50
+09/04/2025,Wednesday,Picadeli,"3,721.00",203,18.33,2025-04-09,3721.00
+09/04/2025,Wednesday,Juntos farm shop,479.40,21,22.83,2025-04-09,479.40
+09/04/2025,Wednesday,Tasting place,314.20,27,11.64,2025-04-09,314.20
+09/04/2025,Wednesday,Distribution b2b,"7,585.75",10,758.58,2025-04-09,7585.75
+09/04/2025,Wednesday,Activities,0.00,0,0,2025-04-09,0.00
+09/04/2025,Wednesday,Juntos Products,28.95,0,0,2025-04-09,28.95
+09/05/2025,Friday,Juntos house,"5,617.00",83,67.67,2025-05-09,5617.00
+09/05/2025,Friday,Juntos boutique,382.35,7,54.62,2025-05-09,382.35
+09/05/2025,Friday,Picadeli,"2,874.00",170,16.91,2025-05-09,2874.00
+09/05/2025,Friday,Juntos farm shop,518.54,30,17.28,2025-05-09,518.54
+09/05/2025,Friday,Tasting place,540.10,25,21.6,2025-05-09,540.10
+09/05/2025,Friday,Distribution b2b,"1,723.82",17,101.4,2025-05-09,1723.82
+09/05/2025,Friday,Activities,0.00,0,0,2025-05-09,0.00
+09/05/2025,Friday,Juntos Products,27.00,0,0,2025-05-09,27.00
+09/06/2025,Monday,Juntos house,"8,813.40",101,87.26,2025-06-09,8813.40
+09/06/2025,Monday,Juntos boutique,"1,154.51",14,82.47,2025-06-09,1154.51
+09/06/2025,Monday,Picadeli,"4,241.91",214,19.82,2025-06-09,4241.91
+09/06/2025,Monday,Juntos farm shop,0.00,0,0,2025-06-09,0.00
+09/06/2025,Monday,Tasting place,0.00,0,0,2025-06-09,0.00
+09/06/2025,Monday,Distribution b2b,"2,355.68",15,157.05,2025-06-09,2355.68
+09/06/2025,Monday,Activities,302.00,0,0,2025-06-09,302.00
+09/06/2025,Monday,Juntos Products,240.00,0,0,2025-06-09,240.00
+09/07/2025,Wednesday,Juntos house,"10,566.10",89,118.72,2025-07-09,10566.10
+09/07/2025,Wednesday,Juntos boutique,"1,131.00",11,102.82,2025-07-09,1131.00
+09/07/2025,Wednesday,Picadeli,"3,344.01",156,21.44,2025-07-09,3344.01
+09/07/2025,Wednesday,Juntos farm shop,"1,148.32",54,21.27,2025-07-09,1148.32
+09/07/2025,Wednesday,Tasting place,"1,300.00",62,20.97,2025-07-09,1300.00
+09/07/2025,Wednesday,Distribution b2b,"1,895.12",11,172.28,2025-07-09,1895.12
+09/07/2025,Wednesday,Activities,0.00,0,0,2025-07-09,0.00
+09/07/2025,Wednesday,Juntos Products,0.00,0,0,2025-07-09,0.00
+09/08/2025,Saturday,Juntos house,"24,015.00",65,369.46,2025-08-09,24015.00
+09/08/2025,Saturday,Juntos boutique,0.00,0,0,2025-08-09,0.00
+09/08/2025,Saturday,Picadeli,"2,152.17",84,25.62,2025-08-09,2152.17
+09/08/2025,Saturday,Juntos farm shop,"1,247.08",56,22.27,2025-08-09,1247.08
+09/08/2025,Saturday,Tasting place,"2,632.00",110,23.93,2025-08-09,2632.00
+09/08/2025,Saturday,Distribution b2b,"1,543.76",11,140.34,2025-08-09,1543.76
+09/08/2025,Saturday,Activities,0.00,0,0,2025-08-09,0.00
+09/08/2025,Saturday,Juntos Products,0.00,0,0,2025-08-09,0.00
+09/09/2025,Tuesday,Juntos house,"5,246.90",60,87.45,2025-09-09,5246.90
+09/09/2025,Tuesday,Juntos boutique,691.40,9,76.82,2025-09-09,691.40
+09/09/2025,Tuesday,Picadeli,"3,759.08",202,18.61,2025-09-09,3759.08
+09/09/2025,Tuesday,Juntos farm shop,"1,206.14",59,20.44,2025-09-09,1206.14
+09/09/2025,Tuesday,Tasting place,533.00,6,88.83,2025-09-09,533.00
+09/09/2025,Tuesday,Distribution b2b,"1,048.40",12,87.37,2025-09-09,1048.40
+09/09/2025,Tuesday,Activities,0.00,0,0,2025-09-09,0.00
+09/09/2025,Tuesday,Juntos Products,0.00,0,0,2025-09-09,0.00
+09/10/2025,Thursday,Juntos house,"5,447.40",63,86.47,2025-10-09,5447.40
+09/10/2025,Thursday,Juntos boutique,989.00,8,123.63,2025-10-09,989.00
+09/10/2025,Thursday,Picadeli,"3,897.00",178,21.89,2025-10-09,3897.00
+09/10/2025,Thursday,Juntos farm shop,816.86,28,29.17,2025-10-09,816.86
+09/10/2025,Thursday,Tasting place,954.00,35,27.26,2025-10-09,954.00
+09/10/2025,Thursday,Distribution b2b,"1,306.00",10,130.6,2025-10-09,1306.00
+09/10/2025,Thursday,Activities,0.00,0,0,2025-10-09,0.00
+09/10/2025,Thursday,Juntos Products,0.00,0,0,2025-10-09,0.00
+09/11/2025,Sunday,Juntos house,"6,644.10",81,82.03,2025-11-09,6644.10
+09/11/2025,Sunday,Juntos boutique,"1,345.00",14,96.07,2025-11-09,1345.00
+09/11/2025,Sunday,Picadeli,0.00,0,0,2025-11-09,0.00
+09/11/2025,Sunday,Juntos farm shop,0.00,0,0,2025-11-09,0.00
+09/11/2025,Sunday,Tasting place,0.00,0,0,2025-11-09,0.00
+09/11/2025,Sunday,Distribution b2b,0.00,0,0,2025-11-09,0.00
+09/11/2025,Sunday,Activities,0.00,0,0,2025-11-09,0.00
+09/11/2025,Sunday,Juntos Products,0.00,0,0,2025-11-09,0.00
+09/12/2025,Tuesday,Juntos house,0.00,0,0,2025-12-09,0.00
+09/12/2025,Tuesday,Juntos boutique,0.00,0,0,2025-12-09,0.00
+09/12/2025,Tuesday,Picadeli,0.00,0,0,2025-12-09,0.00
+09/12/2025,Tuesday,Juntos farm shop,0.00,0,0,2025-12-09,0.00
+09/12/2025,Tuesday,Tasting place,0.00,0,0,2025-12-09,0.00
+09/12/2025,Tuesday,Distribution b2b,0.00,0,0,2025-12-09,0.00
+09/12/2025,Tuesday,Activities,0.00,0,0,2025-12-09,0.00
+09/12/2025,Tuesday,Juntos Products,0.00,0,0,2025-12-09,0.00
+10/01/2025,Friday,Juntos house,0.00,0,0,2025-01-10,0.00
+10/01/2025,Friday,Juntos boutique,0.00,0,0,2025-01-10,0.00
+10/01/2025,Friday,Picadeli,"2,307.61",140,16.48,2025-01-10,2307.61
+10/01/2025,Friday,Juntos farm shop,251.49,13,19.35,2025-01-10,251.49
+10/01/2025,Friday,Tasting place,160.00,11,14.55,2025-01-10,160.00
+10/01/2025,Friday,Distribution b2b,358.88,6,59.81,2025-01-10,358.88
+10/01/2025,Friday,Activities,0.00,0,0,2025-01-10,0.00
+10/01/2025,Friday,Juntos Products,0.00,0,0,2025-01-10,0.00
+10/02/2025,Monday,Juntos house,0.00,0,0,2025-02-10,0.00
+10/02/2025,Monday,Juntos boutique,0.00,0,0,2025-02-10,0.00
+10/02/2025,Monday,Picadeli,"3,924.00",224,17.52,2025-02-10,3924.00
+10/02/2025,Monday,Juntos farm shop,0.00,0,0,2025-02-10,0.00
+10/02/2025,Monday,Tasting place,0.00,0,0,2025-02-10,0.00
+10/02/2025,Monday,Distribution b2b,311.13,6,51.86,2025-02-10,311.13
+10/02/2025,Monday,Activities,0.00,0,0,2025-02-10,0.00
+10/02/2025,Monday,Juntos Products,0.00,0,0,2025-02-10,0.00
+10/03/2025,Monday,Juntos house,0.00,0,0,2025-03-10,0.00
+10/03/2025,Monday,Juntos boutique,0.00,0,0,2025-03-10,0.00
+10/03/2025,Monday,Picadeli,"3,535.00",217,16.29,2025-03-10,3535.00
+10/03/2025,Monday,Juntos farm shop,0.00,0,0,2025-03-10,0.00
+10/03/2025,Monday,Tasting place,0.00,0,0,2025-03-10,0.00
+10/03/2025,Monday,Distribution b2b,327.66,6,54.61,2025-03-10,327.66
+10/03/2025,Monday,Activities,0.00,0,0,2025-03-10,0.00
+10/03/2025,Monday,Juntos Products,35.00,0,0,2025-03-10,35.00
+10/04/2025,Thursday,Juntos house,"4,594.00",67,68.57,2025-04-10,4594.00
+10/04/2025,Thursday,Juntos boutique,144.00,6,24,2025-04-10,144.00
+10/04/2025,Thursday,Picadeli,"3,189.00",175,18.22,2025-04-10,3189.00
+10/04/2025,Thursday,Juntos farm shop,442.61,28,15.81,2025-04-10,442.61
+10/04/2025,Thursday,Tasting place,464.00,38,12.21,2025-04-10,464.00
+10/04/2025,Thursday,Distribution b2b,"1,047.00",12,87.25,2025-04-10,1047.00
+10/04/2025,Thursday,Activities,0.00,0,0,2025-04-10,0.00
+10/04/2025,Thursday,Juntos Products,190.82,0,0,2025-04-10,190.82
+10/05/2025,Saturday,Juntos house,"7,514.00",90,83.49,2025-05-10,7514.00
+10/05/2025,Saturday,Juntos boutique,666.00,9,74,2025-05-10,666.00
+10/05/2025,Saturday,Picadeli,"2,173.00",103,21.1,2025-05-10,2173.00
+10/05/2025,Saturday,Juntos farm shop,877.42,44,19.94,2025-05-10,877.42
+10/05/2025,Saturday,Tasting place,"3,635.40",86,42.27,2025-05-10,3635.40
+10/05/2025,Saturday,Distribution b2b,221.69,2,110.85,2025-05-10,221.69
+10/05/2025,Saturday,Activities,0.00,0,0,2025-05-10,0.00
+10/05/2025,Saturday,Juntos Products,156.00,0,0,2025-05-10,156.00
+10/06/2025,Tuesday,Juntos house,"6,279.30",75,83.72,2025-06-10,6279.30
+10/06/2025,Tuesday,Juntos boutique,946.90,15,63.13,2025-06-10,946.90
+10/06/2025,Tuesday,Picadeli,"4,273.95",220,19.43,2025-06-10,4273.95
+10/06/2025,Tuesday,Juntos farm shop,836.84,38,22.02,2025-06-10,836.84
+10/06/2025,Tuesday,Tasting place,892.60,38,23.49,2025-06-10,892.60
+10/06/2025,Tuesday,Distribution b2b,"2,285.63",17,134.45,2025-06-10,2285.63
+10/06/2025,Tuesday,Activities,74.00,0,0,2025-06-10,74.00
+10/06/2025,Tuesday,Juntos Products,140.97,0,0,2025-06-10,140.97
+10/07/2025,Thursday,Juntos house,"9,231.00",108,85.47,2025-07-10,9231.00
+10/07/2025,Thursday,Juntos boutique,"1,123.00",7,160.43,2025-07-10,1123.00
+10/07/2025,Thursday,Picadeli,"4,281.69",199,21.52,2025-07-10,4281.69
+10/07/2025,Thursday,Juntos farm shop,"1,118.35",38,29.43,2025-07-10,1118.35
+10/07/2025,Thursday,Tasting place,"1,375.50",62,22.19,2025-07-10,1375.50
+10/07/2025,Thursday,Distribution b2b,"3,272.44",17,192.5,2025-07-10,3272.44
+10/07/2025,Thursday,Activities,0.00,0,0,2025-07-10,0.00
+10/07/2025,Thursday,Juntos Products,342.28,0,0,2025-07-10,342.28
+10/08/2025,Sunday,Juntos house,"8,047.25",86,93.57,2025-08-10,8047.25
+10/08/2025,Sunday,Juntos boutique,940.50,11,85.5,2025-08-10,940.50
+10/08/2025,Sunday,Picadeli,0.00,0,0,2025-08-10,0.00
+10/08/2025,Sunday,Juntos farm shop,0.00,0,0,2025-08-10,0.00
+10/08/2025,Sunday,Tasting place,0.00,0,0,2025-08-10,0.00
+10/08/2025,Sunday,Distribution b2b,0.00,0,0,2025-08-10,0.00
+10/08/2025,Sunday,Activities,0.00,0,0,2025-08-10,0.00
+10/08/2025,Sunday,Juntos Products,0.00,0,0,2025-08-10,0.00
+10/09/2025,Wednesday,Juntos house,"6,319.10",82,77.06,2025-09-10,6319.10
+10/09/2025,Wednesday,Juntos boutique,"1,211.10",11,110.1,2025-09-10,1211.10
+10/09/2025,Wednesday,Picadeli,"3,702.11",204,18.15,2025-09-10,3702.11
+10/09/2025,Wednesday,Juntos farm shop,"1,122.36",44,25.51,2025-09-10,1122.36
+10/09/2025,Wednesday,Tasting place,"1,580.00",50,31.6,2025-09-10,1580.00
+10/09/2025,Wednesday,Distribution b2b,"1,307.15",9,145.24,2025-09-10,1307.15
+10/09/2025,Wednesday,Activities,0.00,0,0,2025-09-10,0.00
+10/09/2025,Wednesday,Juntos Products,0.00,0,0,2025-09-10,0.00
+10/10/2025,Friday,Juntos house,"8,877.40",108,82.2,2025-10-10,8877.40
+10/10/2025,Friday,Juntos boutique,496.00,6,82.67,2025-10-10,496.00
+10/10/2025,Friday,Picadeli,"3,757.00",211,17.81,2025-10-10,3757.00
+10/10/2025,Friday,Juntos farm shop,639.00,36,17.75,2025-10-10,639.00
+10/10/2025,Friday,Tasting place,"1,238.80",62,19.98,2025-10-10,1238.80
+10/10/2025,Friday,Distribution b2b,"1,947.00",15,129.8,2025-10-10,1947.00
+10/10/2025,Friday,Activities,0.00,0,0,2025-10-10,0.00
+10/10/2025,Friday,Juntos Products,327.73,0,0,2025-10-10,327.73
+10/11/2025,Monday,Juntos house,0.00,0,0,2025-11-10,0.00
+10/11/2025,Monday,Juntos boutique,0.00,0,0,2025-11-10,0.00
+10/11/2025,Monday,Picadeli,"3,829.23",201,19.05,2025-11-10,3829.23
+10/11/2025,Monday,Juntos farm shop,579.17,27,21.45,2025-11-10,579.17
+10/11/2025,Monday,Tasting place,0.00,0,0,2025-11-10,0.00
+10/11/2025,Monday,Distribution b2b,325.08,5,65.02,2025-11-10,325.08
+10/11/2025,Monday,Activities,0.00,0,0,2025-11-10,0.00
+10/11/2025,Monday,Juntos Products,189.00,0,0,2025-11-10,189.00
+10/12/2025,Wednesday,Juntos house,0.00,0,0,2025-12-10,0.00
+10/12/2025,Wednesday,Juntos boutique,0.00,0,0,2025-12-10,0.00
+10/12/2025,Wednesday,Picadeli,0.00,0,0,2025-12-10,0.00
+10/12/2025,Wednesday,Juntos farm shop,0.00,0,0,2025-12-10,0.00
+10/12/2025,Wednesday,Tasting place,0.00,0,0,2025-12-10,0.00
+10/12/2025,Wednesday,Distribution b2b,0.00,0,0,2025-12-10,0.00
+10/12/2025,Wednesday,Activities,0.00,0,0,2025-12-10,0.00
+10/12/2025,Wednesday,Juntos Products,0.00,0,0,2025-12-10,0.00
+11/01/2025,Saturday,Juntos house,0.00,0,0,2025-01-11,0.00
+11/01/2025,Saturday,Juntos boutique,0.00,0,0,2025-01-11,0.00
+11/01/2025,Saturday,Picadeli,"2,127.96",107,19.89,2025-01-11,2127.96
+11/01/2025,Saturday,Juntos farm shop,857.70,46,18.65,2025-01-11,857.70
+11/01/2025,Saturday,Tasting place,"2,544.60",92,27.66,2025-01-11,2544.60
+11/01/2025,Saturday,Distribution b2b,0.00,0,0,2025-01-11,0.00
+11/01/2025,Saturday,Activities,0.00,0,0,2025-01-11,0.00
+11/01/2025,Saturday,Juntos Products,0.00,0,0,2025-01-11,0.00
+11/02/2025,Tuesday,Juntos house,0.00,0,0,2025-02-11,0.00
+11/02/2025,Tuesday,Juntos boutique,0.00,0,0,2025-02-11,0.00
+11/02/2025,Tuesday,Picadeli,"3,054.27",185,16.51,2025-02-11,3054.27
+11/02/2025,Tuesday,Juntos farm shop,279.83,16,17.49,2025-02-11,279.83
+11/02/2025,Tuesday,Tasting place,222.60,17,13.09,2025-02-11,222.60
+11/02/2025,Tuesday,Distribution b2b,816.10,5,163.22,2025-02-11,816.10
+11/02/2025,Tuesday,Activities,0.00,0,0,2025-02-11,0.00
+11/02/2025,Tuesday,Juntos Products,216.00,0,0,2025-02-11,216.00
+11/03/2025,Tuesday,Juntos house,0.00,0,0,2025-03-11,0.00
+11/03/2025,Tuesday,Juntos boutique,0.00,0,0,2025-03-11,0.00
+11/03/2025,Tuesday,Picadeli,"2,904.00",183,15.87,2025-03-11,2904.00
+11/03/2025,Tuesday,Juntos farm shop,180.60,14,12.9,2025-03-11,180.60
+11/03/2025,Tuesday,Tasting place,656.40,21,31.26,2025-03-11,656.40
+11/03/2025,Tuesday,Distribution b2b,640.54,7,91.51,2025-03-11,640.54
+11/03/2025,Tuesday,Activities,0.00,0,0,2025-03-11,0.00
+11/03/2025,Tuesday,Juntos Products,115.80,0,0,2025-03-11,115.80
+11/04/2025,Friday,Juntos house,"4,132.00",57,72.49,2025-04-11,4132.00
+11/04/2025,Friday,Juntos boutique,692.00,5,138.4,2025-04-11,692.00
+11/04/2025,Friday,Picadeli,"3,338.00",185,18.04,2025-04-11,3338.00
+11/04/2025,Friday,Juntos farm shop,531.44,28,18.98,2025-04-11,531.44
+11/04/2025,Friday,Tasting place,411.20,26,15.82,2025-04-11,411.20
+11/04/2025,Friday,Distribution b2b,965.12,9,107.24,2025-04-11,965.12
+11/04/2025,Friday,Activities,0.00,0,0,2025-04-11,0.00
+11/04/2025,Friday,Juntos Products,151.95,0,0,2025-04-11,151.95
+11/05/2025,Sunday,Juntos house,"7,324.00",108,67.81,2025-05-11,7324.00
+11/05/2025,Sunday,Juntos boutique,"2,147.00",17,126.29,2025-05-11,2147.00
+11/05/2025,Sunday,Picadeli,0.00,0,0,2025-05-11,0.00
+11/05/2025,Sunday,Juntos farm shop,0.00,0,0,2025-05-11,0.00
+11/05/2025,Sunday,Tasting place,0.00,0,0,2025-05-11,0.00
+11/05/2025,Sunday,Distribution b2b,0.00,0,0,2025-05-11,0.00
+11/05/2025,Sunday,Activities,0.00,0,0,2025-05-11,0.00
+11/05/2025,Sunday,Juntos Products,0.00,0,0,2025-05-11,0.00
+11/06/2025,Wednesday,Juntos house,"5,772.90",80,72.16,2025-06-11,5772.90
+11/06/2025,Wednesday,Juntos boutique,"1,358.05",16,84.88,2025-06-11,1358.05
+11/06/2025,Wednesday,Picadeli,"3,642.17",202,18.03,2025-06-11,3642.17
+11/06/2025,Wednesday,Juntos farm shop,712.43,25,28.5,2025-06-11,712.43
+11/06/2025,Wednesday,Tasting place,837.40,31,27.01,2025-06-11,837.40
+11/06/2025,Wednesday,Distribution b2b,"1,288.92",11,117.17,2025-06-11,1288.92
+11/06/2025,Wednesday,Activities,0.00,0,0,2025-06-11,0.00
+11/06/2025,Wednesday,Juntos Products,135.00,0,0,2025-06-11,135.00
+11/07/2025,Friday,Juntos house,"9,334.30",106,88.06,2025-07-11,9334.30
+11/07/2025,Friday,Juntos boutique,632.20,10,63.22,2025-07-11,632.20
+11/07/2025,Friday,Picadeli,"4,204.77",193,21.79,2025-07-11,4204.77
+11/07/2025,Friday,Juntos farm shop,"1,271.16",55,23.11,2025-07-11,1271.16
+11/07/2025,Friday,Tasting place,274.00,0,0,2025-07-11,274.00
+11/07/2025,Friday,Distribution b2b,"2,260.26",17,132.96,2025-07-11,2260.26
+11/07/2025,Friday,Activities,0.00,0,0,2025-07-11,0.00
+11/07/2025,Friday,Juntos Products,93.74,0,0,2025-07-11,93.74
+11/08/2025,Monday,Juntos house,"11,686.60",133,87.87,2025-08-11,11686.60
+11/08/2025,Monday,Juntos boutique,517.00,11,47,2025-08-11,517.00
+11/08/2025,Monday,Picadeli,"3,381.36",155,21.82,2025-08-11,3381.36
+11/08/2025,Monday,Juntos farm shop,0.00,0,0,2025-08-11,0.00
+11/08/2025,Monday,Tasting place,0.00,0,0,2025-08-11,0.00
+11/08/2025,Monday,Distribution b2b,"2,822.58",15,188.17,2025-08-11,2822.58
+11/08/2025,Monday,Activities,0.00,0,0,2025-08-11,0.00
+11/08/2025,Monday,Juntos Products,0.00,0,0,2025-08-11,0.00
+11/09/2025,Thursday,Juntos house,"9,741.00",103,94.57,2025-09-11,9741.00
+11/09/2025,Thursday,Juntos boutique,637.50,10,63.75,2025-09-11,637.50
+11/09/2025,Thursday,Picadeli,"2,798.64",186,15.05,2025-09-11,2798.64
+11/09/2025,Thursday,Juntos farm shop,"1,411.29",53,26.63,2025-09-11,1411.29
+11/09/2025,Thursday,Tasting place,"1,071.00",40,26.78,2025-09-11,1071.00
+11/09/2025,Thursday,Distribution b2b,"1,155.98",10,115.6,2025-09-11,1155.98
+11/09/2025,Thursday,Activities,0.00,0,0,2025-09-11,0.00
+11/09/2025,Thursday,Juntos Products,468.20,0,0,2025-09-11,468.20
+11/10/2025,Saturday,Juntos house,"37,805.00",116,325.91,2025-10-11,37805.00
+11/10/2025,Saturday,Juntos boutique,0.00,0,0,2025-10-11,0.00
+11/10/2025,Saturday,Picadeli,"2,339.57",109,21.46,2025-10-11,2339.57
+11/10/2025,Saturday,Juntos farm shop,"1,038.00",39,26.62,2025-10-11,1038.00
+11/10/2025,Saturday,Tasting place,"1,372.00",62,22.13,2025-10-11,1372.00
+11/10/2025,Saturday,Distribution b2b,0.00,0,0,2025-10-11,0.00
+11/10/2025,Saturday,Activities,0.00,0,0,2025-10-11,0.00
+11/10/2025,Saturday,Juntos Products,0.00,0,0,2025-10-11,0.00
+11/11/2025,Tuesday,Juntos house,0.00,0,0,2025-11-11,0.00
+11/11/2025,Tuesday,Juntos boutique,0.00,0,0,2025-11-11,0.00
+11/11/2025,Tuesday,Picadeli,"3,886.69",207,18.78,2025-11-11,3886.69
+11/11/2025,Tuesday,Juntos farm shop,743.99,28,26.57,2025-11-11,743.99
+11/11/2025,Tuesday,Tasting place,783.58,44,17.81,2025-11-11,783.58
+11/11/2025,Tuesday,Distribution b2b,301.81,4,75.45,2025-11-11,301.81
+11/11/2025,Tuesday,Activities,0.00,0,0,2025-11-11,0.00
+11/11/2025,Tuesday,Juntos Products,736.20,0,0,2025-11-11,736.20
+11/12/2025,Thursday,Juntos house,0.00,0,0,2025-12-11,0.00
+11/12/2025,Thursday,Juntos boutique,0.00,0,0,2025-12-11,0.00
+11/12/2025,Thursday,Picadeli,0.00,0,0,2025-12-11,0.00
+11/12/2025,Thursday,Juntos farm shop,0.00,0,0,2025-12-11,0.00
+11/12/2025,Thursday,Tasting place,0.00,0,0,2025-12-11,0.00
+11/12/2025,Thursday,Distribution b2b,0.00,0,0,2025-12-11,0.00
+11/12/2025,Thursday,Activities,0.00,0,0,2025-12-11,0.00
+11/12/2025,Thursday,Juntos Products,0.00,0,0,2025-12-11,0.00
+12/01/2025,Sunday,Juntos house,0.00,0,0,2025-01-12,0.00
+12/01/2025,Sunday,Juntos boutique,0.00,0,0,2025-01-12,0.00
+12/01/2025,Sunday,Picadeli,0.00,0,0,2025-01-12,0.00
+12/01/2025,Sunday,Juntos farm shop,0.00,0,0,2025-01-12,0.00
+12/01/2025,Sunday,Tasting place,0.00,0,0,2025-01-12,0.00
+12/01/2025,Sunday,Distribution b2b,0.00,0,0,2025-01-12,0.00
+12/01/2025,Sunday,Activities,0.00,0,0,2025-01-12,0.00
+12/01/2025,Sunday,Juntos Products,0.00,0,0,2025-01-12,0.00
+12/02/2025,Wednesday,Juntos house,"3,283.00",37,88.73,2025-02-12,3283.00
+12/02/2025,Wednesday,Juntos boutique,0.00,0,0,2025-02-12,0.00
+12/02/2025,Wednesday,Picadeli,"3,096.00",180,17.2,2025-02-12,3096.00
+12/02/2025,Wednesday,Juntos farm shop,0.00,0,0,2025-02-12,0.00
+12/02/2025,Wednesday,Tasting place,0.00,0,0,2025-02-12,0.00
+12/02/2025,Wednesday,Distribution b2b,38.00,0,0,2025-02-12,38.00
+12/02/2025,Wednesday,Activities,0.00,0,0,2025-02-12,0.00
+12/02/2025,Wednesday,Juntos Products,0.00,0,0,2025-02-12,0.00
+12/03/2025,Wednesday,Juntos house,"3,673.00",47,78.15,2025-03-12,3673.00
+12/03/2025,Wednesday,Juntos boutique,0.00,0,0,2025-03-12,0.00
+12/03/2025,Wednesday,Picadeli,"2,915.00",172,16.95,2025-03-12,2915.00
+12/03/2025,Wednesday,Juntos farm shop,209.49,17,12.32,2025-03-12,209.49
+12/03/2025,Wednesday,Tasting place,327.00,29,11.28,2025-03-12,327.00
+12/03/2025,Wednesday,Distribution b2b,402.84,8,50.36,2025-03-12,402.84
+12/03/2025,Wednesday,Activities,0.00,0,0,2025-03-12,0.00
+12/03/2025,Wednesday,Juntos Products,335.40,0,0,2025-03-12,335.40
+12/04/2025,Saturday,Juntos house,"5,153.00",70,73.61,2025-04-12,5153.00
+12/04/2025,Saturday,Juntos boutique,53.00,2,26.5,2025-04-12,53.00
+12/04/2025,Saturday,Picadeli,"1,390.00",62,22.42,2025-04-12,1390.00
+12/04/2025,Saturday,Juntos farm shop,0.00,0,0,2025-04-12,0.00
+12/04/2025,Saturday,Tasting place,0.00,0,0,2025-04-12,0.00
+12/04/2025,Saturday,Distribution b2b,0.00,0,0,2025-04-12,0.00
+12/04/2025,Saturday,Activities,0.00,0,0,2025-04-12,0.00
+12/04/2025,Saturday,Juntos Products,54.00,0,0,2025-04-12,54.00
+12/05/2025,Monday,Juntos house,"4,285.00",45,95.22,2025-05-12,4285.00
+12/05/2025,Monday,Juntos boutique,78.00,1,78,2025-05-12,78.00
+12/05/2025,Monday,Picadeli,"4,114.00",207,19.87,2025-05-12,4114.00
+12/05/2025,Monday,Juntos farm shop,0.00,0,0,2025-05-12,0.00
+12/05/2025,Monday,Tasting place,0.00,0,0,2025-05-12,0.00
+12/05/2025,Monday,Distribution b2b,"1,106.99",14,79.07,2025-05-12,1106.99
+12/05/2025,Monday,Activities,0.00,0,0,2025-05-12,0.00
+12/05/2025,Monday,Juntos Products,0.00,0,0,2025-05-12,0.00
+12/06/2025,Thursday,Juntos house,"10,481.60",110,95.29,2025-06-12,10481.60
+12/06/2025,Thursday,Juntos boutique,"2,152.40",7,307.49,2025-06-12,2152.40
+12/06/2025,Thursday,Picadeli,"3,451.19",192,17.97,2025-06-12,3451.19
+12/06/2025,Thursday,Juntos farm shop,944.10,31,30.45,2025-06-12,944.10
+12/06/2025,Thursday,Tasting place,462.50,33,14.02,2025-06-12,462.50
+12/06/2025,Thursday,Distribution b2b,"1,551.39",12,129.28,2025-06-12,1551.39
+12/06/2025,Thursday,Activities,0.00,0,0,2025-06-12,0.00
+12/06/2025,Thursday,Juntos Products,202.77,0,0,2025-06-12,202.77
+12/07/2025,Saturday,Juntos house,"9,629.80",100,96.3,2025-07-12,9629.80
+12/07/2025,Saturday,Juntos boutique,"1,319.00",20,65.95,2025-07-12,1319.00
+12/07/2025,Saturday,Picadeli,"2,943.21",118,24.94,2025-07-12,2943.21
+12/07/2025,Saturday,Juntos farm shop,"1,097.96",45,24.4,2025-07-12,1097.96
+12/07/2025,Saturday,Tasting place,"3,743.20",0,0,2025-07-12,3743.20
+12/07/2025,Saturday,Distribution b2b,"2,072.50",10,207.25,2025-07-12,2072.50
+12/07/2025,Saturday,Activities,0.00,0,0,2025-07-12,0.00
+12/07/2025,Saturday,Juntos Products,78.00,0,0,2025-07-12,78.00
+12/08/2025,Tuesday,Juntos house,"8,634.65",105,82.23,2025-08-12,8634.65
+12/08/2025,Tuesday,Juntos boutique,423.50,7,60.5,2025-08-12,423.50
+12/08/2025,Tuesday,Picadeli,"2,733.53",142,19.25,2025-08-12,2733.53
+12/08/2025,Tuesday,Juntos farm shop,"1,825.68",60,30.43,2025-08-12,1825.68
+12/08/2025,Tuesday,Tasting place,"2,096.00",112,18.71,2025-08-12,2096.00
+12/08/2025,Tuesday,Distribution b2b,"3,257.59",14,232.69,2025-08-12,3257.59
+12/08/2025,Tuesday,Activities,0.00,0,0,2025-08-12,0.00
+12/08/2025,Tuesday,Juntos Products,73.38,0,0,2025-08-12,73.38
+12/09/2025,Friday,Juntos house,"9,415.55",105,89.67,2025-09-12,9415.55
+12/09/2025,Friday,Juntos boutique,"1,130.00",10,113,2025-09-12,1130.00
+12/09/2025,Friday,Picadeli,"3,551.18",197,18.03,2025-09-12,3551.18
+12/09/2025,Friday,Juntos farm shop,623.55,34,18.34,2025-09-12,623.55
+12/09/2025,Friday,Tasting place,"1,962.00",51,38.47,2025-09-12,1962.00
+12/09/2025,Friday,Distribution b2b,"2,489.99",17,146.47,2025-09-12,2489.99
+12/09/2025,Friday,Activities,0.00,0,0,2025-09-12,0.00
+12/09/2025,Friday,Juntos Products,0.00,0,0,2025-09-12,0.00
+12/10/2025,Sunday,Juntos house,"8,359.89",97,86.18,2025-10-12,8359.89
+12/10/2025,Sunday,Juntos boutique,840.00,14,60,2025-10-12,840.00
+12/10/2025,Sunday,Picadeli,0.00,0,0,2025-10-12,0.00
+12/10/2025,Sunday,Juntos farm shop,0.00,0,0,2025-10-12,0.00
+12/10/2025,Sunday,Tasting place,0.00,0,0,2025-10-12,0.00
+12/10/2025,Sunday,Distribution b2b,0.00,0,0,2025-10-12,0.00
+12/10/2025,Sunday,Activities,0.00,0,0,2025-10-12,0.00
+12/10/2025,Sunday,Juntos Products,0.00,0,0,2025-10-12,0.00
+12/11/2025,Wednesday,Juntos house,"2,409.10",36,66.92,2025-11-12,2409.10
+12/11/2025,Wednesday,Juntos boutique,321.00,1,321,2025-11-12,321.00
+12/11/2025,Wednesday,Picadeli,"3,388.63",166,20.41,2025-11-12,3388.63
+12/11/2025,Wednesday,Juntos farm shop,481.17,26,18.51,2025-11-12,481.17
+12/11/2025,Wednesday,Tasting place,557.40,26,21.44,2025-11-12,557.40
+12/11/2025,Wednesday,Distribution b2b,106.18,2,53.09,2025-11-12,106.18
+12/11/2025,Wednesday,Activities,0.00,0,0,2025-11-12,0.00
+12/11/2025,Wednesday,Juntos Products,86.40,0,0,2025-11-12,86.40
+12/12/2025,Friday,Juntos house,0.00,0,0,2025-12-12,0.00
+12/12/2025,Friday,Juntos boutique,0.00,0,0,2025-12-12,0.00
+12/12/2025,Friday,Picadeli,0.00,0,0,2025-12-12,0.00
+12/12/2025,Friday,Juntos farm shop,0.00,0,0,2025-12-12,0.00
+12/12/2025,Friday,Tasting place,0.00,0,0,2025-12-12,0.00
+12/12/2025,Friday,Distribution b2b,0.00,0,0,2025-12-12,0.00
+12/12/2025,Friday,Activities,0.00,0,0,2025-12-12,0.00
+12/12/2025,Friday,Juntos Products,0.00,0,0,2025-12-12,0.00
+13/01/2025,Monday,Juntos house,0.00,0,0,2025-01-13,0.00
+13/01/2025,Monday,Juntos boutique,0.00,0,0,2025-01-13,0.00
+13/01/2025,Monday,Picadeli,"3,113.44",164,18.98,2025-01-13,3113.44
+13/01/2025,Monday,Juntos farm shop,0.00,0,0,2025-01-13,0.00
+13/01/2025,Monday,Tasting place,0.00,0,0,2025-01-13,0.00
+13/01/2025,Monday,Distribution b2b,573.35,7,81.91,2025-01-13,573.35
+13/01/2025,Monday,Activities,0.00,0,0,2025-01-13,0.00
+13/01/2025,Monday,Juntos Products,699.23,0,0,2025-01-13,699.23
+13/02/2025,Thursday,Juntos house,"3,386.00",42,80.62,2025-02-13,3386.00
+13/02/2025,Thursday,Juntos boutique,0.00,0,0,2025-02-13,0.00
+13/02/2025,Thursday,Picadeli,"3,521.00",187,18.83,2025-02-13,3521.00
+13/02/2025,Thursday,Juntos farm shop,440.25,23,19.14,2025-02-13,440.25
+13/02/2025,Thursday,Tasting place,288.80,31,9.32,2025-02-13,288.80
+13/02/2025,Thursday,Distribution b2b,413.16,6,68.86,2025-02-13,413.16
+13/02/2025,Thursday,Activities,290.00,0,0,2025-02-13,290.00
+13/02/2025,Thursday,Juntos Products,0.00,0,0,2025-02-13,0.00
+13/03/2025,Thursday,Juntos house,"1,986.00",38,52.26,2025-03-13,1986.00
+13/03/2025,Thursday,Juntos boutique,0.00,0,0,2025-03-13,0.00
+13/03/2025,Thursday,Picadeli,"2,928.00",170,17.22,2025-03-13,2928.00
+13/03/2025,Thursday,Juntos farm shop,357.61,20,17.88,2025-03-13,357.61
+13/03/2025,Thursday,Tasting place,293.40,29,10.12,2025-03-13,293.40
+13/03/2025,Thursday,Distribution b2b,194.44,5,38.89,2025-03-13,194.44
+13/03/2025,Thursday,Activities,0.00,0,0,2025-03-13,0.00
+13/03/2025,Thursday,Juntos Products,0.00,0,0,2025-03-13,0.00
+13/04/2025,Sunday,Juntos house,"6,914.00",62,111.52,2025-04-13,6914.00
+13/04/2025,Sunday,Juntos boutique,500.10,13,38.47,2025-04-13,500.10
+13/04/2025,Sunday,Picadeli,0.00,0,0,2025-04-13,0.00
+13/04/2025,Sunday,Juntos farm shop,0.00,0,0,2025-04-13,0.00
+13/04/2025,Sunday,Tasting place,0.00,0,0,2025-04-13,0.00
+13/04/2025,Sunday,Distribution b2b,0.00,0,0,2025-04-13,0.00
+13/04/2025,Sunday,Activities,0.00,0,0,2025-04-13,0.00
+13/04/2025,Sunday,Juntos Products,0.00,0,0,2025-04-13,0.00
+13/05/2025,Tuesday,Juntos house,"4,552.20",62,73.42,2025-05-13,4552.20
+13/05/2025,Tuesday,Juntos boutique,363.10,9,40.34,2025-05-13,363.10
+13/05/2025,Tuesday,Picadeli,"4,035.43",211,19.13,2025-05-13,4035.43
+13/05/2025,Tuesday,Juntos farm shop,685.19,37,18.52,2025-05-13,685.19
+13/05/2025,Tuesday,Tasting place,"2,593.90",36,72.05,2025-05-13,2593.90
+13/05/2025,Tuesday,Distribution b2b,710.23,5,142.05,2025-05-13,710.23
+13/05/2025,Tuesday,Activities,0.00,0,0,2025-05-13,0.00
+13/05/2025,Tuesday,Juntos Products,102.96,0,0,2025-05-13,102.96
+13/06/2025,Friday,Juntos house,"7,490.50",81,92.48,2025-06-13,7490.50
+13/06/2025,Friday,Juntos boutique,"1,608.48",12,134.04,2025-06-13,1608.48
+13/06/2025,Friday,Picadeli,"4,044.23",190,21.29,2025-06-13,4044.23
+13/06/2025,Friday,Juntos farm shop,"1,030.12",33,31.22,2025-06-13,1030.12
+13/06/2025,Friday,Tasting place,501.50,33,15.2,2025-06-13,501.50
+13/06/2025,Friday,Distribution b2b,"2,651.01",16,165.69,2025-06-13,2651.01
+13/06/2025,Friday,Activities,322.00,0,0,2025-06-13,322.00
+13/06/2025,Friday,Juntos Products,141.60,0,0,2025-06-13,141.60
+13/07/2025,Sunday,Juntos house,"9,253.10",97,95.39,2025-07-13,9253.10
+13/07/2025,Sunday,Juntos boutique,"1,003.65",14,71.69,2025-07-13,1003.65
+13/07/2025,Sunday,Picadeli,0.00,0,0,2025-07-13,0.00
+13/07/2025,Sunday,Juntos farm shop,0.00,0,0,2025-07-13,0.00
+13/07/2025,Sunday,Tasting place,0.00,0,0,2025-07-13,0.00
+13/07/2025,Sunday,Distribution b2b,0.00,0,0,2025-07-13,0.00
+13/07/2025,Sunday,Activities,0.00,0,0,2025-07-13,0.00
+13/07/2025,Sunday,Juntos Products,0.00,0,0,2025-07-13,0.00
+13/08/2025,Wednesday,Juntos house,"11,030.40",118,93.48,2025-08-13,11030.40
+13/08/2025,Wednesday,Juntos boutique,"1,042.50",14,74.46,2025-08-13,1042.50
+13/08/2025,Wednesday,Picadeli,"3,087.46",149,20.72,2025-08-13,3087.46
+13/08/2025,Wednesday,Juntos farm shop,913.83,41,22.29,2025-08-13,913.83
+13/08/2025,Wednesday,Tasting place,"1,375.00",43,31.98,2025-08-13,1375.00
+13/08/2025,Wednesday,Distribution b2b,"1,524.92",12,127.08,2025-08-13,1524.92
+13/08/2025,Wednesday,Activities,0.00,0,0,2025-08-13,0.00
+13/08/2025,Wednesday,Juntos Products,187.27,0,0,2025-08-13,187.27
+13/09/2025,Saturday,Juntos house,"7,188.25",85,84.57,2025-09-13,7188.25
+13/09/2025,Saturday,Juntos boutique,956.00,8,119.5,2025-09-13,956.00
+13/09/2025,Saturday,Picadeli,"2,314.09",100,23.14,2025-09-13,2314.09
+13/09/2025,Saturday,Juntos farm shop,"1,417.85",56,25.32,2025-09-13,1417.85
+13/09/2025,Saturday,Tasting place,"1,841.90",68,27.09,2025-09-13,1841.90
+13/09/2025,Saturday,Distribution b2b,0.00,0,0,2025-09-13,0.00
+13/09/2025,Saturday,Activities,0.00,0,0,2025-09-13,0.00
+13/09/2025,Saturday,Juntos Products,0.00,0,0,2025-09-13,0.00
+13/10/2025,Monday,Juntos house,0.00,0,0,2025-10-13,0.00
+13/10/2025,Monday,Juntos boutique,0.00,0,0,2025-10-13,0.00
+13/10/2025,Monday,Picadeli,"4,563.12",216,21.13,2025-10-13,4563.12
+13/10/2025,Monday,Juntos farm shop,496.00,19,26.11,2025-10-13,496.00
+13/10/2025,Monday,Tasting place,0.00,0,0,2025-10-13,0.00
+13/10/2025,Monday,Distribution b2b,711.65,14,50.83,2025-10-13,711.65
+13/10/2025,Monday,Activities,0.00,0,0,2025-10-13,0.00
+13/10/2025,Monday,Juntos Products,74.00,0,0,2025-10-13,74.00
+13/11/2025,Thursday,Juntos house,"2,756.50",28,98.45,2025-11-13,2756.50
+13/11/2025,Thursday,Juntos boutique,186.00,2,93,2025-11-13,186.00
+13/11/2025,Thursday,Picadeli,"3,750.36",184,20.38,2025-11-13,3750.36
+13/11/2025,Thursday,Juntos farm shop,538.03,25,21.52,2025-11-13,538.03
+13/11/2025,Thursday,Tasting place,444.28,29,15.32,2025-11-13,444.28
+13/11/2025,Thursday,Distribution b2b,"1,502.93",6,250.49,2025-11-13,1502.93
+13/11/2025,Thursday,Activities,0.00,0,0,2025-11-13,0.00
+13/11/2025,Thursday,Juntos Products,0.00,0,0,2025-11-13,0.00
+13/12/2025,Saturday,Juntos house,0.00,0,0,2025-12-13,0.00
+13/12/2025,Saturday,Juntos boutique,0.00,0,0,2025-12-13,0.00
+13/12/2025,Saturday,Picadeli,0.00,0,0,2025-12-13,0.00
+13/12/2025,Saturday,Juntos farm shop,0.00,0,0,2025-12-13,0.00
+13/12/2025,Saturday,Tasting place,0.00,0,0,2025-12-13,0.00
+13/12/2025,Saturday,Distribution b2b,0.00,0,0,2025-12-13,0.00
+13/12/2025,Saturday,Activities,0.00,0,0,2025-12-13,0.00
+13/12/2025,Saturday,Juntos Products,0.00,0,0,2025-12-13,0.00
+14/01/2025,Tuesday,Juntos house,0.00,0,0,2025-01-14,0.00
+14/01/2025,Tuesday,Juntos boutique,0.00,0,0,2025-01-14,0.00
+14/01/2025,Tuesday,Picadeli,"2,812.57",156,18.03,2025-01-14,2812.57
+14/01/2025,Tuesday,Juntos farm shop,236.27,10,23.63,2025-01-14,236.27
+14/01/2025,Tuesday,Tasting place,193.60,15,12.91,2025-01-14,193.60
+14/01/2025,Tuesday,Distribution b2b,493.72,7,70.53,2025-01-14,493.72
+14/01/2025,Tuesday,Activities,0.00,0,0,2025-01-14,0.00
+14/01/2025,Tuesday,Juntos Products,0.00,0,0,2025-01-14,0.00
+14/02/2025,Friday,Juntos house,"7,280.00",102,71.37,2025-02-14,7280.00
+14/02/2025,Friday,Juntos boutique,0.00,0,0,2025-02-14,0.00
+14/02/2025,Friday,Picadeli,"2,921.00",188,15.54,2025-02-14,2921.00
+14/02/2025,Friday,Juntos farm shop,234.23,16,14.64,2025-02-14,234.23
+14/02/2025,Friday,Tasting place,212.60,15,14.17,2025-02-14,212.60
+14/02/2025,Friday,Distribution b2b,619.09,2,309.55,2025-02-14,619.09
+14/02/2025,Friday,Activities,0.00,0,0,2025-02-14,0.00
+14/02/2025,Friday,Juntos Products,21.60,0,0,2025-02-14,21.60
+14/03/2025,Friday,Juntos house,"2,680.00",38,70.53,2025-03-14,2680.00
+14/03/2025,Friday,Juntos boutique,0.00,0,0,2025-03-14,0.00
+14/03/2025,Friday,Picadeli,"2,913.00",151,19.29,2025-03-14,2913.00
+14/03/2025,Friday,Juntos farm shop,446.96,19,23.52,2025-03-14,446.96
+14/03/2025,Friday,Tasting place,357.80,21,17.04,2025-03-14,357.80
+14/03/2025,Friday,Distribution b2b,901.04,8,112.63,2025-03-14,901.04
+14/03/2025,Friday,Activities,0.00,0,0,2025-03-14,0.00
+14/03/2025,Friday,Juntos Products,209.26,0,0,2025-03-14,209.26
+14/04/2025,Monday,Juntos house,480.00,0,0,2025-04-14,480.00
+14/04/2025,Monday,Juntos boutique,0.00,0,0,2025-04-14,0.00
+14/04/2025,Monday,Picadeli,"3,784.00",231,16.38,2025-04-14,3784.00
+14/04/2025,Monday,Juntos farm shop,0.00,0,0,2025-04-14,0.00
+14/04/2025,Monday,Tasting place,0.00,0,0,2025-04-14,0.00
+14/04/2025,Monday,Distribution b2b,460.78,7,65.83,2025-04-14,460.78
+14/04/2025,Monday,Activities,0.00,0,0,2025-04-14,0.00
+14/04/2025,Monday,Juntos Products,0.00,0,0,2025-04-14,0.00
+14/05/2025,Wednesday,Juntos house,"3,408.65",50,68.17,2025-05-14,3408.65
+14/05/2025,Wednesday,Juntos boutique,607.11,9,67.46,2025-05-14,607.11
+14/05/2025,Wednesday,Picadeli,"3,467.67",198,17.51,2025-05-14,3467.67
+14/05/2025,Wednesday,Juntos farm shop,680.76,26,26.18,2025-05-14,680.76
+14/05/2025,Wednesday,Tasting place,909.40,41,22.18,2025-05-14,909.40
+14/05/2025,Wednesday,Distribution b2b,585.76,9,65.08,2025-05-14,585.76
+14/05/2025,Wednesday,Activities,0.00,0,0,2025-05-14,0.00
+14/05/2025,Wednesday,Juntos Products,-112.36,0,0,2025-05-14,-112.36
+14/06/2025,Saturday,Juntos house,"9,330.80",104,89.72,2025-06-14,9330.80
+14/06/2025,Saturday,Juntos boutique,422.50,8,52.81,2025-06-14,422.50
+14/06/2025,Saturday,Picadeli,"2,454.25",113,21.72,2025-06-14,2454.25
+14/06/2025,Saturday,Juntos farm shop,"2,631.88",56,47,2025-06-14,2631.88
+14/06/2025,Saturday,Tasting place,"2,209.40",53,41.69,2025-06-14,2209.40
+14/06/2025,Saturday,Distribution b2b,"1,608.40",8,201.05,2025-06-14,1608.40
+14/06/2025,Saturday,Activities,0.00,0,0,2025-06-14,0.00
+14/06/2025,Saturday,Juntos Products,81.00,0,0,2025-06-14,81.00
+14/07/2025,Monday,Juntos house,"9,747.70",99,98.46,2025-07-14,9747.70
+14/07/2025,Monday,Juntos boutique,"1,155.00",8,144.38,2025-07-14,1155.00
+14/07/2025,Monday,Picadeli,"4,082.35",201,20.31,2025-07-14,4082.35
+14/07/2025,Monday,Juntos farm shop,0.00,0,0,2025-07-14,0.00
+14/07/2025,Monday,Tasting place,0.00,0,0,2025-07-14,0.00
+14/07/2025,Monday,Distribution b2b,"2,429.82",12,202.49,2025-07-14,2429.82
+14/07/2025,Monday,Activities,0.00,0,0,2025-07-14,0.00
+14/07/2025,Monday,Juntos Products,0.00,0,0,2025-07-14,0.00
+14/08/2025,Thursday,Juntos house,"10,447.80",116,90.07,2025-08-14,10447.80
+14/08/2025,Thursday,Juntos boutique,818.40,8,102.3,2025-08-14,818.40
+14/08/2025,Thursday,Picadeli,"2,843.53",138,20.61,2025-08-14,2843.53
+14/08/2025,Thursday,Juntos farm shop,"1,471.89",45,32.71,2025-08-14,1471.89
+14/08/2025,Thursday,Tasting place,"1,596.50",36,44.35,2025-08-14,1596.50
+14/08/2025,Thursday,Distribution b2b,"3,223.47",20,161.17,2025-08-14,3223.47
+14/08/2025,Thursday,Activities,0.00,0,0,2025-08-14,0.00
+14/08/2025,Thursday,Juntos Products,103.50,0,0,2025-08-14,103.50
+14/09/2025,Sunday,Juntos house,"5,204.50",60,86.74,2025-09-14,5204.50
+14/09/2025,Sunday,Juntos boutique,715.00,8,89.38,2025-09-14,715.00
+14/09/2025,Sunday,Picadeli,0.00,0,0,2025-09-14,0.00
+14/09/2025,Sunday,Juntos farm shop,0.00,0,0,2025-09-14,0.00
+14/09/2025,Sunday,Tasting place,0.00,0,0,2025-09-14,0.00
+14/09/2025,Sunday,Distribution b2b,0.00,0,0,2025-09-14,0.00
+14/09/2025,Sunday,Activities,0.00,0,0,2025-09-14,0.00
+14/09/2025,Sunday,Juntos Products,0.00,0,0,2025-09-14,0.00
+14/10/2025,Tuesday,Juntos house,0.00,0,0,2025-10-14,0.00
+14/10/2025,Tuesday,Juntos boutique,0.00,0,0,2025-10-14,0.00
+14/10/2025,Tuesday,Picadeli,"3,188.00",188,16.96,2025-10-14,3188.00
+14/10/2025,Tuesday,Juntos farm shop,729.00,29,25.14,2025-10-14,729.00
+14/10/2025,Tuesday,Tasting place,"1,063.00",43,24.72,2025-10-14,1063.00
+14/10/2025,Tuesday,Distribution b2b,"1,862.00",15,124.13,2025-10-14,1862.00
+14/10/2025,Tuesday,Activities,0.00,0,0,2025-10-14,0.00
+14/10/2025,Tuesday,Juntos Products,0.00,0,0,2025-10-14,0.00
+14/11/2025,Friday,Juntos house,"1,464.70",19,77.09,2025-11-14,1464.70
+14/11/2025,Friday,Juntos boutique,164.00,1,164,2025-11-14,164.00
+14/11/2025,Friday,Picadeli,"2,995.50",175,17.12,2025-11-14,2995.50
+14/11/2025,Friday,Juntos farm shop,443.56,18,24.64,2025-11-14,443.56
+14/11/2025,Friday,Tasting place,542.50,26,20.87,2025-11-14,542.50
+14/11/2025,Friday,Distribution b2b,"1,036.72",11,94.25,2025-11-14,1036.72
+14/11/2025,Friday,Activities,0.00,0,0,2025-11-14,0.00
+14/11/2025,Friday,Juntos Products,0.00,0,0,2025-11-14,0.00
+14/12/2025,Sunday,Juntos house,0.00,0,0,2025-12-14,0.00
+14/12/2025,Sunday,Juntos boutique,0.00,0,0,2025-12-14,0.00
+14/12/2025,Sunday,Picadeli,0.00,0,0,2025-12-14,0.00
+14/12/2025,Sunday,Juntos farm shop,0.00,0,0,2025-12-14,0.00
+14/12/2025,Sunday,Tasting place,0.00,0,0,2025-12-14,0.00
+14/12/2025,Sunday,Distribution b2b,0.00,0,0,2025-12-14,0.00
+14/12/2025,Sunday,Activities,0.00,0,0,2025-12-14,0.00
+14/12/2025,Sunday,Juntos Products,0.00,0,0,2025-12-14,0.00
+15/01/2025,Wednesday,Juntos house,"1,870.00",28,66.79,2025-01-15,1870.00
+15/01/2025,Wednesday,Juntos boutique,292.00,2,146,2025-01-15,292.00
+15/01/2025,Wednesday,Picadeli,"2,565.26",155,16.55,2025-01-15,2565.26
+15/01/2025,Wednesday,Juntos farm shop,207.44,13,15.96,2025-01-15,207.44
+15/01/2025,Wednesday,Tasting place,258.00,18,14.33,2025-01-15,258.00
+15/01/2025,Wednesday,Distribution b2b,635.87,6,105.98,2025-01-15,635.87
+15/01/2025,Wednesday,Activities,0.00,0,0,2025-01-15,0.00
+15/01/2025,Wednesday,Juntos Products,0.00,0,0,2025-01-15,0.00
+15/02/2025,Saturday,Juntos house,"8,113.00",107,75.82,2025-02-15,8113.00
+15/02/2025,Saturday,Juntos boutique,0.00,0,0,2025-02-15,0.00
+15/02/2025,Saturday,Picadeli,"1,704.23",89,19.15,2025-02-15,1704.23
+15/02/2025,Saturday,Juntos farm shop,"1,513.20",70,21.62,2025-02-15,1513.20
+15/02/2025,Saturday,Tasting place,"4,221.35",106,39.82,2025-02-15,4221.35
+15/02/2025,Saturday,Distribution b2b,0.00,0,0,2025-02-15,0.00
+15/02/2025,Saturday,Activities,0.00,0,0,2025-02-15,0.00
+15/02/2025,Saturday,Juntos Products,182.00,0,0,2025-02-15,182.00
+15/03/2025,Saturday,Juntos house,"4,544.00",59,77.02,2025-03-15,4544.00
+15/03/2025,Saturday,Juntos boutique,0.00,0,0,2025-03-15,0.00
+15/03/2025,Saturday,Picadeli,"2,042.00",102,20.02,2025-03-15,2042.00
+15/03/2025,Saturday,Juntos farm shop,769.02,40,19.23,2025-03-15,769.02
+15/03/2025,Saturday,Tasting place,"2,623.20",61,43,2025-03-15,2623.20
+15/03/2025,Saturday,Distribution b2b,0.00,0,0,2025-03-15,0.00
+15/03/2025,Saturday,Activities,0.00,0,0,2025-03-15,0.00
+15/03/2025,Saturday,Juntos Products,133.26,0,0,2025-03-15,133.26
+15/04/2025,Tuesday,Juntos house,0.00,0,0,2025-04-15,0.00
+15/04/2025,Tuesday,Juntos boutique,0.00,0,0,2025-04-15,0.00
+15/04/2025,Tuesday,Picadeli,"3,465.00",161,21.52,2025-04-15,3465.00
+15/04/2025,Tuesday,Juntos farm shop,498.96,39,12.79,2025-04-15,498.96
+15/04/2025,Tuesday,Tasting place,769.00,40,19.23,2025-04-15,769.00
+15/04/2025,Tuesday,Distribution b2b,"1,124.91",11,102.26,2025-04-15,1124.91
+15/04/2025,Tuesday,Activities,0.00,0,0,2025-04-15,0.00
+15/04/2025,Tuesday,Juntos Products,310.27,0,0,2025-04-15,310.27
+15/05/2025,Thursday,Juntos house,"4,302.10",53,81.17,2025-05-15,4302.10
+15/05/2025,Thursday,Juntos boutique,"1,344.85",17,79.11,2025-05-15,1344.85
+15/05/2025,Thursday,Picadeli,"2,929.82",173,16.94,2025-05-15,2929.82
+15/05/2025,Thursday,Juntos farm shop,418.70,21,19.94,2025-05-15,418.70
+15/05/2025,Thursday,Tasting place,310.00,26,11.92,2025-05-15,310.00
+15/05/2025,Thursday,Distribution b2b,881.96,10,88.2,2025-05-15,881.96
+15/05/2025,Thursday,Activities,0.00,0,0,2025-05-15,0.00
+15/05/2025,Thursday,Juntos Products,41.60,0,0,2025-05-15,41.60
+15/06/2025,Sunday,Juntos house,"7,685.20",95,80.9,2025-06-15,7685.20
+15/06/2025,Sunday,Juntos boutique,833.60,12,69.47,2025-06-15,833.60
+15/06/2025,Sunday,Picadeli,0.00,0,0,2025-06-15,0.00
+15/06/2025,Sunday,Juntos farm shop,0.00,0,0,2025-06-15,0.00
+15/06/2025,Sunday,Tasting place,0.00,0,0,2025-06-15,0.00
+15/06/2025,Sunday,Distribution b2b,0.00,0,0,2025-06-15,0.00
+15/06/2025,Sunday,Activities,0.00,0,0,2025-06-15,0.00
+15/06/2025,Sunday,Juntos Products,0.00,0,0,2025-06-15,0.00
+15/07/2025,Tuesday,Juntos house,"8,812.20",115,76.63,2025-07-15,8812.20
+15/07/2025,Tuesday,Juntos boutique,"1,013.50",11,92.14,2025-07-15,1013.50
+15/07/2025,Tuesday,Picadeli,"3,320.96",166,20.01,2025-07-15,3320.96
+15/07/2025,Tuesday,Juntos farm shop,"1,953.31",68,28.73,2025-07-15,1953.31
+15/07/2025,Tuesday,Tasting place,"1,676.00",81,20.69,2025-07-15,1676.00
+15/07/2025,Tuesday,Distribution b2b,"2,731.34",17,160.67,2025-07-15,2731.34
+15/07/2025,Tuesday,Activities,0.00,0,0,2025-07-15,0.00
+15/07/2025,Tuesday,Juntos Products,233.84,0,0,2025-07-15,233.84
+15/08/2025,Friday,Juntos house,"10,075.00",120,83.96,2025-08-15,10075.00
+15/08/2025,Friday,Juntos boutique,"1,317.80",16,82.36,2025-08-15,1317.80
+15/08/2025,Friday,Picadeli,"2,202.85",105,20.98,2025-08-15,2202.85
+15/08/2025,Friday,Juntos farm shop,922.57,35,26.36,2025-08-15,922.57
+15/08/2025,Friday,Tasting place,"2,245.60",92,24.41,2025-08-15,2245.60
+15/08/2025,Friday,Distribution b2b,0.00,0,0,2025-08-15,0.00
+15/08/2025,Friday,Activities,0.00,0,0,2025-08-15,0.00
+15/08/2025,Friday,Juntos Products,0.00,0,0,2025-08-15,0.00
+15/09/2025,Monday,Juntos house,"6,273.05",79,79.41,2025-09-15,6273.05
+15/09/2025,Monday,Juntos boutique,172.00,5,34.4,2025-09-15,172.00
+15/09/2025,Monday,Picadeli,"3,993.38",206,19.39,2025-09-15,3993.38
+15/09/2025,Monday,Juntos farm shop,0.00,0,0,2025-09-15,0.00
+15/09/2025,Monday,Tasting place,0.00,0,0,2025-09-15,0.00
+15/09/2025,Monday,Distribution b2b,"2,345.81",18,130.32,2025-09-15,2345.81
+15/09/2025,Monday,Activities,0.00,0,0,2025-09-15,0.00
+15/09/2025,Monday,Juntos Products,0.00,0,0,2025-09-15,0.00
+15/10/2025,Wednesday,Juntos house,"6,950.30",86,80.82,2025-10-15,6950.30
+15/10/2025,Wednesday,Juntos boutique,159.00,3,53,2025-10-15,159.00
+15/10/2025,Wednesday,Picadeli,"3,927.05",212,18.52,2025-10-15,3927.05
+15/10/2025,Wednesday,Juntos farm shop,681.64,23,29.64,2025-10-15,681.64
+15/10/2025,Wednesday,Tasting place,981.30,41,23.93,2025-10-15,981.30
+15/10/2025,Wednesday,Distribution b2b,504.00,11,45.82,2025-10-15,504.00
+15/10/2025,Wednesday,Activities,0.00,0,0,2025-10-15,0.00
+15/10/2025,Wednesday,Juntos Products,0.00,0,0,2025-10-15,0.00
+15/11/2025,Saturday,Juntos house,"4,793.90",59,81.25,2025-11-15,4793.90
+15/11/2025,Saturday,Juntos boutique,389.00,5,77.8,2025-11-15,389.00
+15/11/2025,Saturday,Picadeli,"2,162.51",97,22.29,2025-11-15,2162.51
+15/11/2025,Saturday,Juntos farm shop,"1,051.67",60,17.53,2025-11-15,1051.67
+15/11/2025,Saturday,Tasting place,"3,893.34",107,36.39,2025-11-15,3893.34
+15/11/2025,Saturday,Distribution b2b,0.00,0,0,2025-11-15,0.00
+15/11/2025,Saturday,Activities,0.00,0,0,2025-11-15,0.00
+15/11/2025,Saturday,Juntos Products,0.00,0,0,2025-11-15,0.00
+15/12/2025,Monday,Juntos house,0.00,0,0,2025-12-15,0.00
+15/12/2025,Monday,Juntos boutique,0.00,0,0,2025-12-15,0.00
+15/12/2025,Monday,Picadeli,0.00,0,0,2025-12-15,0.00
+15/12/2025,Monday,Juntos farm shop,0.00,0,0,2025-12-15,0.00
+15/12/2025,Monday,Tasting place,0.00,0,0,2025-12-15,0.00
+15/12/2025,Monday,Distribution b2b,0.00,0,0,2025-12-15,0.00
+15/12/2025,Monday,Activities,0.00,0,0,2025-12-15,0.00
+15/12/2025,Monday,Juntos Products,0.00,0,0,2025-12-15,0.00
+16/01/2025,Thursday,Juntos house,"1,156.00",18,64.22,2025-01-16,1156.00
+16/01/2025,Thursday,Juntos boutique,55.41,2,27.71,2025-01-16,55.41
+16/01/2025,Thursday,Picadeli,"2,895.37",173,16.74,2025-01-16,2895.37
+16/01/2025,Thursday,Juntos farm shop,351.92,19,18.52,2025-01-16,351.92
+16/01/2025,Thursday,Tasting place,375.80,32,11.74,2025-01-16,375.80
+16/01/2025,Thursday,Distribution b2b,281.42,5,56.28,2025-01-16,281.42
+16/01/2025,Thursday,Activities,0.00,0,0,2025-01-16,0.00
+16/01/2025,Thursday,Juntos Products,0.00,0,0,2025-01-16,0.00
+16/02/2025,Sunday,Juntos house,"5,525.00",74,74.66,2025-02-16,5525.00
+16/02/2025,Sunday,Juntos boutique,0.00,0,0,2025-02-16,0.00
+16/02/2025,Sunday,Picadeli,0.00,0,0,2025-02-16,0.00
+16/02/2025,Sunday,Juntos farm shop,0.00,0,0,2025-02-16,0.00
+16/02/2025,Sunday,Tasting place,0.00,0,0,2025-02-16,0.00
+16/02/2025,Sunday,Distribution b2b,0.00,0,0,2025-02-16,0.00
+16/02/2025,Sunday,Activities,0.00,0,0,2025-02-16,0.00
+16/02/2025,Sunday,Juntos Products,0.00,0,0,2025-02-16,0.00
+16/03/2025,Sunday,Juntos house,"6,035.00",85,71,2025-03-16,6035.00
+16/03/2025,Sunday,Juntos boutique,0.00,0,0,2025-03-16,0.00
+16/03/2025,Sunday,Picadeli,0.00,0,0,2025-03-16,0.00
+16/03/2025,Sunday,Juntos farm shop,0.00,0,0,2025-03-16,0.00
+16/03/2025,Sunday,Tasting place,0.00,0,0,2025-03-16,0.00
+16/03/2025,Sunday,Distribution b2b,0.00,0,0,2025-03-16,0.00
+16/03/2025,Sunday,Activities,0.00,0,0,2025-03-16,0.00
+16/03/2025,Sunday,Juntos Products,0.00,0,0,2025-03-16,0.00
+16/04/2025,Wednesday,Juntos house,"6,549.00",84,77.96,2025-04-16,6549.00
+16/04/2025,Wednesday,Juntos boutique,"1,035.50",15,69.03,2025-04-16,1035.50
+16/04/2025,Wednesday,Picadeli,"3,199.00",182,17.58,2025-04-16,3199.00
+16/04/2025,Wednesday,Juntos farm shop,334.18,15,22.28,2025-04-16,334.18
+16/04/2025,Wednesday,Tasting place,452.20,34,13.3,2025-04-16,452.20
+16/04/2025,Wednesday,Distribution b2b,770.34,10,77.03,2025-04-16,770.34
+16/04/2025,Wednesday,Activities,0.00,0,0,2025-04-16,0.00
+16/04/2025,Wednesday,Juntos Products,92.00,0,0,2025-04-16,92.00
+16/05/2025,Friday,Juntos house,"7,254.20",90,80.6,2025-05-16,7254.20
+16/05/2025,Friday,Juntos boutique,437.60,7,62.51,2025-05-16,437.60
+16/05/2025,Friday,Picadeli,"3,349.71",164,20.43,2025-05-16,3349.71
+16/05/2025,Friday,Juntos farm shop,458.85,29,15.82,2025-05-16,458.85
+16/05/2025,Friday,Tasting place,513.30,31,16.56,2025-05-16,513.30
+16/05/2025,Friday,Distribution b2b,966.09,12,80.51,2025-05-16,966.09
+16/05/2025,Friday,Activities,0.00,0,0,2025-05-16,0.00
+16/05/2025,Friday,Juntos Products,126.30,0,0,2025-05-16,126.30
+16/06/2025,Monday,Juntos house,"5,879.80",72,81.66,2025-06-16,5879.80
+16/06/2025,Monday,Juntos boutique,199.70,6,33.28,2025-06-16,199.70
+16/06/2025,Monday,Picadeli,"3,849.35",211,18.24,2025-06-16,3849.35
+16/06/2025,Monday,Juntos farm shop,0.00,0,0,2025-06-16,0.00
+16/06/2025,Monday,Tasting place,0.00,0,0,2025-06-16,0.00
+16/06/2025,Monday,Distribution b2b,"1,763.38",13,135.64,2025-06-16,1763.38
+16/06/2025,Monday,Activities,0.00,0,0,2025-06-16,0.00
+16/06/2025,Monday,Juntos Products,0.00,0,0,2025-06-16,0.00
+16/07/2025,Wednesday,Juntos house,"10,568.85",112,94.36,2025-07-16,10568.85
+16/07/2025,Wednesday,Juntos boutique,852.50,11,77.5,2025-07-16,852.50
+16/07/2025,Wednesday,Picadeli,"3,668.28",156,23.51,2025-07-16,3668.28
+16/07/2025,Wednesday,Juntos farm shop,"1,750.47",53,33.03,2025-07-16,1750.47
+16/07/2025,Wednesday,Tasting place,"1,388.60",50,27.77,2025-07-16,1388.60
+16/07/2025,Wednesday,Distribution b2b,"1,636.27",11,148.75,2025-07-16,1636.27
+16/07/2025,Wednesday,Activities,0.00,0,0,2025-07-16,0.00
+16/07/2025,Wednesday,Juntos Products,103.80,0,0,2025-07-16,103.80
+16/08/2025,Saturday,Juntos house,"11,310.90",125,90.49,2025-08-16,11310.90
+16/08/2025,Saturday,Juntos boutique,"1,520.00",13,116.92,2025-08-16,1520.00
+16/08/2025,Saturday,Picadeli,"2,070.38",95,21.79,2025-08-16,2070.38
+16/08/2025,Saturday,Juntos farm shop,"1,796.67",62,28.98,2025-08-16,1796.67
+16/08/2025,Saturday,Tasting place,"3,393.00",133,25.51,2025-08-16,3393.00
+16/08/2025,Saturday,Distribution b2b,"1,978.62",11,179.87,2025-08-16,1978.62
+16/08/2025,Saturday,Activities,0.00,0,0,2025-08-16,0.00
+16/08/2025,Saturday,Juntos Products,143.00,0,0,2025-08-16,143.00
+16/09/2025,Tuesday,Juntos house,"6,621.75",81,81.75,2025-09-16,6621.75
+16/09/2025,Tuesday,Juntos boutique,540.50,8,67.56,2025-09-16,540.50
+16/09/2025,Tuesday,Picadeli,"3,719.24",205,18.14,2025-09-16,3719.24
+16/09/2025,Tuesday,Juntos farm shop,966.47,47,20.56,2025-09-16,966.47
+16/09/2025,Tuesday,Tasting place,"2,620.00",46,56.96,2025-09-16,2620.00
+16/09/2025,Tuesday,Distribution b2b,"1,431.79",12,119.32,2025-09-16,1431.79
+16/09/2025,Tuesday,Activities,0.00,0,0,2025-09-16,0.00
+16/09/2025,Tuesday,Juntos Products,15.60,0,0,2025-09-16,15.60
+16/10/2025,Thursday,Juntos house,"6,097.00",73,83.52,2025-10-16,6097.00
+16/10/2025,Thursday,Juntos boutique,511.00,8,63.88,2025-10-16,511.00
+16/10/2025,Thursday,Picadeli,"3,241.16",189,17.15,2025-10-16,3241.16
+16/10/2025,Thursday,Juntos farm shop,653.50,38,17.2,2025-10-16,653.50
+16/10/2025,Thursday,Tasting place,"1,536.00",55,27.93,2025-10-16,1536.00
+16/10/2025,Thursday,Distribution b2b,752.00,10,75.2,2025-10-16,752.00
+16/10/2025,Thursday,Activities,130.09,0,0,2025-10-16,130.09
+16/10/2025,Thursday,Juntos Products,0.00,0,0,2025-10-16,0.00
+16/11/2025,Sunday,Juntos house,"4,022.15",57,70.56,2025-11-16,4022.15
+16/11/2025,Sunday,Juntos boutique,"1,047.00",15,69.8,2025-11-16,1047.00
+16/11/2025,Sunday,Picadeli,0.00,0,0,2025-11-16,0.00
+16/11/2025,Sunday,Juntos farm shop,0.00,0,0,2025-11-16,0.00
+16/11/2025,Sunday,Tasting place,0.00,0,0,2025-11-16,0.00
+16/11/2025,Sunday,Distribution b2b,0.00,0,0,2025-11-16,0.00
+16/11/2025,Sunday,Activities,0.00,0,0,2025-11-16,0.00
+16/11/2025,Sunday,Juntos Products,0.00,0,0,2025-11-16,0.00
+16/12/2025,Tuesday,Juntos house,0.00,0,0,2025-12-16,0.00
+16/12/2025,Tuesday,Juntos boutique,0.00,0,0,2025-12-16,0.00
+16/12/2025,Tuesday,Picadeli,0.00,0,0,2025-12-16,0.00
+16/12/2025,Tuesday,Juntos farm shop,0.00,0,0,2025-12-16,0.00
+16/12/2025,Tuesday,Tasting place,0.00,0,0,2025-12-16,0.00
+16/12/2025,Tuesday,Distribution b2b,0.00,0,0,2025-12-16,0.00
+16/12/2025,Tuesday,Activities,0.00,0,0,2025-12-16,0.00
+16/12/2025,Tuesday,Juntos Products,0.00,0,0,2025-12-16,0.00
+17/01/2025,Friday,Juntos house,"1,821.10",25,72.84,2025-01-17,1821.10
+17/01/2025,Friday,Juntos boutique,57.60,2,28.8,2025-01-17,57.60
+17/01/2025,Friday,Picadeli,"2,598.97",155,16.77,2025-01-17,2598.97
+17/01/2025,Friday,Juntos farm shop,333.19,12,27.77,2025-01-17,333.19
+17/01/2025,Friday,Tasting place,157.00,14,11.21,2025-01-17,157.00
+17/01/2025,Friday,Distribution b2b,549.10,8,68.64,2025-01-17,549.10
+17/01/2025,Friday,Activities,0.00,0,0,2025-01-17,0.00
+17/01/2025,Friday,Juntos Products,0.00,0,0,2025-01-17,0.00
+17/02/2025,Monday,Juntos house,0.00,0,0,2025-02-17,0.00
+17/02/2025,Monday,Juntos boutique,0.00,0,0,2025-02-17,0.00
+17/02/2025,Monday,Picadeli,"3,942.00",228,17.29,2025-02-17,3942.00
+17/02/2025,Monday,Juntos farm shop,0.00,0,0,2025-02-17,0.00
+17/02/2025,Monday,Tasting place,0.00,0,0,2025-02-17,0.00
+17/02/2025,Monday,Distribution b2b,313.00,4,78.25,2025-02-17,313.00
+17/02/2025,Monday,Activities,0.00,0,0,2025-02-17,0.00
+17/02/2025,Monday,Juntos Products,0.00,0,0,2025-02-17,0.00
+17/03/2025,Monday,Juntos house,0.00,0,0,2025-03-17,0.00
+17/03/2025,Monday,Juntos boutique,0.00,0,0,2025-03-17,0.00
+17/03/2025,Monday,Picadeli,"3,694.00",227,16.27,2025-03-17,3694.00
+17/03/2025,Monday,Juntos farm shop,0.00,0,0,2025-03-17,0.00
+17/03/2025,Monday,Tasting place,0.00,0,0,2025-03-17,0.00
+17/03/2025,Monday,Distribution b2b,529.44,7,75.63,2025-03-17,529.44
+17/03/2025,Monday,Activities,0.00,0,0,2025-03-17,0.00
+17/03/2025,Monday,Juntos Products,49.40,0,0,2025-03-17,49.40
+17/04/2025,Thursday,Juntos house,"6,765.00",90,75.17,2025-04-17,6765.00
+17/04/2025,Thursday,Juntos boutique,520.50,5,104.1,2025-04-17,520.50
+17/04/2025,Thursday,Picadeli,"3,820.00",157,24.33,2025-04-17,3820.00
+17/04/2025,Thursday,Juntos farm shop,954.53,32,29.83,2025-04-17,954.53
+17/04/2025,Thursday,Tasting place,"2,257.00",61,37,2025-04-17,2257.00
+17/04/2025,Thursday,Distribution b2b,"1,609.97",8,201.25,2025-04-17,1609.97
+17/04/2025,Thursday,Activities,0.00,0,0,2025-04-17,0.00
+17/04/2025,Thursday,Juntos Products,65.00,0,0,2025-04-17,65.00
+17/05/2025,Saturday,Juntos house,"7,414.60",95,78.05,2025-05-17,7414.60
+17/05/2025,Saturday,Juntos boutique,736.22,5,147.24,2025-05-17,736.22
+17/05/2025,Saturday,Picadeli,"2,091.40",79,26.47,2025-05-17,2091.40
+17/05/2025,Saturday,Juntos farm shop,985.01,39,25.26,2025-05-17,985.01
+17/05/2025,Saturday,Tasting place,"2,055.40",67,30.68,2025-05-17,2055.40
+17/05/2025,Saturday,Distribution b2b,0.00,0,0,2025-05-17,0.00
+17/05/2025,Saturday,Activities,0.00,0,0,2025-05-17,0.00
+17/05/2025,Saturday,Juntos Products,31.00,0,0,2025-05-17,31.00
+17/06/2025,Tuesday,Juntos house,"4,769.70",61,78.19,2025-06-17,4769.70
+17/06/2025,Tuesday,Juntos boutique,718.00,9,79.78,2025-06-17,718.00
+17/06/2025,Tuesday,Picadeli,"3,646.33",197,18.51,2025-06-17,3646.33
+17/06/2025,Tuesday,Juntos farm shop,"1,163.83",54,21.55,2025-06-17,1163.83
+17/06/2025,Tuesday,Tasting place,582.10,40,14.55,2025-06-17,582.10
+17/06/2025,Tuesday,Distribution b2b,"1,515.63",13,116.59,2025-06-17,1515.63
+17/06/2025,Tuesday,Activities,0.00,0,0,2025-06-17,0.00
+17/06/2025,Tuesday,Juntos Products,140.90,0,0,2025-06-17,140.90
+17/07/2025,Thursday,Juntos house,"9,050.70",111,81.54,2025-07-17,9050.70
+17/07/2025,Thursday,Juntos boutique,"1,473.00",16,92.06,2025-07-17,1473.00
+17/07/2025,Thursday,Picadeli,"3,619.78",159,22.77,2025-07-17,3619.78
+17/07/2025,Thursday,Juntos farm shop,"1,251.23",58,21.57,2025-07-17,1251.23
+17/07/2025,Thursday,Tasting place,"1,695.00",57,29.74,2025-07-17,1695.00
+17/07/2025,Thursday,Distribution b2b,"2,094.02",16,130.88,2025-07-17,2094.02
+17/07/2025,Thursday,Activities,0.00,0,0,2025-07-17,0.00
+17/07/2025,Thursday,Juntos Products,54.00,0,0,2025-07-17,54.00
+17/08/2025,Sunday,Juntos house,"10,921.35",121,90.26,2025-08-17,10921.35
+17/08/2025,Sunday,Juntos boutique,"1,035.50",16,64.72,2025-08-17,1035.50
+17/08/2025,Sunday,Picadeli,0.00,0,0,2025-08-17,0.00
+17/08/2025,Sunday,Juntos farm shop,0.00,0,0,2025-08-17,0.00
+17/08/2025,Sunday,Tasting place,0.00,0,0,2025-08-17,0.00
+17/08/2025,Sunday,Distribution b2b,0.00,0,0,2025-08-17,0.00
+17/08/2025,Sunday,Activities,0.00,0,0,2025-08-17,0.00
+17/08/2025,Sunday,Juntos Products,0.00,0,0,2025-08-17,0.00
+17/09/2025,Wednesday,Juntos house,"5,677.60",88,64.52,2025-09-17,5677.60
+17/09/2025,Wednesday,Juntos boutique,"1,029.50",14,73.54,2025-09-17,1029.50
+17/09/2025,Wednesday,Picadeli,"3,478.90",195,17.84,2025-09-17,3478.90
+17/09/2025,Wednesday,Juntos farm shop,985.26,46,21.42,2025-09-17,985.26
+17/09/2025,Wednesday,Tasting place,"1,756.00",34,51.65,2025-09-17,1756.00
+17/09/2025,Wednesday,Distribution b2b,"1,761.49",12,146.79,2025-09-17,1761.49
+17/09/2025,Wednesday,Activities,0.00,0,0,2025-09-17,0.00
+17/09/2025,Wednesday,Juntos Products,19.70,0,0,2025-09-17,19.70
+17/10/2025,Friday,Juntos house,"6,165.50",72,85.63,2025-10-17,6165.50
+17/10/2025,Friday,Juntos boutique,177.00,2,88.5,2025-10-17,177.00
+17/10/2025,Friday,Picadeli,"3,667.00",196,18.71,2025-10-17,3667.00
+17/10/2025,Friday,Juntos farm shop,850.58,36,23.63,2025-10-17,850.58
+17/10/2025,Friday,Tasting place,"1,268.00",40,31.7,2025-10-17,1268.00
+17/10/2025,Friday,Distribution b2b,"1,769.91",13,136.15,2025-10-17,1769.91
+17/10/2025,Friday,Activities,0.00,0,0,2025-10-17,0.00
+17/10/2025,Friday,Juntos Products,0.00,0,0,2025-10-17,0.00
+17/11/2025,Monday,Juntos house,0.00,0,0,2025-11-17,0.00
+17/11/2025,Monday,Juntos boutique,0.00,0,0,2025-11-17,0.00
+17/11/2025,Monday,Picadeli,"3,509.98",208,16.87,2025-11-17,3509.98
+17/11/2025,Monday,Juntos farm shop,774.45,26,29.79,2025-11-17,774.45
+17/11/2025,Monday,Tasting place,0.00,0,0,2025-11-17,0.00
+17/11/2025,Monday,Distribution b2b,468.00,6,78,2025-11-17,468.00
+17/11/2025,Monday,Activities,0.00,0,0,2025-11-17,0.00
+17/11/2025,Monday,Juntos Products,91.60,0,0,2025-11-17,91.60
+17/12/2025,Wednesday,Juntos house,0.00,0,0,2025-12-17,0.00
+17/12/2025,Wednesday,Juntos boutique,0.00,0,0,2025-12-17,0.00
+17/12/2025,Wednesday,Picadeli,0.00,0,0,2025-12-17,0.00
+17/12/2025,Wednesday,Juntos farm shop,0.00,0,0,2025-12-17,0.00
+17/12/2025,Wednesday,Tasting place,0.00,0,0,2025-12-17,0.00
+17/12/2025,Wednesday,Distribution b2b,0.00,0,0,2025-12-17,0.00
+17/12/2025,Wednesday,Activities,0.00,0,0,2025-12-17,0.00
+17/12/2025,Wednesday,Juntos Products,0.00,0,0,2025-12-17,0.00
+18/01/2025,Saturday,Juntos house,"3,241.35",48,67.53,2025-01-18,3241.35
+18/01/2025,Saturday,Juntos boutique,156.94,5,31.39,2025-01-18,156.94
+18/01/2025,Saturday,Picadeli,"1,847.93",106,17.43,2025-01-18,1847.93
+18/01/2025,Saturday,Juntos farm shop,"1,207.36",51,23.67,2025-01-18,1207.36
+18/01/2025,Saturday,Tasting place,"3,298.77",74,44.58,2025-01-18,3298.77
+18/01/2025,Saturday,Distribution b2b,0.00,0,0,2025-01-18,0.00
+18/01/2025,Saturday,Activities,22.00,0,0,2025-01-18,22.00
+18/01/2025,Saturday,Juntos Products,24.00,0,0,2025-01-18,24.00
+18/02/2025,Tuesday,Juntos house,0.00,0,0,2025-02-18,0.00
+18/02/2025,Tuesday,Juntos boutique,0.00,0,0,2025-02-18,0.00
+18/02/2025,Tuesday,Picadeli,"3,463.00",200,17.32,2025-02-18,3463.00
+18/02/2025,Tuesday,Juntos farm shop,329.10,17,19.36,2025-02-18,329.10
+18/02/2025,Tuesday,Tasting place,553.20,23,24.05,2025-02-18,553.20
+18/02/2025,Tuesday,Distribution b2b,713.54,7,101.93,2025-02-18,713.54
+18/02/2025,Tuesday,Activities,0.00,0,0,2025-02-18,0.00
+18/02/2025,Tuesday,Juntos Products,0.00,0,0,2025-02-18,0.00
+18/03/2025,Tuesday,Juntos house,0.00,0,0,2025-03-18,0.00
+18/03/2025,Tuesday,Juntos boutique,0.00,0,0,2025-03-18,0.00
+18/03/2025,Tuesday,Picadeli,"2,721.00",190,14.32,2025-03-18,2721.00
+18/03/2025,Tuesday,Juntos farm shop,323.57,17,19.03,2025-03-18,323.57
+18/03/2025,Tuesday,Tasting place,348.60,25,13.94,2025-03-18,348.60
+18/03/2025,Tuesday,Distribution b2b,476.24,8,59.53,2025-03-18,476.24
+18/03/2025,Tuesday,Activities,0.00,0,0,2025-03-18,0.00
+18/03/2025,Tuesday,Juntos Products,200.72,0,0,2025-03-18,200.72
+18/04/2025,Friday,Juntos house,"8,736.00",117,74.67,2025-04-18,8736.00
+18/04/2025,Friday,Juntos boutique,"2,079.50",17,122.32,2025-04-18,2079.50
+18/04/2025,Friday,Picadeli,"2,397.00",133,18.02,2025-04-18,2397.00
+18/04/2025,Friday,Juntos farm shop,677.82,41,16.53,2025-04-18,677.82
+18/04/2025,Friday,Tasting place,"1,719.00",62,27.73,2025-04-18,1719.00
+18/04/2025,Friday,Distribution b2b,610.23,9,67.8,2025-04-18,610.23
+18/04/2025,Friday,Activities,215.00,0,0,2025-04-18,215.00
+18/04/2025,Friday,Juntos Products,130.00,0,0,2025-04-18,130.00
+18/05/2025,Sunday,Juntos house,"6,385.05",92,69.4,2025-05-18,6385.05
+18/05/2025,Sunday,Juntos boutique,"1,811.79",20,90.59,2025-05-18,1811.79
+18/05/2025,Sunday,Picadeli,0.00,0,0,2025-05-18,0.00
+18/05/2025,Sunday,Juntos farm shop,0.00,0,0,2025-05-18,0.00
+18/05/2025,Sunday,Tasting place,0.00,0,0,2025-05-18,0.00
+18/05/2025,Sunday,Distribution b2b,0.00,0,0,2025-05-18,0.00
+18/05/2025,Sunday,Activities,0.00,0,0,2025-05-18,0.00
+18/05/2025,Sunday,Juntos Products,0.00,0,0,2025-05-18,0.00
+18/06/2025,Wednesday,Juntos house,"7,940.80",103,77.1,2025-06-18,7940.80
+18/06/2025,Wednesday,Juntos boutique,"1,779.50",16,111.22,2025-06-18,1779.50
+18/06/2025,Wednesday,Picadeli,"4,040.40",202,20,2025-06-18,4040.40
+18/06/2025,Wednesday,Juntos farm shop,688.16,26,26.47,2025-06-18,688.16
+18/06/2025,Wednesday,Tasting place,333.00,25,13.32,2025-06-18,333.00
+18/06/2025,Wednesday,Distribution b2b,"1,786.03",15,119.07,2025-06-18,1786.03
+18/06/2025,Wednesday,Activities,0.00,0,0,2025-06-18,0.00
+18/06/2025,Wednesday,Juntos Products,0.00,0,0,2025-06-18,0.00
+18/07/2025,Friday,Juntos house,"10,049.10",109,92.19,2025-07-18,10049.10
+18/07/2025,Friday,Juntos boutique,"2,715.40",11,246.85,2025-07-18,2715.40
+18/07/2025,Friday,Picadeli,"3,668.48",168,21.84,2025-07-18,3668.48
+18/07/2025,Friday,Juntos farm shop,889.56,31,28.7,2025-07-18,889.56
+18/07/2025,Friday,Tasting place,"1,175.60",68,17.29,2025-07-18,1175.60
+18/07/2025,Friday,Distribution b2b,"2,336.40",15,155.76,2025-07-18,2336.40
+18/07/2025,Friday,Activities,0.00,0,0,2025-07-18,0.00
+18/07/2025,Friday,Juntos Products,0.00,0,0,2025-07-18,0.00
+18/08/2025,Monday,Juntos house,"8,822.30",105,84.02,2025-08-18,8822.30
+18/08/2025,Monday,Juntos boutique,"1,298.50",13,99.88,2025-08-18,1298.50
+18/08/2025,Monday,Picadeli,"3,145.17",148,21.25,2025-08-18,3145.17
+18/08/2025,Monday,Juntos farm shop,0.00,0,0,2025-08-18,0.00
+18/08/2025,Monday,Tasting place,0.00,0,0,2025-08-18,0.00
+18/08/2025,Monday,Distribution b2b,"1,667.11",12,138.93,2025-08-18,1667.11
+18/08/2025,Monday,Activities,0.00,0,0,2025-08-18,0.00
+18/08/2025,Monday,Juntos Products,0.00,0,0,2025-08-18,0.00
+18/09/2025,Thursday,Juntos house,"8,589.20",97,88.55,2025-09-18,8589.20
+18/09/2025,Thursday,Juntos boutique,703.50,18,39.08,2025-09-18,703.50
+18/09/2025,Thursday,Picadeli,"4,237.06",211,20.08,2025-09-18,4237.06
+18/09/2025,Thursday,Juntos farm shop,920.41,46,20.01,2025-09-18,920.41
+18/09/2025,Thursday,Tasting place,"1,091.00",25,43.64,2025-09-18,1091.00
+18/09/2025,Thursday,Distribution b2b,947.08,12,78.92,2025-09-18,947.08
+18/09/2025,Thursday,Activities,0.00,0,0,2025-09-18,0.00
+18/09/2025,Thursday,Juntos Products,328.21,0,0,2025-09-18,328.21
+18/10/2025,Saturday,Juntos house,"16,764.00",58,289.03,2025-10-18,16764.00
+18/10/2025,Saturday,Juntos boutique,0.00,0,0,2025-10-18,0.00
+18/10/2025,Saturday,Picadeli,"2,164.00",101,21.43,2025-10-18,2164.00
+18/10/2025,Saturday,Juntos farm shop,791.09,37,21.38,2025-10-18,791.09
+18/10/2025,Saturday,Tasting place,"5,744.00",222,25.87,2025-10-18,5744.00
+18/10/2025,Saturday,Distribution b2b,0.00,0,0,2025-10-18,0.00
+18/10/2025,Saturday,Activities,0.00,0,0,2025-10-18,0.00
+18/10/2025,Saturday,Juntos Products,0.00,0,0,2025-10-18,0.00
+18/11/2025,Tuesday,Juntos house,0.00,0,0,2025-11-18,0.00
+18/11/2025,Tuesday,Juntos boutique,0.00,0,0,2025-11-18,0.00
+18/11/2025,Tuesday,Picadeli,"3,601.00",189,19.05,2025-11-18,3601.00
+18/11/2025,Tuesday,Juntos farm shop,315.00,23,13.7,2025-11-18,315.00
+18/11/2025,Tuesday,Tasting place,"1,667.00",27,61.74,2025-11-18,1667.00
+18/11/2025,Tuesday,Distribution b2b,"1,586.00",10,158.6,2025-11-18,1586.00
+18/11/2025,Tuesday,Activities,0.00,0,0,2025-11-18,0.00
+18/11/2025,Tuesday,Juntos Products,146.78,0,0,2025-11-18,146.78
+18/12/2025,Thursday,Juntos house,0.00,0,0,2025-12-18,0.00
+18/12/2025,Thursday,Juntos boutique,0.00,0,0,2025-12-18,0.00
+18/12/2025,Thursday,Picadeli,0.00,0,0,2025-12-18,0.00
+18/12/2025,Thursday,Juntos farm shop,0.00,0,0,2025-12-18,0.00
+18/12/2025,Thursday,Tasting place,0.00,0,0,2025-12-18,0.00
+18/12/2025,Thursday,Distribution b2b,0.00,0,0,2025-12-18,0.00
+18/12/2025,Thursday,Activities,0.00,0,0,2025-12-18,0.00
+18/12/2025,Thursday,Juntos Products,0.00,0,0,2025-12-18,0.00
+19/01/2025,Sunday,Juntos house,"2,541.00",34,74.74,2025-01-19,2541.00
+19/01/2025,Sunday,Juntos boutique,495.29,7,70.76,2025-01-19,495.29
+19/01/2025,Sunday,Picadeli,0.00,0,0,2025-01-19,0.00
+19/01/2025,Sunday,Juntos farm shop,0.00,0,0,2025-01-19,0.00
+19/01/2025,Sunday,Tasting place,0.00,0,0,2025-01-19,0.00
+19/01/2025,Sunday,Distribution b2b,0.00,0,0,2025-01-19,0.00
+19/01/2025,Sunday,Activities,0.00,0,0,2025-01-19,0.00
+19/01/2025,Sunday,Juntos Products,0.00,0,0,2025-01-19,0.00
+19/02/2025,Wednesday,Juntos house,"5,816.00",59,98.58,2025-02-19,5816.00
+19/02/2025,Wednesday,Juntos boutique,65.00,1,65,2025-02-19,65.00
+19/02/2025,Wednesday,Picadeli,"3,279.00",179,18.32,2025-02-19,3279.00
+19/02/2025,Wednesday,Juntos farm shop,205.45,11,18.68,2025-02-19,205.45
+19/02/2025,Wednesday,Tasting place,402.20,26,15.47,2025-02-19,402.20
+19/02/2025,Wednesday,Distribution b2b,738.48,7,105.5,2025-02-19,738.48
+19/02/2025,Wednesday,Activities,0.00,0,0,2025-02-19,0.00
+19/02/2025,Wednesday,Juntos Products,341.40,0,0,2025-02-19,341.40
+19/03/2025,Wednesday,Juntos house,"3,933.00",55,71.51,2025-03-19,3933.00
+19/03/2025,Wednesday,Juntos boutique,99.00,1,99,2025-03-19,99.00
+19/03/2025,Wednesday,Picadeli,"3,760.00",197,19.09,2025-03-19,3760.00
+19/03/2025,Wednesday,Juntos farm shop,370.96,17,21.82,2025-03-19,370.96
+19/03/2025,Wednesday,Tasting place,838.40,19,44.13,2025-03-19,838.40
+19/03/2025,Wednesday,Distribution b2b,655.53,10,65.55,2025-03-19,655.53
+19/03/2025,Wednesday,Activities,0.00,0,0,2025-03-19,0.00
+19/03/2025,Wednesday,Juntos Products,292.32,0,0,2025-03-19,292.32
+19/04/2025,Saturday,Juntos house,"7,996.00",105,76.15,2025-04-19,7996.00
+19/04/2025,Saturday,Juntos boutique,415.00,4,103.75,2025-04-19,415.00
+19/04/2025,Saturday,Picadeli,"2,119.00",108,19.62,2025-04-19,2119.00
+19/04/2025,Saturday,Juntos farm shop,"1,473.54",84,17.54,2025-04-19,1473.54
+19/04/2025,Saturday,Tasting place,"6,316.60",134,47.14,2025-04-19,6316.60
+19/04/2025,Saturday,Distribution b2b,0.00,0,0,2025-04-19,0.00
+19/04/2025,Saturday,Activities,0.00,0,0,2025-04-19,0.00
+19/04/2025,Saturday,Juntos Products,205.00,0,0,2025-04-19,205.00
+19/05/2025,Monday,Juntos house,"2,882.20",41,70.3,2025-05-19,2882.20
+19/05/2025,Monday,Juntos boutique,209.50,3,69.83,2025-05-19,209.50
+19/05/2025,Monday,Picadeli,"3,639.97",216,16.85,2025-05-19,3639.97
+19/05/2025,Monday,Juntos farm shop,0.00,0,0,2025-05-19,0.00
+19/05/2025,Monday,Tasting place,0.00,0,0,2025-05-19,0.00
+19/05/2025,Monday,Distribution b2b,"1,303.46",11,118.5,2025-05-19,1303.46
+19/05/2025,Monday,Activities,0.00,0,0,2025-05-19,0.00
+19/05/2025,Monday,Juntos Products,0.00,0,0,2025-05-19,0.00
+19/06/2025,Thursday,Juntos house,"7,028.40",83,84.68,2025-06-19,7028.40
+19/06/2025,Thursday,Juntos boutique,"1,418.50",12,118.21,2025-06-19,1418.50
+19/06/2025,Thursday,Picadeli,"4,036.88",185,21.82,2025-06-19,4036.88
+19/06/2025,Thursday,Juntos farm shop,818.05,35,23.37,2025-06-19,818.05
+19/06/2025,Thursday,Tasting place,397.60,41,9.7,2025-06-19,397.60
+19/06/2025,Thursday,Distribution b2b,"2,377.36",17,139.84,2025-06-19,2377.36
+19/06/2025,Thursday,Activities,0.00,0,0,2025-06-19,0.00
+19/06/2025,Thursday,Juntos Products,171.25,0,0,2025-06-19,171.25
+19/07/2025,Saturday,Juntos house,"9,886.50",112,88.27,2025-07-19,9886.50
+19/07/2025,Saturday,Juntos boutique,768.00,9,85.33,2025-07-19,768.00
+19/07/2025,Saturday,Picadeli,"2,420.35",111,21.8,2025-07-19,2420.35
+19/07/2025,Saturday,Juntos farm shop,"1,680.14",53,31.7,2025-07-19,1680.14
+19/07/2025,Saturday,Tasting place,"2,201.00",118,18.65,2025-07-19,2201.00
+19/07/2025,Saturday,Distribution b2b,"2,097.30",7,299.61,2025-07-19,2097.30
+19/07/2025,Saturday,Activities,0.00,0,0,2025-07-19,0.00
+19/07/2025,Saturday,Juntos Products,0.00,0,0,2025-07-19,0.00
+19/08/2025,Tuesday,Juntos house,"10,238.80",114,89.81,2025-08-19,10238.80
+19/08/2025,Tuesday,Juntos boutique,"1,145.40",8,143.18,2025-08-19,1145.40
+19/08/2025,Tuesday,Picadeli,"3,146.58",155,20.3,2025-08-19,3146.58
+19/08/2025,Tuesday,Juntos farm shop,"1,774.60",72,24.65,2025-08-19,1774.60
+19/08/2025,Tuesday,Tasting place,"3,748.00",152,24.66,2025-08-19,3748.00
+19/08/2025,Tuesday,Distribution b2b,"2,014.60",15,134.31,2025-08-19,2014.60
+19/08/2025,Tuesday,Activities,0.00,0,0,2025-08-19,0.00
+19/08/2025,Tuesday,Juntos Products,349.08,0,0,2025-08-19,349.08
+19/09/2025,Friday,Juntos house,"7,848.00",84,93.43,2025-09-19,7848.00
+19/09/2025,Friday,Juntos boutique,355.90,6,59.32,2025-09-19,355.90
+19/09/2025,Friday,Picadeli,"4,217.19",205,20.57,2025-09-19,4217.19
+19/09/2025,Friday,Juntos farm shop,"1,295.93",50,25.92,2025-09-19,1295.93
+19/09/2025,Friday,Tasting place,"2,340.00",52,45,2025-09-19,2340.00
+19/09/2025,Friday,Distribution b2b,"3,188.00",15,212.53,2025-09-19,3188.00
+19/09/2025,Friday,Activities,0.00,0,0,2025-09-19,0.00
+19/09/2025,Friday,Juntos Products,0.00,0,0,2025-09-19,0.00
+19/10/2025,Sunday,Juntos house,"8,783.00",120,73.19,2025-10-19,8783.00
+19/10/2025,Sunday,Juntos boutique,593.50,12,49.46,2025-10-19,593.50
+19/10/2025,Sunday,Picadeli,0.00,0,0,2025-10-19,0.00
+19/10/2025,Sunday,Juntos farm shop,0.00,0,0,2025-10-19,0.00
+19/10/2025,Sunday,Tasting place,0.00,0,0,2025-10-19,0.00
+19/10/2025,Sunday,Distribution b2b,0.00,0,0,2025-10-19,0.00
+19/10/2025,Sunday,Activities,0.00,0,0,2025-10-19,0.00
+19/10/2025,Sunday,Juntos Products,0.00,0,0,2025-10-19,0.00
+19/11/2025,Wednesday,Juntos house,870.00,19,45.79,2025-11-19,870.00
+19/11/2025,Wednesday,Juntos boutique,510.00,4,127.5,2025-11-19,510.00
+19/11/2025,Wednesday,Picadeli,"3,211.54",178,18.04,2025-11-19,3211.54
+19/11/2025,Wednesday,Juntos farm shop,650.00,32,20.31,2025-11-19,650.00
+19/11/2025,Wednesday,Tasting place,432.00,19,22.74,2025-11-19,432.00
+19/11/2025,Wednesday,Distribution b2b,"6,819.50",12,568.29,2025-11-19,6819.50
+19/11/2025,Wednesday,Activities,0.00,0,0,2025-11-19,0.00
+19/11/2025,Wednesday,Juntos Products,"1,084.00",0,0,2025-11-19,1084.00
+19/12/2025,Friday,Juntos house,0.00,0,0,2025-12-19,0.00
+19/12/2025,Friday,Juntos boutique,0.00,0,0,2025-12-19,0.00
+19/12/2025,Friday,Picadeli,0.00,0,0,2025-12-19,0.00
+19/12/2025,Friday,Juntos farm shop,0.00,0,0,2025-12-19,0.00
+19/12/2025,Friday,Tasting place,0.00,0,0,2025-12-19,0.00
+19/12/2025,Friday,Distribution b2b,0.00,0,0,2025-12-19,0.00
+19/12/2025,Friday,Activities,0.00,0,0,2025-12-19,0.00
+19/12/2025,Friday,Juntos Products,0.00,0,0,2025-12-19,0.00
+20/01/2025,Monday,Juntos house,0.00,0,0,2025-01-20,0.00
+20/01/2025,Monday,Juntos boutique,0.00,0,0,2025-01-20,0.00
+20/01/2025,Monday,Picadeli,"4,164.28",174,23.93,2025-01-20,4164.28
+20/01/2025,Monday,Juntos farm shop,0.00,0,0,2025-01-20,0.00
+20/01/2025,Monday,Tasting place,0.00,0,0,2025-01-20,0.00
+20/01/2025,Monday,Distribution b2b,579.95,6,96.66,2025-01-20,579.95
+20/01/2025,Monday,Activities,0.00,0,0,2025-01-20,0.00
+20/01/2025,Monday,Juntos Products,138.00,0,0,2025-01-20,138.00
+20/02/2025,Thursday,Juntos house,"1,325.00",20,66.25,2025-02-20,1325.00
+20/02/2025,Thursday,Juntos boutique,0.00,0,0,2025-02-20,0.00
+20/02/2025,Thursday,Picadeli,"3,441.00",195,17.65,2025-02-20,3441.00
+20/02/2025,Thursday,Juntos farm shop,441.84,30,14.73,2025-02-20,441.84
+20/02/2025,Thursday,Tasting place,467.00,31,15.06,2025-02-20,467.00
+20/02/2025,Thursday,Distribution b2b,"1,398.33",8,174.79,2025-02-20,1398.33
+20/02/2025,Thursday,Activities,0.00,0,0,2025-02-20,0.00
+20/02/2025,Thursday,Juntos Products,41.86,0,0,2025-02-20,41.86
+20/03/2025,Thursday,Juntos house,"1,596.00",26,61.38,2025-03-20,1596.00
+20/03/2025,Thursday,Juntos boutique,0.00,0,0,2025-03-20,0.00
+20/03/2025,Thursday,Picadeli,"3,204.00",190,16.86,2025-03-20,3204.00
+20/03/2025,Thursday,Juntos farm shop,254.57,20,12.73,2025-03-20,254.57
+20/03/2025,Thursday,Tasting place,659.20,21,31.39,2025-03-20,659.20
+20/03/2025,Thursday,Distribution b2b,571.85,8,71.48,2025-03-20,571.85
+20/03/2025,Thursday,Activities,0.00,0,0,2025-03-20,0.00
+20/03/2025,Thursday,Juntos Products,252.45,0,0,2025-03-20,252.45
+20/04/2025,Sunday,Juntos house,"8,259.00",94,87.86,2025-04-20,8259.00
+20/04/2025,Sunday,Juntos boutique,"1,774.50",25,70.98,2025-04-20,1774.50
+20/04/2025,Sunday,Picadeli,0.00,0,0,2025-04-20,0.00
+20/04/2025,Sunday,Juntos farm shop,689.78,37,18.64,2025-04-20,689.78
+20/04/2025,Sunday,Tasting place,"6,717.37",0,0,2025-04-20,6717.37
+20/04/2025,Sunday,Distribution b2b,0.00,0,0,2025-04-20,0.00
+20/04/2025,Sunday,Activities,0.00,0,0,2025-04-20,0.00
+20/04/2025,Sunday,Juntos Products,123.00,0,0,2025-04-20,123.00
+20/05/2025,Tuesday,Juntos house,"3,621.90",46,78.74,2025-05-20,3621.90
+20/05/2025,Tuesday,Juntos boutique,194.99,5,39,2025-05-20,194.99
+20/05/2025,Tuesday,Picadeli,"2,744.76",165,16.63,2025-05-20,2744.76
+20/05/2025,Tuesday,Juntos farm shop,831.23,29,28.66,2025-05-20,831.23
+20/05/2025,Tuesday,Tasting place,809.30,32,25.29,2025-05-20,809.30
+20/05/2025,Tuesday,Distribution b2b,"1,626.18",9,180.69,2025-05-20,1626.18
+20/05/2025,Tuesday,Activities,0.00,0,0,2025-05-20,0.00
+20/05/2025,Tuesday,Juntos Products,351.82,0,0,2025-05-20,351.82
+20/06/2025,Friday,Juntos house,"9,443.60",103,91.69,2025-06-20,9443.60
+20/06/2025,Friday,Juntos boutique,600.20,6,100.03,2025-06-20,600.20
+20/06/2025,Friday,Picadeli,"3,872.37",197,19.66,2025-06-20,3872.37
+20/06/2025,Friday,Juntos farm shop,"1,141.07",28,40.75,2025-06-20,1141.07
+20/06/2025,Friday,Tasting place,326.10,24,13.59,2025-06-20,326.10
+20/06/2025,Friday,Distribution b2b,"1,313.20",11,119.38,2025-06-20,1313.20
+20/06/2025,Friday,Activities,0.00,0,0,2025-06-20,0.00
+20/06/2025,Friday,Juntos Products,54.00,0,0,2025-06-20,54.00
+20/07/2025,Sunday,Juntos house,"9,560.40",97,98.56,2025-07-20,9560.40
+20/07/2025,Sunday,Juntos boutique,"1,042.00",13,80.15,2025-07-20,1042.00
+20/07/2025,Sunday,Picadeli,0.00,0,0,2025-07-20,0.00
+20/07/2025,Sunday,Juntos farm shop,0.00,0,0,2025-07-20,0.00
+20/07/2025,Sunday,Tasting place,0.00,0,0,2025-07-20,0.00
+20/07/2025,Sunday,Distribution b2b,0.00,0,0,2025-07-20,0.00
+20/07/2025,Sunday,Activities,0.00,0,0,2025-07-20,0.00
+20/07/2025,Sunday,Juntos Products,0.00,0,0,2025-07-20,0.00
+20/08/2025,Wednesday,Juntos house,"9,013.00",91,99.04,2025-08-20,9013.00
+20/08/2025,Wednesday,Juntos boutique,"1,293.00",9,143.67,2025-08-20,1293.00
+20/08/2025,Wednesday,Picadeli,"2,541.00",147,17.29,2025-08-20,2541.00
+20/08/2025,Wednesday,Juntos farm shop,"1,126.80",51,22.09,2025-08-20,1126.80
+20/08/2025,Wednesday,Tasting place,"2,445.70",131,18.67,2025-08-20,2445.70
+20/08/2025,Wednesday,Distribution b2b,"1,921.14",13,147.78,2025-08-20,1921.14
+20/08/2025,Wednesday,Activities,0.00,0,0,2025-08-20,0.00
+20/08/2025,Wednesday,Juntos Products,0.00,0,0,2025-08-20,0.00
+20/09/2025,Saturday,Juntos house,"9,163.00",118,77.65,2025-09-20,9163.00
+20/09/2025,Saturday,Juntos boutique,576.00,13,44.31,2025-09-20,576.00
+20/09/2025,Saturday,Picadeli,"1,714.00",105,16.32,2025-09-20,1714.00
+20/09/2025,Saturday,Juntos farm shop,"1,399.00",76,18.41,2025-09-20,1399.00
+20/09/2025,Saturday,Tasting place,"4,543.60",239,19.01,2025-09-20,4543.60
+20/09/2025,Saturday,Distribution b2b,0.00,0,0,2025-09-20,0.00
+20/09/2025,Saturday,Activities,0.00,0,0,2025-09-20,0.00
+20/09/2025,Saturday,Juntos Products,0.00,0,0,2025-09-20,0.00
+20/10/2025,Monday,Juntos house,0.00,0,0,2025-10-20,0.00
+20/10/2025,Monday,Juntos boutique,0.00,0,0,2025-10-20,0.00
+20/10/2025,Monday,Picadeli,"4,009.75",219,18.31,2025-10-20,4009.75
+20/10/2025,Monday,Juntos farm shop,507.70,18,28.21,2025-10-20,507.70
+20/10/2025,Monday,Tasting place,0.00,0,0,2025-10-20,0.00
+20/10/2025,Monday,Distribution b2b,641.00,8,80.13,2025-10-20,641.00
+20/10/2025,Monday,Activities,0.00,0,0,2025-10-20,0.00
+20/10/2025,Monday,Juntos Products,0.00,0,0,2025-10-20,0.00
+20/11/2025,Thursday,Juntos house,"1,625.50",21,77.4,2025-11-20,1625.50
+20/11/2025,Thursday,Juntos boutique,434.00,8,54.25,2025-11-20,434.00
+20/11/2025,Thursday,Picadeli,"2,998.00",177,16.94,2025-11-20,2998.00
+20/11/2025,Thursday,Juntos farm shop,814.00,30,27.13,2025-11-20,814.00
+20/11/2025,Thursday,Tasting place,624.70,34,18.37,2025-11-20,624.70
+20/11/2025,Thursday,Distribution b2b,922.45,8,115.31,2025-11-20,922.45
+20/11/2025,Thursday,Activities,0.00,0,0,2025-11-20,0.00
+20/11/2025,Thursday,Juntos Products,228.00,0,0,2025-11-20,228.00
+20/12/2025,Saturday,Juntos house,0.00,0,0,2025-12-20,0.00
+20/12/2025,Saturday,Juntos boutique,0.00,0,0,2025-12-20,0.00
+20/12/2025,Saturday,Picadeli,0.00,0,0,2025-12-20,0.00
+20/12/2025,Saturday,Juntos farm shop,0.00,0,0,2025-12-20,0.00
+20/12/2025,Saturday,Tasting place,0.00,0,0,2025-12-20,0.00
+20/12/2025,Saturday,Distribution b2b,0.00,0,0,2025-12-20,0.00
+20/12/2025,Saturday,Activities,0.00,0,0,2025-12-20,0.00
+20/12/2025,Saturday,Juntos Products,0.00,0,0,2025-12-20,0.00
+21/01/2025,Tuesday,Juntos house,0.00,0,0,2025-01-21,0.00
+21/01/2025,Tuesday,Juntos boutique,0.00,0,0,2025-01-21,0.00
+21/01/2025,Tuesday,Picadeli,"2,393.41",159,15.05,2025-01-21,2393.41
+21/01/2025,Tuesday,Juntos farm shop,238.81,12,19.9,2025-01-21,238.81
+21/01/2025,Tuesday,Tasting place,202.00,16,12.63,2025-01-21,202.00
+21/01/2025,Tuesday,Distribution b2b,482.35,6,80.39,2025-01-21,482.35
+21/01/2025,Tuesday,Activities,0.00,0,0,2025-01-21,0.00
+21/01/2025,Tuesday,Juntos Products,0.00,0,0,2025-01-21,0.00
+21/02/2025,Friday,Juntos house,"3,225.00",45,71.67,2025-02-21,3225.00
+21/02/2025,Friday,Juntos boutique,0.00,0,0,2025-02-21,0.00
+21/02/2025,Friday,Picadeli,"3,290.00",195,16.87,2025-02-21,3290.00
+21/02/2025,Friday,Juntos farm shop,353.89,12,29.49,2025-02-21,353.89
+21/02/2025,Friday,Tasting place,125.60,9,13.96,2025-02-21,125.60
+21/02/2025,Friday,Distribution b2b,604.52,5,120.9,2025-02-21,604.52
+21/02/2025,Friday,Activities,154.00,0,0,2025-02-21,154.00
+21/02/2025,Friday,Juntos Products,179.60,0,0,2025-02-21,179.60
+21/03/2025,Friday,Juntos house,"3,190.00",49,65.1,2025-03-21,3190.00
+21/03/2025,Friday,Juntos boutique,0.00,0,0,2025-03-21,0.00
+21/03/2025,Friday,Picadeli,"2,614.00",172,15.2,2025-03-21,2614.00
+21/03/2025,Friday,Juntos farm shop,478.19,16,29.89,2025-03-21,478.19
+21/03/2025,Friday,Tasting place,740.72,31,23.89,2025-03-21,740.72
+21/03/2025,Friday,Distribution b2b,931.82,7,133.12,2025-03-21,931.82
+21/03/2025,Friday,Activities,0.00,0,0,2025-03-21,0.00
+21/03/2025,Friday,Juntos Products,27.00,0,0,2025-03-21,27.00
+21/04/2025,Monday,Juntos house,"7,630.00",98,77.86,2025-04-21,7630.00
+21/04/2025,Monday,Juntos boutique,"1,896.71",22,86.21,2025-04-21,1896.71
+21/04/2025,Monday,Picadeli,"2,602.00",139,18.72,2025-04-21,2602.00
+21/04/2025,Monday,Juntos farm shop,0.00,0,0,2025-04-21,0.00
+21/04/2025,Monday,Tasting place,0.00,0,0,2025-04-21,0.00
+21/04/2025,Monday,Distribution b2b,"8,564.59",12,713.72,2025-04-21,8564.59
+21/04/2025,Monday,Activities,0.00,0,0,2025-04-21,0.00
+21/04/2025,Monday,Juntos Products,0.00,0,0,2025-04-21,0.00
+21/05/2025,Wednesday,Juntos house,"4,533.60",56,80.96,2025-05-21,4533.60
+21/05/2025,Wednesday,Juntos boutique,160.98,4,40.25,2025-05-21,160.98
+21/05/2025,Wednesday,Picadeli,"3,592.15",206,17.44,2025-05-21,3592.15
+21/05/2025,Wednesday,Juntos farm shop,863.31,39,22.14,2025-05-21,863.31
+21/05/2025,Wednesday,Tasting place,"1,008.95",28,36.03,2025-05-21,1008.95
+21/05/2025,Wednesday,Distribution b2b,994.25,9,110.47,2025-05-21,994.25
+21/05/2025,Wednesday,Activities,0.00,0,0,2025-05-21,0.00
+21/05/2025,Wednesday,Juntos Products,77.00,0,0,2025-05-21,77.00
+21/06/2025,Saturday,Juntos house,"17,343.00",80,216.79,2025-06-21,17343.00
+21/06/2025,Saturday,Juntos boutique,0.00,0,0,2025-06-21,0.00
+21/06/2025,Saturday,Picadeli,"3,045.26",115,26.48,2025-06-21,3045.26
+21/06/2025,Saturday,Juntos farm shop,"2,113.00",98,21.56,2025-06-21,2113.00
+21/06/2025,Saturday,Tasting place,"4,010.80",69,58.13,2025-06-21,4010.80
+21/06/2025,Saturday,Distribution b2b,"1,382.74",12,115.23,2025-06-21,1382.74
+21/06/2025,Saturday,Activities,0.00,0,0,2025-06-21,0.00
+21/06/2025,Saturday,Juntos Products,162.00,0,0,2025-06-21,162.00
+21/07/2025,Monday,Juntos house,"7,415.15",86,86.22,2025-07-21,7415.15
+21/07/2025,Monday,Juntos boutique,"1,259.40",8,157.43,2025-07-21,1259.40
+21/07/2025,Monday,Picadeli,"4,589.24",209,21.96,2025-07-21,4589.24
+21/07/2025,Monday,Juntos farm shop,0.00,0,0,2025-07-21,0.00
+21/07/2025,Monday,Tasting place,0.00,0,0,2025-07-21,0.00
+21/07/2025,Monday,Distribution b2b,"2,856.99",14,204.07,2025-07-21,2856.99
+21/07/2025,Monday,Activities,0.00,0,0,2025-07-21,0.00
+21/07/2025,Monday,Juntos Products,0.00,0,0,2025-07-21,0.00
+21/08/2025,Thursday,Juntos house,"8,240.70",92,89.57,2025-08-21,8240.70
+21/08/2025,Thursday,Juntos boutique,"2,420.00",18,134.44,2025-08-21,2420.00
+21/08/2025,Thursday,Picadeli,"3,306.86",143,23.12,2025-08-21,3306.86
+21/08/2025,Thursday,Juntos farm shop,922.30,53,17.4,2025-08-21,922.30
+21/08/2025,Thursday,Tasting place,"1,489.00",45,33.09,2025-08-21,1489.00
+21/08/2025,Thursday,Distribution b2b,"1,923.12",17,113.12,2025-08-21,1923.12
+21/08/2025,Thursday,Activities,0.00,0,0,2025-08-21,0.00
+21/08/2025,Thursday,Juntos Products,118.46,0,0,2025-08-21,118.46
+21/09/2025,Sunday,Juntos house,"6,164.00",75,82.19,2025-09-21,6164.00
+21/09/2025,Sunday,Juntos boutique,488.50,8,61.06,2025-09-21,488.50
+21/09/2025,Sunday,Picadeli,0.00,0,0,2025-09-21,0.00
+21/09/2025,Sunday,Juntos farm shop,0.00,0,0,2025-09-21,0.00
+21/09/2025,Sunday,Tasting place,0.00,0,0,2025-09-21,0.00
+21/09/2025,Sunday,Distribution b2b,0.00,0,0,2025-09-21,0.00
+21/09/2025,Sunday,Activities,0.00,0,0,2025-09-21,0.00
+21/09/2025,Sunday,Juntos Products,0.00,0,0,2025-09-21,0.00
+21/10/2025,Tuesday,Juntos house,0.00,0,0,2025-10-21,0.00
+21/10/2025,Tuesday,Juntos boutique,0.00,0,0,2025-10-21,0.00
+21/10/2025,Tuesday,Picadeli,"4,061.00",226,17.97,2025-10-21,4061.00
+21/10/2025,Tuesday,Juntos farm shop,491.00,29,16.93,2025-10-21,491.00
+21/10/2025,Tuesday,Tasting place,"1,184.98",77,15.39,2025-10-21,1184.98
+21/10/2025,Tuesday,Distribution b2b,948.67,10,94.87,2025-10-21,948.67
+21/10/2025,Tuesday,Activities,0.00,0,0,2025-10-21,0.00
+21/10/2025,Tuesday,Juntos Products,175.00,0,0,2025-10-21,175.00
+21/11/2025,Friday,Juntos house,"3,394.00",29,117.03,2025-11-21,3394.00
+21/11/2025,Friday,Juntos boutique,0.00,0,0,2025-11-21,0.00
+21/11/2025,Friday,Picadeli,"3,301.00",171,19.3,2025-11-21,3301.00
+21/11/2025,Friday,Juntos farm shop,578.74,28,20.67,2025-11-21,578.74
+21/11/2025,Friday,Tasting place,420.00,25,16.8,2025-11-21,420.00
+21/11/2025,Friday,Distribution b2b,932.00,11,84.73,2025-11-21,932.00
+21/11/2025,Friday,Activities,0.00,0,0,2025-11-21,0.00
+21/11/2025,Friday,Juntos Products,263.00,0,0,2025-11-21,263.00
+21/12/2025,Sunday,Juntos house,0.00,0,0,2025-12-21,0.00
+21/12/2025,Sunday,Juntos boutique,0.00,0,0,2025-12-21,0.00
+21/12/2025,Sunday,Picadeli,0.00,0,0,2025-12-21,0.00
+21/12/2025,Sunday,Juntos farm shop,0.00,0,0,2025-12-21,0.00
+21/12/2025,Sunday,Tasting place,0.00,0,0,2025-12-21,0.00
+21/12/2025,Sunday,Distribution b2b,0.00,0,0,2025-12-21,0.00
+21/12/2025,Sunday,Activities,0.00,0,0,2025-12-21,0.00
+21/12/2025,Sunday,Juntos Products,0.00,0,0,2025-12-21,0.00
+22/01/2025,Wednesday,Juntos house,"2,517.50",30,83.92,2025-01-22,2517.50
+22/01/2025,Wednesday,Juntos boutique,0.00,0,0,2025-01-22,0.00
+22/01/2025,Wednesday,Picadeli,"2,604.56",144,18.09,2025-01-22,2604.56
+22/01/2025,Wednesday,Juntos farm shop,123.26,7,17.61,2025-01-22,123.26
+22/01/2025,Wednesday,Tasting place,137.40,14,9.81,2025-01-22,137.40
+22/01/2025,Wednesday,Distribution b2b,348.49,5,69.7,2025-01-22,348.49
+22/01/2025,Wednesday,Activities,0.00,0,0,2025-01-22,0.00
+22/01/2025,Wednesday,Juntos Products,0.00,0,0,2025-01-22,0.00
+22/02/2025,Saturday,Juntos house,"6,293.00",90,69.92,2025-02-22,6293.00
+22/02/2025,Saturday,Juntos boutique,0.00,0,0,2025-02-22,0.00
+22/02/2025,Saturday,Picadeli,"1,844.00",103,17.9,2025-02-22,1844.00
+22/02/2025,Saturday,Juntos farm shop,"1,373.53",68,20.2,2025-02-22,1373.53
+22/02/2025,Saturday,Tasting place,"3,154.00",110,28.67,2025-02-22,3154.00
+22/02/2025,Saturday,Distribution b2b,0.00,0,0,2025-02-22,0.00
+22/02/2025,Saturday,Activities,0.00,0,0,2025-02-22,0.00
+22/02/2025,Saturday,Juntos Products,179.60,0,0,2025-02-22,179.60
+22/03/2025,Saturday,Juntos house,"3,968.00",67,59.22,2025-03-22,3968.00
+22/03/2025,Saturday,Juntos boutique,0.00,0,0,2025-03-22,0.00
+22/03/2025,Saturday,Picadeli,"3,143.00",95,33.08,2025-03-22,3143.00
+22/03/2025,Saturday,Juntos farm shop,"1,194.42",63,18.96,2025-03-22,1194.42
+22/03/2025,Saturday,Tasting place,"4,152.20",119,34.89,2025-03-22,4152.20
+22/03/2025,Saturday,Distribution b2b,0.00,0,0,2025-03-22,0.00
+22/03/2025,Saturday,Activities,0.00,0,0,2025-03-22,0.00
+22/03/2025,Saturday,Juntos Products,124.20,0,0,2025-03-22,124.20
+22/04/2025,Tuesday,Juntos house,0.00,0,0,2025-04-22,0.00
+22/04/2025,Tuesday,Juntos boutique,0.00,0,0,2025-04-22,0.00
+22/04/2025,Tuesday,Picadeli,"2,783.00",163,17.07,2025-04-22,2783.00
+22/04/2025,Tuesday,Juntos farm shop,751.66,38,19.78,2025-04-22,751.66
+22/04/2025,Tuesday,Tasting place,"1,211.00",59,20.53,2025-04-22,1211.00
+22/04/2025,Tuesday,Distribution b2b,928.16,13,71.4,2025-04-22,928.16
+22/04/2025,Tuesday,Activities,0.00,0,0,2025-04-22,0.00
+22/04/2025,Tuesday,Juntos Products,209.00,0,0,2025-04-22,209.00
+22/05/2025,Thursday,Juntos house,"5,234.00",57,91.82,2025-05-22,5234.00
+22/05/2025,Thursday,Juntos boutique,200.80,4,50.2,2025-05-22,200.80
+22/05/2025,Thursday,Picadeli,"3,417.26",189,18.08,2025-05-22,3417.26
+22/05/2025,Thursday,Juntos farm shop,830.19,42,19.77,2025-05-22,830.19
+22/05/2025,Thursday,Tasting place,"4,829.60",125,38.64,2025-05-22,4829.60
+22/05/2025,Thursday,Distribution b2b,718.72,11,65.34,2025-05-22,718.72
+22/05/2025,Thursday,Activities,0.00,0,0,2025-05-22,0.00
+22/05/2025,Thursday,Juntos Products,267.20,0,0,2025-05-22,267.20
+22/06/2025,Sunday,Juntos house,"7,583.90",106,71.55,2025-06-22,7583.90
+22/06/2025,Sunday,Juntos boutique,914.90,14,65.35,2025-06-22,914.90
+22/06/2025,Sunday,Picadeli,0.00,0,0,2025-06-22,0.00
+22/06/2025,Sunday,Juntos farm shop,0.00,0,0,2025-06-22,0.00
+22/06/2025,Sunday,Tasting place,0.00,0,0,2025-06-22,0.00
+22/06/2025,Sunday,Distribution b2b,0.00,0,0,2025-06-22,0.00
+22/06/2025,Sunday,Activities,0.00,0,0,2025-06-22,0.00
+22/06/2025,Sunday,Juntos Products,0.00,0,0,2025-06-22,0.00
+22/07/2025,Tuesday,Juntos house,"8,146.30",95,85.75,2025-07-22,8146.30
+22/07/2025,Tuesday,Juntos boutique,305.00,7,43.57,2025-07-22,305.00
+22/07/2025,Tuesday,Picadeli,"3,952.20",171,23.11,2025-07-22,3952.20
+22/07/2025,Tuesday,Juntos farm shop,"1,416.47",57,24.85,2025-07-22,1416.47
+22/07/2025,Tuesday,Tasting place,"3,196.22",82,38.98,2025-07-22,3196.22
+22/07/2025,Tuesday,Distribution b2b,"2,451.12",12,204.26,2025-07-22,2451.12
+22/07/2025,Tuesday,Activities,0.00,0,0,2025-07-22,0.00
+22/07/2025,Tuesday,Juntos Products,22.30,0,0,2025-07-22,22.30
+22/08/2025,Friday,Juntos house,"11,974.20",136,88.05,2025-08-22,11974.20
+22/08/2025,Friday,Juntos boutique,"2,282.50",21,108.69,2025-08-22,2282.50
+22/08/2025,Friday,Picadeli,"2,686.49",135,19.9,2025-08-22,2686.49
+22/08/2025,Friday,Juntos farm shop,"1,592.00",48,33.17,2025-08-22,1592.00
+22/08/2025,Friday,Tasting place,"2,019.00",90,22.43,2025-08-22,2019.00
+22/08/2025,Friday,Distribution b2b,"1,275.48",11,115.95,2025-08-22,1275.48
+22/08/2025,Friday,Activities,0.00,0,0,2025-08-22,0.00
+22/08/2025,Friday,Juntos Products,192.39,0,0,2025-08-22,192.39
+22/09/2025,Monday,Juntos house,"10,006.00",82,122.02,2025-09-22,10006.00
+22/09/2025,Monday,Juntos boutique,317.00,7,45.29,2025-09-22,317.00
+22/09/2025,Monday,Picadeli,"3,862.67",218,17.72,2025-09-22,3862.67
+22/09/2025,Monday,Juntos farm shop,0.00,0,0,2025-09-22,0.00
+22/09/2025,Monday,Tasting place,0.00,0,0,2025-09-22,0.00
+22/09/2025,Monday,Distribution b2b,"1,243.16",12,103.6,2025-09-22,1243.16
+22/09/2025,Monday,Activities,0.00,0,0,2025-09-22,0.00
+22/09/2025,Monday,Juntos Products,0.00,0,0,2025-09-22,0.00
+22/10/2025,Wednesday,Juntos house,"7,812.00",91,85.85,2025-10-22,7812.00
+22/10/2025,Wednesday,Juntos boutique,"1,007.00",7,143.86,2025-10-22,1007.00
+22/10/2025,Wednesday,Picadeli,"3,174.00",199,15.95,2025-10-22,3174.00
+22/10/2025,Wednesday,Juntos farm shop,707.00,28,25.25,2025-10-22,707.00
+22/10/2025,Wednesday,Tasting place,"3,330.00",55,60.55,2025-10-22,3330.00
+22/10/2025,Wednesday,Distribution b2b,389.00,5,77.8,2025-10-22,389.00
+22/10/2025,Wednesday,Activities,0.00,0,0,2025-10-22,0.00
+22/10/2025,Wednesday,Juntos Products,0.00,0,0,2025-10-22,0.00
+22/11/2025,Saturday,Juntos house,"2,936.00",40,73.4,2025-11-22,2936.00
+22/11/2025,Saturday,Juntos boutique,333.00,6,55.5,2025-11-22,333.00
+22/11/2025,Saturday,Picadeli,"2,083.71",96,21.71,2025-11-22,2083.71
+22/11/2025,Saturday,Juntos farm shop,866.00,43,20.14,2025-11-22,866.00
+22/11/2025,Saturday,Tasting place,"1,556.74",55,28.3,2025-11-22,1556.74
+22/11/2025,Saturday,Distribution b2b,0.00,0,0,2025-11-22,0.00
+22/11/2025,Saturday,Activities,500.00,0,0,2025-11-22,500.00
+22/11/2025,Saturday,Juntos Products,0.00,0,0,2025-11-22,0.00
+22/12/2025,Monday,Juntos house,0.00,0,0,2025-12-22,0.00
+22/12/2025,Monday,Juntos boutique,0.00,0,0,2025-12-22,0.00
+22/12/2025,Monday,Picadeli,0.00,0,0,2025-12-22,0.00
+22/12/2025,Monday,Juntos farm shop,0.00,0,0,2025-12-22,0.00
+22/12/2025,Monday,Tasting place,0.00,0,0,2025-12-22,0.00
+22/12/2025,Monday,Distribution b2b,0.00,0,0,2025-12-22,0.00
+22/12/2025,Monday,Activities,0.00,0,0,2025-12-22,0.00
+22/12/2025,Monday,Juntos Products,0.00,0,0,2025-12-22,0.00
+23/01/2025,Thursday,Juntos house,"1,173.80",17,69.05,2025-01-23,1173.80
+23/01/2025,Thursday,Juntos boutique,0.00,0,0,2025-01-23,0.00
+23/01/2025,Thursday,Picadeli,"2,010.49",140,14.36,2025-01-23,2010.49
+23/01/2025,Thursday,Juntos farm shop,470.91,25,18.84,2025-01-23,470.91
+23/01/2025,Thursday,Tasting place,262.80,32,8.21,2025-01-23,262.80
+23/01/2025,Thursday,Distribution b2b,413.56,6,68.93,2025-01-23,413.56
+23/01/2025,Thursday,Activities,0.00,0,0,2025-01-23,0.00
+23/01/2025,Thursday,Juntos Products,0.00,0,0,2025-01-23,0.00
+23/02/2025,Sunday,Juntos house,"4,679.00",51,91.75,2025-02-23,4679.00
+23/02/2025,Sunday,Juntos boutique,0.00,0,0,2025-02-23,0.00
+23/02/2025,Sunday,Picadeli,0.00,0,0,2025-02-23,0.00
+23/02/2025,Sunday,Juntos farm shop,0.00,0,0,2025-02-23,0.00
+23/02/2025,Sunday,Tasting place,0.00,0,0,2025-02-23,0.00
+23/02/2025,Sunday,Distribution b2b,0.00,0,0,2025-02-23,0.00
+23/02/2025,Sunday,Activities,0.00,0,0,2025-02-23,0.00
+23/02/2025,Sunday,Juntos Products,0.00,0,0,2025-02-23,0.00
+23/03/2025,Sunday,Juntos house,"6,129.00",92,66.62,2025-03-23,6129.00
+23/03/2025,Sunday,Juntos boutique,0.00,0,0,2025-03-23,0.00
+23/03/2025,Sunday,Picadeli,0.00,0,0,2025-03-23,0.00
+23/03/2025,Sunday,Juntos farm shop,0.00,0,0,2025-03-23,0.00
+23/03/2025,Sunday,Tasting place,0.00,0,0,2025-03-23,0.00
+23/03/2025,Sunday,Distribution b2b,0.00,0,0,2025-03-23,0.00
+23/03/2025,Sunday,Activities,0.00,0,0,2025-03-23,0.00
+23/03/2025,Sunday,Juntos Products,0.00,0,0,2025-03-23,0.00
+23/04/2025,Wednesday,Juntos house,"8,298.00",109,76.13,2025-04-23,8298.00
+23/04/2025,Wednesday,Juntos boutique,"1,365.40",16,85.34,2025-04-23,1365.40
+23/04/2025,Wednesday,Picadeli,"3,683.00",173,21.29,2025-04-23,3683.00
+23/04/2025,Wednesday,Juntos farm shop,461.94,23,20.08,2025-04-23,461.94
+23/04/2025,Wednesday,Tasting place,"1,407.40",43,32.73,2025-04-23,1407.40
+23/04/2025,Wednesday,Distribution b2b,783.88,12,65.32,2025-04-23,783.88
+23/04/2025,Wednesday,Activities,0.00,0,0,2025-04-23,0.00
+23/04/2025,Wednesday,Juntos Products,10.10,0,0,2025-04-23,10.10
+23/05/2025,Friday,Juntos house,"5,577.80",74,75.38,2025-05-23,5577.80
+23/05/2025,Friday,Juntos boutique,"1,153.40",14,82.39,2025-05-23,1153.40
+23/05/2025,Friday,Picadeli,"3,824.98",222,17.23,2025-05-23,3824.98
+23/05/2025,Friday,Juntos farm shop,592.88,23,25.78,2025-05-23,592.88
+23/05/2025,Friday,Tasting place,589.50,30,19.65,2025-05-23,589.50
+23/05/2025,Friday,Distribution b2b,"3,004.88",16,187.81,2025-05-23,3004.88
+23/05/2025,Friday,Activities,0.00,0,0,2025-05-23,0.00
+23/05/2025,Friday,Juntos Products,76.80,0,0,2025-05-23,76.80
+23/06/2025,Monday,Juntos house,"6,818.20",82,83.15,2025-06-23,6818.20
+23/06/2025,Monday,Juntos boutique,488.00,9,54.22,2025-06-23,488.00
+23/06/2025,Monday,Picadeli,"5,072.13",239,21.22,2025-06-23,5072.13
+23/06/2025,Monday,Juntos farm shop,0.00,0,0,2025-06-23,0.00
+23/06/2025,Monday,Tasting place,0.00,0,0,2025-06-23,0.00
+23/06/2025,Monday,Distribution b2b,"1,741.88",13,133.99,2025-06-23,1741.88
+23/06/2025,Monday,Activities,0.00,0,0,2025-06-23,0.00
+23/06/2025,Monday,Juntos Products,16.90,0,0,2025-06-23,16.90
+23/07/2025,Wednesday,Juntos house,"11,743.00",122,96.25,2025-07-23,11743.00
+23/07/2025,Wednesday,Juntos boutique,544.50,6,90.75,2025-07-23,544.50
+23/07/2025,Wednesday,Picadeli,"4,125.20",171,24.12,2025-07-23,4125.20
+23/07/2025,Wednesday,Juntos farm shop,"1,161.84",39,29.79,2025-07-23,1161.84
+23/07/2025,Wednesday,Tasting place,"1,708.00",68,25.12,2025-07-23,1708.00
+23/07/2025,Wednesday,Distribution b2b,"1,875.23",12,156.27,2025-07-23,1875.23
+23/07/2025,Wednesday,Activities,0.00,0,0,2025-07-23,0.00
+23/07/2025,Wednesday,Juntos Products,43.30,0,0,2025-07-23,43.30
+23/08/2025,Saturday,Juntos house,"9,270.00",101,91.78,2025-08-23,9270.00
+23/08/2025,Saturday,Juntos boutique,"3,468.10",17,204.01,2025-08-23,3468.10
+23/08/2025,Saturday,Picadeli,"1,449.74",77,18.83,2025-08-23,1449.74
+23/08/2025,Saturday,Juntos farm shop,998.89,53,18.85,2025-08-23,998.89
+23/08/2025,Saturday,Tasting place,"3,907.70",245,15.95,2025-08-23,3907.70
+23/08/2025,Saturday,Distribution b2b,"1,508.49",10,150.85,2025-08-23,1508.49
+23/08/2025,Saturday,Activities,0.00,0,0,2025-08-23,0.00
+23/08/2025,Saturday,Juntos Products,0.00,0,0,2025-08-23,0.00
+23/09/2025,Tuesday,Juntos house,"5,798.00",78,74.33,2025-09-23,5798.00
+23/09/2025,Tuesday,Juntos boutique,585.00,10,58.5,2025-09-23,585.00
+23/09/2025,Tuesday,Picadeli,"3,993.30",204,19.58,2025-09-23,3993.30
+23/09/2025,Tuesday,Juntos farm shop,912.73,49,18.63,2025-09-23,912.73
+23/09/2025,Tuesday,Tasting place,0.00,0,0,2025-09-23,0.00
+23/09/2025,Tuesday,Distribution b2b,"1,123.75",12,93.65,2025-09-23,1123.75
+23/09/2025,Tuesday,Activities,"1,320.00",0,0,2025-09-23,1320.00
+23/09/2025,Tuesday,Juntos Products,0.00,0,0,2025-09-23,0.00
+23/10/2025,Thursday,Juntos house,"3,943.70",55,71.7,2025-10-23,3943.70
+23/10/2025,Thursday,Juntos boutique,"1,689.00",9,187.67,2025-10-23,1689.00
+23/10/2025,Thursday,Picadeli,"3,326.46",191,17.42,2025-10-23,3326.46
+23/10/2025,Thursday,Juntos farm shop,358.80,13,27.6,2025-10-23,358.80
+23/10/2025,Thursday,Tasting place,979.90,47,20.85,2025-10-23,979.90
+23/10/2025,Thursday,Distribution b2b,700.00,9,77.78,2025-10-23,700.00
+23/10/2025,Thursday,Activities,0.00,0,0,2025-10-23,0.00
+23/10/2025,Thursday,Juntos Products,19.20,0,0,2025-10-23,19.20
+23/11/2025,Sunday,Juntos house,"5,502.00",86,63.98,2025-11-23,5502.00
+23/11/2025,Sunday,Juntos boutique,685.00,0,0,2025-11-23,685.00
+23/11/2025,Sunday,Picadeli,0.00,0,0,2025-11-23,0.00
+23/11/2025,Sunday,Juntos farm shop,0.00,0,0,2025-11-23,0.00
+23/11/2025,Sunday,Tasting place,0.00,0,0,2025-11-23,0.00
+23/11/2025,Sunday,Distribution b2b,0.00,0,0,2025-11-23,0.00
+23/11/2025,Sunday,Activities,0.00,0,0,2025-11-23,0.00
+23/11/2025,Sunday,Juntos Products,0.00,0,0,2025-11-23,0.00
+23/12/2025,Tuesday,Juntos house,0.00,0,0,2025-12-23,0.00
+23/12/2025,Tuesday,Juntos boutique,0.00,0,0,2025-12-23,0.00
+23/12/2025,Tuesday,Picadeli,0.00,0,0,2025-12-23,0.00
+23/12/2025,Tuesday,Juntos farm shop,0.00,0,0,2025-12-23,0.00
+23/12/2025,Tuesday,Tasting place,0.00,0,0,2025-12-23,0.00
+23/12/2025,Tuesday,Distribution b2b,0.00,0,0,2025-12-23,0.00
+23/12/2025,Tuesday,Activities,0.00,0,0,2025-12-23,0.00
+23/12/2025,Tuesday,Juntos Products,0.00,0,0,2025-12-23,0.00
+24/01/2025,Friday,Juntos house,"2,564.57",36,71.24,2025-01-24,2564.57
+24/01/2025,Friday,Juntos boutique,87.94,2,43.97,2025-01-24,87.94
+24/01/2025,Friday,Picadeli,"3,304.05",172,19.21,2025-01-24,3304.05
+24/01/2025,Friday,Juntos farm shop,103.97,8,13,2025-01-24,103.97
+24/01/2025,Friday,Tasting place,230.00,16,14.38,2025-01-24,230.00
+24/01/2025,Friday,Distribution b2b,516.36,9,57.37,2025-01-24,516.36
+24/01/2025,Friday,Activities,0.00,0,0,2025-01-24,0.00
+24/01/2025,Friday,Juntos Products,0.00,0,0,2025-01-24,0.00
+24/02/2025,Monday,Juntos house,0.00,0,0,2025-02-24,0.00
+24/02/2025,Monday,Juntos boutique,0.00,0,0,2025-02-24,0.00
+24/02/2025,Monday,Picadeli,"2,728.00",147,18.56,2025-02-24,2728.00
+24/02/2025,Monday,Juntos farm shop,0.00,0,0,2025-02-24,0.00
+24/02/2025,Monday,Tasting place,0.00,0,0,2025-02-24,0.00
+24/02/2025,Monday,Distribution b2b,232.56,3,77.52,2025-02-24,232.56
+24/02/2025,Monday,Activities,0.00,0,0,2025-02-24,0.00
+24/02/2025,Monday,Juntos Products,0.00,0,0,2025-02-24,0.00
+24/03/2025,Monday,Juntos house,0.00,0,0,2025-03-24,0.00
+24/03/2025,Monday,Juntos boutique,0.00,0,0,2025-03-24,0.00
+24/03/2025,Monday,Picadeli,"3,850.00",213,18.08,2025-03-24,3850.00
+24/03/2025,Monday,Juntos farm shop,0.00,0,0,2025-03-24,0.00
+24/03/2025,Monday,Tasting place,0.00,0,0,2025-03-24,0.00
+24/03/2025,Monday,Distribution b2b,379.66,7,54.24,2025-03-24,379.66
+24/03/2025,Monday,Activities,0.00,0,0,2025-03-24,0.00
+24/03/2025,Monday,Juntos Products,73.00,0,0,2025-03-24,73.00
+24/04/2025,Thursday,Juntos house,"5,687.00",77,73.86,2025-04-24,5687.00
+24/04/2025,Thursday,Juntos boutique,141.80,3,47.27,2025-04-24,141.80
+24/04/2025,Thursday,Picadeli,"2,243.00",133,16.86,2025-04-24,2243.00
+24/04/2025,Thursday,Juntos farm shop,450.13,22,20.46,2025-04-24,450.13
+24/04/2025,Thursday,Tasting place,358.80,31,11.57,2025-04-24,358.80
+24/04/2025,Thursday,Distribution b2b,679.80,10,67.98,2025-04-24,679.80
+24/04/2025,Thursday,Activities,231.00,0,0,2025-04-24,231.00
+24/04/2025,Thursday,Juntos Products,517.91,0,0,2025-04-24,517.91
+24/05/2025,Saturday,Juntos house,"7,443.62",82,90.78,2025-05-24,7443.62
+24/05/2025,Saturday,Juntos boutique,961.00,19,50.58,2025-05-24,961.00
+24/05/2025,Saturday,Picadeli,"2,456.40",108,22.74,2025-05-24,2456.40
+24/05/2025,Saturday,Juntos farm shop,931.68,39,23.89,2025-05-24,931.68
+24/05/2025,Saturday,Tasting place,"1,608.00",80,20.1,2025-05-24,1608.00
+24/05/2025,Saturday,Distribution b2b,0.00,0,0,2025-05-24,0.00
+24/05/2025,Saturday,Activities,0.00,0,0,2025-05-24,0.00
+24/05/2025,Saturday,Juntos Products,243.00,0,0,2025-05-24,243.00
+24/06/2025,Tuesday,Juntos house,"7,979.30",84,94.99,2025-06-24,7979.30
+24/06/2025,Tuesday,Juntos boutique,879.00,6,146.5,2025-06-24,879.00
+24/06/2025,Tuesday,Picadeli,"3,766.45",188,20.03,2025-06-24,3766.45
+24/06/2025,Tuesday,Juntos farm shop,"1,669.35",66,25.29,2025-06-24,1669.35
+24/06/2025,Tuesday,Tasting place,"1,664.80",52,32.02,2025-06-24,1664.80
+24/06/2025,Tuesday,Distribution b2b,"1,787.70",11,162.52,2025-06-24,1787.70
+24/06/2025,Tuesday,Activities,0.00,0,0,2025-06-24,0.00
+24/06/2025,Tuesday,Juntos Products,236.00,0,0,2025-06-24,236.00
+24/07/2025,Thursday,Juntos house,"5,612.00",61,92,2025-07-24,5612.00
+24/07/2025,Thursday,Juntos boutique,342.50,7,48.93,2025-07-24,342.50
+24/07/2025,Thursday,Picadeli,"4,182.60",193,21.67,2025-07-24,4182.60
+24/07/2025,Thursday,Juntos farm shop,"1,607.67",63,25.52,2025-07-24,1607.67
+24/07/2025,Thursday,Tasting place,870.00,12,72.5,2025-07-24,870.00
+24/07/2025,Thursday,Distribution b2b,"2,438.72",18,135.48,2025-07-24,2438.72
+24/07/2025,Thursday,Activities,0.00,0,0,2025-07-24,0.00
+24/07/2025,Thursday,Juntos Products,0.00,0,0,2025-07-24,0.00
+24/08/2025,Sunday,Juntos house,"11,444.50",116,98.66,2025-08-24,11444.50
+24/08/2025,Sunday,Juntos boutique,857.00,11,77.91,2025-08-24,857.00
+24/08/2025,Sunday,Picadeli,0.00,0,0,2025-08-24,0.00
+24/08/2025,Sunday,Juntos farm shop,0.00,0,0,2025-08-24,0.00
+24/08/2025,Sunday,Tasting place,0.00,0,0,2025-08-24,0.00
+24/08/2025,Sunday,Distribution b2b,0.00,0,0,2025-08-24,0.00
+24/08/2025,Sunday,Activities,0.00,0,0,2025-08-24,0.00
+24/08/2025,Sunday,Juntos Products,0.00,0,0,2025-08-24,0.00
+24/09/2025,Wednesday,Juntos house,"4,438.09",61,72.76,2025-09-24,4438.09
+24/09/2025,Wednesday,Juntos boutique,863.50,8,107.94,2025-09-24,863.50
+24/09/2025,Wednesday,Picadeli,"3,734.67",193,19.35,2025-09-24,3734.67
+24/09/2025,Wednesday,Juntos farm shop,929.07,41,22.66,2025-09-24,929.07
+24/09/2025,Wednesday,Tasting place,0.00,0,0,2025-09-24,0.00
+24/09/2025,Wednesday,Distribution b2b,"1,135.00",14,81.07,2025-09-24,1135.00
+24/09/2025,Wednesday,Activities,0.00,0,0,2025-09-24,0.00
+24/09/2025,Wednesday,Juntos Products,115.71,0,0,2025-09-24,115.71
+24/10/2025,Friday,Juntos house,"6,851.10",71,96.49,2025-10-24,6851.10
+24/10/2025,Friday,Juntos boutique,627.00,5,125.4,2025-10-24,627.00
+24/10/2025,Friday,Picadeli,"3,650.70",216,16.9,2025-10-24,3650.70
+24/10/2025,Friday,Juntos farm shop,643.68,28,22.99,2025-10-24,643.68
+24/10/2025,Friday,Tasting place,656.48,34,19.31,2025-10-24,656.48
+24/10/2025,Friday,Distribution b2b,"1,726.00",13,132.77,2025-10-24,1726.00
+24/10/2025,Friday,Activities,0.00,0,0,2025-10-24,0.00
+24/10/2025,Friday,Juntos Products,14.40,0,0,2025-10-24,14.40
+24/11/2025,Monday,Juntos house,0.00,0,0,2025-11-24,0.00
+24/11/2025,Monday,Juntos boutique,0.00,0,0,2025-11-24,0.00
+24/11/2025,Monday,Picadeli,"3,243.27",188,17.25,2025-11-24,3243.27
+24/11/2025,Monday,Juntos farm shop,520.00,22,23.64,2025-11-24,520.00
+24/11/2025,Monday,Tasting place,0.00,0,0,2025-11-24,0.00
+24/11/2025,Monday,Distribution b2b,372.00,5,74.4,2025-11-24,372.00
+24/11/2025,Monday,Activities,0.00,0,0,2025-11-24,0.00
+24/11/2025,Monday,Juntos Products,22.00,0,0,2025-11-24,22.00
+24/12/2025,Wednesday,Juntos house,0.00,0,0,2025-12-24,0.00
+24/12/2025,Wednesday,Juntos boutique,0.00,0,0,2025-12-24,0.00
+24/12/2025,Wednesday,Picadeli,0.00,0,0,2025-12-24,0.00
+24/12/2025,Wednesday,Juntos farm shop,0.00,0,0,2025-12-24,0.00
+24/12/2025,Wednesday,Tasting place,0.00,0,0,2025-12-24,0.00
+24/12/2025,Wednesday,Distribution b2b,0.00,0,0,2025-12-24,0.00
+24/12/2025,Wednesday,Activities,0.00,0,0,2025-12-24,0.00
+24/12/2025,Wednesday,Juntos Products,0.00,0,0,2025-12-24,0.00
+25/01/2025,Saturday,Juntos house,"5,536.11",82,67.51,2025-01-25,5536.11
+25/01/2025,Saturday,Juntos boutique,413.88,4,103.47,2025-01-25,413.88
+25/01/2025,Saturday,Picadeli,"1,704.01",93,18.32,2025-01-25,1704.01
+25/01/2025,Saturday,Juntos farm shop,"1,500.36",75,20,2025-01-25,1500.36
+25/01/2025,Saturday,Tasting place,"5,132.36",123,41.73,2025-01-25,5132.36
+25/01/2025,Saturday,Distribution b2b,0.00,0,0,2025-01-25,0.00
+25/01/2025,Saturday,Activities,225.00,0,0,2025-01-25,225.00
+25/01/2025,Saturday,Juntos Products,0.00,0,0,2025-01-25,0.00
+25/02/2025,Tuesday,Juntos house,0.00,0,0,2025-02-25,0.00
+25/02/2025,Tuesday,Juntos boutique,0.00,0,0,2025-02-25,0.00
+25/02/2025,Tuesday,Picadeli,"2,191.00",148,14.8,2025-02-25,2191.00
+25/02/2025,Tuesday,Juntos farm shop,257.00,20,12.85,2025-02-25,257.00
+25/02/2025,Tuesday,Tasting place,272.60,23,11.85,2025-02-25,272.60
+25/02/2025,Tuesday,Distribution b2b,399.92,7,57.13,2025-02-25,399.92
+25/02/2025,Tuesday,Activities,0.00,0,0,2025-02-25,0.00
+25/02/2025,Tuesday,Juntos Products,449.60,0,0,2025-02-25,449.60
+25/03/2025,Tuesday,Juntos house,0.00,0,0,2025-03-25,0.00
+25/03/2025,Tuesday,Juntos boutique,0.00,0,0,2025-03-25,0.00
+25/03/2025,Tuesday,Picadeli,"2,727.00",164,16.63,2025-03-25,2727.00
+25/03/2025,Tuesday,Juntos farm shop,248.65,18,13.81,2025-03-25,248.65
+25/03/2025,Tuesday,Tasting place,369.80,34,10.88,2025-03-25,369.80
+25/03/2025,Tuesday,Distribution b2b,703.59,7,100.51,2025-03-25,703.59
+25/03/2025,Tuesday,Activities,0.00,0,0,2025-03-25,0.00
+25/03/2025,Tuesday,Juntos Products,48.60,0,0,2025-03-25,48.60
+25/04/2025,Friday,Juntos house,"7,737.00",108,71.64,2025-04-25,7737.00
+25/04/2025,Friday,Juntos boutique,785.10,13,60.39,2025-04-25,785.10
+25/04/2025,Friday,Picadeli,"2,666.00",147,18.14,2025-04-25,2666.00
+25/04/2025,Friday,Juntos farm shop,491.73,27,18.21,2025-04-25,491.73
+25/04/2025,Friday,Tasting place,727.90,31,23.48,2025-04-25,727.90
+25/04/2025,Friday,Distribution b2b,"1,865.12",13,143.47,2025-04-25,1865.12
+25/04/2025,Friday,Activities,0.00,0,0,2025-04-25,0.00
+25/04/2025,Friday,Juntos Products,54.00,0,0,2025-04-25,54.00
+25/05/2025,Sunday,Juntos house,"6,202.12",80,77.53,2025-05-25,6202.12
+25/05/2025,Sunday,Juntos boutique,480.00,12,40,2025-05-25,480.00
+25/05/2025,Sunday,Picadeli,0.00,0,0,2025-05-25,0.00
+25/05/2025,Sunday,Juntos farm shop,0.00,0,0,2025-05-25,0.00
+25/05/2025,Sunday,Tasting place,0.00,0,0,2025-05-25,0.00
+25/05/2025,Sunday,Distribution b2b,0.00,0,0,2025-05-25,0.00
+25/05/2025,Sunday,Activities,0.00,0,0,2025-05-25,0.00
+25/05/2025,Sunday,Juntos Products,0.00,0,0,2025-05-25,0.00
+25/06/2025,Wednesday,Juntos house,"8,414.40",98,85.86,2025-06-25,8414.40
+25/06/2025,Wednesday,Juntos boutique,778.50,15,51.9,2025-06-25,778.50
+25/06/2025,Wednesday,Picadeli,"4,343.61",210,20.68,2025-06-25,4343.61
+25/06/2025,Wednesday,Juntos farm shop,"1,393.65",51,27.33,2025-06-25,1393.65
+25/06/2025,Wednesday,Tasting place,429.50,4,107.38,2025-06-25,429.50
+25/06/2025,Wednesday,Distribution b2b,"2,036.78",15,135.79,2025-06-25,2036.78
+25/06/2025,Wednesday,Activities,"9,425.00",0,0,2025-06-25,9425.00
+25/06/2025,Wednesday,Juntos Products,54.00,0,0,2025-06-25,54.00
+25/07/2025,Friday,Juntos house,"10,164.00",110,92.4,2025-07-25,10164.00
+25/07/2025,Friday,Juntos boutique,"1,887.50",16,117.97,2025-07-25,1887.50
+25/07/2025,Friday,Picadeli,"4,119.85",176,23.41,2025-07-25,4119.85
+25/07/2025,Friday,Juntos farm shop,"1,723.07",61,28.25,2025-07-25,1723.07
+25/07/2025,Friday,Tasting place,"2,606.50",103,25.31,2025-07-25,2606.50
+25/07/2025,Friday,Distribution b2b,"2,311.89",14,165.14,2025-07-25,2311.89
+25/07/2025,Friday,Activities,0.00,0,0,2025-07-25,0.00
+25/07/2025,Friday,Juntos Products,35.00,0,0,2025-07-25,35.00
+25/08/2025,Monday,Juntos house,"8,770.30",98,89.49,2025-08-25,8770.30
+25/08/2025,Monday,Juntos boutique,619.50,7,88.5,2025-08-25,619.50
+25/08/2025,Monday,Picadeli,"2,674.05",142,18.83,2025-08-25,2674.05
+25/08/2025,Monday,Juntos farm shop,0.00,0,0,2025-08-25,0.00
+25/08/2025,Monday,Tasting place,0.00,0,0,2025-08-25,0.00
+25/08/2025,Monday,Distribution b2b,"1,653.95",12,137.83,2025-08-25,1653.95
+25/08/2025,Monday,Activities,0.00,0,0,2025-08-25,0.00
+25/08/2025,Monday,Juntos Products,0.00,0,0,2025-08-25,0.00
+25/09/2025,Thursday,Juntos house,"6,469.00",82,78.89,2025-09-25,6469.00
+25/09/2025,Thursday,Juntos boutique,"1,206.53",14,86.18,2025-09-25,1206.53
+25/09/2025,Thursday,Picadeli,"3,396.00",175,19.41,2025-09-25,3396.00
+25/09/2025,Thursday,Juntos farm shop,697.80,0,0,2025-09-25,697.80
+25/09/2025,Thursday,Tasting place,0.00,0,0,2025-09-25,0.00
+25/09/2025,Thursday,Distribution b2b,682.85,14,48.78,2025-09-25,682.85
+25/09/2025,Thursday,Activities,0.00,0,0,2025-09-25,0.00
+25/09/2025,Thursday,Juntos Products,0.00,0,0,2025-09-25,0.00
+25/10/2025,Saturday,Juntos house,"3,752.00",43,87.26,2025-10-25,3752.00
+25/10/2025,Saturday,Juntos boutique,17.00,1,17,2025-10-25,17.00
+25/10/2025,Saturday,Picadeli,"1,591.00",85,18.72,2025-10-25,1591.00
+25/10/2025,Saturday,Juntos farm shop,928.68,41,22.65,2025-10-25,928.68
+25/10/2025,Saturday,Tasting place,"3,540.00",82,43.17,2025-10-25,3540.00
+25/10/2025,Saturday,Distribution b2b,0.00,0,0,2025-10-25,0.00
+25/10/2025,Saturday,Activities,0.00,0,0,2025-10-25,0.00
+25/10/2025,Saturday,Juntos Products,0.00,0,0,2025-10-25,0.00
+25/11/2025,Tuesday,Juntos house,0.00,0,0,2025-11-25,0.00
+25/11/2025,Tuesday,Juntos boutique,0.00,0,0,2025-11-25,0.00
+25/11/2025,Tuesday,Picadeli,"3,167.00",171,18.52,2025-11-25,3167.00
+25/11/2025,Tuesday,Juntos farm shop,544.00,26,20.92,2025-11-25,544.00
+25/11/2025,Tuesday,Tasting place,"1,712.00",65,26.34,2025-11-25,1712.00
+25/11/2025,Tuesday,Distribution b2b,"1,024.00",10,102.4,2025-11-25,1024.00
+25/11/2025,Tuesday,Activities,509.00,0,0,2025-11-25,509.00
+25/11/2025,Tuesday,Juntos Products,53.00,0,0,2025-11-25,53.00
+25/12/2025,Thursday,Juntos house,0.00,0,0,2025-12-25,0.00
+25/12/2025,Thursday,Juntos boutique,0.00,0,0,2025-12-25,0.00
+25/12/2025,Thursday,Picadeli,0.00,0,0,2025-12-25,0.00
+25/12/2025,Thursday,Juntos farm shop,0.00,0,0,2025-12-25,0.00
+25/12/2025,Thursday,Tasting place,0.00,0,0,2025-12-25,0.00
+25/12/2025,Thursday,Distribution b2b,0.00,0,0,2025-12-25,0.00
+25/12/2025,Thursday,Activities,0.00,0,0,2025-12-25,0.00
+25/12/2025,Thursday,Juntos Products,0.00,0,0,2025-12-25,0.00
+26/01/2025,Sunday,Juntos house,"4,721.37",61,77.4,2025-01-26,4721.37
+26/01/2025,Sunday,Juntos boutique,393.30,8,49.16,2025-01-26,393.30
+26/01/2025,Sunday,Picadeli,0.00,0,0,2025-01-26,0.00
+26/01/2025,Sunday,Juntos farm shop,0.00,0,0,2025-01-26,0.00
+26/01/2025,Sunday,Tasting place,0.00,0,0,2025-01-26,0.00
+26/01/2025,Sunday,Distribution b2b,0.00,0,0,2025-01-26,0.00
+26/01/2025,Sunday,Activities,0.00,0,0,2025-01-26,0.00
+26/01/2025,Sunday,Juntos Products,0.00,0,0,2025-01-26,0.00
+26/02/2025,Wednesday,Juntos house,"3,784.00",53,71.4,2025-02-26,3784.00
+26/02/2025,Wednesday,Juntos boutique,0.00,0,0,2025-02-26,0.00
+26/02/2025,Wednesday,Picadeli,"2,093.00",143,14.64,2025-02-26,2093.00
+26/02/2025,Wednesday,Juntos farm shop,181.53,12,15.13,2025-02-26,181.53
+26/02/2025,Wednesday,Tasting place,363.40,27,13.46,2025-02-26,363.40
+26/02/2025,Wednesday,Distribution b2b,593.64,8,74.21,2025-02-26,593.64
+26/02/2025,Wednesday,Activities,0.00,0,0,2025-02-26,0.00
+26/02/2025,Wednesday,Juntos Products,158.00,0,0,2025-02-26,158.00
+26/03/2025,Wednesday,Juntos house,"3,964.00",55,72.07,2025-03-26,3964.00
+26/03/2025,Wednesday,Juntos boutique,70.00,1,70,2025-03-26,70.00
+26/03/2025,Wednesday,Picadeli,"3,626.00",214,16.94,2025-03-26,3626.00
+26/03/2025,Wednesday,Juntos farm shop,266.33,14,19.02,2025-03-26,266.33
+26/03/2025,Wednesday,Tasting place,611.40,28,21.84,2025-03-26,611.40
+26/03/2025,Wednesday,Distribution b2b,376.62,6,62.77,2025-03-26,376.62
+26/03/2025,Wednesday,Activities,0.00,0,0,2025-03-26,0.00
+26/03/2025,Wednesday,Juntos Products,199.77,0,0,2025-03-26,199.77
+26/04/2025,Saturday,Juntos house,"7,201.00",98,73.48,2025-04-26,7201.00
+26/04/2025,Saturday,Juntos boutique,463.00,8,57.88,2025-04-26,463.00
+26/04/2025,Saturday,Picadeli,"1,868.00",107,17.46,2025-04-26,1868.00
+26/04/2025,Saturday,Juntos farm shop,"1,060.92",58,18.29,2025-04-26,1060.92
+26/04/2025,Saturday,Tasting place,"2,501.37",73,34.27,2025-04-26,2501.37
+26/04/2025,Saturday,Distribution b2b,0.00,0,0,2025-04-26,0.00
+26/04/2025,Saturday,Activities,0.00,0,0,2025-04-26,0.00
+26/04/2025,Saturday,Juntos Products,169.00,0,0,2025-04-26,169.00
+26/05/2025,Monday,Juntos house,"4,399.30",49,89.78,2025-05-26,4399.30
+26/05/2025,Monday,Juntos boutique,283.30,6,47.22,2025-05-26,283.30
+26/05/2025,Monday,Picadeli,"4,041.04",223,18.12,2025-05-26,4041.04
+26/05/2025,Monday,Juntos farm shop,0.00,0,0,2025-05-26,0.00
+26/05/2025,Monday,Tasting place,0.00,0,0,2025-05-26,0.00
+26/05/2025,Monday,Distribution b2b,"2,361.16",13,181.63,2025-05-26,2361.16
+26/05/2025,Monday,Activities,0.00,0,0,2025-05-26,0.00
+26/05/2025,Monday,Juntos Products,0.00,0,0,2025-05-26,0.00
+26/06/2025,Thursday,Juntos house,"8,490.80",96,88.45,2025-06-26,8490.80
+26/06/2025,Thursday,Juntos boutique,"2,110.00",15,140.67,2025-06-26,2110.00
+26/06/2025,Thursday,Picadeli,"3,829.15",178,21.51,2025-06-26,3829.15
+26/06/2025,Thursday,Juntos farm shop,987.25,61,16.18,2025-06-26,987.25
+26/06/2025,Thursday,Tasting place,"1,138.80",65,17.52,2025-06-26,1138.80
+26/06/2025,Thursday,Distribution b2b,"1,912.25",15,127.48,2025-06-26,1912.25
+26/06/2025,Thursday,Activities,"5,437.50",0,0,2025-06-26,5437.50
+26/06/2025,Thursday,Juntos Products,112.20,0,0,2025-06-26,112.20
+26/07/2025,Saturday,Juntos house,"9,051.90",116,78.03,2025-07-26,9051.90
+26/07/2025,Saturday,Juntos boutique,"1,230.15",15,82.01,2025-07-26,1230.15
+26/07/2025,Saturday,Picadeli,"3,017.86",106,28.47,2025-07-26,3017.86
+26/07/2025,Saturday,Juntos farm shop,"1,565.99",51,30.71,2025-07-26,1565.99
+26/07/2025,Saturday,Tasting place,"2,625.00",118,22.25,2025-07-26,2625.00
+26/07/2025,Saturday,Distribution b2b,"2,234.24",13,171.86,2025-07-26,2234.24
+26/07/2025,Saturday,Activities,0.00,0,0,2025-07-26,0.00
+26/07/2025,Saturday,Juntos Products,136.56,0,0,2025-07-26,136.56
+26/08/2025,Tuesday,Juntos house,"8,576.80",101,84.92,2025-08-26,8576.80
+26/08/2025,Tuesday,Juntos boutique,829.00,14,59.21,2025-08-26,829.00
+26/08/2025,Tuesday,Picadeli,"3,217.94",145,22.19,2025-08-26,3217.94
+26/08/2025,Tuesday,Juntos farm shop,"2,591.57",74,35.02,2025-08-26,2591.57
+26/08/2025,Tuesday,Tasting place,"2,098.00",85,24.68,2025-08-26,2098.00
+26/08/2025,Tuesday,Distribution b2b,"1,464.24",14,104.59,2025-08-26,1464.24
+26/08/2025,Tuesday,Activities,0.00,0,0,2025-08-26,0.00
+26/08/2025,Tuesday,Juntos Products,0.00,0,0,2025-08-26,0.00
+26/09/2025,Friday,Juntos house,"22,280.00",100,222.8,2025-09-26,22280.00
+26/09/2025,Friday,Juntos boutique,0.00,0,0,2025-09-26,0.00
+26/09/2025,Friday,Picadeli,"3,543.27",207,17.12,2025-09-26,3543.27
+26/09/2025,Friday,Juntos farm shop,666.37,35,19.04,2025-09-26,666.37
+26/09/2025,Friday,Tasting place,"2,906.36",0,0,2025-09-26,2906.36
+26/09/2025,Friday,Distribution b2b,"1,372.38",16,85.77,2025-09-26,1372.38
+26/09/2025,Friday,Activities,0.00,0,0,2025-09-26,0.00
+26/09/2025,Friday,Juntos Products,47.85,0,0,2025-09-26,47.85
+26/10/2025,Sunday,Juntos house,"5,599.00",64,87.48,2025-10-26,5599.00
+26/10/2025,Sunday,Juntos boutique,339.00,4,84.75,2025-10-26,339.00
+26/10/2025,Sunday,Picadeli,0.00,0,0,2025-10-26,0.00
+26/10/2025,Sunday,Juntos farm shop,0.00,0,0,2025-10-26,0.00
+26/10/2025,Sunday,Tasting place,0.00,0,0,2025-10-26,0.00
+26/10/2025,Sunday,Distribution b2b,0.00,0,0,2025-10-26,0.00
+26/10/2025,Sunday,Activities,0.00,0,0,2025-10-26,0.00
+26/10/2025,Sunday,Juntos Products,0.00,0,0,2025-10-26,0.00
+26/11/2025,Wednesday,Juntos house,0.00,0,0,2025-11-26,0.00
+26/11/2025,Wednesday,Juntos boutique,9.10,1,9.1,2025-11-26,9.10
+26/11/2025,Wednesday,Picadeli,"3,347.85",195,17.17,2025-11-26,3347.85
+26/11/2025,Wednesday,Juntos farm shop,274.36,19,14.44,2025-11-26,274.36
+26/11/2025,Wednesday,Tasting place,596.00,36,16.56,2025-11-26,596.00
+26/11/2025,Wednesday,Distribution b2b,378.60,4,94.65,2025-11-26,378.60
+26/11/2025,Wednesday,Activities,0.00,0,0,2025-11-26,0.00
+26/11/2025,Wednesday,Juntos Products,0.00,0,0,2025-11-26,0.00
+26/12/2025,Friday,Juntos house,0.00,0,0,2025-12-26,0.00
+26/12/2025,Friday,Juntos boutique,0.00,0,0,2025-12-26,0.00
+26/12/2025,Friday,Picadeli,0.00,0,0,2025-12-26,0.00
+26/12/2025,Friday,Juntos farm shop,0.00,0,0,2025-12-26,0.00
+26/12/2025,Friday,Tasting place,0.00,0,0,2025-12-26,0.00
+26/12/2025,Friday,Distribution b2b,0.00,0,0,2025-12-26,0.00
+26/12/2025,Friday,Activities,0.00,0,0,2025-12-26,0.00
+26/12/2025,Friday,Juntos Products,0.00,0,0,2025-12-26,0.00
+27/01/2025,Monday,Juntos house,0.00,0,0,2025-01-27,0.00
+27/01/2025,Monday,Juntos boutique,0.00,0,0,2025-01-27,0.00
+27/01/2025,Monday,Picadeli,"2,520.47",166,15.18,2025-01-27,2520.47
+27/01/2025,Monday,Juntos farm shop,0.00,0,0,2025-01-27,0.00
+27/01/2025,Monday,Tasting place,0.00,0,0,2025-01-27,0.00
+27/01/2025,Monday,Distribution b2b,218.31,4,54.58,2025-01-27,218.31
+27/01/2025,Monday,Activities,0.00,0,0,2025-01-27,0.00
+27/01/2025,Monday,Juntos Products,0.00,0,0,2025-01-27,0.00
+27/02/2025,Thursday,Juntos house,"2,777.00",38,73.08,2025-02-27,2777.00
+27/02/2025,Thursday,Juntos boutique,0.00,0,0,2025-02-27,0.00
+27/02/2025,Thursday,Picadeli,"2,614.00",157,16.65,2025-02-27,2614.00
+27/02/2025,Thursday,Juntos farm shop,480.59,22,21.85,2025-02-27,480.59
+27/02/2025,Thursday,Tasting place,362.20,27,13.41,2025-02-27,362.20
+27/02/2025,Thursday,Distribution b2b,224.30,6,37.38,2025-02-27,224.30
+27/02/2025,Thursday,Activities,213.64,0,0,2025-02-27,213.64
+27/02/2025,Thursday,Juntos Products,41.00,0,0,2025-02-27,41.00
+27/03/2025,Thursday,Juntos house,"2,124.00",34,62.47,2025-03-27,2124.00
+27/03/2025,Thursday,Juntos boutique,94.00,2,47,2025-03-27,94.00
+27/03/2025,Thursday,Picadeli,"3,389.00",193,17.56,2025-03-27,3389.00
+27/03/2025,Thursday,Juntos farm shop,261.41,20,13.07,2025-03-27,261.41
+27/03/2025,Thursday,Tasting place,555.66,38,14.62,2025-03-27,555.66
+27/03/2025,Thursday,Distribution b2b,313.74,9,34.86,2025-03-27,313.74
+27/03/2025,Thursday,Activities,0.00,0,0,2025-03-27,0.00
+27/03/2025,Thursday,Juntos Products,0.00,0,0,2025-03-27,0.00
+27/04/2025,Sunday,Juntos house,"7,550.00",92,82.07,2025-04-27,7550.00
+27/04/2025,Sunday,Juntos boutique,"1,567.10",12,130.59,2025-04-27,1567.10
+27/04/2025,Sunday,Picadeli,0.00,0,0,2025-04-27,0.00
+27/04/2025,Sunday,Juntos farm shop,0.00,0,0,2025-04-27,0.00
+27/04/2025,Sunday,Tasting place,0.00,0,0,2025-04-27,0.00
+27/04/2025,Sunday,Distribution b2b,0.00,0,0,2025-04-27,0.00
+27/04/2025,Sunday,Activities,0.00,0,0,2025-04-27,0.00
+27/04/2025,Sunday,Juntos Products,0.00,0,0,2025-04-27,0.00
+27/05/2025,Tuesday,Juntos house,"5,346.70",58,92.18,2025-05-27,5346.70
+27/05/2025,Tuesday,Juntos boutique,127.00,4,31.75,2025-05-27,127.00
+27/05/2025,Tuesday,Picadeli,"4,114.44",215,19.14,2025-05-27,4114.44
+27/05/2025,Tuesday,Juntos farm shop,957.25,38,25.19,2025-05-27,957.25
+27/05/2025,Tuesday,Tasting place,584.30,44,13.28,2025-05-27,584.30
+27/05/2025,Tuesday,Distribution b2b,999.18,9,111.02,2025-05-27,999.18
+27/05/2025,Tuesday,Activities,0.00,0,0,2025-05-27,0.00
+27/05/2025,Tuesday,Juntos Products,413.14,0,0,2025-05-27,413.14
+27/06/2025,Friday,Juntos house,"19,733.00",72,274.07,2025-06-27,19733.00
+27/06/2025,Friday,Juntos boutique,0.00,0,0,2025-06-27,0.00
+27/06/2025,Friday,Picadeli,"3,511.79",178,19.73,2025-06-27,3511.79
+27/06/2025,Friday,Juntos farm shop,858.06,38,22.58,2025-06-27,858.06
+27/06/2025,Friday,Tasting place,838.60,13,64.51,2025-06-27,838.60
+27/06/2025,Friday,Distribution b2b,"1,711.49",16,106.97,2025-06-27,1711.49
+27/06/2025,Friday,Activities,0.00,0,0,2025-06-27,0.00
+27/06/2025,Friday,Juntos Products,0.00,0,0,2025-06-27,0.00
+27/07/2025,Sunday,Juntos house,"9,122.30",104,87.71,2025-07-27,9122.30
+27/07/2025,Sunday,Juntos boutique,"1,785.41",21,85.02,2025-07-27,1785.41
+27/07/2025,Sunday,Picadeli,0.00,0,0,2025-07-27,0.00
+27/07/2025,Sunday,Juntos farm shop,0.00,0,0,2025-07-27,0.00
+27/07/2025,Sunday,Tasting place,0.00,0,0,2025-07-27,0.00
+27/07/2025,Sunday,Distribution b2b,0.00,0,0,2025-07-27,0.00
+27/07/2025,Sunday,Activities,0.00,0,0,2025-07-27,0.00
+27/07/2025,Sunday,Juntos Products,0.00,0,0,2025-07-27,0.00
+27/08/2025,Wednesday,Juntos house,"9,305.30",112,83.08,2025-08-27,9305.30
+27/08/2025,Wednesday,Juntos boutique,"1,627.00",13,125.15,2025-08-27,1627.00
+27/08/2025,Wednesday,Picadeli,"2,786.63",148,18.83,2025-08-27,2786.63
+27/08/2025,Wednesday,Juntos farm shop,968.01,51,18.98,2025-08-27,968.01
+27/08/2025,Wednesday,Tasting place,"1,961.40",56,35.03,2025-08-27,1961.40
+27/08/2025,Wednesday,Distribution b2b,"1,331.32",9,147.92,2025-08-27,1331.32
+27/08/2025,Wednesday,Activities,0.00,0,0,2025-08-27,0.00
+27/08/2025,Wednesday,Juntos Products,69.87,0,0,2025-08-27,69.87
+27/09/2025,Saturday,Juntos house,"20,500.00",54,379.63,2025-09-27,20500.00
+27/09/2025,Saturday,Juntos boutique,752.00,6,125.33,2025-09-27,752.00
+27/09/2025,Saturday,Picadeli,"2,320.00",110,21.09,2025-09-27,2320.00
+27/09/2025,Saturday,Juntos farm shop,"1,007.99",55,18.33,2025-09-27,1007.99
+27/09/2025,Saturday,Tasting place,"5,354.00",135,39.66,2025-09-27,5354.00
+27/09/2025,Saturday,Distribution b2b,0.00,0,0,2025-09-27,0.00
+27/09/2025,Saturday,Activities,0.00,0,0,2025-09-27,0.00
+27/09/2025,Saturday,Juntos Products,0.00,0,0,2025-09-27,0.00
+27/10/2025,Monday,Juntos house,0.00,0,0,2025-10-27,0.00
+27/10/2025,Monday,Juntos boutique,0.00,0,0,2025-10-27,0.00
+27/10/2025,Monday,Picadeli,"4,322.66",203,21.29,2025-10-27,4322.66
+27/10/2025,Monday,Juntos farm shop,436.00,21,20.76,2025-10-27,436.00
+27/10/2025,Monday,Tasting place,0.00,0,0,2025-10-27,0.00
+27/10/2025,Monday,Distribution b2b,384.00,7,54.86,2025-10-27,384.00
+27/10/2025,Monday,Activities,0.00,0,0,2025-10-27,0.00
+27/10/2025,Monday,Juntos Products,0.00,0,0,2025-10-27,0.00
+27/11/2025,Thursday,Juntos house,"2,092.00",31,67.48,2025-11-27,2092.00
+27/11/2025,Thursday,Juntos boutique,124.80,1,124.8,2025-11-27,124.80
+27/11/2025,Thursday,Picadeli,"2,563.48",160,16.02,2025-11-27,2563.48
+27/11/2025,Thursday,Juntos farm shop,513.00,32,16.03,2025-11-27,513.00
+27/11/2025,Thursday,Tasting place,613.00,37,16.57,2025-11-27,613.00
+27/11/2025,Thursday,Distribution b2b,295.00,6,49.17,2025-11-27,295.00
+27/11/2025,Thursday,Activities,"2,145.00",0,0,2025-11-27,2145.00
+27/11/2025,Thursday,Juntos Products,0.00,0,0,2025-11-27,0.00
+27/12/2025,Saturday,Juntos house,0.00,0,0,2025-12-27,0.00
+27/12/2025,Saturday,Juntos boutique,0.00,0,0,2025-12-27,0.00
+27/12/2025,Saturday,Picadeli,0.00,0,0,2025-12-27,0.00
+27/12/2025,Saturday,Juntos farm shop,0.00,0,0,2025-12-27,0.00
+27/12/2025,Saturday,Tasting place,0.00,0,0,2025-12-27,0.00
+27/12/2025,Saturday,Distribution b2b,0.00,0,0,2025-12-27,0.00
+27/12/2025,Saturday,Activities,0.00,0,0,2025-12-27,0.00
+27/12/2025,Saturday,Juntos Products,0.00,0,0,2025-12-27,0.00
+28/01/2025,Tuesday,Juntos house,0.00,0,0,2025-01-28,0.00
+28/01/2025,Tuesday,Juntos boutique,0.00,0,0,2025-01-28,0.00
+28/01/2025,Tuesday,Picadeli,"3,208.59",166,19.33,2025-01-28,3208.59
+28/01/2025,Tuesday,Juntos farm shop,339.92,14,24.28,2025-01-28,339.92
+28/01/2025,Tuesday,Tasting place,278.60,19,14.66,2025-01-28,278.60
+28/01/2025,Tuesday,Distribution b2b,581.26,6,96.88,2025-01-28,581.26
+28/01/2025,Tuesday,Activities,0.00,0,0,2025-01-28,0.00
+28/01/2025,Tuesday,Juntos Products,0.00,0,0,2025-01-28,0.00
+28/02/2025,Friday,Juntos house,"3,585.00",48,74.69,2025-02-28,3585.00
+28/02/2025,Friday,Juntos boutique,0.00,0,0,2025-02-28,0.00
+28/02/2025,Friday,Picadeli,"2,702.00",139,19.44,2025-02-28,2702.00
+28/02/2025,Friday,Juntos farm shop,477.90,14,34.14,2025-02-28,477.90
+28/02/2025,Friday,Tasting place,727.00,29,25.07,2025-02-28,727.00
+28/02/2025,Friday,Distribution b2b,678.63,7,96.95,2025-02-28,678.63
+28/02/2025,Friday,Activities,0.00,0,0,2025-02-28,0.00
+28/02/2025,Friday,Juntos Products,157.28,0,0,2025-02-28,157.28
+28/03/2025,Friday,Juntos house,"3,410.00",49,69.59,2025-03-28,3410.00
+28/03/2025,Friday,Juntos boutique,456.25,5,91.25,2025-03-28,456.25
+28/03/2025,Friday,Picadeli,"3,839.00",201,19.1,2025-03-28,3839.00
+28/03/2025,Friday,Juntos farm shop,260.18,13,20.01,2025-03-28,260.18
+28/03/2025,Friday,Tasting place,254.80,17,14.99,2025-03-28,254.80
+28/03/2025,Friday,Distribution b2b,702.59,7,100.37,2025-03-28,702.59
+28/03/2025,Friday,Activities,0.00,0,0,2025-03-28,0.00
+28/03/2025,Friday,Juntos Products,115.80,0,0,2025-03-28,115.80
+28/04/2025,Monday,Juntos house,0.00,0,0,2025-04-28,0.00
+28/04/2025,Monday,Juntos boutique,0.00,0,0,2025-04-28,0.00
+28/04/2025,Monday,Picadeli,"3,858.00",227,17,2025-04-28,3858.00
+28/04/2025,Monday,Juntos farm shop,0.00,0,0,2025-04-28,0.00
+28/04/2025,Monday,Tasting place,0.00,0,0,2025-04-28,0.00
+28/04/2025,Monday,Distribution b2b,809.61,11,73.6,2025-04-28,809.61
+28/04/2025,Monday,Activities,0.00,0,0,2025-04-28,0.00
+28/04/2025,Monday,Juntos Products,0.00,0,0,2025-04-28,0.00
+28/05/2025,Wednesday,Juntos house,"5,602.50",74,75.71,2025-05-28,5602.50
+28/05/2025,Wednesday,Juntos boutique,518.40,4,129.6,2025-05-28,518.40
+28/05/2025,Wednesday,Picadeli,"3,911.69",221,17.7,2025-05-28,3911.69
+28/05/2025,Wednesday,Juntos farm shop,727.66,29,25.09,2025-05-28,727.66
+28/05/2025,Wednesday,Tasting place,537.10,34,15.8,2025-05-28,537.10
+28/05/2025,Wednesday,Distribution b2b,"1,141.02",10,114.1,2025-05-28,1141.02
+28/05/2025,Wednesday,Activities,0.00,0,0,2025-05-28,0.00
+28/05/2025,Wednesday,Juntos Products,21.60,0,0,2025-05-28,21.60
+28/06/2025,Saturday,Juntos house,"18,793.00",72,261.01,2025-06-28,18793.00
+28/06/2025,Saturday,Juntos boutique,0.00,0,0,2025-06-28,0.00
+28/06/2025,Saturday,Picadeli,"3,227.39",122,26.45,2025-06-28,3227.39
+28/06/2025,Saturday,Juntos farm shop,"2,009.35",57,35.25,2025-06-28,2009.35
+28/06/2025,Saturday,Tasting place,"3,822.20",107,35.72,2025-06-28,3822.20
+28/06/2025,Saturday,Distribution b2b,"1,019.64",10,101.96,2025-06-28,1019.64
+28/06/2025,Saturday,Activities,0.00,0,0,2025-06-28,0.00
+28/06/2025,Saturday,Juntos Products,0.00,0,0,2025-06-28,0.00
+28/07/2025,Monday,Juntos house,"10,581.90",122,86.74,2025-07-28,10581.90
+28/07/2025,Monday,Juntos boutique,"1,884.50",17,110.85,2025-07-28,1884.50
+28/07/2025,Monday,Picadeli,"3,955.38",167,23.68,2025-07-28,3955.38
+28/07/2025,Monday,Juntos farm shop,0.00,0,0,2025-07-28,0.00
+28/07/2025,Monday,Tasting place,0.00,0,0,2025-07-28,0.00
+28/07/2025,Monday,Distribution b2b,"2,185.87",15,145.72,2025-07-28,2185.87
+28/07/2025,Monday,Activities,0.00,0,0,2025-07-28,0.00
+28/07/2025,Monday,Juntos Products,35.00,0,0,2025-07-28,35.00
+28/08/2025,Thursday,Juntos house,"8,782.70",100,87.83,2025-08-28,8782.70
+28/08/2025,Thursday,Juntos boutique,946.50,14,67.61,2025-08-28,946.50
+28/08/2025,Thursday,Picadeli,"2,805.10",136,20.63,2025-08-28,2805.10
+28/08/2025,Thursday,Juntos farm shop,833.80,56,14.89,2025-08-28,833.80
+28/08/2025,Thursday,Tasting place,"1,142.00",29,39.38,2025-08-28,1142.00
+28/08/2025,Thursday,Distribution b2b,"1,746.97",16,109.19,2025-08-28,1746.97
+28/08/2025,Thursday,Activities,0.00,0,0,2025-08-28,0.00
+28/08/2025,Thursday,Juntos Products,48.18,0,0,2025-08-28,48.18
+28/09/2025,Sunday,Juntos house,"5,908.00",68,86.88,2025-09-28,5908.00
+28/09/2025,Sunday,Juntos boutique,454.40,3,151.47,2025-09-28,454.40
+28/09/2025,Sunday,Picadeli,0.00,0,0,2025-09-28,0.00
+28/09/2025,Sunday,Juntos farm shop,0.00,0,0,2025-09-28,0.00
+28/09/2025,Sunday,Tasting place,0.00,0,0,2025-09-28,0.00
+28/09/2025,Sunday,Distribution b2b,0.00,0,0,2025-09-28,0.00
+28/09/2025,Sunday,Activities,0.00,0,0,2025-09-28,0.00
+28/09/2025,Sunday,Juntos Products,0.00,0,0,2025-09-28,0.00
+28/10/2025,Tuesday,Juntos house,0.00,0,0,2025-10-28,0.00
+28/10/2025,Tuesday,Juntos boutique,0.00,0,0,2025-10-28,0.00
+28/10/2025,Tuesday,Picadeli,"2,929.75",170,17.23,2025-10-28,2929.75
+28/10/2025,Tuesday,Juntos farm shop,347.00,22,15.77,2025-10-28,347.00
+28/10/2025,Tuesday,Tasting place,"1,261.00",40,31.53,2025-10-28,1261.00
+28/10/2025,Tuesday,Distribution b2b,561.00,7,80.14,2025-10-28,561.00
+28/10/2025,Tuesday,Activities,0.00,0,0,2025-10-28,0.00
+28/10/2025,Tuesday,Juntos Products,29.00,0,0,2025-10-28,29.00
+28/11/2025,Friday,Juntos house,"1,583.00",25,63.32,2025-11-28,1583.00
+28/11/2025,Friday,Juntos boutique,187.00,5,37.4,2025-11-28,187.00
+28/11/2025,Friday,Picadeli,"3,011.00",181,16.64,2025-11-28,3011.00
+28/11/2025,Friday,Juntos farm shop,688.00,26,26.46,2025-11-28,688.00
+28/11/2025,Friday,Tasting place,854.00,55,15.53,2025-11-28,854.00
+28/11/2025,Friday,Distribution b2b,585.00,7,83.57,2025-11-28,585.00
+28/11/2025,Friday,Activities,0.00,0,0,2025-11-28,0.00
+28/11/2025,Friday,Juntos Products,96.00,0,0,2025-11-28,96.00
+28/12/2025,Sunday,Juntos house,0.00,0,0,2025-12-28,0.00
+28/12/2025,Sunday,Juntos boutique,0.00,0,0,2025-12-28,0.00
+28/12/2025,Sunday,Picadeli,0.00,0,0,2025-12-28,0.00
+28/12/2025,Sunday,Juntos farm shop,0.00,0,0,2025-12-28,0.00
+28/12/2025,Sunday,Tasting place,0.00,0,0,2025-12-28,0.00
+28/12/2025,Sunday,Distribution b2b,0.00,0,0,2025-12-28,0.00
+28/12/2025,Sunday,Activities,0.00,0,0,2025-12-28,0.00
+28/12/2025,Sunday,Juntos Products,0.00,0,0,2025-12-28,0.00
+29/01/2025,Wednesday,Juntos house,"2,364.80",29,81.54,2025-01-29,2364.80
+29/01/2025,Wednesday,Juntos boutique,83.00,1,83,2025-01-29,83.00
+29/01/2025,Wednesday,Picadeli,"2,737.38",159,17.22,2025-01-29,2737.38
+29/01/2025,Wednesday,Juntos farm shop,329.24,12,27.44,2025-01-29,329.24
+29/01/2025,Wednesday,Tasting place,196.60,20,9.83,2025-01-29,196.60
+29/01/2025,Wednesday,Distribution b2b,363.43,5,72.69,2025-01-29,363.43
+29/01/2025,Wednesday,Activities,0.00,0,0,2025-01-29,0.00
+29/01/2025,Wednesday,Juntos Products,189.38,0,0,2025-01-29,189.38
+29/03/2025,Saturday,Juntos house,"4,044.00",65,62.22,2025-03-29,4044.00
+29/03/2025,Saturday,Juntos boutique,577.00,8,72.13,2025-03-29,577.00
+29/03/2025,Saturday,Picadeli,"1,767.00",94,18.8,2025-03-29,1767.00
+29/03/2025,Saturday,Juntos farm shop,721.38,44,16.4,2025-03-29,721.38
+29/03/2025,Saturday,Tasting place,"3,844.60",96,40.05,2025-03-29,3844.60
+29/03/2025,Saturday,Distribution b2b,0.00,0,0,2025-03-29,0.00
+29/03/2025,Saturday,Activities,0.00,0,0,2025-03-29,0.00
+29/03/2025,Saturday,Juntos Products,150.00,0,0,2025-03-29,150.00
+29/04/2025,Tuesday,Juntos house,0.00,0,0,2025-04-29,0.00
+29/04/2025,Tuesday,Juntos boutique,0.00,0,0,2025-04-29,0.00
+29/04/2025,Tuesday,Picadeli,"3,039.00",178,17.07,2025-04-29,3039.00
+29/04/2025,Tuesday,Juntos farm shop,756.11,40,18.9,2025-04-29,756.11
+29/04/2025,Tuesday,Tasting place,663.80,49,13.55,2025-04-29,663.80
+29/04/2025,Tuesday,Distribution b2b,935.91,11,85.08,2025-04-29,935.91
+29/04/2025,Tuesday,Activities,0.00,0,0,2025-04-29,0.00
+29/04/2025,Tuesday,Juntos Products,110.92,0,0,2025-04-29,110.92
+29/05/2025,Thursday,Juntos house,"6,018.20",69,87.22,2025-05-29,6018.20
+29/05/2025,Thursday,Juntos boutique,727.50,7,103.93,2025-05-29,727.50
+29/05/2025,Thursday,Picadeli,"3,757.71",169,22.23,2025-05-29,3757.71
+29/05/2025,Thursday,Juntos farm shop,"1,443.04",25,57.72,2025-05-29,1443.04
+29/05/2025,Thursday,Tasting place,961.10,47,20.45,2025-05-29,961.10
+29/05/2025,Thursday,Distribution b2b,"1,495.01",12,124.58,2025-05-29,1495.01
+29/05/2025,Thursday,Activities,0.00,0,0,2025-05-29,0.00
+29/05/2025,Thursday,Juntos Products,27.00,0,0,2025-05-29,27.00
+29/06/2025,Sunday,Juntos house,"9,718.10",111,87.55,2025-06-29,9718.10
+29/06/2025,Sunday,Juntos boutique,"1,511.50",17,88.91,2025-06-29,1511.50
+29/06/2025,Sunday,Picadeli,0.00,0,0,2025-06-29,0.00
+29/06/2025,Sunday,Juntos farm shop,0.00,0,0,2025-06-29,0.00
+29/06/2025,Sunday,Tasting place,0.00,0,0,2025-06-29,0.00
+29/06/2025,Sunday,Distribution b2b,0.00,0,0,2025-06-29,0.00
+29/06/2025,Sunday,Activities,0.00,0,0,2025-06-29,0.00
+29/06/2025,Sunday,Juntos Products,0.00,0,0,2025-06-29,0.00
+29/07/2025,Tuesday,Juntos house,"8,399.30",99,84.84,2025-07-29,8399.30
+29/07/2025,Tuesday,Juntos boutique,"3,608.80",16,225.55,2025-07-29,3608.80
+29/07/2025,Tuesday,Picadeli,"3,870.46",179,21.62,2025-07-29,3870.46
+29/07/2025,Tuesday,Juntos farm shop,"1,744.15",81,21.53,2025-07-29,1744.15
+29/07/2025,Tuesday,Tasting place,"2,099.00",101,20.78,2025-07-29,2099.00
+29/07/2025,Tuesday,Distribution b2b,"2,800.05",14,200,2025-07-29,2800.05
+29/07/2025,Tuesday,Activities,0.00,0,0,2025-07-29,0.00
+29/07/2025,Tuesday,Juntos Products,0.00,0,0,2025-07-29,0.00
+29/08/2025,Friday,Juntos house,"8,432.70",104,81.08,2025-08-29,8432.70
+29/08/2025,Friday,Juntos boutique,"1,068.00",15,71.2,2025-08-29,1068.00
+29/08/2025,Friday,Picadeli,"3,048.26",131,23.27,2025-08-29,3048.26
+29/08/2025,Friday,Juntos farm shop,940.05,42,22.38,2025-08-29,940.05
+29/08/2025,Friday,Tasting place,"1,845.00",61,30.25,2025-08-29,1845.00
+29/08/2025,Friday,Distribution b2b,830.78,9,92.31,2025-08-29,830.78
+29/08/2025,Friday,Activities,0.00,0,0,2025-08-29,0.00
+29/08/2025,Friday,Juntos Products,17.55,0,0,2025-08-29,17.55
+29/09/2025,Monday,Juntos house,"4,771.00",64,74.55,2025-09-29,4771.00
+29/09/2025,Monday,Juntos boutique,610.00,7,87.14,2025-09-29,610.00
+29/09/2025,Monday,Picadeli,"4,177.00",236,17.7,2025-09-29,4177.00
+29/09/2025,Monday,Juntos farm shop,303.67,19,15.98,2025-09-29,303.67
+29/09/2025,Monday,Tasting place,0.00,0,0,2025-09-29,0.00
+29/09/2025,Monday,Distribution b2b,"1,259.00",14,89.93,2025-09-29,1259.00
+29/09/2025,Monday,Activities,0.00,0,0,2025-09-29,0.00
+29/09/2025,Monday,Juntos Products,0.00,0,0,2025-09-29,0.00
+29/10/2025,Wednesday,Juntos house,"3,769.00",42,89.74,2025-10-29,3769.00
+29/10/2025,Wednesday,Juntos boutique,98.00,4,24.5,2025-10-29,98.00
+29/10/2025,Wednesday,Picadeli,"3,186.00",184,17.32,2025-10-29,3186.00
+29/10/2025,Wednesday,Juntos farm shop,469.00,25,18.76,2025-10-29,469.00
+29/10/2025,Wednesday,Tasting place,"1,189.00",45,26.42,2025-10-29,1189.00
+29/10/2025,Wednesday,Distribution b2b,654.00,7,93.43,2025-10-29,654.00
+29/10/2025,Wednesday,Activities,0.00,0,0,2025-10-29,0.00
+29/10/2025,Wednesday,Juntos Products,0.00,0,0,2025-10-29,0.00
+29/11/2025,Saturday,Juntos house,"2,534.00",31,81.74,2025-11-29,2534.00
+29/11/2025,Saturday,Juntos boutique,150.00,2,75,2025-11-29,150.00
+29/11/2025,Saturday,Picadeli,"1,589.00",86,18.48,2025-11-29,1589.00
+29/11/2025,Saturday,Juntos farm shop,"2,858.00",44,64.95,2025-11-29,2858.00
+29/11/2025,Saturday,Tasting place,"3,289.00",176,18.69,2025-11-29,3289.00
+29/11/2025,Saturday,Distribution b2b,0.00,0,0,2025-11-29,0.00
+29/11/2025,Saturday,Activities,0.00,0,0,2025-11-29,0.00
+29/11/2025,Saturday,Juntos Products,0.00,0,0,2025-11-29,0.00
+29/12/2025,Monday,Juntos house,0.00,0,0,2025-12-29,0.00
+29/12/2025,Monday,Juntos boutique,0.00,0,0,2025-12-29,0.00
+29/12/2025,Monday,Picadeli,0.00,0,0,2025-12-29,0.00
+29/12/2025,Monday,Juntos farm shop,0.00,0,0,2025-12-29,0.00
+29/12/2025,Monday,Tasting place,0.00,0,0,2025-12-29,0.00
+29/12/2025,Monday,Distribution b2b,0.00,0,0,2025-12-29,0.00
+29/12/2025,Monday,Activities,0.00,0,0,2025-12-29,0.00
+29/12/2025,Monday,Juntos Products,0.00,0,0,2025-12-29,0.00
+30/01/2025,Thursday,Juntos house,"1,429.40",19,75.23,2025-01-30,1429.40
+30/01/2025,Thursday,Juntos boutique,103.00,3,34.33,2025-01-30,103.00
+30/01/2025,Thursday,Picadeli,"2,513.44",162,15.52,2025-01-30,2513.44
+30/01/2025,Thursday,Juntos farm shop,152.53,11,13.87,2025-01-30,152.53
+30/01/2025,Thursday,Tasting place,130.60,12,10.88,2025-01-30,130.60
+30/01/2025,Thursday,Distribution b2b,472.69,9,52.52,2025-01-30,472.69
+30/01/2025,Thursday,Activities,0.00,0,0,2025-01-30,0.00
+30/01/2025,Thursday,Juntos Products,0.00,0,0,2025-01-30,0.00
+30/03/2025,Sunday,Juntos house,"3,699.00",54,68.5,2025-03-30,3699.00
+30/03/2025,Sunday,Juntos boutique,144.00,1,144,2025-03-30,144.00
+30/03/2025,Sunday,Picadeli,0.00,0,0,2025-03-30,0.00
+30/03/2025,Sunday,Juntos farm shop,0.00,0,0,2025-03-30,0.00
+30/03/2025,Sunday,Tasting place,0.00,0,0,2025-03-30,0.00
+30/03/2025,Sunday,Distribution b2b,0.00,0,0,2025-03-30,0.00
+30/03/2025,Sunday,Activities,0.00,0,0,2025-03-30,0.00
+30/03/2025,Sunday,Juntos Products,0.00,0,0,2025-03-30,0.00
+30/04/2025,Wednesday,Juntos house,"5,391.00",86,62.69,2025-04-30,5391.00
+30/04/2025,Wednesday,Juntos boutique,565.50,10,56.55,2025-04-30,565.50
+30/04/2025,Wednesday,Picadeli,"3,711.00",201,18.46,2025-04-30,3711.00
+30/04/2025,Wednesday,Juntos farm shop,663.82,31,21.41,2025-04-30,663.82
+30/04/2025,Wednesday,Tasting place,686.50,34,20.19,2025-04-30,686.50
+30/04/2025,Wednesday,Distribution b2b,"1,105.65",19,58.19,2025-04-30,1105.65
+30/04/2025,Wednesday,Activities,0.00,0,0,2025-04-30,0.00
+30/04/2025,Wednesday,Juntos Products,0.00,0,0,2025-04-30,0.00
+30/05/2025,Friday,Juntos house,"8,497.60",101,84.13,2025-05-30,8497.60
+30/05/2025,Friday,Juntos boutique,"1,287.90",14,91.99,2025-05-30,1287.90
+30/05/2025,Friday,Picadeli,"3,346.61",169,19.8,2025-05-30,3346.61
+30/05/2025,Friday,Juntos farm shop,923.70,34,27.17,2025-05-30,923.70
+30/05/2025,Friday,Tasting place,572.40,41,13.96,2025-05-30,572.40
+30/05/2025,Friday,Distribution b2b,"2,446.38",16,152.9,2025-05-30,2446.38
+30/05/2025,Friday,Activities,"1,590.00",0,0,2025-05-30,1590.00
+30/05/2025,Friday,Juntos Products,164.30,0,0,2025-05-30,164.30
+30/06/2025,Monday,Juntos house,"11,775.01",98,120.15,2025-06-30,11775.01
+30/06/2025,Monday,Juntos boutique,"1,247.70",10,124.77,2025-06-30,1247.70
+30/06/2025,Monday,Picadeli,"4,507.99",207,21.78,2025-06-30,4507.99
+30/06/2025,Monday,Juntos farm shop,0.00,0,0,2025-06-30,0.00
+30/06/2025,Monday,Tasting place,0.00,0,0,2025-06-30,0.00
+30/06/2025,Monday,Distribution b2b,"2,138.76",15,142.58,2025-06-30,2138.76
+30/06/2025,Monday,Activities,0.00,0,0,2025-06-30,0.00
+30/06/2025,Monday,Juntos Products,0.00,0,0,2025-06-30,0.00
+30/07/2025,Wednesday,Juntos house,"9,200.30",119,77.31,2025-07-30,9200.30
+30/07/2025,Wednesday,Juntos boutique,545.50,7,77.93,2025-07-30,545.50
+30/07/2025,Wednesday,Picadeli,"3,073.81",176,17.46,2025-07-30,3073.81
+30/07/2025,Wednesday,Juntos farm shop,"1,080.74",47,22.99,2025-07-30,1080.74
+30/07/2025,Wednesday,Tasting place,"1,472.50",80,18.41,2025-07-30,1472.50
+30/07/2025,Wednesday,Distribution b2b,"1,404.29",10,140.43,2025-07-30,1404.29
+30/07/2025,Wednesday,Activities,0.00,0,0,2025-07-30,0.00
+30/07/2025,Wednesday,Juntos Products,0.00,0,0,2025-07-30,0.00
+30/08/2025,Saturday,Juntos house,"7,938.30",94,84.45,2025-08-30,7938.30
+30/08/2025,Saturday,Juntos boutique,951.00,10,95.1,2025-08-30,951.00
+30/08/2025,Saturday,Picadeli,"2,451.78",96,25.54,2025-08-30,2451.78
+30/08/2025,Saturday,Juntos farm shop,887.84,44,20.18,2025-08-30,887.84
+30/08/2025,Saturday,Tasting place,"1,972.50",73,27.02,2025-08-30,1972.50
+30/08/2025,Saturday,Distribution b2b,"1,112.20",9,123.58,2025-08-30,1112.20
+30/08/2025,Saturday,Activities,0.00,0,0,2025-08-30,0.00
+30/08/2025,Saturday,Juntos Products,0.00,0,0,2025-08-30,0.00
+30/09/2025,Tuesday,Juntos house,"3,297.00",43,76.67,2025-09-30,3297.00
+30/09/2025,Tuesday,Juntos boutique,118.50,4,29.63,2025-09-30,118.50
+30/09/2025,Tuesday,Picadeli,"3,443.00",164,20.99,2025-09-30,3443.00
+30/09/2025,Tuesday,Juntos farm shop,789.00,31,25.45,2025-09-30,789.00
+30/09/2025,Tuesday,Tasting place,413.00,16,25.81,2025-09-30,413.00
+30/09/2025,Tuesday,Distribution b2b,980.00,12,81.67,2025-09-30,980.00
+30/09/2025,Tuesday,Activities,0.00,0,0,2025-09-30,0.00
+30/09/2025,Tuesday,Juntos Products,17.55,0,0,2025-09-30,17.55
+30/10/2025,Thursday,Juntos house,"3,446.00",47,73.32,2025-10-30,3446.00
+30/10/2025,Thursday,Juntos boutique,69.00,2,34.5,2025-10-30,69.00
+30/10/2025,Thursday,Picadeli,"2,920.00",149,19.6,2025-10-30,2920.00
+30/10/2025,Thursday,Juntos farm shop,615.00,29,21.21,2025-10-30,615.00
+30/10/2025,Thursday,Tasting place,"1,162.00",64,18.16,2025-10-30,1162.00
+30/10/2025,Thursday,Distribution b2b,505.00,7,72.14,2025-10-30,505.00
+30/10/2025,Thursday,Activities,0.00,0,0,2025-10-30,0.00
+30/10/2025,Thursday,Juntos Products,0.00,0,0,2025-10-30,0.00
+30/11/2025,Sunday,Juntos house,"2,211.00",25,88.44,2025-11-30,2211.00
+30/11/2025,Sunday,Juntos boutique,149.00,4,37.25,2025-11-30,149.00
+30/11/2025,Sunday,Picadeli,0.00,0,0,2025-11-30,0.00
+30/11/2025,Sunday,Juntos farm shop,0.00,0,0,2025-11-30,0.00
+30/11/2025,Sunday,Tasting place,0.00,0,0,2025-11-30,0.00
+30/11/2025,Sunday,Distribution b2b,0.00,0,0,2025-11-30,0.00
+30/11/2025,Sunday,Activities,0.00,0,0,2025-11-30,0.00
+30/11/2025,Sunday,Juntos Products,0.00,0,0,2025-11-30,0.00
+30/12/2025,Tuesday,Juntos house,0.00,0,0,2025-12-30,0.00
+30/12/2025,Tuesday,Juntos boutique,0.00,0,0,2025-12-30,0.00
+30/12/2025,Tuesday,Picadeli,0.00,0,0,2025-12-30,0.00
+30/12/2025,Tuesday,Juntos farm shop,0.00,0,0,2025-12-30,0.00
+30/12/2025,Tuesday,Tasting place,0.00,0,0,2025-12-30,0.00
+30/12/2025,Tuesday,Distribution b2b,0.00,0,0,2025-12-30,0.00
+30/12/2025,Tuesday,Activities,0.00,0,0,2025-12-30,0.00
+30/12/2025,Tuesday,Juntos Products,0.00,0,0,2025-12-30,0.00
+31/01/2025,Friday,Juntos house,"2,511.00",37,67.86,2025-01-31,2511.00
+31/01/2025,Friday,Juntos boutique,0.00,0,0,2025-01-31,0.00
+31/01/2025,Friday,Picadeli,"3,054.30",184,16.6,2025-01-31,3054.30
+31/01/2025,Friday,Juntos farm shop,118.92,8,14.87,2025-01-31,118.92
+31/01/2025,Friday,Tasting place,191.80,19,10.09,2025-01-31,191.80
+31/01/2025,Friday,Distribution b2b,871.97,10,87.2,2025-01-31,871.97
+31/01/2025,Friday,Activities,0.00,0,0,2025-01-31,0.00
+31/01/2025,Friday,Juntos Products,0.00,0,0,2025-01-31,0.00
+31/03/2025,Monday,Juntos house,0.00,0,0,2025-03-31,0.00
+31/03/2025,Monday,Juntos boutique,0.00,0,0,2025-03-31,0.00
+31/03/2025,Monday,Picadeli,"4,073.00",224,18.18,2025-03-31,4073.00
+31/03/2025,Monday,Juntos farm shop,0.00,0,0,2025-03-31,0.00
+31/03/2025,Monday,Tasting place,0.00,0,0,2025-03-31,0.00
+31/03/2025,Monday,Distribution b2b,323.77,7,46.25,2025-03-31,323.77
+31/03/2025,Monday,Activities,0.00,0,0,2025-03-31,0.00
+31/03/2025,Monday,Juntos Products,0.00,0,0,2025-03-31,0.00
+31/05/2025,Saturday,Juntos house,"8,185.30",101,81.04,2025-05-31,8185.30
+31/05/2025,Saturday,Juntos boutique,"1,352.05",18,75.11,2025-05-31,1352.05
+31/05/2025,Saturday,Picadeli,"2,327.73",103,22.6,2025-05-31,2327.73
+31/05/2025,Saturday,Juntos farm shop,"1,213.47",67,18.11,2025-05-31,1213.47
+31/05/2025,Saturday,Tasting place,"2,607.60",68,38.35,2025-05-31,2607.60
+31/05/2025,Saturday,Distribution b2b,0.00,0,0,2025-05-31,0.00
+31/05/2025,Saturday,Activities,0.00,0,0,2025-05-31,0.00
+31/05/2025,Saturday,Juntos Products,81.00,0,0,2025-05-31,81.00
+31/07/2025,Thursday,Juntos house,"8,301.10",111,74.78,2025-07-31,8301.10
+31/07/2025,Thursday,Juntos boutique,"1,040.00",11,94.55,2025-07-31,1040.00
+31/07/2025,Thursday,Picadeli,"3,710.24",179,20.73,2025-07-31,3710.24
+31/07/2025,Thursday,Juntos farm shop,"2,129.12",78,27.3,2025-07-31,2129.12
+31/07/2025,Thursday,Tasting place,"2,892.00",121,23.9,2025-07-31,2892.00
+31/07/2025,Thursday,Distribution b2b,"2,220.68",15,148.05,2025-07-31,2220.68
+31/07/2025,Thursday,Activities,0.00,0,0,2025-07-31,0.00
+31/07/2025,Thursday,Juntos Products,80.17,0,0,2025-07-31,80.17
+31/08/2025,Sunday,Juntos house,"6,381.90",84,75.98,2025-08-31,6381.90
+31/08/2025,Sunday,Juntos boutique,417.00,2,208.5,2025-08-31,417.00
+31/08/2025,Sunday,Picadeli,"1,297.87",0,0,2025-08-31,1297.87
+31/08/2025,Sunday,Juntos farm shop,0.00,0,0,2025-08-31,0.00
+31/08/2025,Sunday,Tasting place,0.00,0,0,2025-08-31,0.00
+31/08/2025,Sunday,Distribution b2b,0.00,0,0,2025-08-31,0.00
+31/08/2025,Sunday,Activities,0.00,0,0,2025-08-31,0.00
+31/08/2025,Sunday,Juntos Products,0.00,0,0,2025-08-31,0.00
+31/10/2025,Friday,Juntos house,"3,339.00",34,98.21,2025-10-31,3339.00
+31/10/2025,Friday,Juntos boutique,143.00,4,35.75,2025-10-31,143.00
+31/10/2025,Friday,Picadeli,"3,312.00",166,19.95,2025-10-31,3312.00
+31/10/2025,Friday,Juntos farm shop,674.30,30,22.48,2025-10-31,674.30
+31/10/2025,Friday,Tasting place,734.00,36,20.39,2025-10-31,734.00
+31/10/2025,Friday,Distribution b2b,"1,181.00",14,84.36,2025-10-31,1181.00
+31/10/2025,Friday,Activities,0.00,0,0,2025-10-31,0.00
+31/10/2025,Friday,Juntos Products,0.00,0,0,2025-10-31,0.00
+31/12/2025,Wednesday,Juntos house,0.00,0,0,2025-12-31,0.00
+31/12/2025,Wednesday,Juntos boutique,0.00,0,0,2025-12-31,0.00
+31/12/2025,Wednesday,Picadeli,0.00,0,0,2025-12-31,0.00
+31/12/2025,Wednesday,Juntos farm shop,0.00,0,0,2025-12-31,0.00
+31/12/2025,Wednesday,Tasting place,0.00,0,0,2025-12-31,0.00
+31/12/2025,Wednesday,Distribution b2b,0.00,0,0,2025-12-31,0.00
+31/12/2025,Wednesday,Activities,0.00,0,0,2025-12-31,0.00
+31/12/2025,Wednesday,Juntos Products,0.00,0,0,2025-12-31,0.00

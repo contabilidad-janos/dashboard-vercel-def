@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #F9F6F2;
+  --color-primary: #3D4C41;
+  --color-accent: #6E8C71;
+  --color-secondary: #B09B80;
+
+  --color-chart-1: #6E8C71;
+  --color-chart-2: #B09B80;
+  --color-chart-3: #D9825F;
+  --color-chart-4: #E8C89A;
+  --color-chart-5: #879FA8;
+  --color-chart-6: #566E7A;
+  --color-chart-7: #C4BFAA;
+  --color-chart-8: #A9A9A9;
+
+  --font-sans: "Inter", sans-serif;
+  --font-serif: "Lora", serif;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-gray-800 antialiased relative;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e0e0e0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C4BFAA;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #AEA69A;
+}
+
+/* Tab Styles */
+.tab-active {
+  @apply border-b-2 border-accent text-primary font-semibold;
+}
+
+.tab-inactive {
+  @apply text-gray-500 hover:text-gray-700;
+}
+
+/* Chip Styles */
+.bu-chip {
+  @apply transition-all duration-200 border border-gray-300 px-4 py-2 rounded-full text-sm font-medium cursor-pointer select-none bg-white text-gray-700;
+}
+
+.bu-chip:hover {
+  @apply border-accent bg-gray-100;
+}
+
+.bu-chip.active {
+  @apply bg-accent text-white border-accent shadow-md;
+}
+
+/* Checkbox Accent */
+input[type="checkbox"] {
+  accent-color: #6E8C71;
+}
+
+/* Fullscreen Mode Override */
+.fullscreen-mode {
+  @apply fixed top-0 left-0 w-screen h-screen z-50 bg-white p-8 overflow-y-auto;
+}
+
+.fullscreen-mode .chart-container {
+  height: 60vh !important;
+}

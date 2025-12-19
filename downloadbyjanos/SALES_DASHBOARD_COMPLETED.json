@@ -1,0 +1,125 @@
+{
+    "name": "SALES DASHBOARD - Auto Sync",
+    "nodes": [
+        {
+            "parameters": {
+                "pollTimes": {
+                    "item": [
+                        {
+                            "mode": "everyMinute"
+                        }
+                    ]
+                },
+                "documentId": {
+                    "__rl": true,
+                    "value": "1a9CgwDx9k3Xqtr4CIwjOQih1E3jUBwJ2IeTog79scqY",
+                    "mode": "list",
+                    "cachedResultName": "REPORTING PARA BASE DE DATOS",
+                    "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1a9CgwDx9k3Xqtr4CIwjOQih1E3jUBwJ2IeTog79scqY/edit?usp=drivesdk"
+                },
+                "sheetName": {
+                    "__rl": true,
+                    "value": "gid=0",
+                    "mode": "list",
+                    "cachedResultName": "Sheet1",
+                    "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1a9CgwDx9k3Xqtr4CIwjOQih1E3jUBwJ2IeTog79scqY/edit#gid=0"
+                },
+                "options": {}
+            },
+            "id": "trigger-node-1",
+            "name": "Google Sheets Trigger",
+            "type": "n8n-nodes-base.googleSheetsTrigger",
+            "typeVersion": 1,
+            "position": [
+                -60,
+                -80
+            ],
+            "credentials": {
+                "googleSheetsOAuth2Api": {
+                    "id": "LuXhUQjnpVdJuD78",
+                    "name": "Google Sheets account"
+                }
+            }
+        },
+        {
+            "parameters": {
+                "jsCode": "// Robust Column Mapping & Filtering\nconst results = items.map(item => {\n  const json = item.json;\n  \n  // 1. Fuzzy Find Keys\n  const keys = Object.keys(json);\n  const dateKey = keys.find(k => k.toUpperCase().includes('DATE'));\n  const buKey = keys.find(k => k.toUpperCase().includes('BUISNESS') || k.toUpperCase().includes('BUSINESS'));\n  const revKey = keys.find(k => k.toUpperCase().includes('REVENUE'));\n  const volKey = keys.find(k => k.toUpperCase().includes('VOLUME'));\n\n  // 2. Parse Date\n  let rawDate = json[dateKey];\n  let formattedDate = null;\n  try {\n    if (rawDate) {\n       if (typeof rawDate === 'number') {\n          const dateObj = new Date(Math.round((rawDate - 25569) * 86400 * 1000));\n          formattedDate = dateObj.toISOString().split('T')[0];\n       } else if (typeof rawDate === 'string' && rawDate.includes('/')) {\n          const [day, month, year] = rawDate.split('/');\n          if (day && month && year) formattedDate = `${year}-${month}-${day}`;\n       } else if (rawDate instanceof Date) {\n          formattedDate = rawDate.toISOString().split('T')[0];\n       }\n    }\n  } catch (e) {}\n\n  // 3. Parse Numbers\n  const rawRev = json[revKey];\n  let revenue = 0;\n  if (rawRev != null && rawRev !== 'empty') {\n      revenue = parseFloat(String(rawRev).replace(/,/g, '')) || 0;\n  }\n\n  const rawVol = json[volKey];\n  let volume = 0;\n  if (rawVol != null && rawVol !== 'empty') {\n      volume = parseInt(String(rawVol)) || 0;\n  }\n\n  return {\n    json: {\n      date: formattedDate,\n      business_unit: json[buKey],\n      revenue: revenue,\n      VOLUME: volume\n    }\n  };\n});\n\n// 4. Strict Filter & Batching\nconst filteredRows = results.map(i => i.json).filter(j => {\n    if (!j.business_unit) return false; \n    if (j.business_unit === 'TOTAL') return false;\n    if (j.business_unit === 'null') return false;\n    if (!j.date) return false;\n    return true;\n});\n\n// Return ONE item containing ALL rows to force the HTTP node to run once (Bulk Upsert)\nreturn [{\n    json: {\n        rows: filteredRows\n    }\n}];"
+            },
+            "id": "code-node-1",
+            "name": "Format Data",
+            "type": "n8n-nodes-base.code",
+            "typeVersion": 1,
+            "position": [
+                160,
+                -80
+            ]
+        },
+        {
+            "parameters": {
+                "method": "POST",
+                "url": "https://agjvhvjhrmwkvszyjitl.supabase.co/rest/v1/sales_daily_def",
+                "authentication": "none",
+                "sendHeaders": true,
+                "headerParameters": {
+                    "parameters": [
+                        {
+                            "name": "apikey",
+                            "value": "sb_secret_3GAd2foZF7fMfuMYv1kyAg_i6nHeOUc"
+                        },
+                        {
+                            "name": "Authorization",
+                            "value": "Bearer sb_secret_3GAd2foZF7fMfuMYv1kyAg_i6nHeOUc"
+                        },
+                        {
+                            "name": "Prefer",
+                            "value": "resolution=merge-duplicates"
+                        },
+                        {
+                            "name": "Content-Type",
+                            "value": "application/json"
+                        }
+                    ]
+                },
+                "sendBody": true,
+                "contentType": "json",
+                "bodyParameters": {
+                    "parameters": []
+                },
+                "specifyBody": "json",
+                "jsonBody": "={{ JSON.stringify($json.rows) }}"
+            },
+            "id": "http-request-1",
+            "name": "HTTP Upsert",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 3,
+            "position": [
+                380,
+                -80
+            ]
+        }
+    ],
+    "connections": {
+        "Google Sheets Trigger": {
+            "main": [
+                [
+                    {
+                        "node": "Format Data",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Format Data": {
+            "main": [
+                [
+                    {
+                        "node": "HTTP Upsert",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    }
+}
