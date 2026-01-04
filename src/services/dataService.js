@@ -197,6 +197,9 @@ export const DataService = {
             if (!record.date) return;
             const dateObj = new Date(record.date);
 
+            // FILTER ONLY 2025
+            if (dateObj.getFullYear() !== 2025) return;
+
             const monthIndex = dateObj.getMonth();
 
             // New column: revenue (numeric)
@@ -251,7 +254,16 @@ export const DataService = {
             if (!record.date) return;
             const dateObj = new Date(record.date);
 
-            const weekIdx = getWeekNumber(dateObj);
+            let weekIdx = getWeekNumber(dateObj);
+
+            // SPECIAL CASE: Dec 29 2025 - Jan 4 2026 should be Week 53 (Index 52)
+            // This prevents it from wrapping to Index 0 (Week 1 of 2026) in this specific 2025 view context
+            const y = dateObj.getFullYear();
+            const m = dateObj.getMonth();
+            const d = dateObj.getDate();
+            if ((y === 2025 && m === 11 && d >= 29) || (y === 2026 && m === 0 && d <= 4)) {
+                weekIdx = 52;
+            }
 
             if (weekIdx >= 0 && weekIdx < weeksCount) {
                 const amount = Number(record.revenue) || 0;
@@ -330,7 +342,11 @@ export const DataService = {
             if (!buName || !result[buName]) return;
             if (!record.date) return;
 
-            const monthIndex = new Date(record.date).getMonth();
+            const dateObj = new Date(record.date);
+            // FILTER ONLY 2025
+            if (dateObj.getFullYear() !== 2025) return;
+
+            const monthIndex = dateObj.getMonth();
             // Use VOLUME column which we verified exists (uppercase)
             const vol = Number(record.VOLUME) || 0;
 
@@ -378,7 +394,15 @@ export const DataService = {
             if (!record.date) return;
 
             const dateObj = new Date(record.date);
-            const weekIdx = getWeekNumber(dateObj);
+            let weekIdx = getWeekNumber(dateObj);
+
+            // SPECIAL CASE: Cross-over week (Dec 29 2025 - Jan 4 2026) -> Index 52
+            const y = dateObj.getFullYear();
+            const m = dateObj.getMonth();
+            const d = dateObj.getDate();
+            if ((y === 2025 && m === 11 && d >= 29) || (y === 2026 && m === 0 && d <= 4)) {
+                weekIdx = 52;
+            }
 
             if (weekIdx >= 0 && weekIdx < weeksCount) {
                 const vol = Number(record.VOLUME) || 0;
@@ -435,15 +459,39 @@ export const DataService = {
 
     get2024SalesDataWeekly: async () => {
         const data = await DataService._fetchYearData(2024);
+
+        // FETCH EXTRA "SPILLOVER" DATA from early 2025 (Week 53 part 2)
+        const { data: extraData } = await supabase
+            .from('sales_records')
+            .select('amount, transaction_count, date, business_units(name)')
+            .gte('date', '2025-01-01')
+            .lte('date', '2025-01-05');
+
         const result = {};
         (await DataService.getBusinessUnits()).forEach(u => result[u.name] = []);
 
         // Note: 2024 data is weekly-seeded, so chronological push works perfectly
-        data.forEach((record, index) => {
+        data.forEach((record) => {
             const unitName = record.business_units?.name;
             if (!unitName || !result[unitName]) return;
             result[unitName].push(Number(record.amount));
         });
+
+        // MERGE EXTRA DATA INTO LAST WEEK (Index 52)
+        if (extraData) {
+            extraData.forEach((record) => {
+                const unitName = record.business_units?.name;
+                if (!unitName || !result[unitName]) return;
+
+                // Ensure we have at least 53 weeks (Index 52)
+                // If the main fetch already pushed 53 items, we add to the last one
+                const len = result[unitName].length;
+                if (len > 0) {
+                    result[unitName][len - 1] += Number(record.amount);
+                }
+            });
+        }
+
         return result;
     },
 
@@ -463,14 +511,36 @@ export const DataService = {
 
     get2024TransDataWeekly: async () => {
         const data = await DataService._fetchYearData(2024);
+
+        // FETCH EXTRA "SPILLOVER" DATA from early 2025
+        const { data: extraData } = await supabase
+            .from('sales_records')
+            .select('amount, transaction_count, date, business_units(name)')
+            .gte('date', '2025-01-01')
+            .lte('date', '2025-01-05');
+
         const result = {};
         (await DataService.getBusinessUnits()).forEach(u => result[u.name] = []);
 
-        data.forEach((record, index) => {
+        data.forEach((record) => {
             const unitName = record.business_units?.name;
             if (!unitName || !result[unitName]) return;
             result[unitName].push(Number(record.transaction_count));
         });
+
+        // MERGE EXTRA DATA
+        if (extraData) {
+            extraData.forEach((record) => {
+                const unitName = record.business_units?.name;
+                if (!unitName || !result[unitName]) return;
+
+                const len = result[unitName].length;
+                if (len > 0) {
+                    result[unitName][len - 1] += Number(record.transaction_count);
+                }
+            });
+        }
+
         return result;
     },
 
@@ -499,6 +569,172 @@ export const DataService = {
                 return t > 0 ? Math.round(s / t) : 0;
             });
         });
+        return result;
+    },
+
+    // New fetcher for "ventas can escarrer"
+    getCanEscarrerData: async () => {
+        // Fetch all data without filter for client-side processing
+        // Given typically reporting data < 100k rows, this is fine.
+        // If it grows, we might need server-side filtering.
+        let allData = [];
+        let from = 0;
+        const chunkSize = 1000;
+        let done = false;
+
+        while (!done) {
+            const { data, error } = await supabase
+                .from('ventas can escarrer')
+                .select('*')
+                .range(from, from + chunkSize - 1)
+            // .order('Fecha', { ascending: true }); // Optional sorting
+
+            if (error) {
+                console.error('Error fetching Can Escarrer data:', error);
+                break;
+            }
+
+            if (data && data.length > 0) {
+                allData = allData.concat(data);
+                from += chunkSize;
+                if (data.length < chunkSize) done = true;
+            } else {
+                done = true;
+            }
+        }
+        return allData;
+    },
+
+    // ------------------------------------------------------------------
+    // 2026 DATA FETCHERS
+    // ------------------------------------------------------------------
+
+    get2026SalesData: async () => {
+        // reuse the same fetcher but filter for 2026
+        const data = await DataService._fetchDailyDef2025(); // Currently fetches all "daily def" data
+
+        // Transform to { 'Unit Name': [Jan, Feb, ...] }
+        const result = {};
+        const buList = await DataService.getBusinessUnits();
+
+        // Initialize arrays
+        buList.forEach(u => {
+            result[u.name] = new Array(12).fill(0);
+        });
+
+        // BU Name Mapping
+        const buMap = {
+            'Juntos house': 'Juntos house',
+            'Juntos boutique': 'Juntos boutique',
+            'Picadeli': 'Picadeli',
+            'Juntos farm shop': 'Juntos farm shop',
+            'Tasting place': 'Tasting place',
+            'Distribution b2b': 'Distribution b2b',
+            'Juntos Products': 'Juntos Products',
+            'Activities': 'Activities',
+        };
+
+        data.forEach((record) => {
+            if (!record.date) return;
+            const dateObj = new Date(record.date);
+
+            // FILTER ONLY 2026
+            if (dateObj.getFullYear() !== 2026) return;
+
+            const rawBu = record.business_unit;
+            const buName = buMap[rawBu] || rawBu;
+
+            if (!buName || !result[buName]) return;
+
+            const monthIndex = dateObj.getMonth();
+            const amount = Number(record.revenue) || 0;
+
+            result[buName][monthIndex] += amount;
+        });
+
+        return result;
+    },
+
+    get2026TransData: async () => {
+        const data = await DataService._fetchDailyDef2025();
+
+        const result = {};
+        const buList = await DataService.getBusinessUnits();
+
+        buList.forEach(u => {
+            result[u.name] = new Array(12).fill(0);
+        });
+
+        const buMap = {
+            'Juntos house': 'Juntos house',
+            'Juntos boutique': 'Juntos boutique',
+            'Picadeli': 'Picadeli',
+            'Juntos farm shop': 'Juntos farm shop',
+            'Tasting place': 'Tasting place',
+            'Distribution b2b': 'Distribution b2b',
+            'Juntos Products': 'Juntos Products',
+            'Activities': 'Activities'
+        };
+
+        data.forEach((record) => {
+            if (!record.date) return;
+            const dateObj = new Date(record.date);
+
+            // FILTER ONLY 2026
+            if (dateObj.getFullYear() !== 2026) return;
+
+            const rawBu = record.business_unit;
+            const buName = buMap[rawBu] || rawBu;
+
+            if (!buName || !result[buName]) return;
+
+            const monthIndex = dateObj.getMonth();
+            const vol = Number(record.VOLUME) || 0;
+
+            result[buName][monthIndex] += vol;
+        });
+
+        return result;
+    },
+
+    get2026SpendData: async () => {
+        const sales = await DataService.get2026SalesData();
+        const trans = await DataService.get2026TransData();
+
+        const result = {};
+        Object.keys(sales).forEach(unit => {
+            result[unit] = sales[unit].map((s, i) => {
+                const t = trans[unit][i];
+                return t > 0 ? Math.round(s / t) : 0;
+            });
+        });
+        return result;
+    },
+
+    // Placeholder for 2026 Budget (assuming no table yet, or same table)
+    get2026BudgetData: async () => {
+        const { data, error } = await supabase
+            .from('budget_targets')
+            .select('target_amount, month_start, business_units(name)')
+            .gte('month_start', '2026-01-01');
+
+        if (error) {
+            console.error('Error fetching budget:', error);
+            return {};
+        }
+
+        const result = {};
+        (await DataService.getBusinessUnits()).forEach(u => {
+            result[u.name] = new Array(12).fill(0);
+        });
+
+        data.forEach((record) => {
+            const unitName = record.business_units?.name;
+            if (!unitName || !result[unitName]) return;
+            const monthIndex = new Date(record.month_start).getMonth();
+            result[unitName][monthIndex] += Number(record.target_amount);
+        });
+
         return result;
     }
 };

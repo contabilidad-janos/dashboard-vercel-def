@@ -3,9 +3,11 @@ import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, LineElement, 
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import Header from './components/Header';
 import Tabs from './components/Tabs';
+import Dashboard2026 from './components/Dashboard2026';
 import Dashboard2025 from './components/Dashboard2025';
 import Dashboard2024 from './components/Dashboard2024';
 import DashboardDetails from './components/DashboardDetails';
+import CanEscarrerDashboard from './components/CanEscarrerDashboard';
 
 // Register ChartJS components globally
 ChartJS.register(
@@ -22,7 +24,7 @@ ChartJS.register(
 );
 
 function App() {
-  const [activeTab, setActiveTab] = useState('2025');
+  const [activeTab, setActiveTab] = useState('2026');
 
   return (
     <div className="container mx-auto p-4 md:p-8 min-h-screen bg-background text-gray-800">
@@ -35,6 +37,12 @@ function App() {
       <Tabs activeTab={activeTab} onTabChange={setActiveTab} />
 
       <main>
+        {activeTab === '2026' && (
+          <div id="page-2026" className="animate-in fade-in duration-500">
+            <Dashboard2026 />
+          </div>
+        )}
+
         {activeTab === '2025' && (
           <div id="page-2025" className="animate-in fade-in duration-500">
             <Dashboard2025 />
@@ -50,6 +58,12 @@ function App() {
         {activeTab === 'details' && (
           <div id="page-details" className="animate-in fade-in duration-500">
             <DashboardDetails />
+          </div>
+        )}
+
+        {activeTab === 'can-escarrer' && (
+          <div id="page-can-escarrer" className="animate-in fade-in duration-500">
+            <CanEscarrerDashboard />
           </div>
         )}
       </main>

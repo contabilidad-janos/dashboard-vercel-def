@@ -36,19 +36,11 @@ const DashboardDetails = () => {
     // Filter States
     const [selectedUnits, setSelectedUnits] = useState(['All Groups']); // Default one
     const [metric, setMetric] = useState('sales'); // sales, transactions, spend
-    const [viewType, setViewType] = useState('weekly'); // Default to weekly
+    const [viewType, setViewType] = useState('daily'); // Default to daily for user request
 
-    // Daily Range State - Default to Last Full Week (Mon-Sun)
-    const [dailyStart, setDailyStart] = useState(() => {
-        const today = new Date();
-        const lastWeekStart = startOfWeek(subWeeks(today, 1), { weekStartsOn: 1 });
-        return format(lastWeekStart, 'yyyy-MM-dd');
-    });
-    const [dailyEnd, setDailyEnd] = useState(() => {
-        const today = new Date();
-        const lastWeekEnd = endOfWeek(subWeeks(today, 1), { weekStartsOn: 1 });
-        return format(lastWeekEnd, 'yyyy-MM-dd');
-    });
+    // Daily Range State - Default to User Requested Range (Dec 29 - Jan 4)
+    const [dailyStart, setDailyStart] = useState('2025-12-29');
+    const [dailyEnd, setDailyEnd] = useState('2026-01-04');
 
     const [chartType, setChartType] = useState('bar');
 
