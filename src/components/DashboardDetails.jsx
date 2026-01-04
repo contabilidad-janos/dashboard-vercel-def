@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { DataService, MONTHS, BUSINESS_UNITS, WEEKLY_LABELS_2025, WEEK_MONTH_MAP } from '../services/dataService';
+import { VAT_RATES } from '../data/SEED_DATA';
 import { Title as ChartTitle, Chart } from 'chart.js';
 import { Line, Bar } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
@@ -61,6 +62,13 @@ const DashboardDetails = () => {
     const [compareBudget, setCompareBudget] = useState(true);
     const [showLabels, setShowLabels] = useState(true);
     const [isFullScreen, setIsFullScreen] = useState(false);
+    const [excludeVat, setExcludeVat] = useState(false);
+
+    const getNetValue = (val, unitName) => {
+        if (!excludeVat || !val) return val;
+        const rate = VAT_RATES[unitName] || 0;
+        return val / (1 + rate);
+    };
 
     useEffect(() => {
         // Reset period when view type changes
@@ -133,8 +141,8 @@ const DashboardDetails = () => {
                 let data24, data25;
 
                 if (metric === 'sales') {
-                    data24 = getYearlyTotal(rawData.sales24[unit]);
-                    data25 = getYearlyTotal(rawData.sales25[unit]);
+                    data24 = getYearlyTotal((rawData.sales24[unit] || []).map(v => getNetValue(v, unit)));
+                    data25 = getYearlyTotal((rawData.sales25[unit] || []).map(v => getNetValue(v, unit)));
                 } else if (metric === 'transactions') {
                     data24 = getYearlyTotal(rawData.trans24[unit]);
                     data25 = getYearlyTotal(rawData.trans25[unit]);
@@ -157,8 +165,8 @@ const DashboardDetails = () => {
                 let total24 = 0, total25 = 0;
                 BUSINESS_UNITS.forEach(unit => {
                     if (metric === 'sales') {
-                        total24 += getYearlyTotal(rawData.sales24[unit]);
-                        total25 += getYearlyTotal(rawData.sales25[unit]);
+                        total24 += getYearlyTotal((rawData.sales24[unit] || []).map(v => getNetValue(v, unit)));
+                        total25 += getYearlyTotal((rawData.sales25[unit] || []).map(v => getNetValue(v, unit)));
                     } else if (metric === 'transactions') {
                         total24 += getYearlyTotal(rawData.trans24[unit]);
                         total25 += getYearlyTotal(rawData.trans25[unit]);
@@ -222,13 +230,17 @@ const DashboardDetails = () => {
             const getValue = (dateStr, unitName) => {
                 const records = rawDataList.filter(r => r.date === dateStr);
                 if (unitName === 'All Groups') {
-                    return records.reduce((sum, r) => sum + (Number(r.revenue) || 0), 0);
+                    // Aggregate individual Units with their rates
+                    return BUSINESS_UNITS.reduce((total, u) => {
+                        const uVal = records.filter(r => r.business_unit === u).reduce((sum, r) => sum + (Number(r.revenue) || 0), 0);
+                        return total + getNetValue(uVal, u);
+                    }, 0);
                 } else {
                     // Match BU name (mapped or raw)
                     const val = records
-                        .filter(r => r.business_unit === unitName) // Assumes normalized names in DB or exact match
+                        .filter(r => r.business_unit === unitName)
                         .reduce((sum, r) => sum + (Number(r.revenue) || 0), 0);
-                    return val;
+                    return getNetValue(val, unitName);
                 }
             };
 
@@ -265,14 +277,14 @@ const DashboardDetails = () => {
             let data = [];
             if (viewType === 'monthly') {
                 let src = [];
-                if (metric === 'sales') src = rawData.sales25[unit];
+                if (metric === 'sales') src = (rawData.sales25[unit] || []).map(v => getNetValue(v, unit));
                 else if (metric === 'transactions') src = rawData.trans25[unit];
                 else src = rawData.spend25[unit];
 
                 data = src.slice(startPeriod, endPeriod + 1);
             } else {
                 let src = [];
-                if (metric === 'sales') src = rawData.sales25w[unit];
+                if (metric === 'sales') src = (rawData.sales25w[unit] || []).map(v => getNetValue(v, unit));
                 else if (metric === 'transactions') src = rawData.trans25w[unit];
                 else {
                     const s = rawData.sales25w[unit];
@@ -297,13 +309,13 @@ const DashboardDetails = () => {
                 let data24 = [];
                 if (viewType === 'monthly') {
                     let src = [];
-                    if (metric === 'sales') src = rawData.sales24[unit];
+                    if (metric === 'sales') src = (rawData.sales24[unit] || []).map(v => getNetValue(v, unit));
                     else if (metric === 'transactions') src = rawData.trans24[unit];
                     else src = rawData.spend24[unit];
                     data24 = src.slice(startPeriod, endPeriod + 1);
                 } else {
                     let src = [];
-                    if (metric === 'sales') src = rawData.sales24w[unit];
+                    if (metric === 'sales') src = (rawData.sales24w[unit] || []).map(v => getNetValue(v, unit));
                     else if (metric === 'transactions') src = rawData.trans24w[unit];
                     else src = rawData.spend24w[unit];
                     data24 = src.slice(startPeriod, endPeriod + 1);
@@ -324,7 +336,7 @@ const DashboardDetails = () => {
 
             // 3. Comparison Budget (Monthly or Weekly extrapolated)
             if (compareBudget && metric === 'sales') {
-                const bData = rawData.budget25u[unit] || [];
+                const bData = (rawData.budget25u[unit] || []).map(v => getNetValue(v, unit));
                 let budgetData = [];
 
                 if (viewType === 'monthly') {
@@ -367,13 +379,13 @@ const DashboardDetails = () => {
                 let unitData = [];
                 if (viewType === 'monthly') {
                     let src = [];
-                    if (metric === 'sales') src = rawData.sales25[unit];
+                    if (metric === 'sales') src = (rawData.sales25[unit] || []).map(v => getNetValue(v, unit));
                     else if (metric === 'transactions') src = rawData.trans25[unit];
                     else src = rawData.spend25[unit];
                     unitData = src.slice(startPeriod, endPeriod + 1);
                 } else {
                     let src = [];
-                    if (metric === 'sales') src = rawData.sales25w[unit];
+                    if (metric === 'sales') src = (rawData.sales25w[unit] || []).map(v => getNetValue(v, unit));
                     else if (metric === 'transactions') src = rawData.trans25w[unit];
                     else {
                         const s = rawData.sales25w[unit];
@@ -401,10 +413,10 @@ const DashboardDetails = () => {
                     BUSINESS_UNITS.forEach(unit => {
                         const idx = startPeriod + i; // Same logic for monthly/weekly now
                         if (viewType === 'monthly') {
-                            PERIOD_SALES += rawData.sales25[unit][idx] || 0;
+                            PERIOD_SALES += getNetValue((rawData.sales25[unit][idx] || 0), unit);
                             PERIOD_TRANS += rawData.trans25[unit][idx] || 0;
                         } else {
-                            PERIOD_SALES += rawData.sales25w[unit][idx] || 0;
+                            PERIOD_SALES += getNetValue((rawData.sales25w[unit][idx] || 0), unit);
                             PERIOD_TRANS += rawData.trans25w[unit][idx] || 0;
                         }
                     });
@@ -431,12 +443,12 @@ const DashboardDetails = () => {
                         let unitData = [];
                         if (viewType === 'monthly') {
                             let src = [];
-                            if (metric === 'sales') src = rawData.sales24[unit];
+                            if (metric === 'sales') src = (rawData.sales24[unit] || []).map(v => getNetValue(v, unit));
                             else if (metric === 'transactions') src = rawData.trans24[unit];
                             unitData = src.slice(startPeriod, endPeriod + 1);
                         } else {
                             let src = [];
-                            if (metric === 'sales') src = rawData.sales24w[unit];
+                            if (metric === 'sales') src = (rawData.sales24w[unit] || []).map(v => getNetValue(v, unit));
                             else if (metric === 'transactions') src = rawData.trans24w[unit];
                             unitData = src.slice(startPeriod, endPeriod + 1);
                         }
@@ -450,10 +462,10 @@ const DashboardDetails = () => {
                         BUSINESS_UNITS.forEach(unit => {
                             const idx = startPeriod + i;
                             if (viewType === 'monthly') {
-                                PERIOD_SALES += rawData.sales24[unit][idx] || 0;
+                                PERIOD_SALES += getNetValue((rawData.sales24[unit][idx] || 0), unit);
                                 PERIOD_TRANS += rawData.trans24[unit][idx] || 0;
                             } else {
-                                PERIOD_SALES += rawData.sales24w[unit][idx] || 0;
+                                PERIOD_SALES += getNetValue((rawData.sales24w[unit][idx] || 0), unit);
                                 PERIOD_TRANS += rawData.trans24w[unit][idx] || 0;
                             }
                         });
@@ -477,7 +489,8 @@ const DashboardDetails = () => {
                 const allBudget = new Array(dataLength).fill(0);
 
                 BUSINESS_UNITS.forEach(unit => {
-                    const bData = rawData.budget25u[unit] || [];
+                    const bData = (rawData.budget25u[unit] || []).map(v => getNetValue(v, unit));
+
 
                     if (viewType === 'monthly') {
                         for (let i = startPeriod; i <= endPeriod; i++) {
@@ -506,7 +519,8 @@ const DashboardDetails = () => {
         }
 
         return { labels, datasets };
-    }, [rawData, selectedUnits, metric, viewType, startPeriod, endPeriod, compare24, compareBudget, dailyStart, dailyEnd]);
+        return { labels, datasets };
+    }, [rawData, selectedUnits, metric, viewType, startPeriod, endPeriod, compare24, compareBudget, dailyStart, dailyEnd, excludeVat]);
 
     const toggleUnit = (u) => {
         if (selectedUnits.includes(u)) {
@@ -644,6 +658,10 @@ const DashboardDetails = () => {
                         <label className="flex items-center gap-2 cursor-pointer">
                             <input type="checkbox" checked={compare24} onChange={e => setCompare24(e.target.checked)} className="rounded text-accent" disabled={viewType === 'daily'} />
                             <span className={clsx("text-sm font-medium", viewType === 'daily' ? "text-gray-400" : "text-gray-700")}>vs '24</span>
+                        </label>
+                        <label className="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" checked={excludeVat} onChange={e => setExcludeVat(e.target.checked)} className="rounded text-accent" />
+                            <span className="text-sm font-medium text-gray-700">Net Sales</span>
                         </label>
                         <label className="flex items-center gap-2 cursor-pointer">
                             <input type="checkbox" checked={compareBudget} onChange={e => setCompareBudget(e.target.checked)} className="rounded text-accent" disabled={viewType === 'yearly' || metric !== 'sales' || viewType === 'daily'} />

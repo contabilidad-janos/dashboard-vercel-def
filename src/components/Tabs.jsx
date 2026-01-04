@@ -7,7 +7,7 @@ const Tabs = ({ activeTab, onTabChange }) => {
         { id: '2025', label: '2025 Overview' },
         { id: '2024', label: '2024 Overview' },
         { id: 'details', label: 'Detailed Sales & Comparison' },
-        { id: 'can-escarrer', label: 'Ventas Can Escarrer' },
+        { id: 'can-escarrer', label: 'Best Selling Products' },
     ];
 
     return (

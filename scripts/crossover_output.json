@@ -1,0 +1,4092 @@
+[
+  {
+    "id": "5f30c6f4-085b-486a-a069-78efcad6743a",
+    "date": "2024-12-23",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 4294,
+    "transaction_count": 92,
+    "spend_per_transaction": 46.67,
+    "created_at": "2025-12-08T21:06:46.360998+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "d6065b76-faa4-4b84-b935-8cfc09c225fb",
+    "date": "2024-12-23",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 53784,
+    "transaction_count": 660,
+    "spend_per_transaction": 81.49,
+    "created_at": "2025-12-08T21:06:46.360998+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "7c604c82-9074-46c9-831e-340aade17c10",
+    "date": "2024-12-23",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 4229,
+    "transaction_count": 49,
+    "spend_per_transaction": 86.31,
+    "created_at": "2025-12-08T21:06:46.360998+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "f9852398-7dee-4326-a671-12d40235a0e2",
+    "date": "2024-12-23",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 2868,
+    "transaction_count": 0,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-08T21:06:46.360998+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "3695673b-8f8b-4d56-a6fe-3293ade1cf6a",
+    "date": "2024-12-23",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 10032,
+    "transaction_count": 468,
+    "spend_per_transaction": 21.44,
+    "created_at": "2025-12-08T21:06:46.360998+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "03ee4661-e4f1-4db2-9753-6efe08bc327f",
+    "date": "2024-12-23",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 2070,
+    "transaction_count": 107,
+    "spend_per_transaction": 19.35,
+    "created_at": "2025-12-08T21:06:46.360998+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "6d865e44-4507-47e7-8bd8-9125477172fe",
+    "date": "2024-12-30",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 553,
+    "transaction_count": 18,
+    "spend_per_transaction": 30.72,
+    "created_at": "2025-12-08T21:06:46.360998+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "4aa0ca09-c32a-4321-8515-3d3386a223f8",
+    "date": "2024-12-30",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 22525,
+    "transaction_count": 137,
+    "spend_per_transaction": 164.42,
+    "created_at": "2025-12-08T21:06:46.360998+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "91959580-acb3-4465-934f-438d93b017fd",
+    "date": "2024-12-30",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 466,
+    "transaction_count": 8,
+    "spend_per_transaction": 58.25,
+    "created_at": "2025-12-08T21:06:46.360998+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "e8f5adcd-bc34-43af-9583-716c2f3c7b10",
+    "date": "2024-12-30",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 3497,
+    "transaction_count": 0,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-08T21:06:46.360998+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "53f4dc4e-d534-4cfa-b7a4-75c29e7a090b",
+    "date": "2024-12-30",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 5722,
+    "transaction_count": 269,
+    "spend_per_transaction": 21.27,
+    "created_at": "2025-12-08T21:06:46.360998+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "b9946589-357e-492e-af31-f6f13840f5e5",
+    "date": "2024-12-30",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 477,
+    "transaction_count": 18,
+    "spend_per_transaction": 26.5,
+    "created_at": "2025-12-08T21:06:46.360998+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "36aa42e1-77ac-493e-86e2-9ec1ac56e937",
+    "date": "2025-01-01",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 4635,
+    "transaction_count": 98,
+    "spend_per_transaction": 47.3,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "d9fa2d8e-b9ae-4089-b4f1-897c76d16989",
+    "date": "2025-01-01",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 37026,
+    "transaction_count": 460,
+    "spend_per_transaction": 80.49,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "69f48f44-6b6c-4beb-baa5-0dc1400404e2",
+    "date": "2025-01-01",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 2153,
+    "transaction_count": 30,
+    "spend_per_transaction": 71.77,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "9c8fdff5-8549-4abf-bcc7-8664f42c33a7",
+    "date": "2025-01-01",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 941,
+    "transaction_count": 10,
+    "spend_per_transaction": 94.1,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "e129ab8c-6a98-469c-a09f-7a04d841dd9f",
+    "date": "2025-01-01",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 4740,
+    "transaction_count": 255,
+    "spend_per_transaction": 18.59,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "e58e9298-2fc4-4566-9e34-2b670d946d18",
+    "date": "2025-01-01",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 76,
+    "transaction_count": 1,
+    "spend_per_transaction": 76,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "72d97128-45e1-49aa-a979-b661e7ec3dc7",
+    "date": "2025-01-01",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 65,
+    "transaction_count": 1,
+    "spend_per_transaction": 65,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "eb2a4954-0bc0-4147-ac32-b9ffab94f891",
+    "date": "2025-01-01",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 1607,
+    "transaction_count": 82,
+    "spend_per_transaction": 19.6,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "4d39fad4-4a86-486f-86ea-f548cde99a9c",
+    "date": "2025-01-06",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 3011,
+    "transaction_count": 15,
+    "spend_per_transaction": 200.73,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "746b26d0-5abc-415a-9772-cda415c8a91d",
+    "date": "2025-01-06",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 2315,
+    "transaction_count": 35,
+    "spend_per_transaction": 66.14,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "e55a07df-a816-42ae-8f70-cb22ef9d46e1",
+    "date": "2025-01-06",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 48,
+    "transaction_count": 1,
+    "spend_per_transaction": 48,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "46233bb4-128b-4234-ba92-ab4b235abff4",
+    "date": "2025-01-06",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 1424,
+    "transaction_count": 7,
+    "spend_per_transaction": 203.43,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "0ed92d7f-aaf6-48cf-adcb-491150cbc6cc",
+    "date": "2025-01-06",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 10200,
+    "transaction_count": 164,
+    "spend_per_transaction": 62.2,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "72bed359-1e73-4743-9dd6-36351887d198",
+    "date": "2025-01-06",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 0,
+    "transaction_count": 0,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "79e6c3d6-3936-4971-b0d6-6ff7e4144d1c",
+    "date": "2025-01-06",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 0,
+    "transaction_count": 0,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "d9473d30-d8ac-4d86-b1fe-fb8a8b9d4481",
+    "date": "2025-01-06",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 1806,
+    "transaction_count": 10,
+    "spend_per_transaction": 180.6,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "20aee500-c2f4-41dd-bd95-503a346d80d4",
+    "date": "2025-01-13",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 5965,
+    "transaction_count": 153,
+    "spend_per_transaction": 38.99,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "b07c5b00-55b4-4f9f-8e53-f14bedc2f1af",
+    "date": "2025-01-13",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 16513,
+    "transaction_count": 153,
+    "spend_per_transaction": 107.93,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "65c6671f-a409-45b7-9e67-9ce677b637b7",
+    "date": "2025-01-13",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 1057,
+    "transaction_count": 18,
+    "spend_per_transaction": 58.72,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "b92b2eaa-00d0-47a3-9eb8-c55b2b6e3ff6",
+    "date": "2025-01-13",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 2341,
+    "transaction_count": 33,
+    "spend_per_transaction": 70.94,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "ddb96891-778d-48f0-84cd-a2a77050ddef",
+    "date": "2025-01-13",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 16181,
+    "transaction_count": 909,
+    "spend_per_transaction": 17.8,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "255110b8-4b36-455a-aa74-6c86694e15ae",
+    "date": "2025-01-13",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 723,
+    "transaction_count": 5,
+    "spend_per_transaction": 144.6,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "a10f7f73-297b-4f02-88c5-027d4404ba8c",
+    "date": "2025-01-13",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 22,
+    "transaction_count": 1,
+    "spend_per_transaction": 22,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "d0ac2e1e-519f-4726-bc1a-1f91e5d92d87",
+    "date": "2025-01-13",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 2336,
+    "transaction_count": 105,
+    "spend_per_transaction": 22.25,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "631d4c70-6b44-4ee7-bcc1-cbdcfc4956f8",
+    "date": "2025-01-20",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 4283,
+    "transaction_count": 201,
+    "spend_per_transaction": 21.31,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "f01bd8fe-5ed6-4fad-a8e3-a6b019943cc6",
+    "date": "2025-01-20",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 10629,
+    "transaction_count": 226,
+    "spend_per_transaction": 47.03,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "b786f685-63db-4978-b676-02918b7d0a7a",
+    "date": "2025-01-20",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 895,
+    "transaction_count": 14,
+    "spend_per_transaction": 63.93,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "6182210f-353e-4cb5-a200-7c4c9a150a54",
+    "date": "2025-01-20",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 2533,
+    "transaction_count": 4,
+    "spend_per_transaction": 633.25,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "71b075ca-e5c5-4b0a-a8d7-f9681ea803a3",
+    "date": "2025-01-20",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 15834,
+    "transaction_count": 882,
+    "spend_per_transaction": 17.95,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "443b75c9-a315-445e-967b-0986dc11d57f",
+    "date": "2025-01-20",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 138,
+    "transaction_count": 1,
+    "spend_per_transaction": 138,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "8c11d8a1-3b33-4bac-8ae9-c597d0660b53",
+    "date": "2025-01-20",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 225,
+    "transaction_count": 2,
+    "spend_per_transaction": 112.5,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "b3809d65-d186-4d31-9002-05539bee3066",
+    "date": "2025-01-20",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 2437,
+    "transaction_count": 127,
+    "spend_per_transaction": 19.19,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "1691c997-e64c-4d95-9520-c807b7ff516a",
+    "date": "2025-01-27",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 6575,
+    "transaction_count": 223,
+    "spend_per_transaction": 29.48,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "d55f337f-d00c-4a45-895a-404513b2dd48",
+    "date": "2025-01-27",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 13138,
+    "transaction_count": 172,
+    "spend_per_transaction": 76.38,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "6916071b-f9c8-4438-a7e8-e70f66c6d63c",
+    "date": "2025-01-27",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 580,
+    "transaction_count": 7,
+    "spend_per_transaction": 82.86,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "b5389986-fd25-4b55-a08e-42458ef613f2",
+    "date": "2025-01-27",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 2508,
+    "transaction_count": 34,
+    "spend_per_transaction": 73.76,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "f05a7cfe-3822-4dce-8cb5-a138950cb150",
+    "date": "2025-01-27",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 15717,
+    "transaction_count": 931,
+    "spend_per_transaction": 16.88,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "92d31c31-6e5e-4c6f-92cd-4a002b5631da",
+    "date": "2025-01-27",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 189,
+    "transaction_count": 2,
+    "spend_per_transaction": 94.5,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "61de2c82-910e-4a32-ac8a-be01c6b4c529",
+    "date": "2025-01-27",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 374,
+    "transaction_count": 3,
+    "spend_per_transaction": 124.67,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "18c41c6c-4504-4ca8-a6c0-5d32be5afb70",
+    "date": "2025-01-27",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 2740,
+    "transaction_count": 137,
+    "spend_per_transaction": 20,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "fe7fb415-4147-45a0-bdbe-d564b585f26a",
+    "date": "2025-02-03",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 4945,
+    "transaction_count": 174,
+    "spend_per_transaction": 28.42,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "011b58f1-900c-4620-93b8-071c13bb00c4",
+    "date": "2025-02-03",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 18777,
+    "transaction_count": 244,
+    "spend_per_transaction": 76.95,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "33947d3a-4c8f-4d9a-9284-735cc23e07d0",
+    "date": "2025-02-03",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 104,
+    "transaction_count": 1,
+    "spend_per_transaction": 104,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "d01eee31-9674-47a5-9997-40e5c8d1cec0",
+    "date": "2025-02-03",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 2197,
+    "transaction_count": 34,
+    "spend_per_transaction": 64.62,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "e6793130-55eb-4010-b363-d92053e84885",
+    "date": "2025-02-03",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 18221,
+    "transaction_count": 1021,
+    "spend_per_transaction": 17.85,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "6e24d5ed-d0f4-4307-b327-6101fb46e102",
+    "date": "2025-02-03",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 374,
+    "transaction_count": 3,
+    "spend_per_transaction": 124.67,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "d76ce62c-1c3f-47ef-86c1-cfb4694d320d",
+    "date": "2025-02-03",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 290,
+    "transaction_count": 2,
+    "spend_per_transaction": 145,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "1a0101b5-61c7-4768-8e2f-dac31d6b9ac4",
+    "date": "2025-02-03",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 2769,
+    "transaction_count": 121,
+    "spend_per_transaction": 22.88,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "69d6dc34-4901-4449-acfe-9ed9d802ca41",
+    "date": "2025-02-10",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 4929,
+    "transaction_count": 169,
+    "spend_per_transaction": 29.17,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "19e311ba-41c0-4458-bb07-56236a6ab2c0",
+    "date": "2025-02-10",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 27587,
+    "transaction_count": 362,
+    "spend_per_transaction": 76.21,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "be8c0d68-15d8-456e-ba03-dfbf4dc0d82b",
+    "date": "2025-02-10",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 0,
+    "transaction_count": 1,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "8987b844-a01a-4866-9862-57dad0e36842",
+    "date": "2025-02-10",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 2203,
+    "transaction_count": 19,
+    "spend_per_transaction": 115.95,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "11fdb292-cc92-4f7f-91fc-361b2b686b22",
+    "date": "2025-02-10",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 18206,
+    "transaction_count": 1053,
+    "spend_per_transaction": 17.29,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "1d05fae2-7f1b-4a64-889d-91898cc27181",
+    "date": "2025-02-10",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 420,
+    "transaction_count": 4,
+    "spend_per_transaction": 105,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "1fe2a866-1460-42f1-959d-58206ec7621a",
+    "date": "2025-02-10",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 416,
+    "transaction_count": 3,
+    "spend_per_transaction": 138.67,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "0a698d0b-183c-4238-83cd-e316ffb8d803",
+    "date": "2025-02-10",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 2468,
+    "transaction_count": 125,
+    "spend_per_transaction": 19.74,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "68df576d-a569-4a9a-bdf2-8f7ef14db7bc",
+    "date": "2025-02-17",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 4702,
+    "transaction_count": 31,
+    "spend_per_transaction": 151.68,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "0af1f10a-c09a-4655-a154-3ca5ca4e4dc6",
+    "date": "2025-02-17",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 21338,
+    "transaction_count": 265,
+    "spend_per_transaction": 80.52,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "51b99c4a-4009-4d8d-b1b7-47d056b84cc1",
+    "date": "2025-02-17",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 65,
+    "transaction_count": 1100,
+    "spend_per_transaction": 0.06,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "45afab52-81a6-4e58-afd7-cf936ca40d3a",
+    "date": "2025-02-17",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 3768,
+    "transaction_count": 122,
+    "spend_per_transaction": 30.89,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "99e6377a-fbb6-4ff6-9a81-a2cba80a3624",
+    "date": "2025-02-17",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 19259,
+    "transaction_count": 138,
+    "spend_per_transaction": 139.56,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "ddd94e0e-9982-49dc-b581-e354083738b1",
+    "date": "2025-02-17",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 742,
+    "transaction_count": 6,
+    "spend_per_transaction": 123.67,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "21c64293-69fc-4d7f-976c-f6b2b972381a",
+    "date": "2025-02-17",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 154,
+    "transaction_count": 1,
+    "spend_per_transaction": 154,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "e819f741-dde0-46a5-942d-c5eb963b92bb",
+    "date": "2025-02-17",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 2704,
+    "transaction_count": 199,
+    "spend_per_transaction": 13.59,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "b353308f-3ec5-4617-ad86-9140f4938f6b",
+    "date": "2025-02-24",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 3582,
+    "transaction_count": 3,
+    "spend_per_transaction": 1194,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "1bde955e-d48c-4436-8047-34764b0aee1f",
+    "date": "2025-02-24",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 22888,
+    "transaction_count": 281,
+    "spend_per_transaction": 81.45,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "a8fc3b61-436e-4765-956b-f068934f4744",
+    "date": "2025-02-24",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 0,
+    "transaction_count": 821,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "f2b09f43-d7ab-438f-bf7d-2f3f490b06c5",
+    "date": "2025-02-24",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 2129,
+    "transaction_count": 0,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "62a7d9d6-0747-4dd8-b963-1e583832ac80",
+    "date": "2025-02-24",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 14024,
+    "transaction_count": 120,
+    "spend_per_transaction": 116.87,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "c6a90040-6539-4dc1-8283-55b1c5059b36",
+    "date": "2025-02-24",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 806,
+    "transaction_count": 7,
+    "spend_per_transaction": 115.14,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "07a0b301-02e7-4806-a383-41f74766aca9",
+    "date": "2025-02-24",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 214,
+    "transaction_count": 1,
+    "spend_per_transaction": 214,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "bf16186d-a21b-4cb6-8eda-2a144ef6d8e0",
+    "date": "2025-02-24",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 2042,
+    "transaction_count": 183,
+    "spend_per_transaction": 11.16,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "51f353f3-6de2-476b-bfb6-91a2cd1903c5",
+    "date": "2025-03-03",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 5331,
+    "transaction_count": 28,
+    "spend_per_transaction": 190.39,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "1f1a36a3-89d0-46a6-879a-af4b62d3c4ca",
+    "date": "2025-03-03",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 19229,
+    "transaction_count": 256,
+    "spend_per_transaction": 75.11,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "c9423640-a76d-47cf-92b3-0ab37733209d",
+    "date": "2025-03-03",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 0,
+    "transaction_count": 997,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "1531f25d-a5db-4d75-b055-dcf91597b993",
+    "date": "2025-03-03",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 1624,
+    "transaction_count": 28,
+    "spend_per_transaction": 58,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "a40f19f7-9a28-4df6-9805-53ff303fc7cd",
+    "date": "2025-03-03",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 19112,
+    "transaction_count": 154,
+    "spend_per_transaction": 124.1,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "0bbdc699-0007-4864-917e-a18faebc8e61",
+    "date": "2025-03-03",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 501,
+    "transaction_count": 4,
+    "spend_per_transaction": 125.25,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "dccd721f-c6ec-470c-828d-f98f34f9d165",
+    "date": "2025-03-03",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 0,
+    "transaction_count": 0,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "7713f53b-5465-4dd0-8a1d-602c65a1215b",
+    "date": "2025-03-03",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 2696,
+    "transaction_count": 88,
+    "spend_per_transaction": 30.64,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "02a74ec4-eb82-42fc-8510-b0312a784aaa",
+    "date": "2025-03-10",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 4258,
+    "transaction_count": 34,
+    "spend_per_transaction": 125.24,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "7463ad24-e3ba-4f1c-a2d0-f7fecd78cf8a",
+    "date": "2025-03-10",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 18918,
+    "transaction_count": 267,
+    "spend_per_transaction": 70.85,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "652731a5-5e98-419b-9863-cb5d11429fbb",
+    "date": "2025-03-10",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 0,
+    "transaction_count": 995,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "9c4b2a24-2fea-4c9d-aa11-10aa86cc8663",
+    "date": "2025-03-10",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 2467,
+    "transaction_count": 7,
+    "spend_per_transaction": 352.43,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "7b0c11aa-b0aa-40d3-ac70-11b904f0222b",
+    "date": "2025-03-10",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 17237,
+    "transaction_count": 110,
+    "spend_per_transaction": 156.7,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "073827f8-2c58-42ff-9a2c-14e975011cff",
+    "date": "2025-03-10",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 829,
+    "transaction_count": 7,
+    "spend_per_transaction": 118.43,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "add5431a-2ec8-4c07-9c83-ccb9b31d65eb",
+    "date": "2025-03-10",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 0,
+    "transaction_count": 0,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "ed9d875c-220a-4d8c-9194-3b5b312b8044",
+    "date": "2025-03-10",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 1964,
+    "transaction_count": 161,
+    "spend_per_transaction": 12.2,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "53fef594-d6ce-465b-9e97-b62f84c764df",
+    "date": "2025-03-17",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 6739,
+    "transaction_count": 215,
+    "spend_per_transaction": 31.34,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "7bad711b-52f3-4721-a47d-578400c52fd5",
+    "date": "2025-03-17",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 18816,
+    "transaction_count": 289,
+    "spend_per_transaction": 65.11,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "f3358bb0-b5e3-47fa-bc6b-905b79be80b8",
+    "date": "2025-03-17",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 99,
+    "transaction_count": 1,
+    "spend_per_transaction": 99,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "02014d8e-a437-463b-9fcc-4beeeee5df16",
+    "date": "2025-03-17",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 3165,
+    "transaction_count": 40,
+    "spend_per_transaction": 79.13,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "a3e6a166-85b4-4bb8-b770-75f4fa381e14",
+    "date": "2025-03-17",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 19136,
+    "transaction_count": 1071,
+    "spend_per_transaction": 17.87,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "5b71406e-bbef-4d58-8fba-51e5025ae4aa",
+    "date": "2025-03-17",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 946,
+    "transaction_count": 8,
+    "spend_per_transaction": 118.25,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "0afdc838-7a4f-40b8-8d84-063904f1f34f",
+    "date": "2025-03-17",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 0,
+    "transaction_count": 0,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "6d0374bb-9da6-4602-8f4d-8a645f7d8be0",
+    "date": "2025-03-17",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 2622,
+    "transaction_count": 133,
+    "spend_per_transaction": 19.71,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "ed565541-1431-4bed-82ed-0cb5b74d79e8",
+    "date": "2025-03-24",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 5636,
+    "transaction_count": 213,
+    "spend_per_transaction": 26.46,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "ac052169-50d2-4772-b87a-a91e5626aa34",
+    "date": "2025-03-24",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 17241,
+    "transaction_count": 257,
+    "spend_per_transaction": 67.09,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "968825e8-f371-47e4-bdce-006e97cc0e14",
+    "date": "2025-03-24",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 1341,
+    "transaction_count": 1,
+    "spend_per_transaction": 1341,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "80c076f3-0e30-47a3-8005-b2ed6c4d1dea",
+    "date": "2025-03-24",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 2476,
+    "transaction_count": 36,
+    "spend_per_transaction": 68.78,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "523d5d77-9406-4cc4-8fa0-ff975e8013a1",
+    "date": "2025-03-24",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 19198,
+    "transaction_count": 1079,
+    "spend_per_transaction": 17.79,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "a3491e1c-39a6-4eb2-984d-19719da8ba5b",
+    "date": "2025-03-24",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 587,
+    "transaction_count": 5,
+    "spend_per_transaction": 117.4,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "894f119b-ce65-4c11-9a0c-009e27adae6f",
+    "date": "2025-03-24",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 0,
+    "transaction_count": 0,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "f9531c68-ff17-4df0-b7c0-a9cb146ff847",
+    "date": "2025-03-24",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 1758,
+    "transaction_count": 109,
+    "spend_per_transaction": 16.13,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "3a4d67a3-b9bb-4159-bb14-101222aa4b4b",
+    "date": "2025-03-31",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 6108,
+    "transaction_count": 246,
+    "spend_per_transaction": 24.83,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "187ba775-8a7a-4901-9cff-0f0a1a61a613",
+    "date": "2025-03-31",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 28113,
+    "transaction_count": 398,
+    "spend_per_transaction": 70.64,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "a158f1fc-254e-49d0-8a63-1885e4b7ef9d",
+    "date": "2025-03-31",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 2457,
+    "transaction_count": 5,
+    "spend_per_transaction": 491.4,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "483cad37-35ec-4bdd-958e-90282f0036a2",
+    "date": "2025-03-31",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 3608,
+    "transaction_count": 40,
+    "spend_per_transaction": 90.2,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "f87f8257-8909-4168-bf50-4ffa332862ac",
+    "date": "2025-03-31",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 20563,
+    "transaction_count": 1135,
+    "spend_per_transaction": 18.12,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "4d6a41cc-8153-416c-bf4d-7b62951fcc88",
+    "date": "2025-03-31",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 702,
+    "transaction_count": 6,
+    "spend_per_transaction": 117,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "b57e8912-201a-455c-8ccf-8d8ba6e9704e",
+    "date": "2025-03-31",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 0,
+    "transaction_count": 0,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "4ff7c2de-ceb0-4ae2-80a6-8d193c93b45b",
+    "date": "2025-03-31",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 2998,
+    "transaction_count": 147,
+    "spend_per_transaction": 20.39,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "446f159f-59a2-4bf9-9964-139f3fb48212",
+    "date": "2025-04-07",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 1703,
+    "transaction_count": 123,
+    "spend_per_transaction": 13.85,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "72389858-8326-472e-b789-422a3534a757",
+    "date": "2025-04-07",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 25288,
+    "transaction_count": 323,
+    "spend_per_transaction": 78.29,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "9dd9e083-3fb7-46a8-b07d-e738ac605fa4",
+    "date": "2025-04-07",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 2122,
+    "transaction_count": 15,
+    "spend_per_transaction": 141.47,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "4414ee0f-5f2e-42e8-9ef2-95f954fead80",
+    "date": "2025-04-07",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 10663,
+    "transaction_count": 45,
+    "spend_per_transaction": 236.96,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "14370dd3-9560-45b8-9ce8-a5dec1eb0014",
+    "date": "2025-04-07",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 18922,
+    "transaction_count": 1045,
+    "spend_per_transaction": 18.11,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "c160cf0e-c3a5-47bd-976a-8c6b8eb1991b",
+    "date": "2025-04-07",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 532,
+    "transaction_count": 5,
+    "spend_per_transaction": 106.4,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "7a71a3cf-5e5e-4a62-a695-9c116ccf5184",
+    "date": "2025-04-07",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 0,
+    "transaction_count": 0,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "8d59c341-bd71-41aa-986f-b78937e1a9ea",
+    "date": "2025-04-07",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 1869,
+    "transaction_count": 124,
+    "spend_per_transaction": 15.07,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "ad60e600-f21f-4d0d-96ba-f7014de888d1",
+    "date": "2025-04-14",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 18231,
+    "transaction_count": 331,
+    "spend_per_transaction": 55.08,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "6a39d021-0580-4778-9730-4e30940f2dd6",
+    "date": "2025-04-14",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 38785,
+    "transaction_count": 490,
+    "spend_per_transaction": 79.15,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "20d017fa-c55c-4243-aa3e-6c0fe9ceed5d",
+    "date": "2025-04-14",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 5825,
+    "transaction_count": 22,
+    "spend_per_transaction": 264.77,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "c18351b6-62c4-4071-9cbb-bc445de5d017",
+    "date": "2025-04-14",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 4576,
+    "transaction_count": 45,
+    "spend_per_transaction": 101.69,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "c5440b65-ace7-4236-b47c-7055cae2869f",
+    "date": "2025-04-14",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 18784,
+    "transaction_count": 972,
+    "spend_per_transaction": 19.33,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "49509a69-ddb5-40ba-91a8-a741bf11c828",
+    "date": "2025-04-14",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 925,
+    "transaction_count": 8,
+    "spend_per_transaction": 115.63,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "d61fe203-88c8-4de6-84bd-52abebb354b6",
+    "date": "2025-04-14",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 215,
+    "transaction_count": 1,
+    "spend_per_transaction": 215,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "fa421faa-526d-4d02-b5b4-c070eb8bcd3a",
+    "date": "2025-04-14",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 4629,
+    "transaction_count": 248,
+    "spend_per_transaction": 18.67,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "c5c0fa38-d053-4fce-bbb0-15fd668a5547",
+    "date": "2025-04-21",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 6206,
+    "transaction_count": 237,
+    "spend_per_transaction": 26.19,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "97f7cf77-76be-491b-a027-ae2ef2eda5c0",
+    "date": "2025-04-21",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 44103,
+    "transaction_count": 582,
+    "spend_per_transaction": 75.78,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "cfee2b14-3981-425a-a9d9-7962047cc6f9",
+    "date": "2025-04-21",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 6219,
+    "transaction_count": 10,
+    "spend_per_transaction": 621.9,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "84594ae1-c53e-419b-935b-aa5a29ff22aa",
+    "date": "2025-04-21",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 12822,
+    "transaction_count": 60,
+    "spend_per_transaction": 213.7,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "0cf71ef4-4407-456e-94b6-72c65effa9ec",
+    "date": "2025-04-21",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 15845,
+    "transaction_count": 862,
+    "spend_per_transaction": 18.38,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "237eda4a-87d6-4040-8373-de8f91f4a3cb",
+    "date": "2025-04-21",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 960,
+    "transaction_count": 8,
+    "spend_per_transaction": 120,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "bda0bd0a-073f-4b6a-8d0c-880133171efe",
+    "date": "2025-04-21",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 231,
+    "transaction_count": 1,
+    "spend_per_transaction": 231,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "1cf49520-8fde-48c5-95e5-704009c7d23e",
+    "date": "2025-04-21",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 3216,
+    "transaction_count": 168,
+    "spend_per_transaction": 19.14,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "bb5c9d2d-48fe-41b4-943b-b4617a2d45e4",
+    "date": "2025-04-28",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 4221,
+    "transaction_count": 197,
+    "spend_per_transaction": 21.43,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "8cf8a7d0-40d5-4d78-af7b-bb1baa15fa49",
+    "date": "2025-04-28",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 34400,
+    "transaction_count": 478,
+    "spend_per_transaction": 71.97,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "e19850be-1503-45ed-b595-49dbe08da616",
+    "date": "2025-04-28",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 4719,
+    "transaction_count": 9,
+    "spend_per_transaction": 524.33,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "80701648-b6bb-40e0-8ee5-da93fda5f166",
+    "date": "2025-04-28",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 5103,
+    "transaction_count": 54,
+    "spend_per_transaction": 94.5,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "639936fc-a695-4f82-8589-397563b646b2",
+    "date": "2025-04-28",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 18555,
+    "transaction_count": 1003,
+    "spend_per_transaction": 18.5,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "253e9fc1-2c19-4215-b74b-6abe23799853",
+    "date": "2025-04-28",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 610,
+    "transaction_count": 5,
+    "spend_per_transaction": 122,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "52dd9596-c189-4c04-b14f-666724409797",
+    "date": "2025-04-28",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 0,
+    "transaction_count": 0,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "de5514ce-0f1b-401e-8779-c471046014fc",
+    "date": "2025-04-28",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 3573,
+    "transaction_count": 167,
+    "spend_per_transaction": 21.4,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "965511eb-c470-403a-a73a-14dd68fe0e80",
+    "date": "2025-05-05",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 5853,
+    "transaction_count": 228,
+    "spend_per_transaction": 25.67,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "228433c1-9ebd-4ab7-9e99-5cc5df797605",
+    "date": "2025-05-05",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 34994,
+    "transaction_count": 465,
+    "spend_per_transaction": 75.26,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "c202bf5c-7db8-449b-962d-193e0d6c6e05",
+    "date": "2025-05-05",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 6598,
+    "transaction_count": 1,
+    "spend_per_transaction": 6598,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "a64d1d21-a418-4104-8781-9707b13dd119",
+    "date": "2025-05-05",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 5766,
+    "transaction_count": 68,
+    "spend_per_transaction": 84.79,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "5807654d-9c82-49d5-80ba-b6ae3336057b",
+    "date": "2025-05-05",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 18340,
+    "transaction_count": 1084,
+    "spend_per_transaction": 16.92,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "88c678e0-e6f2-479c-9bd3-d60ea4f3564f",
+    "date": "2025-05-05",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 1022,
+    "transaction_count": 9,
+    "spend_per_transaction": 113.56,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "6790c772-43b7-457c-ae1d-24868f0261da",
+    "date": "2025-05-05",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 0,
+    "transaction_count": 0,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "28d683ea-e261-46f4-8299-a5056d39bd10",
+    "date": "2025-05-05",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 3366,
+    "transaction_count": 167,
+    "spend_per_transaction": 20.16,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "93e7fffc-cd72-4cb7-adca-71f70205f9bf",
+    "date": "2025-05-12",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 6382,
+    "transaction_count": 201,
+    "spend_per_transaction": 31.75,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "01cd0778-9f0a-4a98-bda0-19203468680d",
+    "date": "2025-05-12",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 37602,
+    "transaction_count": 487,
+    "spend_per_transaction": 77.21,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "c08c8b2d-ce84-447f-9405-0811e0e20c64",
+    "date": "2025-05-12",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 5379,
+    "transaction_count": 3,
+    "spend_per_transaction": 1793,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "264f716e-886e-44e1-a967-543f78045519",
+    "date": "2025-05-12",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 4251,
+    "transaction_count": 50,
+    "spend_per_transaction": 85.02,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "52636c23-2864-462d-896b-ebdda8fa2c50",
+    "date": "2025-05-12",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 19988,
+    "transaction_count": 1032,
+    "spend_per_transaction": 19.37,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "6db4ecfe-44ff-40e2-981f-698bc7f26326",
+    "date": "2025-05-12",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 190,
+    "transaction_count": 2,
+    "spend_per_transaction": 95,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "9419f218-98bb-4340-924c-46f47e22fc93",
+    "date": "2025-05-12",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 0,
+    "transaction_count": 0,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "d8fef57f-9efd-4cc9-b4d2-1c94b1c0ab04",
+    "date": "2025-05-12",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 3229,
+    "transaction_count": 152,
+    "spend_per_transaction": 21.24,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "21c4b1b1-2161-44e0-a1f3-3a5bf1eed8f5",
+    "date": "2025-05-19",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 8845,
+    "transaction_count": 295,
+    "spend_per_transaction": 29.98,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "fd873858-5cf1-496f-992f-b62ce8381a92",
+    "date": "2025-05-19",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 35495,
+    "transaction_count": 436,
+    "spend_per_transaction": 81.41,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "daf1c94e-c418-45df-84d5-2a5efa0e1958",
+    "date": "2025-05-19",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 3361,
+    "transaction_count": 61,
+    "spend_per_transaction": 55.1,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "46bb19bf-d6fc-403e-8a69-9eac8a8fac91",
+    "date": "2025-05-19",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 7647,
+    "transaction_count": 56,
+    "spend_per_transaction": 136.55,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "2530bfb2-2e12-4689-b3e1-8a72ba460c7a",
+    "date": "2025-05-19",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 19676,
+    "transaction_count": 1106,
+    "spend_per_transaction": 17.79,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "ab4b48a7-b037-47b6-a789-41eccee16007",
+    "date": "2025-05-19",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 1016,
+    "transaction_count": 9,
+    "spend_per_transaction": 112.89,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "bb922eb4-3494-4abe-a07f-0e69a67b3121",
+    "date": "2025-05-19",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 0,
+    "transaction_count": 0,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "c0182eaa-4d22-4774-bf2c-a29b8e1a2973",
+    "date": "2025-05-19",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 4049,
+    "transaction_count": 172,
+    "spend_per_transaction": 23.54,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "48ef78a8-31b2-4096-abe9-6e24a106e805",
+    "date": "2025-05-26",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 5263,
+    "transaction_count": 234,
+    "spend_per_transaction": 22.49,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "d0b0b2a0-0d93-4e89-8931-aa35af0213bd",
+    "date": "2025-05-26",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 44217,
+    "transaction_count": 535,
+    "spend_per_transaction": 82.65,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "2f10a163-4fc1-48e8-b648-4f8c3ad906e0",
+    "date": "2025-05-26",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 5502,
+    "transaction_count": 67,
+    "spend_per_transaction": 82.12,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "0931cc07-548e-42e0-b16c-7000331073aa",
+    "date": "2025-05-26",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 8443,
+    "transaction_count": 60,
+    "spend_per_transaction": 140.72,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "b613e95e-d553-4113-a980-0695f1464de6",
+    "date": "2025-05-26",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 21499,
+    "transaction_count": 1100,
+    "spend_per_transaction": 19.54,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "c6614133-8cbe-4c00-bcc9-320a4540a342",
+    "date": "2025-05-26",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 707,
+    "transaction_count": 6,
+    "spend_per_transaction": 117.83,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "e1ad0615-8c79-4bf5-8d27-bfecf494675d",
+    "date": "2025-05-26",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 1590,
+    "transaction_count": 10,
+    "spend_per_transaction": 159,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "51c87291-3897-4197-bcd7-38845e3072b3",
+    "date": "2025-05-26",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 5265,
+    "transaction_count": 193,
+    "spend_per_transaction": 27.28,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "c668da8b-1ba1-44fd-8ed3-6b47694a382d",
+    "date": "2025-06-02",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 5459,
+    "transaction_count": 194,
+    "spend_per_transaction": 28.14,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "8eb7bf58-d7ca-4991-acbf-cfc26f21eeb4",
+    "date": "2025-06-02",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 59381,
+    "transaction_count": 595,
+    "spend_per_transaction": 99.8,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "8202a484-bdb0-4e35-b9c4-8f41e1848c47",
+    "date": "2025-06-02",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 4454,
+    "transaction_count": 48,
+    "spend_per_transaction": 92.79,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "cd187aa2-2e49-4c5c-bd2c-1a2c38523806",
+    "date": "2025-06-02",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 9127,
+    "transaction_count": 68,
+    "spend_per_transaction": 134.22,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "2d29aefd-4901-40e9-9323-67a92c8b9552",
+    "date": "2025-06-02",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 23572,
+    "transaction_count": 1163,
+    "spend_per_transaction": 20.27,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "7961ebee-8f32-41cb-9221-e30b997c1a26",
+    "date": "2025-06-02",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 483,
+    "transaction_count": 4,
+    "spend_per_transaction": 120.75,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "92b1a049-b553-42a5-b54d-46ad7ee2ef09",
+    "date": "2025-06-02",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 3382,
+    "transaction_count": 20,
+    "spend_per_transaction": 169.1,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "876d2c45-40e5-424f-8c6d-040dc010deb3",
+    "date": "2025-06-02",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 4231,
+    "transaction_count": 179,
+    "spend_per_transaction": 23.64,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "5c1db6e2-927f-4b76-aba5-2cd3e91d397b",
+    "date": "2025-06-09",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 4903,
+    "transaction_count": 199,
+    "spend_per_transaction": 24.64,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "af329a7b-43cb-4c2b-8aa8-117de83e9ebc",
+    "date": "2025-06-09",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 55854,
+    "transaction_count": 608,
+    "spend_per_transaction": 91.87,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "4c26d3f7-1253-4e58-8151-c053b32a943a",
+    "date": "2025-06-09",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 8476,
+    "transaction_count": 63,
+    "spend_per_transaction": 134.54,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "92593223-3ff1-436f-8dbc-558a769c5aaf",
+    "date": "2025-06-09",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 11741,
+    "transaction_count": 81,
+    "spend_per_transaction": 144.95,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "a889f2a4-31ec-495c-86f0-37ddef9d32cd",
+    "date": "2025-06-09",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 22108,
+    "transaction_count": 1107,
+    "spend_per_transaction": 19.97,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "d8e78d22-889b-47fd-a5c9-a0efe2227aa1",
+    "date": "2025-06-09",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 941,
+    "transaction_count": 8,
+    "spend_per_transaction": 117.63,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "ecc29008-05ba-4dc3-b2d1-5bb4eb886007",
+    "date": "2025-06-09",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 698,
+    "transaction_count": 5,
+    "spend_per_transaction": 139.6,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "c78540d6-cdf3-47cb-94e2-93ede1e8c39a",
+    "date": "2025-06-09",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 6155,
+    "transaction_count": 241,
+    "spend_per_transaction": 25.54,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "36c7db48-2725-4cf7-bc0b-5974cdcb7c36",
+    "date": "2025-06-16",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 5650,
+    "transaction_count": 241,
+    "spend_per_transaction": 23.44,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "1ffffdab-a03d-4d79-8f42-6fb4d7f3b785",
+    "date": "2025-06-16",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 59989,
+    "transaction_count": 615,
+    "spend_per_transaction": 97.54,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "8484d8fd-b90c-4d13-a3ea-7de7b3f8d437",
+    "date": "2025-06-16",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 5631,
+    "transaction_count": 62,
+    "spend_per_transaction": 90.82,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "582a09b3-9232-4fc3-ab80-c09b077a3eca",
+    "date": "2025-06-16",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 10138,
+    "transaction_count": 80,
+    "spend_per_transaction": 126.73,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "581c4719-e244-4772-8c06-39e477b3143b",
+    "date": "2025-06-16",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 22491,
+    "transaction_count": 1115,
+    "spend_per_transaction": 20.17,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "81809f22-3a1d-49f5-ab30-97b5d7efae59",
+    "date": "2025-06-16",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 528,
+    "transaction_count": 5,
+    "spend_per_transaction": 105.6,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "336f1fb9-e255-49e7-a656-a00278f98dbb",
+    "date": "2025-06-16",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 0,
+    "transaction_count": 0,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "246dcdc3-675c-4fa8-a2f0-fbd1e5db440c",
+    "date": "2025-06-16",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 5924,
+    "transaction_count": 273,
+    "spend_per_transaction": 21.7,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "bf756efe-8e29-46e0-839c-5d8ddc088a3b",
+    "date": "2025-06-23",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 7894,
+    "transaction_count": 124,
+    "spend_per_transaction": 63.66,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "3cf45f1f-5af4-45d8-aa31-649af4e28ba1",
+    "date": "2025-06-23",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 79947,
+    "transaction_count": 704,
+    "spend_per_transaction": 113.56,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "a9dea810-03b6-454e-aebc-bac9c22469b7",
+    "date": "2025-06-23",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 5767,
+    "transaction_count": 94,
+    "spend_per_transaction": 61.35,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "c80d7510-dd2e-4d1e-9626-6e64c2c72feb",
+    "date": "2025-06-23",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 10210,
+    "transaction_count": 79,
+    "spend_per_transaction": 129.24,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "429fadd7-447e-4c40-803d-7c9733a0fb6e",
+    "date": "2025-06-23",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 23751,
+    "transaction_count": 1069,
+    "spend_per_transaction": 22.22,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "f5ce2a20-12c1-4c08-9042-4d4dee397b90",
+    "date": "2025-06-23",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 419,
+    "transaction_count": 4,
+    "spend_per_transaction": 104.75,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "29c37159-9c4c-4a88-9154-3da40217375d",
+    "date": "2025-06-23",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 14863,
+    "transaction_count": 90,
+    "spend_per_transaction": 165.14,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "646750a1-8a63-45e4-a346-7fea32bddf5e",
+    "date": "2025-06-23",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 6918,
+    "transaction_count": 260,
+    "spend_per_transaction": 26.61,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "70d1b910-0123-47e7-b225-1d56fc244008",
+    "date": "2025-06-30",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 12657,
+    "transaction_count": 374,
+    "spend_per_transaction": 33.84,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "7d8b7351-f74d-4ef9-8a23-04c35e10523d",
+    "date": "2025-06-30",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 63928,
+    "transaction_count": 755,
+    "spend_per_transaction": 84.67,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "4e75a6af-7b39-49e5-babb-1e30b352108c",
+    "date": "2025-06-30",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 8814,
+    "transaction_count": 79,
+    "spend_per_transaction": 111.57,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "20d8e848-dda6-4ea9-954f-f7589e00623e",
+    "date": "2025-06-30",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 11902,
+    "transaction_count": 78,
+    "spend_per_transaction": 152.59,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "8cb8be64-e185-4940-87b5-528e1c9385b3",
+    "date": "2025-06-30",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 22497,
+    "transaction_count": 961,
+    "spend_per_transaction": 23.41,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "d0ea39ab-9069-4e60-a5cb-614e2caef767",
+    "date": "2025-06-30",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 1098,
+    "transaction_count": 10,
+    "spend_per_transaction": 109.8,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "e7b86c38-37ee-4160-b6da-b7d9e5cc972b",
+    "date": "2025-06-30",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 1970,
+    "transaction_count": 12,
+    "spend_per_transaction": 164.17,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "439d892a-9417-4315-9008-04a36b523801",
+    "date": "2025-06-30",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 7171,
+    "transaction_count": 263,
+    "spend_per_transaction": 27.27,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "75e81e6c-6d2e-4918-8a79-a7cea2bdd12a",
+    "date": "2025-07-07",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 8590,
+    "transaction_count": 383,
+    "spend_per_transaction": 22.43,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "44e3ac8a-5d56-4682-8a57-2e9d1b3bda54",
+    "date": "2025-07-07",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 65483,
+    "transaction_count": 694,
+    "spend_per_transaction": 94.36,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "7d7a8fa5-d756-43a2-a8b9-d285a2ad3748",
+    "date": "2025-07-07",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 7469,
+    "transaction_count": 80,
+    "spend_per_transaction": 93.36,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "057dfd94-8c9d-46d2-8fa4-2331b14ff891",
+    "date": "2025-07-07",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 13273,
+    "transaction_count": 83,
+    "spend_per_transaction": 159.92,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "b563a7e4-2dba-45cc-b702-3f8e86ce0f1a",
+    "date": "2025-07-07",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 24110,
+    "transaction_count": 1026,
+    "spend_per_transaction": 23.5,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "530b62ff-46d9-44a7-9941-242e4a83e05f",
+    "date": "2025-07-07",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 687,
+    "transaction_count": 6,
+    "spend_per_transaction": 114.5,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "c071b25f-7cfb-4dfa-95a2-142c5731d633",
+    "date": "2025-07-07",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 0,
+    "transaction_count": 0,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "aba7a8fb-70bc-4072-9740-b78c401732b9",
+    "date": "2025-07-07",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 6610,
+    "transaction_count": 271,
+    "spend_per_transaction": 24.39,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "ce69f2bb-6a06-4aa1-bb31-5f0a4240bfb0",
+    "date": "2025-07-14",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 8136,
+    "transaction_count": 566,
+    "spend_per_transaction": 14.37,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "0686aed5-c58b-4c23-ab3d-37e42f43fc9c",
+    "date": "2025-07-14",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 67675,
+    "transaction_count": 799,
+    "spend_per_transaction": 84.7,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "611a459f-6fc4-4afa-8c39-7eabd9b39912",
+    "date": "2025-07-14",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 9019,
+    "transaction_count": 95,
+    "spend_per_transaction": 94.94,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "ba399a51-46a8-4941-9041-5c93a9db596e",
+    "date": "2025-07-14",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 13325,
+    "transaction_count": 82,
+    "spend_per_transaction": 162.5,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "0996f01a-f7e5-4ab8-ab78-086769e24d14",
+    "date": "2025-07-14",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 20780,
+    "transaction_count": 960,
+    "spend_per_transaction": 21.65,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "293283a2-7013-4fe1-87a5-6ce5740a9255",
+    "date": "2025-07-14",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 392,
+    "transaction_count": 3,
+    "spend_per_transaction": 130.67,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "ddb021d8-2b70-4029-b659-3020bb8e5d72",
+    "date": "2025-07-14",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 0,
+    "transaction_count": 0,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "96c68c6b-4ff2-454e-bb81-18e34e122f3d",
+    "date": "2025-07-14",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 7525,
+    "transaction_count": 299,
+    "spend_per_transaction": 25.17,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "73163134-c629-4ff3-b9b2-059570134383",
+    "date": "2025-07-21",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 11006,
+    "transaction_count": 570,
+    "spend_per_transaction": 19.31,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "9ec0a0a5-f84a-4dd2-b392-4da2f71922f5",
+    "date": "2025-07-21",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 61255,
+    "transaction_count": 749,
+    "spend_per_transaction": 81.78,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "9078ff62-3c6b-4a13-8e15-1868746ed774",
+    "date": "2025-07-21",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 7354,
+    "transaction_count": 72,
+    "spend_per_transaction": 102.14,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "7e60a527-79b1-4ba2-9bb5-0e502cdbfc1a",
+    "date": "2025-07-21",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 14168,
+    "transaction_count": 71,
+    "spend_per_transaction": 199.55,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "834dbf42-3ded-43fa-9ff1-3a025fff6cd7",
+    "date": "2025-07-21",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 23987,
+    "transaction_count": 832,
+    "spend_per_transaction": 28.83,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "720160a1-bab1-44d9-b175-1910a4e4cc9f",
+    "date": "2025-07-21",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 237,
+    "transaction_count": 2,
+    "spend_per_transaction": 118.5,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "7602ca14-3104-4e35-ab1c-21b0a695d0c9",
+    "date": "2025-07-21",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 0,
+    "transaction_count": 0,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "0639cd60-8e6c-4bea-8237-a9945314e4ae",
+    "date": "2025-07-21",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 7475,
+    "transaction_count": 248,
+    "spend_per_transaction": 30.14,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "03e827ca-aa87-4f5f-b493-c565ae60e474",
+    "date": "2025-07-28",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 12898,
+    "transaction_count": 663,
+    "spend_per_transaction": 19.45,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "79f219fd-0382-4c47-b0a9-dae2424b955b",
+    "date": "2025-07-28",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 68808,
+    "transaction_count": 755,
+    "spend_per_transaction": 91.14,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "054d1220-0b64-415f-90c5-ee628b02e4ef",
+    "date": "2025-07-28",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 10181,
+    "transaction_count": 97,
+    "spend_per_transaction": 104.96,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "8a6e5a2f-6f8f-438d-a6de-eb7e647199ac",
+    "date": "2025-07-28",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 12790,
+    "transaction_count": 78,
+    "spend_per_transaction": 163.97,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "3ac9e7ad-11a9-4202-b076-b66ee5dbc60c",
+    "date": "2025-07-28",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 21579,
+    "transaction_count": 805,
+    "spend_per_transaction": 26.81,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "705e2cb2-caa7-4440-be4b-c1b4c47f0724",
+    "date": "2025-07-28",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 150,
+    "transaction_count": 1,
+    "spend_per_transaction": 150,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "c055f5d4-46f3-4002-874a-b6b3cc9d1bb7",
+    "date": "2025-07-28",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 0,
+    "transaction_count": 0,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "26141626-fd89-4d65-941c-dba35f88947f",
+    "date": "2025-07-28",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 7509,
+    "transaction_count": 277,
+    "spend_per_transaction": 27.11,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "7f1c4db3-3078-4725-8704-700c5dd73599",
+    "date": "2025-08-04",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 15891,
+    "transaction_count": 304,
+    "spend_per_transaction": 52.27,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "64e65b50-ef1d-4c6c-bcfe-c59430cf9982",
+    "date": "2025-08-04",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 86717,
+    "transaction_count": 693,
+    "spend_per_transaction": 125.13,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "f1cd2a1a-969c-4ac9-bac2-9c7fc2e2edfe",
+    "date": "2025-08-04",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 8456,
+    "transaction_count": 75,
+    "spend_per_transaction": 112.75,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "e9c46d05-9a94-4e26-a234-f8e6e06bd4a5",
+    "date": "2025-08-04",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 11697,
+    "transaction_count": 69,
+    "spend_per_transaction": 169.52,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "dcff2ce0-63ad-48d4-8965-adbc2fc6daa3",
+    "date": "2025-08-04",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 17456,
+    "transaction_count": 798,
+    "spend_per_transaction": 21.87,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "30dad06c-5a80-43b1-ba30-7d5aca2cc701",
+    "date": "2025-08-04",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 242,
+    "transaction_count": 2,
+    "spend_per_transaction": 121,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "71789e9a-edea-48d4-aa9e-fa977a51efc3",
+    "date": "2025-08-04",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 0,
+    "transaction_count": 0,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "a02b3f18-c3a3-43ca-b487-32ecfcb6bd4a",
+    "date": "2025-08-04",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 6546,
+    "transaction_count": 267,
+    "spend_per_transaction": 24.52,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "11b6a8ed-2bb9-4de1-85fa-c699e9f54378",
+    "date": "2025-08-11",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 10706,
+    "transaction_count": 215,
+    "spend_per_transaction": 49.8,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "48582d26-6d1b-4c5c-a33a-1197272235a1",
+    "date": "2025-08-11",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 74107,
+    "transaction_count": 560,
+    "spend_per_transaction": 132.33,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "86782dad-9b2f-43d6-b8e0-f8c7e531fd98",
+    "date": "2025-08-11",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 6675,
+    "transaction_count": 58,
+    "spend_per_transaction": 115.09,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "f4381233-0f2b-4cb3-9efc-1c83a577b7dc",
+    "date": "2025-08-11",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 12807,
+    "transaction_count": 62,
+    "spend_per_transaction": 206.56,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "16d1d53b-93be-4637-b85d-0ae3b885576d",
+    "date": "2025-08-11",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 16319,
+    "transaction_count": 1106,
+    "spend_per_transaction": 14.75,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "2d3d35aa-7fbf-42f9-aa8d-d2d86bf9fbf0",
+    "date": "2025-08-11",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 507,
+    "transaction_count": 4,
+    "spend_per_transaction": 126.75,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "b970fb55-7c00-46fa-ad45-49482b099628",
+    "date": "2025-08-11",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 0,
+    "transaction_count": 0,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "923978d8-270b-49cc-b198-8f1fe5295355",
+    "date": "2025-08-11",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 6931,
+    "transaction_count": 246,
+    "spend_per_transaction": 28.17,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "1c2e1de0-3d9e-4031-b942-b783ea95a84b",
+    "date": "2025-08-18",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 13609,
+    "transaction_count": 396,
+    "spend_per_transaction": 34.37,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "627cdecb-8da1-49d1-ac57-22083e5fa1ab",
+    "date": "2025-08-18",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 69004,
+    "transaction_count": 622,
+    "spend_per_transaction": 110.94,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "3bed2564-be4a-4280-9a4e-2f3fb1dd9740",
+    "date": "2025-08-18",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 12765,
+    "transaction_count": 72,
+    "spend_per_transaction": 177.29,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "906be8ab-7b26-4259-bbeb-999ab9bca11d",
+    "date": "2025-08-18",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 10310,
+    "transaction_count": 69,
+    "spend_per_transaction": 149.42,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "da0134fc-16e1-4844-a923-ecea6c413950",
+    "date": "2025-08-18",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 16276,
+    "transaction_count": 1127,
+    "spend_per_transaction": 14.44,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "2cb95540-ba0d-477e-84a5-67c5e14ed1d4",
+    "date": "2025-08-18",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 660,
+    "transaction_count": 5,
+    "spend_per_transaction": 132,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "03023eba-74f9-4aa6-b545-5b1c1c87b97f",
+    "date": "2025-08-18",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 0,
+    "transaction_count": 0,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "397185e7-d290-4808-a946-613227f0782d",
+    "date": "2025-08-18",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 6415,
+    "transaction_count": 265,
+    "spend_per_transaction": 24.21,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "7bf608e4-ce6f-4e7e-8af7-f91ce5984765",
+    "date": "2025-08-25",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 9019,
+    "transaction_count": 135,
+    "spend_per_transaction": 66.81,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "ab3bd75f-40dd-41cb-930d-724c9ac53fb5",
+    "date": "2025-08-25",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 58188,
+    "transaction_count": 525,
+    "spend_per_transaction": 110.83,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "095a2d9f-2aef-43fd-a672-2b4e1d35a904",
+    "date": "2025-08-25",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 6458,
+    "transaction_count": 48,
+    "spend_per_transaction": 134.54,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "84da3ba7-aa3d-4a24-a229-01fe194744a2",
+    "date": "2025-08-25",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 8139,
+    "transaction_count": 68,
+    "spend_per_transaction": 119.69,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "66344840-3654-4021-8bcc-3b236e5ea723",
+    "date": "2025-08-25",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 18282,
+    "transaction_count": 1107,
+    "spend_per_transaction": 16.51,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "5b17c413-7d84-42fc-8a45-57f0bb22f7fd",
+    "date": "2025-08-25",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 136,
+    "transaction_count": 1,
+    "spend_per_transaction": 136,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "dd3fb3e7-ec84-446a-b82c-1c1905e70b52",
+    "date": "2025-08-25",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 0,
+    "transaction_count": 0,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "6d0c05f1-559e-4e89-be8c-fba827ac1fc3",
+    "date": "2025-08-25",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 6221,
+    "transaction_count": 180,
+    "spend_per_transaction": 34.56,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "8c20c868-e098-4f94-b964-188b6d774aed",
+    "date": "2025-09-01",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 8390,
+    "transaction_count": 75,
+    "spend_per_transaction": 111.87,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "2264b4f2-ab22-4d27-8996-235305ba93a7",
+    "date": "2025-09-01",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 61905,
+    "transaction_count": 464,
+    "spend_per_transaction": 133.42,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "3bd9d436-7da2-4647-b7df-6c5e8b620c6d",
+    "date": "2025-09-01",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 3522,
+    "transaction_count": 12,
+    "spend_per_transaction": 293.5,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "5722d624-0294-464a-a7e4-4f6776e2e52e",
+    "date": "2025-09-01",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 7271,
+    "transaction_count": 53,
+    "spend_per_transaction": 137.19,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "5bd2f2f1-cb28-4351-bd3f-797b563cfb7e",
+    "date": "2025-09-01",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 17293,
+    "transaction_count": 1078,
+    "spend_per_transaction": 16.04,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "b288ed5e-d73b-431c-9cab-3e89538889a2",
+    "date": "2025-09-01",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 258,
+    "transaction_count": 2,
+    "spend_per_transaction": 129,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "4e18bed1-bb1a-49d6-b5a7-aa392de24cf0",
+    "date": "2025-09-01",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 0,
+    "transaction_count": 0,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "74b30c6a-f239-496f-8923-9826a0071b75",
+    "date": "2025-09-01",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 5996,
+    "transaction_count": 113,
+    "spend_per_transaction": 53.06,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "7857c957-5618-48bf-afea-1230a324a2b6",
+    "date": "2025-09-08",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 6988,
+    "transaction_count": 190,
+    "spend_per_transaction": 36.78,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "e182aed6-d8ca-4973-a3a4-546dc80536d7",
+    "date": "2025-09-08",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 48846,
+    "transaction_count": 489,
+    "spend_per_transaction": 99.89,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "e4ac0971-203f-46bc-bd3b-695648b791d7",
+    "date": "2025-09-08",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 5437,
+    "transaction_count": 42,
+    "spend_per_transaction": 129.45,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "82e33f4a-1a4c-44af-9c6e-4e7ce330e2cf",
+    "date": "2025-09-08",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 7891,
+    "transaction_count": 56,
+    "spend_per_transaction": 140.91,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "87ac9a22-8533-4636-a7e7-958e487c088f",
+    "date": "2025-09-08",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 19902,
+    "transaction_count": 1096,
+    "spend_per_transaction": 18.16,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "f176dcb1-7933-45c0-a674-e7b2b6ea893b",
+    "date": "2025-09-08",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 468,
+    "transaction_count": 4,
+    "spend_per_transaction": 117,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "3218afca-2f39-46fd-b79b-cc6ff2807fb2",
+    "date": "2025-09-08",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 0,
+    "transaction_count": 0,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "d89cd3a4-a4bf-41d8-a542-f6df71ed7202",
+    "date": "2025-09-08",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 5781,
+    "transaction_count": 182,
+    "spend_per_transaction": 31.76,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "ca8fd5da-8eb9-42b8-8cbc-766ecd87f8c9",
+    "date": "2025-09-15",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 12351,
+    "transaction_count": 179,
+    "spend_per_transaction": 69,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "cb2d174b-51e4-4dce-bb9c-f7475fc8fa82",
+    "date": "2025-09-15",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 50337,
+    "transaction_count": 324,
+    "spend_per_transaction": 155.36,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "91d55656-e702-43f3-ae43-fc55b2b2598e",
+    "date": "2025-09-15",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 3866,
+    "transaction_count": 26,
+    "spend_per_transaction": 148.69,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "d3c6ffad-6d43-4f9f-81bb-77fb16f5311c",
+    "date": "2025-09-15",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 9674,
+    "transaction_count": 43,
+    "spend_per_transaction": 224.98,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "fc58e4f4-e8f1-4415-b0d5-1a61e3a735d8",
+    "date": "2025-09-15",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 21360,
+    "transaction_count": 1111,
+    "spend_per_transaction": 19.23,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "ad265016-82f8-4412-a946-52f4891312ee",
+    "date": "2025-09-15",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 364,
+    "transaction_count": 3,
+    "spend_per_transaction": 121.33,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "53bb02cf-35a9-4603-a06d-3ae34bf62b70",
+    "date": "2025-09-15",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 0,
+    "transaction_count": 0,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "0cd0ea46-ba66-4c9f-a283-296f8f4ab24e",
+    "date": "2025-09-15",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 5567,
+    "transaction_count": 134,
+    "spend_per_transaction": 41.54,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "6252060e-ca39-4c12-8102-41da727c5745",
+    "date": "2025-09-22",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 8260,
+    "transaction_count": 229,
+    "spend_per_transaction": 36.07,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "73a7ad31-8a35-4e9d-a60c-67e5ca01feef",
+    "date": "2025-09-22",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 75399,
+    "transaction_count": 254,
+    "spend_per_transaction": 296.85,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "fade3b6b-0df6-47d7-9161-d9c55a3ecd5c",
+    "date": "2025-09-22",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 4178,
+    "transaction_count": 28,
+    "spend_per_transaction": 149.21,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "3bef830d-1f37-40b9-8281-c1be11a1cbef",
+    "date": "2025-09-22",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 5557,
+    "transaction_count": 31,
+    "spend_per_transaction": 179.26,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "a3d3b389-9ac3-47fb-80cf-45ba0807d2a3",
+    "date": "2025-09-22",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 20850,
+    "transaction_count": 1108,
+    "spend_per_transaction": 18.82,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "1cf41014-cc24-453d-bb34-aefda6bded86",
+    "date": "2025-09-22",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 164,
+    "transaction_count": 1,
+    "spend_per_transaction": 164,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "0807a84e-c3b8-4753-bf44-b2a30c6cbc39",
+    "date": "2025-09-22",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 1320,
+    "transaction_count": 8,
+    "spend_per_transaction": 165,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "25817fbd-929f-47e9-9bd7-71b7437b84a0",
+    "date": "2025-09-22",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 4214,
+    "transaction_count": 185,
+    "spend_per_transaction": 22.78,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "32452a62-45d9-421a-8d86-2bfc2f8b0b83",
+    "date": "2025-09-29",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 6479,
+    "transaction_count": 232,
+    "spend_per_transaction": 27.93,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "21747bf2-52fa-409e-8850-590a3abfd4a1",
+    "date": "2025-09-29",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 82252,
+    "transaction_count": 199,
+    "spend_per_transaction": 413.33,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "0c4b36f8-2fde-4d15-b596-4db562161061",
+    "date": "2025-09-29",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 2847,
+    "transaction_count": 24,
+    "spend_per_transaction": 118.63,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "f52540f6-413b-4415-a7af-9dbfbc77584c",
+    "date": "2025-09-29",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 6342,
+    "transaction_count": 28,
+    "spend_per_transaction": 226.5,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "40cf2523-fd5a-475f-acd1-2657c3bc0dd4",
+    "date": "2025-09-29",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 21934,
+    "transaction_count": 1030,
+    "spend_per_transaction": 21.3,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "378db020-e2cb-4c2f-aa27-28c634329555",
+    "date": "2025-09-29",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 61,
+    "transaction_count": 0,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "d2f6572e-01db-4c84-bc1f-fde04981bf3f",
+    "date": "2025-09-29",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 0,
+    "transaction_count": 0,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "62c16529-62d9-4e44-9e5c-2c646ef99570",
+    "date": "2025-09-29",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 4610,
+    "transaction_count": 184,
+    "spend_per_transaction": 25.05,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "0f2699e2-7b2d-4275-81ca-e58184e5fc65",
+    "date": "2025-10-06",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 5091,
+    "transaction_count": 160,
+    "spend_per_transaction": 31.82,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "6460617f-c6ec-49c2-8dba-4a71252399ef",
+    "date": "2025-10-06",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 67934,
+    "transaction_count": 195,
+    "spend_per_transaction": 348.38,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "a2576aa1-6704-41d8-a3f0-b69ef5a6dfae",
+    "date": "2025-10-06",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 3303,
+    "transaction_count": 18,
+    "spend_per_transaction": 183.5,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "83532e7e-a78f-4b40-8044-89492220cc07",
+    "date": "2025-10-06",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 5471,
+    "transaction_count": 47,
+    "spend_per_transaction": 116.4,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "4af418ab-d5d6-4612-9194-9c7d37809723",
+    "date": "2025-10-06",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 21937,
+    "transaction_count": 1019,
+    "spend_per_transaction": 21.53,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "dd868c59-18b7-47af-a6f6-c6870b3da73c",
+    "date": "2025-10-06",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 360,
+    "transaction_count": 3,
+    "spend_per_transaction": 120,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "50958bcd-d7bf-4a89-af40-2cd21088389e",
+    "date": "2025-10-06",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 0,
+    "transaction_count": 0,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "97f936fe-48f0-46cb-96da-f2c6fa2c4d32",
+    "date": "2025-10-06",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 4198,
+    "transaction_count": 182,
+    "spend_per_transaction": 23.07,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "aa950e84-8809-4ac8-9a9d-69574648d400",
+    "date": "2025-10-13",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 10592,
+    "transaction_count": 100,
+    "spend_per_transaction": 105.92,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "e66e6e74-00da-44bd-a2d1-f30530d2dfa6",
+    "date": "2025-10-13",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 44760,
+    "transaction_count": 150,
+    "spend_per_transaction": 298.4,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "f658e1ba-4fdf-4bdb-88ed-fe3e70277f48",
+    "date": "2025-10-13",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 1441,
+    "transaction_count": 10,
+    "spend_per_transaction": 144.1,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "7efff126-c6ce-40c7-92e0-8c9e7fee3f9d",
+    "date": "2025-10-13",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 5600,
+    "transaction_count": 20,
+    "spend_per_transaction": 280,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "5ab2cc6b-c787-4583-b3fa-24d30fe47e06",
+    "date": "2025-10-13",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 20750,
+    "transaction_count": 900,
+    "spend_per_transaction": 23.06,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "30e34369-83f0-4dc0-98a5-014ea35bb3e4",
+    "date": "2025-10-13",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 74,
+    "transaction_count": 1,
+    "spend_per_transaction": 74,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "d8c0f5dc-e096-4143-a564-8110494cf711",
+    "date": "2025-10-13",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 130,
+    "transaction_count": 1,
+    "spend_per_transaction": 130,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "42c1261c-04be-4136-b226-377c6c685a1c",
+    "date": "2025-10-13",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 3637,
+    "transaction_count": 150,
+    "spend_per_transaction": 24.25,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "166630b2-cf0c-45e7-a3db-560ff1d8237b",
+    "date": "2025-10-20",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 9691,
+    "transaction_count": 90,
+    "spend_per_transaction": 107.68,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "5c48fc84-fe7f-4d5d-a18c-68d1e7a4f03c",
+    "date": "2025-10-20",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 27958,
+    "transaction_count": 140,
+    "spend_per_transaction": 199.7,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "2671fee4-6e81-4972-8f56-481cdf3fd026",
+    "date": "2025-10-20",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 3679,
+    "transaction_count": 5,
+    "spend_per_transaction": 735.8,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "982addb1-431a-47e5-a166-a550655cabcd",
+    "date": "2025-10-20",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 4405,
+    "transaction_count": 15,
+    "spend_per_transaction": 293.67,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "6d35eadc-b62f-42fb-9537-401502037931",
+    "date": "2025-10-20",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 19813,
+    "transaction_count": 800,
+    "spend_per_transaction": 24.77,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "f5438139-2f89-4d04-906f-cf09f793ee0a",
+    "date": "2025-10-20",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 209,
+    "transaction_count": 2,
+    "spend_per_transaction": 104.5,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "ccb7f00e-ebc0-4dfd-9062-9a589d6bf0a7",
+    "date": "2025-10-20",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 0,
+    "transaction_count": 0,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "8bec7b13-71fc-4bc8-9225-f9816b4a1607",
+    "date": "2025-10-20",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 4202,
+    "transaction_count": 140,
+    "spend_per_transaction": 30.01,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "7fc92404-db98-48d8-be04-716b09245899",
+    "date": "2025-10-27",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 13195,
+    "transaction_count": 80,
+    "spend_per_transaction": 164.94,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "888f368d-cdf6-481e-85a1-dd52a4a09848",
+    "date": "2025-10-27",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 23172,
+    "transaction_count": 130,
+    "spend_per_transaction": 178.25,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "162f9443-09cb-4b85-b15b-8a49c0286ba1",
+    "date": "2025-10-27",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 773,
+    "transaction_count": 5,
+    "spend_per_transaction": 154.6,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "62593d6a-2a09-4196-a1b9-a15bafc8a08b",
+    "date": "2025-10-27",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 3285,
+    "transaction_count": 10,
+    "spend_per_transaction": 328.5,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "7cf74213-3733-4584-9878-ea0c10cb39e9",
+    "date": "2025-10-27",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 16670,
+    "transaction_count": 700,
+    "spend_per_transaction": 23.81,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "268be0f2-6f66-4f54-8e1f-f8c74a60090b",
+    "date": "2025-10-27",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 29,
+    "transaction_count": 0,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "d6c48114-3533-44c4-9c3b-e4312f047839",
+    "date": "2025-10-27",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 3300,
+    "transaction_count": 20,
+    "spend_per_transaction": 165,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "f2e3cc90-86b0-49f7-ab22-b1bfc05bc64c",
+    "date": "2025-10-27",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 3476,
+    "transaction_count": 130,
+    "spend_per_transaction": 26.74,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "9be68e99-3850-40b5-bd5b-ef8e626ad8b2",
+    "date": "2025-11-03",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 8316,
+    "transaction_count": 70,
+    "spend_per_transaction": 118.8,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "65ad0d3e-e083-400f-a542-d5e36903c21d",
+    "date": "2025-11-03",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 20825,
+    "transaction_count": 120,
+    "spend_per_transaction": 173.54,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "d5ddc812-5e44-4940-b984-593f1262933a",
+    "date": "2025-11-03",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 2053,
+    "transaction_count": 2,
+    "spend_per_transaction": 1026.5,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "9f81bd71-5d58-4eea-af22-37cd96a5ffa8",
+    "date": "2025-11-03",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 2825,
+    "transaction_count": 5,
+    "spend_per_transaction": 565,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "87cf26e9-20e3-4ffe-b3ae-5f05514b3800",
+    "date": "2025-11-03",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 19979,
+    "transaction_count": 600,
+    "spend_per_transaction": 33.3,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "1ea77b68-fd71-4a5b-b398-3ad1a2cfb46a",
+    "date": "2025-11-03",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 124,
+    "transaction_count": 1,
+    "spend_per_transaction": 124,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "6adf9a43-aebc-4f03-a61c-cd58965ddd7f",
+    "date": "2025-11-03",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 0,
+    "transaction_count": 0,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "995422f4-bc03-40ce-b8a0-5d35690c0f37",
+    "date": "2025-11-03",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 4457,
+    "transaction_count": 120,
+    "spend_per_transaction": 37.14,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "c5c66d1b-31e8-4a41-bb0a-8c650e09727d",
+    "date": "2025-11-10",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 6221,
+    "transaction_count": 60,
+    "spend_per_transaction": 103.68,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "ce2829a6-079a-4f31-a80e-46ea338a79ce",
+    "date": "2025-11-10",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 15446,
+    "transaction_count": 110,
+    "spend_per_transaction": 140.42,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "ffe9599f-1617-4e51-947c-007d14cb0cc8",
+    "date": "2025-11-10",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 2107,
+    "transaction_count": 2,
+    "spend_per_transaction": 1053.5,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "6711f425-cc89-45a2-8740-869b20b4ac71",
+    "date": "2025-11-10",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 3273,
+    "transaction_count": 2,
+    "spend_per_transaction": 1636.5,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "7f144540-7412-4efa-954b-601c03685607",
+    "date": "2025-11-10",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 20013,
+    "transaction_count": 500,
+    "spend_per_transaction": 40.03,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "4de73d4f-bbf3-4db8-a8b5-941bb5823fa7",
+    "date": "2025-11-10",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 1012,
+    "transaction_count": 8,
+    "spend_per_transaction": 126.5,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "26e56201-6da4-417a-8164-14c82e4e8ee5",
+    "date": "2025-11-10",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 0,
+    "transaction_count": 0,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "ddfd94a5-6841-4c5a-ba4a-0e484cdec713",
+    "date": "2025-11-10",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 3838,
+    "transaction_count": 110,
+    "spend_per_transaction": 34.89,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "3b47ded2-1618-49f6-8de1-c91e81c0d1f9",
+    "date": "2025-11-17",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 4700,
+    "transaction_count": 50,
+    "spend_per_transaction": 94,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "609e4748-b570-4b3a-bf59-1f7da5a5b89c",
+    "date": "2025-11-17",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 14328,
+    "transaction_count": 100,
+    "spend_per_transaction": 143.28,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "d45bb918-e0c6-4214-ad62-a0a444109d61",
+    "date": "2025-11-17",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 1962,
+    "transaction_count": 1,
+    "spend_per_transaction": 1962,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "66deff3c-0f83-412a-8ea3-7a98c58b2f59",
+    "date": "2025-11-17",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 10728,
+    "transaction_count": 1,
+    "spend_per_transaction": 10728,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "b02ebacd-92ec-4f7f-88cd-3a3fdbe3f25f",
+    "date": "2025-11-17",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 18705,
+    "transaction_count": 400,
+    "spend_per_transaction": 46.76,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "49feb988-3547-4c4b-9f2b-b4c3e73b070a",
+    "date": "2025-11-17",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 1813,
+    "transaction_count": 15,
+    "spend_per_transaction": 120.87,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "854e6f50-85ed-4338-9cd9-22da57c9b4cb",
+    "date": "2025-11-17",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 500,
+    "transaction_count": 3,
+    "spend_per_transaction": 166.67,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "194174d9-140b-475a-abc4-ec3734babee7",
+    "date": "2025-11-17",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 3998,
+    "transaction_count": 100,
+    "spend_per_transaction": 39.98,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "4444a940-8bb0-465c-91bc-0efae1d50ef5",
+    "date": "2025-11-24",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 7064,
+    "transaction_count": 369,
+    "spend_per_transaction": 19.14,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "e3f85431-f273-4d7a-89af-9e951d5105d1",
+    "date": "2025-11-24",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 8420,
+    "transaction_count": 112,
+    "spend_per_transaction": 75.18,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "f344d7b9-b0d8-4526-b7b7-49d57d645325",
+    "date": "2025-11-24",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 620,
+    "transaction_count": 13,
+    "spend_per_transaction": 47.69,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "5fd22aa0-de54-4f12-b903-a64d52e157e3",
+    "date": "2025-11-24",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 2655,
+    "transaction_count": 32,
+    "spend_per_transaction": 82.97,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "1be033de-b2aa-4809-96fe-bb5317f9e421",
+    "date": "2025-11-24",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 16922,
+    "transaction_count": 981,
+    "spend_per_transaction": 17.25,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "aad1765f-3f93-4ce9-8d6d-bb2f9604471c",
+    "date": "2025-11-24",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 75,
+    "transaction_count": 0,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "c2792cb9-5151-4178-9602-3fbb20645ed3",
+    "date": "2025-11-24",
+    "business_unit_id": "ee863ff1-1e50-43f8-b75f-c8f584b53e21",
+    "amount": 2750,
+    "transaction_count": 0,
+    "spend_per_transaction": 0,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Activities"
+  },
+  {
+    "id": "eff78f9b-066b-4c8b-8da0-79bc6af65a5b",
+    "date": "2025-11-24",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 5397,
+    "transaction_count": 169,
+    "spend_per_transaction": 31.93,
+    "created_at": "2025-12-06T21:24:48.447268+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "9bc42653-a9e3-4c49-8ba5-a9169eaa9a86",
+    "date": "2025-12-01",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 6136,
+    "transaction_count": 281,
+    "spend_per_transaction": 21.84,
+    "created_at": "2025-12-08T20:58:52.98326+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "0e22a7ac-5fa3-4750-8783-789571944195",
+    "date": "2025-12-01",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 6556,
+    "transaction_count": 108,
+    "spend_per_transaction": 60.7,
+    "created_at": "2025-12-08T20:58:52.98326+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "3537262a-b696-4106-a800-7447e698846b",
+    "date": "2025-12-01",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 629,
+    "transaction_count": 10,
+    "spend_per_transaction": 62.9,
+    "created_at": "2025-12-08T20:58:52.98326+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "5b6ec923-5438-4a60-98b8-b7e2898d54f6",
+    "date": "2025-12-01",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 2369,
+    "transaction_count": 34,
+    "spend_per_transaction": 69.68,
+    "created_at": "2025-12-08T20:58:52.98326+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "1c1fce22-6273-44b7-a1f1-e126f7e25f58",
+    "date": "2025-12-01",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 15907,
+    "transaction_count": 919,
+    "spend_per_transaction": 17.31,
+    "created_at": "2025-12-08T20:58:52.98326+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "4bcc6840-3e39-4a89-a428-1059d92f7561",
+    "date": "2025-12-01",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 3095,
+    "transaction_count": 144,
+    "spend_per_transaction": 21.49,
+    "created_at": "2025-12-08T20:58:52.98326+00:00",
+    "business_unit_name": "Juntos farm shop"
+  },
+  {
+    "id": "1d110196-c2ff-474c-9d50-ea06076601fb",
+    "date": "2025-12-08",
+    "business_unit_id": "73d5d642-3e6b-48c4-a4d0-af340a8a3164",
+    "amount": 3292.6,
+    "transaction_count": 429,
+    "spend_per_transaction": 7.68,
+    "created_at": "2025-12-14T23:15:22.037161+00:00",
+    "business_unit_name": "Tasting place"
+  },
+  {
+    "id": "30e3b3af-49b7-4546-b5a0-6cab1f560471",
+    "date": "2025-12-08",
+    "business_unit_id": "93600eb9-486e-4258-b865-26f40c00de0e",
+    "amount": 8272.72,
+    "transaction_count": 527,
+    "spend_per_transaction": 15.7,
+    "created_at": "2025-12-14T23:15:22.037161+00:00",
+    "business_unit_name": "Juntos house"
+  },
+  {
+    "id": "d5e894dd-926e-44ca-bee1-2529d193ee93",
+    "date": "2025-12-08",
+    "business_unit_id": "993ac2a4-feb0-4f4f-8655-e0c1dd9eee0f",
+    "amount": 1075.09,
+    "transaction_count": 25,
+    "spend_per_transaction": 43,
+    "created_at": "2025-12-14T23:15:22.037161+00:00",
+    "business_unit_name": "Juntos boutique"
+  },
+  {
+    "id": "d1b86499-65ee-46e4-bc40-81386991d30d",
+    "date": "2025-12-08",
+    "business_unit_id": "b0cb51d9-1b5b-4823-bb91-866fed26a211",
+    "amount": 9395.93,
+    "transaction_count": 732,
+    "spend_per_transaction": 12.84,
+    "created_at": "2025-12-14T23:15:22.037161+00:00",
+    "business_unit_name": "Distribution b2b"
+  },
+  {
+    "id": "c80c2a19-acbf-4dc4-9664-9774af211564",
+    "date": "2025-12-08",
+    "business_unit_id": "bfe702c5-d04a-4254-9ef3-ce1ad55f10af",
+    "amount": 14510.85,
+    "transaction_count": 2373,
+    "spend_per_transaction": 6.11,
+    "created_at": "2025-12-14T23:15:22.037161+00:00",
+    "business_unit_name": "Picadeli"
+  },
+  {
+    "id": "70b46b07-1c8c-4db2-898f-4ca988fcf9d7",
+    "date": "2025-12-08",
+    "business_unit_id": "e9c52225-f76c-4ec3-85d4-fd7718d8dfef",
+    "amount": 21.6,
+    "transaction_count": 1,
+    "spend_per_transaction": 21.6,
+    "created_at": "2025-12-14T23:15:22.037161+00:00",
+    "business_unit_name": "Juntos Products"
+  },
+  {
+    "id": "1fba0397-3e03-45ab-afe9-052954c57de9",
+    "date": "2025-12-08",
+    "business_unit_id": "f9ac850e-5dd7-4d0f-a08c-27c613abf107",
+    "amount": 2233.02,
+    "transaction_count": 298,
+    "spend_per_transaction": 7.49,
+    "created_at": "2025-12-14T23:15:22.037161+00:00",
+    "business_unit_name": "Juntos farm shop"
+  }
+]

@@ -168,3 +168,15 @@ export const WEEK_MONTH_MAP = [
     10, 10, 10, 10, 10, // Nov
     11, 11, 11, 11, 11 // Dec
 ];
+
+// VAT Rates per Business Unit
+export const VAT_RATES = {
+    'Juntos house': 0.10,
+    'Juntos boutique': 0.21,
+    'Picadeli': 0.12,
+    'Juntos farm shop': 0.12,
+    'Tasting place': 0.10,
+    'Activities': 0.21,
+    'Juntos Products': 0.14,
+    'Distribution b2b': 0.06
+};

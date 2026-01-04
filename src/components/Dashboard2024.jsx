@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { DataService, MONTHS, CHART_COLORS } from '../services/dataService';
+import { VAT_RATES } from '../data/SEED_DATA';
 import KPICard from './KPICard';
 import YearlyBarChart from './YearlyBarChart';
 import YearlyPieChart from './YearlyPieChart';
@@ -13,6 +14,7 @@ const Dashboard2024 = () => {
     const [spendData, setSpendData] = useState(null);
     const [businessUnits, setBusinessUnits] = useState([]);
     const [selectedUnit, setSelectedUnit] = useState('all');
+    const [excludeVat, setExcludeVat] = useState(false);
 
     const [kpis, setKpis] = useState({
         totalSales: 0,
@@ -50,7 +52,13 @@ const Dashboard2024 = () => {
     useEffect(() => {
         if (!salesData || !businessUnits.length) return;
         updateView(selectedUnit);
-    }, [selectedUnit, salesData, businessUnits]);
+    }, [selectedUnit, salesData, businessUnits, excludeVat]);
+
+    const getNetValue = (val, unitName) => {
+        if (!excludeVat) return val;
+        const rate = VAT_RATES[unitName] || 0;
+        return val / (1 + rate);
+    };
 
     const updateView = (unit) => {
         let currentSales = [];
@@ -58,7 +66,7 @@ const Dashboard2024 = () => {
         let currentSpend = []; // Monthly Average Spend array
 
         if (unit === 'all') {
-            currentSales = MONTHS.map((_, i) => businessUnits.reduce((sum, b) => sum + (salesData[b.name][i] || 0), 0));
+            currentSales = MONTHS.map((_, i) => businessUnits.reduce((sum, b) => sum + getNetValue((salesData[b.name][i] || 0), b.name), 0));
             currentTrans = MONTHS.map((_, i) => businessUnits.reduce((sum, b) => sum + (transData[b.name][i] || 0), 0));
             // For 'all', aggregate spend is Avg(Total Sales / Total Trans) or similar.
             // Reference logic: "Avg Spend (Group) ... totalTransactionsGroup > 0 ? totalSales / totalTransactionsGroup : 0"
@@ -69,7 +77,7 @@ const Dashboard2024 = () => {
                 return tTrans > 0 ? Math.round(tSales / tTrans) : 0;
             });
         } else {
-            currentSales = salesData[unit] || [];
+            currentSales = (salesData[unit] || []).map(v => getNetValue(v, unit));
             currentTrans = transData[unit] || [];
             currentSpend = spendData[unit] || [];
         }
@@ -125,7 +133,7 @@ const Dashboard2024 = () => {
         if (unit === 'all') {
             barDatasets = businessUnits.map((u, i) => ({
                 label: u.name,
-                data: salesData[u.name],
+                data: (salesData[u.name] || []).map(v => getNetValue(v, u.name)),
                 backgroundColor: CHART_COLORS[i % CHART_COLORS.length],
                 stack: 'Stack 0',
             }));
@@ -140,7 +148,7 @@ const Dashboard2024 = () => {
         }
 
         const pieTotalSales = businessUnits.map(u => {
-            return (salesData[u.name] || []).reduce((a, b) => a + b, 0);
+            return (salesData[u.name] || []).reduce((a, b) => a + getNetValue(b, u.name), 0);
         });
 
         // Spend Chart
@@ -213,6 +221,13 @@ const Dashboard2024 = () => {
                 <div className="bg-gray-50 p-6 rounded-lg w-full md:w-1/2 text-center md:text-left h-[100px] flex flex-col justify-center">
                     <h3 className="text-lg font-medium text-gray-500">Focus: {selectedUnit === 'all' ? 'Total Group' : selectedUnit}</h3>
                     <p className="text-3xl font-bold text-primary mt-1">{formatCurrency(kpis.totalSales)}</p>
+                    <div className="mt-4 flex items-center gap-2">
+                        <label className="inline-flex items-center cursor-pointer">
+                            <input type="checkbox" checked={excludeVat} onChange={(e) => setExcludeVat(e.target.checked)} className="sr-only peer" />
+                            <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-teal-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-teal-600"></div>
+                            <span className="ms-3 text-sm font-medium text-gray-900">Exclude VAT</span>
+                        </label>
+                    </div>
                 </div>
             </div>
 
