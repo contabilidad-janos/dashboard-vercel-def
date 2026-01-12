@@ -9,12 +9,13 @@ import {
     BUDGET_BY_UNIT_2025,
     RAW_WEEKLY_DATA_2024,
     WEEK_MONTH_MAP,
-    WEEKLY_LABELS_2025
+    WEEKLY_LABELS_2025,
+    WEEKLY_LABELS_2026
 } from '../data/SEED_DATA';
 import { supabase } from './supabaseClient';
 
 // Re-export constants needed by components
-export { WEEK_MONTH_MAP, WEEKLY_LABELS_2025, BUSINESS_UNITS_CONFIG };
+export { WEEK_MONTH_MAP, WEEKLY_LABELS_2025, WEEKLY_LABELS_2026, BUSINESS_UNITS_CONFIG };
 
 // Constants
 export const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -733,6 +734,105 @@ export const DataService = {
             if (!unitName || !result[unitName]) return;
             const monthIndex = new Date(record.month_start).getMonth();
             result[unitName][monthIndex] += Number(record.target_amount);
+        });
+
+        return result;
+    },
+
+    get2026SalesDataWeekly: async () => {
+        const data = await DataService._fetchDailyDef2025(); // Has 2026 data
+        const result = {};
+        const buList = await DataService.getBusinessUnits();
+
+        // 52 weeks in our label set
+        const weeksCount = WEEKLY_LABELS_2026.length;
+
+        buList.forEach(u => {
+            result[u.name] = new Array(weeksCount).fill(0);
+        });
+
+        const buMap = {
+            'Juntos house': 'Juntos house',
+            'Juntos boutique': 'Juntos boutique',
+            'Picadeli': 'Picadeli',
+            'Juntos farm shop': 'Juntos farm shop',
+            'Tasting place': 'Tasting place',
+            'Distribution b2b': 'Distribution b2b',
+            'Juntos Products': 'Juntos Products',
+            'Activities': 'Activities'
+        };
+
+        const getWeekNumber = (d) => {
+            const date = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+            date.setUTCDate(date.getUTCDate() + 4 - (date.getUTCDay() || 7));
+            const yearStart = new Date(Date.UTC(date.getUTCFullYear(), 0, 1));
+            const weekNo = Math.ceil((((date - yearStart) / 86400000) + 1) / 7);
+            return weekNo - 1;
+        };
+
+        data.forEach((record) => {
+            if (!record.date) return;
+            const dateObj = new Date(record.date);
+            if (dateObj.getFullYear() !== 2026) return; // Only 2026
+
+            const rawBu = record.business_unit;
+            const buName = buMap[rawBu] || rawBu;
+            if (!buName || !result[buName]) return;
+
+            // Week logic: Jan 1 is index 0
+            const weekIdx = getWeekNumber(dateObj);
+
+            if (weekIdx >= 0 && weekIdx < weeksCount) {
+                const amount = Number(record.revenue) || 0;
+                result[buName][weekIdx] += amount;
+            }
+        });
+
+        return result;
+    },
+
+    get2026TransDataWeekly: async () => {
+        const data = await DataService._fetchDailyDef2025();
+        const result = {};
+        const buList = await DataService.getBusinessUnits();
+        const weeksCount = WEEKLY_LABELS_2026.length;
+
+        buList.forEach(u => result[u.name] = new Array(weeksCount).fill(0));
+
+        const buMap = {
+            'Juntos house': 'Juntos house',
+            'Juntos boutique': 'Juntos boutique',
+            'Picadeli': 'Picadeli',
+            'Juntos farm shop': 'Juntos farm shop',
+            'Tasting place': 'Tasting place',
+            'Distribution b2b': 'Distribution b2b',
+            'Juntos Products': 'Juntos Products',
+            'Activities': 'Activities'
+        };
+
+        const getWeekNumber = (d) => {
+            const date = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+            date.setUTCDate(date.getUTCDate() + 4 - (date.getUTCDay() || 7));
+            const yearStart = new Date(Date.UTC(date.getUTCFullYear(), 0, 1));
+            const weekNo = Math.ceil((((date - yearStart) / 86400000) + 1) / 7);
+            return weekNo - 1;
+        };
+
+        data.forEach((record) => {
+            if (!record.date) return;
+            const dateObj = new Date(record.date);
+            if (dateObj.getFullYear() !== 2026) return;
+
+            const rawBu = record.business_unit;
+            const buName = buMap[rawBu] || rawBu;
+            if (!buName || !result[buName]) return;
+
+            const weekIdx = getWeekNumber(dateObj);
+
+            if (weekIdx >= 0 && weekIdx < weeksCount) {
+                const vol = Number(record.VOLUME) || 0;
+                result[buName][weekIdx] += vol;
+            }
         });
 
         return result;

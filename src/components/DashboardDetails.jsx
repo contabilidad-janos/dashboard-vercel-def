@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import { DataService, MONTHS, BUSINESS_UNITS, WEEKLY_LABELS_2025, WEEK_MONTH_MAP } from '../services/dataService';
+import { DataService, MONTHS, BUSINESS_UNITS, WEEKLY_LABELS_2025, WEEKLY_LABELS_2026, WEEK_MONTH_MAP } from '../services/dataService';
 import { VAT_RATES } from '../data/SEED_DATA';
 import { Title as ChartTitle, Chart } from 'chart.js';
 import { Line, Bar } from 'react-chartjs-2';
@@ -35,6 +35,7 @@ const DashboardDetails = () => {
     const [rawData, setRawData] = useState({});
 
     // Filter States
+    const [selectedYear, setSelectedYear] = useState('2025'); // Default 2025
     const [selectedUnits, setSelectedUnits] = useState(['All Groups']); // Default one
     const [metric, setMetric] = useState('sales'); // sales, transactions, spend
     const [viewType, setViewType] = useState('daily'); // Default to daily for user request
@@ -93,6 +94,7 @@ const DashboardDetails = () => {
             const [
                 sales25, sales25w, trans25, trans25w, spend25,
                 sales24, sales24w, trans24, trans24w, spend24,
+                sales26, sales26w, trans26, trans26w, spend26,
                 budget25u, raw2025
             ] = await Promise.all([
                 DataService.get2025SalesData(),
@@ -100,11 +102,19 @@ const DashboardDetails = () => {
                 DataService.get2025TransData(),
                 DataService.get2025TransDataWeekly(),
                 DataService.get2025SpendData(),
+
                 DataService.get2024SalesData(),
                 DataService.get2024SalesDataWeekly(),
                 DataService.get2024TransData(),
                 DataService.get2024TransDataWeekly(),
                 DataService.get2024SpendData(),
+
+                DataService.get2026SalesData(),
+                DataService.get2026SalesDataWeekly(),
+                DataService.get2026TransData(),
+                DataService.get2026TransDataWeekly(),
+                DataService.get2026SpendData(),
+
                 DataService.get2025BudgetDataByUnit(),
                 DataService.get2025RawData()
             ]);
@@ -112,6 +122,7 @@ const DashboardDetails = () => {
             setRawData({
                 sales25, sales25w, trans25, trans25w, spend25,
                 sales24, sales24w, trans24, trans24w, spend24,
+                sales26, sales26w, trans26, trans26w, spend26,
                 budget25u, raw2025
             });
             setLoading(false);
@@ -211,6 +222,9 @@ const DashboardDetails = () => {
             }
 
             const datasets = [];
+            // Use 2025 raw data as base for Daily (User didn't ask for 2026 daily yet? 
+            // Actually, if selectedYear is 2026, we might want raw2026 if we had it, but dataService only returns raw2025. 
+            // But _fetchDailyDef2025 gets ALL data. So raw2025 variable actually contains 2026 data too.
             const rawDataList = rawData.raw2025 || [];
 
             // Colors for BUs
@@ -226,17 +240,14 @@ const DashboardDetails = () => {
                 'All Groups': '#405846'
             };
 
-            // Helper to get value for a specific date and unit
             const getValue = (dateStr, unitName) => {
                 const records = rawDataList.filter(r => r.date === dateStr);
                 if (unitName === 'All Groups') {
-                    // Aggregate individual Units with their rates
                     return BUSINESS_UNITS.reduce((total, u) => {
                         const uVal = records.filter(r => r.business_unit === u).reduce((sum, r) => sum + (Number(r.revenue) || 0), 0);
                         return total + getNetValue(uVal, u);
                     }, 0);
                 } else {
-                    // Match BU name (mapped or raw)
                     const val = records
                         .filter(r => r.business_unit === unitName)
                         .reduce((sum, r) => sum + (Number(r.revenue) || 0), 0);
@@ -244,10 +255,8 @@ const DashboardDetails = () => {
                 }
             };
 
-            // Create dataset for each selected unit
             selectedUnits.forEach(unit => {
                 const data = labels.map(date => getValue(date, unit));
-
                 datasets.push({
                     label: unit,
                     data: data,
@@ -264,9 +273,36 @@ const DashboardDetails = () => {
         }
 
         // Standard Monthly/Weekly Logic...
+        // Determine Data Source based on selectedYear
+        const is2026 = selectedYear === '2026';
+        const labelsList = is2026 ? WEEKLY_LABELS_2026 : WEEKLY_LABELS_2025;
+
         const labels = viewType === 'monthly'
             ? MONTHS.slice(startPeriod, endPeriod + 1)
-            : WEEKLY_LABELS_2025.slice(startPeriod, endPeriod + 1);
+            : labelsList.slice(startPeriod, endPeriod + 1);
+
+        // Map data sources
+        const currentSales = is2026 ? rawData.sales26 : rawData.sales25;
+        const currentSalesW = is2026 ? rawData.sales26w : rawData.sales25w;
+        const currentTrans = is2026 ? rawData.trans26 : rawData.trans25;
+        const currentTransW = is2026 ? rawData.trans26w : rawData.trans25w;
+        const currentSpend = is2026 ? rawData.spend26 : rawData.spend25;
+        // 2026 weekly spend isn't separate, will calc from S/T
+
+        const prevSales = is2026 ? rawData.sales25 : rawData.sales24;
+        const prevSalesW = is2026 ? rawData.sales25w : rawData.sales24w;
+        const prevTrans = is2026 ? rawData.trans25 : rawData.trans24;
+        const prevTransW = is2026 ? rawData.trans25w : rawData.trans24w;
+        const prevSpend = is2026 ? rawData.spend25 : rawData.spend24;
+        // Same for prev Spend logic
+
+        // Budget? (Assuming budget25u is the only one we have for now, use it as ref?)
+        // If 2026, we probably want 2026 budget (not fetched yet or using same placeholder)
+        // For now, let's just use budget25u if is2026 is false, else empty or placeholder?
+        // Actually, let's allow budget comparison to be blank for 2026 if logic not ready, 
+        // OR better: if user didn't ask for budget 2026 explicitly, maybe skip it or show 0?
+        // But typically they check "vs Bud". I'll use 2025 budget as placeholder if 2026 requested to avoid crash
+        const currentBudget = rawData.budget25u; // 2025 budget as generic budget for now
 
         const datasets = [];
         const colors = ['#6E8C71', '#B09B80', '#D9825F', '#E8C89A', '#879FA8', '#566E7A', '#C4BFAA', '#A9A9A9'];
@@ -277,18 +313,18 @@ const DashboardDetails = () => {
             let data = [];
             if (viewType === 'monthly') {
                 let src = [];
-                if (metric === 'sales') src = (rawData.sales25[unit] || []).map(v => getNetValue(v, unit));
-                else if (metric === 'transactions') src = rawData.trans25[unit];
-                else src = rawData.spend25[unit];
+                if (metric === 'sales') src = (currentSales[unit] || []).map(v => getNetValue(v, unit));
+                else if (metric === 'transactions') src = currentTrans[unit];
+                else src = currentSpend[unit];
 
                 data = src.slice(startPeriod, endPeriod + 1);
             } else {
                 let src = [];
-                if (metric === 'sales') src = (rawData.sales25w[unit] || []).map(v => getNetValue(v, unit));
-                else if (metric === 'transactions') src = rawData.trans25w[unit];
+                if (metric === 'sales') src = (currentSalesW[unit] || []).map(v => getNetValue(v, unit));
+                else if (metric === 'transactions') src = currentTransW[unit];
                 else {
-                    const s = rawData.sales25w[unit];
-                    const v = rawData.trans25w[unit];
+                    const s = currentSalesW[unit];
+                    const v = currentTransW[unit];
                     src = s.map((val, idx) => v[idx] > 0 ? Math.round(val / v[idx]) : 0);
                 }
                 // Direct slice for weekly now that selectors are weekly indices
@@ -304,26 +340,32 @@ const DashboardDetails = () => {
                 fill: false
             });
 
-            // 2. Comparison 2024
+            // 2. Comparison (Prev Year)
             if (compare24) {
-                let data24 = [];
+                let dataPrev = [];
                 if (viewType === 'monthly') {
                     let src = [];
-                    if (metric === 'sales') src = (rawData.sales24[unit] || []).map(v => getNetValue(v, unit));
-                    else if (metric === 'transactions') src = rawData.trans24[unit];
-                    else src = rawData.spend24[unit];
-                    data24 = src.slice(startPeriod, endPeriod + 1);
+                    if (metric === 'sales') src = (prevSales[unit] || []).map(v => getNetValue(v, unit));
+                    else if (metric === 'transactions') src = prevTrans[unit];
+                    else src = prevSpend[unit]; // Using monthly map
+                    dataPrev = src.slice(startPeriod, endPeriod + 1);
                 } else {
                     let src = [];
-                    if (metric === 'sales') src = (rawData.sales24w[unit] || []).map(v => getNetValue(v, unit));
-                    else if (metric === 'transactions') src = rawData.trans24w[unit];
-                    else src = rawData.spend24w[unit];
-                    data24 = src.slice(startPeriod, endPeriod + 1);
+                    if (metric === 'sales') src = (prevSalesW[unit] || []).map(v => getNetValue(v, unit));
+                    else if (metric === 'transactions') src = prevTransW[unit];
+                    else {
+                        // Calc weekly spend
+                        // prevSpendw might not be fetched explicitly so calculate on fly
+                        const s = prevSalesW[unit] || [];
+                        const v = prevTransW[unit] || [];
+                        src = s.map((val, idx) => v[idx] > 0 ? Math.round(val / v[idx]) : 0);
+                    }
+                    dataPrev = src.slice(startPeriod, endPeriod + 1);
                 }
 
                 datasets.push({
-                    label: `${unit} '24`,
-                    data: data24,
+                    label: `${unit} '${is2026 ? '25' : '24'}`,
+                    data: dataPrev,
                     borderColor: color,
                     backgroundColor: color, // Usually lighter/dashed
                     borderDash: [5, 5],
@@ -335,8 +377,9 @@ const DashboardDetails = () => {
             }
 
             // 3. Comparison Budget (Monthly or Weekly extrapolated)
+            // Use currentBudget (mapped to budget25u for now)
             if (compareBudget && metric === 'sales') {
-                const bData = (rawData.budget25u[unit] || []).map(v => getNetValue(v, unit));
+                const bData = (currentBudget[unit] || []).map(v => getNetValue(v, unit));
                 let budgetData = [];
 
                 if (viewType === 'monthly') {
@@ -379,17 +422,17 @@ const DashboardDetails = () => {
                 let unitData = [];
                 if (viewType === 'monthly') {
                     let src = [];
-                    if (metric === 'sales') src = (rawData.sales25[unit] || []).map(v => getNetValue(v, unit));
-                    else if (metric === 'transactions') src = rawData.trans25[unit];
-                    else src = rawData.spend25[unit];
+                    if (metric === 'sales') src = (currentSales[unit] || []).map(v => getNetValue(v, unit));
+                    else if (metric === 'transactions') src = currentTrans[unit];
+                    else src = currentSpend[unit];
                     unitData = src.slice(startPeriod, endPeriod + 1);
                 } else {
                     let src = [];
-                    if (metric === 'sales') src = (rawData.sales25w[unit] || []).map(v => getNetValue(v, unit));
-                    else if (metric === 'transactions') src = rawData.trans25w[unit];
+                    if (metric === 'sales') src = (currentSalesW[unit] || []).map(v => getNetValue(v, unit));
+                    else if (metric === 'transactions') src = currentTransW[unit];
                     else {
-                        const s = rawData.sales25w[unit];
-                        const v = rawData.trans25w[unit];
+                        const s = currentSalesW[unit];
+                        const v = currentTransW[unit];
                         src = s.map((val, idx) => v[idx] > 0 ? Math.round(val / v[idx]) : 0);
                     }
                     unitData = src.slice(startPeriod, endPeriod + 1);
@@ -413,11 +456,11 @@ const DashboardDetails = () => {
                     BUSINESS_UNITS.forEach(unit => {
                         const idx = startPeriod + i; // Same logic for monthly/weekly now
                         if (viewType === 'monthly') {
-                            PERIOD_SALES += getNetValue((rawData.sales25[unit][idx] || 0), unit);
-                            PERIOD_TRANS += rawData.trans25[unit][idx] || 0;
+                            PERIOD_SALES += getNetValue((currentSales[unit][idx] || 0), unit);
+                            PERIOD_TRANS += currentTrans[unit][idx] || 0;
                         } else {
-                            PERIOD_SALES += getNetValue((rawData.sales25w[unit][idx] || 0), unit);
-                            PERIOD_TRANS += rawData.trans25w[unit][idx] || 0;
+                            PERIOD_SALES += getNetValue((currentSalesW[unit][idx] || 0), unit);
+                            PERIOD_TRANS += currentTransW[unit][idx] || 0;
                         }
                     });
                     allData[i] = PERIOD_TRANS > 0 ? Math.round(PERIOD_SALES / PERIOD_TRANS) : 0;
@@ -425,7 +468,7 @@ const DashboardDetails = () => {
             }
 
             datasets.unshift({ // Add to front
-                label: `All Groups '25`,
+                label: `All Groups '${is2026 ? '26' : '25'}`,
                 data: allData,
                 borderColor: color2025,
                 backgroundColor: color2025,
@@ -434,51 +477,52 @@ const DashboardDetails = () => {
                 borderWidth: 3
             });
 
-            // 2. Comparison 2024 - Aggregate
+            // 2. Comparison (Prev Year) - Aggregate
             if (compare24) {
-                let allData24 = new Array(dataLength).fill(0);
+                let allDataPrev = new Array(dataLength).fill(0);
 
                 if (metric !== 'spend') {
                     BUSINESS_UNITS.forEach(unit => {
                         let unitData = [];
                         if (viewType === 'monthly') {
                             let src = [];
-                            if (metric === 'sales') src = (rawData.sales24[unit] || []).map(v => getNetValue(v, unit));
-                            else if (metric === 'transactions') src = rawData.trans24[unit];
+                            if (metric === 'sales') src = (prevSales[unit] || []).map(v => getNetValue(v, unit));
+                            else if (metric === 'transactions') src = prevTrans[unit];
                             unitData = src.slice(startPeriod, endPeriod + 1);
                         } else {
                             let src = [];
-                            if (metric === 'sales') src = (rawData.sales24w[unit] || []).map(v => getNetValue(v, unit));
-                            else if (metric === 'transactions') src = rawData.trans24w[unit];
+                            if (metric === 'sales') src = (prevSalesW[unit] || []).map(v => getNetValue(v, unit));
+                            else if (metric === 'transactions') src = prevTransW[unit];
                             unitData = src.slice(startPeriod, endPeriod + 1);
                         }
-                        unitData.forEach((val, i) => allData24[i] += val);
+                        unitData.forEach((val, i) => allDataPrev[i] += val);
                     });
                 } else {
-                    // Recalc Spend 24
+                    // Recalc Spend Prev
                     for (let i = 0; i < dataLength; i++) {
                         let PERIOD_SALES = 0;
                         let PERIOD_TRANS = 0;
                         BUSINESS_UNITS.forEach(unit => {
                             const idx = startPeriod + i;
                             if (viewType === 'monthly') {
-                                PERIOD_SALES += getNetValue((rawData.sales24[unit][idx] || 0), unit);
-                                PERIOD_TRANS += rawData.trans24[unit][idx] || 0;
+                                PERIOD_SALES += getNetValue((prevSales[unit][idx] || 0), unit);
+                                PERIOD_TRANS += prevTrans[unit][idx] || 0;
                             } else {
-                                PERIOD_SALES += getNetValue((rawData.sales24w[unit][idx] || 0), unit);
-                                PERIOD_TRANS += rawData.trans24w[unit][idx] || 0;
+                                PERIOD_SALES += getNetValue((prevSalesW[unit][idx] || 0), unit);
+                                PERIOD_TRANS += prevTransW[unit][idx] || 0;
                             }
                         });
-                        allData24[i] = PERIOD_TRANS > 0 ? Math.round(PERIOD_SALES / PERIOD_TRANS) : 0;
+                        allDataPrev[i] = PERIOD_TRANS > 0 ? Math.round(PERIOD_SALES / PERIOD_TRANS) : 0;
                     }
                 }
 
                 datasets.push({
-                    label: `All Groups '24`,
-                    data: allData24,
+                    label: `All Groups '${is2026 ? '25' : '24'}`,
+                    data: allDataPrev,
                     borderColor: color2024,
                     backgroundColor: color2024,
                     borderWidth: 2,
+                    borderDash: [5, 5], // Dashed for comparison
                     tension: 0.3,
                     fill: false
                 });
@@ -489,7 +533,7 @@ const DashboardDetails = () => {
                 const allBudget = new Array(dataLength).fill(0);
 
                 BUSINESS_UNITS.forEach(unit => {
-                    const bData = (rawData.budget25u[unit] || []).map(v => getNetValue(v, unit));
+                    const bData = (currentBudget[unit] || []).map(v => getNetValue(v, unit));
 
 
                     if (viewType === 'monthly') {
@@ -518,7 +562,6 @@ const DashboardDetails = () => {
             }
         }
 
-        return { labels, datasets };
         return { labels, datasets };
     }, [rawData, selectedUnits, metric, viewType, startPeriod, endPeriod, compare24, compareBudget, dailyStart, dailyEnd, excludeVat]);
 
@@ -590,6 +633,11 @@ const DashboardDetails = () => {
 
                 {/* Controls */}
                 <div className="flex flex-col lg:flex-row gap-4 mb-6 flex-wrap">
+                    <select value={selectedYear} onChange={e => setSelectedYear(e.target.value)} className="bg-white border border-gray-300 text-gray-900 rounded-lg px-4 py-2 focus:ring-accent" disabled={viewType === 'daily'}>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                    </select>
+
                     <select value={metric} onChange={e => setMetric(e.target.value)} className="bg-white border border-gray-300 text-gray-900 rounded-lg px-4 py-2 focus:ring-accent" disabled={viewType === 'daily'}>
                         <option value="sales">Total Sales (€)</option>
                         <option value="transactions" disabled={viewType === 'daily'}>Volume (Pax/Tickets/Orders)</option>
@@ -626,14 +674,14 @@ const DashboardDetails = () => {
                             <select value={startPeriod} onChange={e => setStartPeriod(Number(e.target.value))} className="bg-white border border-gray-300 rounded px-2 py-2 text-sm max-w-[120px]">
                                 {viewType === 'monthly'
                                     ? MONTHS.map((m, i) => <option key={i} value={i}>{m}</option>)
-                                    : WEEKLY_LABELS_2025.map((w, i) => <option key={i} value={i}>{w}</option>)
+                                    : (selectedYear === '2026' ? WEEKLY_LABELS_2026 : WEEKLY_LABELS_2025).map((w, i) => <option key={i} value={i}>{w}</option>)
                                 }
                             </select>
                             <span>-</span>
                             <select value={endPeriod} onChange={e => setEndPeriod(Number(e.target.value))} className="bg-white border border-gray-300 rounded px-2 py-2 text-sm max-w-[120px]">
                                 {viewType === 'monthly'
                                     ? MONTHS.map((m, i) => <option key={i} value={i}>{m}</option>)
-                                    : WEEKLY_LABELS_2025.map((w, i) => <option key={i} value={i}>{w}</option>)
+                                    : (selectedYear === '2026' ? WEEKLY_LABELS_2026 : WEEKLY_LABELS_2025).map((w, i) => <option key={i} value={i}>{w}</option>)
                                 }
                             </select>
                         </div>
@@ -657,7 +705,9 @@ const DashboardDetails = () => {
                     <div className="flex items-center gap-4 ml-auto">
                         <label className="flex items-center gap-2 cursor-pointer">
                             <input type="checkbox" checked={compare24} onChange={e => setCompare24(e.target.checked)} className="rounded text-accent" disabled={viewType === 'daily'} />
-                            <span className={clsx("text-sm font-medium", viewType === 'daily' ? "text-gray-400" : "text-gray-700")}>vs '24</span>
+                            <span className={clsx("text-sm font-medium", viewType === 'daily' ? "text-gray-400" : "text-gray-700")}>
+                                vs '{selectedYear === '2026' ? '25' : '24'}
+                            </span>
                         </label>
                         <label className="flex items-center gap-2 cursor-pointer">
                             <input type="checkbox" checked={excludeVat} onChange={e => setExcludeVat(e.target.checked)} className="rounded text-accent" />
@@ -734,13 +784,15 @@ const DashboardDetails = () => {
 
                                                 // Only show comparisons for non-daily views
                                                 if (viewType !== 'daily') {
-                                                    // Find corresponding 2024 value
-                                                    const ds24 = datasets.find(d => d.label?.includes("'24"));
-                                                    if (ds24 && ds24.data[idx]) {
-                                                        const val24 = ds24.data[idx];
-                                                        const pctChange = Math.round(((value - val24) / val24) * 100);
+                                                    // Find corresponding previous year value
+                                                    const prevYearShort = selectedYear === '2026' ? "'25" : "'24";
+                                                    const dsPrev = datasets.find(d => d.label?.includes(prevYearShort));
+
+                                                    if (dsPrev && dsPrev.data[idx]) {
+                                                        const valPrev = dsPrev.data[idx];
+                                                        const pctChange = Math.round(((value - valPrev) / valPrev) * 100);
                                                         const sign = pctChange >= 0 ? '+' : '';
-                                                        lines.push(`vs '24: ${sign}${pctChange}%`);
+                                                        lines.push(`vs ${prevYearShort}: ${sign}${pctChange}%`);
                                                     }
 
                                                     // Find corresponding Budget value
