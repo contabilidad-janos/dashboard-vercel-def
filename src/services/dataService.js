@@ -17,8 +17,6 @@ export const CHART_COLORS = ['#6E8C71', '#B09B80', '#D9825F', '#E8C89A', '#879FA
 export const BUSINESS_UNITS = BUSINESS_UNITS_CONFIG.map(u => u.name);
 
 // ─── IN-MEMORY CACHE ─────────────────────────────────────────────────────────
-// Avoids duplicate Supabase fetches when multiple methods (sales, trans, spend)
-// are called in the same render cycle.
 const _cache = {};
 
 const _fetchPaginated = async (tableName, selectFields, filters = []) => {
@@ -37,7 +35,6 @@ const _fetchPaginated = async (tableName, selectFields, filters = []) => {
             .range(from, from + chunkSize - 1)
             .order('date', { ascending: true });
 
-        // Apply optional server-side filters
         filters.forEach(({ method, col, val }) => {
             query = query[method](col, val);
         });
@@ -62,12 +59,12 @@ const _fetchPaginated = async (tableName, selectFields, filters = []) => {
     return allData;
 };
 
-/** Call this to invalidate cache (e.g. after n8n upload) */
+/** Invalidate all cached data (e.g. after n8n upload) */
 export const clearDataCache = () => {
     Object.keys(_cache).forEach(k => delete _cache[k]);
 };
 
-// ─── BU NAME MAP (shared) ────────────────────────────────────────────────────
+// ─── BU NAME MAP ─────────────────────────────────────────────────────────────
 const BU_MAP = {
     'Juntos house': 'Juntos house',
     'Juntos boutique': 'Juntos boutique',
@@ -84,7 +81,6 @@ const BU_MAP = {
 const parseVolume = (v) => {
     if (v === null || v === undefined || v === '') return 0;
     if (typeof v === 'number') return v;
-    // Remove thousand separators, then parse
     return parseFloat(String(v).replace(/,/g, '')) || 0;
 };
 
@@ -155,7 +151,7 @@ export const DataService = {
 
     // ── INTERNAL FETCHERS ────────────────────────────────────────────────────
 
-    /** Fetch all daily data for 2025 (cached) */
+    /** Fetch all daily records for 2025 (server-side filtered + cached) */
     _fetchDailyDef2025: async () => {
         return _fetchPaginated(
             'sales_daily_def',
@@ -167,7 +163,7 @@ export const DataService = {
         );
     },
 
-    /** Fetch all daily data for 2026 (cached, server-side filtered) */
+    /** Fetch all daily records for 2026 (server-side filtered + cached) */
     _fetchDailyDef2026: async () => {
         return _fetchPaginated(
             'sales_daily_def',
@@ -179,7 +175,7 @@ export const DataService = {
         );
     },
 
-    /** Fetch data from sales_records (2024 historic) */
+    /** Fetch aggregated monthly data from sales_records (2024 historic) */
     _fetchYearData: async (year) => {
         const cacheKey = `sales_records::${year}`;
         if (_cache[cacheKey]) return _cache[cacheKey];
@@ -198,7 +194,11 @@ export const DataService = {
 
     // ── 2025 METHODS ─────────────────────────────────────────────────────────
 
+    /** Returns raw daily records for 2025 (used for Daily view) */
     get2025RawData: async () => DataService._fetchDailyDef2025(),
+
+    /** Returns raw daily records for 2026 (used for Daily view that crosses year boundary) */
+    get2026RawData: async () => DataService._fetchDailyDef2026(),
 
     get2025SalesData: async () => {
         const [data, buList] = await Promise.all([
