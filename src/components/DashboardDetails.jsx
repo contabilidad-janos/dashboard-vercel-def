@@ -42,9 +42,14 @@ const getLastWeekIndex = () => {
 const sumArr  = (arr) => (arr || []).reduce((s, v) => s + (Number(v) || 0), 0);
 const safeNum = (v) => Number(v) || 0;
 
+// Zero-pads a number to 2 digits (used for local-timezone date formatting)
+const _pad = (n) => String(n).padStart(2, '0');
+// Format a Date as YYYY-MM-DD using LOCAL time (avoids UTC shift from toISOString)
+const localDateStr = (d) => `${d.getFullYear()}-${_pad(d.getMonth() + 1)}-${_pad(d.getDate())}`;
+
 const DashboardDetails = () => {
     const [loading, setLoading]             = useState(true);
-    const [error, setError]                 = useState(null);   // catch load errors gracefully
+    const [error, setError]                 = useState(null);
     const [rawData, setRawData]             = useState({});
     const [selectedYear, setSelectedYear]   = useState('2025');
     const [selectedUnits, setSelectedUnits] = useState(['All Groups']);
@@ -154,7 +159,7 @@ const DashboardDetails = () => {
         const shCurr = is2026 ? "'26" : "'25";
         const shPrev = is2026 ? "'25" : "'24";
 
-        // ── YEARLY ─────────────────────────────────────────────────────────────
+        // ── YEARLY ────────────────────────────────────────────────────────────
         if (viewType === 'yearly') {
             const ySpend = (sM, tM, u) => { const ts = sumArr(sM[u]), tt = sumArr(tM[u]); return tt > 0 ? Math.round(ts/tt) : 0; };
             const ds = [];
@@ -183,11 +188,15 @@ const DashboardDetails = () => {
             return { labels: [yPrev, yCurr], datasets: ds };
         }
 
-        // ── DAILY ───────────────────────────────────────────────────────────
+        // ── DAILY ─────────────────────────────────────────────────────────────
         if (viewType === 'daily') {
             const dates = [];
-            for (let d = new Date(dailyStart + 'T00:00:00'), e = new Date(dailyEnd + 'T00:00:00'); d <= e; d.setDate(d.getDate()+1))
-                dates.push(d.toISOString().split('T')[0]);
+            // Use local-time date creation and formatting to avoid UTC timezone shift
+            const start = new Date(dailyStart + 'T00:00:00');
+            const end   = new Date(dailyEnd   + 'T00:00:00');
+            for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+                dates.push(localDateStr(d)); // ← local time, no UTC offset bug
+            }
             const raw = [...(rawData.raw2025||[]), ...(rawData.raw2026||[])];
             const getVal = (date, unit) => {
                 const recs = raw.filter(r => r.date === date);
@@ -197,7 +206,7 @@ const DashboardDetails = () => {
             return { labels: dates, datasets: selectedUnits.map(unit => ({ label: unit, data: dates.map(d=>getVal(d,unit)), borderColor: BU_COLORS[unit]||'#999', backgroundColor: BU_COLORS[unit]||'#999', tension:0.3, pointRadius:4, borderWidth:2 })) };
         }
 
-        // ── MONTHLY / WEEKLY ───────────────────────────────────────────────
+        // ── MONTHLY / WEEKLY ──────────────────────────────────────────────────
         const labels = viewType === 'monthly'
             ? MONTHS.slice(startPeriod, endPeriod+1)
             : wLbls.slice(startPeriod, endPeriod+1);
@@ -259,7 +268,6 @@ const DashboardDetails = () => {
         return { labels, datasets };
     }, [rawData, selectedUnits, metric, viewType, selectedYear, startPeriod, endPeriod, compare24, compareBudget, dailyStart, dailyEnd, excludeVat]);
 
-    // ── Error state ─────────────────────────────────────────────────────────
     if (error) {
         return (
             <div className="flex flex-col items-center justify-center py-24 gap-4">
@@ -270,7 +278,6 @@ const DashboardDetails = () => {
         );
     }
 
-    // ── Loading state ──────────────────────────────────────────────────────
     if (loading) {
         return (
             <div className="flex items-center justify-center py-24">
