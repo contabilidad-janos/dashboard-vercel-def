@@ -4,7 +4,7 @@ import { format, startOfWeek, endOfWeek, subWeeks } from 'date-fns';
 import DetailsFilters from './details/DetailsFilters';
 import DetailsChart from './details/DetailsChart';
 import DetailsTable from './details/DetailsTable';
-// NOTE: Chart.js is already fully registered in App.jsx – do NOT re-register here.
+// Chart.js is fully registered in App.jsx — do NOT re-register here.
 
 const VAT_RATES = {
     'Juntos house':      0.10,
@@ -33,7 +33,7 @@ const COLORS_ARRAY = Object.values(BU_COLORS);
 const getLastWeekIndex = () => {
     const today = new Date();
     const s = startOfWeek(subWeeks(today, 1), { weekStartsOn: 1 });
-    const e = endOfWeek(subWeeks(today, 1),   { weekStartsOn: 1 });
+    const e = endOfWeek(subWeeks(today, 1), { weekStartsOn: 1 });
     const lbl = `${format(s,'dd/MM')}-${format(e,'dd/MM')}`;
     const idx = WEEKLY_LABELS_2025.indexOf(lbl);
     return idx !== -1 ? idx : WEEKLY_LABELS_2025.length - 1;
@@ -41,11 +41,8 @@ const getLastWeekIndex = () => {
 
 const sumArr  = (arr) => (arr || []).reduce((s, v) => s + (Number(v) || 0), 0);
 const safeNum = (v) => Number(v) || 0;
-
-// Zero-pads a number to 2 digits (used for local-timezone date formatting)
-const _pad = (n) => String(n).padStart(2, '0');
-// Format a Date as YYYY-MM-DD using LOCAL time (avoids UTC shift from toISOString)
-const localDateStr = (d) => `${d.getFullYear()}-${_pad(d.getMonth() + 1)}-${_pad(d.getDate())}`;
+const _pad    = (n) => String(n).padStart(2, '0');
+const localDateStr = (d) => `${d.getFullYear()}-${_pad(d.getMonth()+1)}-${_pad(d.getDate())}`;
 
 const DashboardDetails = () => {
     const [loading, setLoading]             = useState(true);
@@ -115,7 +112,7 @@ const DashboardDetails = () => {
                 });
             } catch (err) {
                 console.error('DashboardDetails load error:', err);
-                setError(err?.message || 'Unknown error loading data');
+                setError(err?.message || 'Unknown error');
             } finally {
                 setLoading(false);
             }
@@ -132,8 +129,7 @@ const DashboardDetails = () => {
             if (MAP[val]) { setStartPeriod(MAP[val][0]); setEndPeriod(MAP[val][1]); }
         } else if (viewType === 'weekly') {
             const lbls = selectedYear === '2026' ? WEEKLY_LABELS_2026 : WEEKLY_LABELS_2025;
-            const last = lbls.length - 1;
-            const MAP  = { q1:[0,12], q2:[13,25], q3:[26,38], q4:[39, last] };
+            const MAP  = { q1:[0,12], q2:[13,25], q3:[26,38], q4:[39, lbls.length-1] };
             if (MAP[val]) { setStartPeriod(MAP[val][0]); setEndPeriod(MAP[val][1]); }
         }
     };
@@ -153,98 +149,91 @@ const DashboardDetails = () => {
         const pTw = is2026 ? rawData.trans25w : rawData.trans24w;
         const pSp = is2026 ? rawData.spend25  : rawData.spend24;
         const bud = is2026 ? rawData.budget26u : rawData.budget25u;
-        const wLbls = is2026 ? WEEKLY_LABELS_2026 : WEEKLY_LABELS_2025;
+        const wLbls  = is2026 ? WEEKLY_LABELS_2026 : WEEKLY_LABELS_2025;
         const yCurr  = is2026 ? '2026' : '2025';
         const yPrev  = is2026 ? '2025' : '2024';
         const shCurr = is2026 ? "'26" : "'25";
         const shPrev = is2026 ? "'25" : "'24";
 
-        // ── YEARLY ────────────────────────────────────────────────────────────
+        // ── YEARLY ────────────────────────────────────────────────────────
         if (viewType === 'yearly') {
-            const ySpend = (sM, tM, u) => { const ts = sumArr(sM[u]), tt = sumArr(tM[u]); return tt > 0 ? Math.round(ts/tt) : 0; };
+            const ySpend = (sM, tM, u) => { const ts=sumArr(sM[u]),tt=sumArr(tM[u]); return tt>0?Math.round(ts/tt):0; };
             const ds = [];
-            selectedUnits.filter(u => u !== 'All Groups').forEach((unit, i) => {
-                const col = COLORS_ARRAY[i % COLORS_ARRAY.length];
-                const dP = metric === 'sales' ? sumArr((pS[unit]||[]).map(v => getNetValue(v, unit)))
-                         : metric === 'transactions' ? sumArr(pT[unit])
-                         : ySpend(pS, pT, unit);
-                const dC = metric === 'sales' ? sumArr((cS[unit]||[]).map(v => getNetValue(v, unit)))
-                         : metric === 'transactions' ? sumArr(cT[unit])
-                         : ySpend(cS, cT, unit);
-                ds.push({ label: unit, data: [dP, dC], backgroundColor: ['#A9A9A9', col], borderColor: ['#A9A9A9', col], borderWidth: 2 });
+            selectedUnits.filter(u=>u!=='All Groups').forEach((unit,i)=>{
+                const col=COLORS_ARRAY[i%COLORS_ARRAY.length];
+                const dP = metric==='sales'?sumArr((pS[unit]||[]).map(v=>getNetValue(v,unit))):metric==='transactions'?sumArr(pT[unit]):ySpend(pS,pT,unit);
+                const dC = metric==='sales'?sumArr((cS[unit]||[]).map(v=>getNetValue(v,unit))):metric==='transactions'?sumArr(cT[unit]):ySpend(cS,cT,unit);
+                ds.push({ label:unit, data:[dP,dC], backgroundColor:['#A9A9A9',col], borderColor:['#A9A9A9',col], borderWidth:2 });
             });
             if (selectedUnits.includes('All Groups')) {
-                let tP = 0, tC = 0;
-                if (metric === 'spend') {
+                let tP=0,tC=0;
+                if (metric==='spend') {
                     let sP=0,rP=0,sC=0,rC=0;
-                    BUSINESS_UNITS.forEach(u => { sP+=sumArr(pS[u]); rP+=sumArr(pT[u]); sC+=sumArr(cS[u]); rC+=sumArr(cT[u]); });
-                    tP = rP>0 ? Math.round(sP/rP) : 0; tC = rC>0 ? Math.round(sC/rC) : 0;
+                    BUSINESS_UNITS.forEach(u=>{sP+=sumArr(pS[u]);rP+=sumArr(pT[u]);sC+=sumArr(cS[u]);rC+=sumArr(cT[u]);});
+                    tP=rP>0?Math.round(sP/rP):0; tC=rC>0?Math.round(sC/rC):0;
                 } else {
-                    const k = metric === 'sales' ? 'sales' : 'trans';
-                    BUSINESS_UNITS.forEach(u => { tP += sumArr(rawData[`${k}${is2026?'25':'24'}`]?.[u]); tC += sumArr(rawData[`${k}${is2026?'26':'25'}`]?.[u]); });
+                    const k=metric==='sales'?'sales':'trans';
+                    BUSINESS_UNITS.forEach(u=>{tP+=sumArr(rawData[`${k}${is2026?'25':'24'}`]?.[u]);tC+=sumArr(rawData[`${k}${is2026?'26':'25'}`]?.[u]);});
                 }
                 ds.push({ label:'All Groups', data:[tP,tC], backgroundColor:['#A9A9A9','#405846'], borderColor:['#A9A9A9','#405846'], borderWidth:3 });
             }
-            return { labels: [yPrev, yCurr], datasets: ds };
+            return { labels:[yPrev,yCurr], datasets:ds };
         }
 
-        // ── DAILY ─────────────────────────────────────────────────────────────
+        // ── DAILY ─────────────────────────────────────────────────────────
         if (viewType === 'daily') {
             const dates = [];
-            // Use local-time date creation and formatting to avoid UTC timezone shift
             const start = new Date(dailyStart + 'T00:00:00');
             const end   = new Date(dailyEnd   + 'T00:00:00');
-            for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
-                dates.push(localDateStr(d)); // ← local time, no UTC offset bug
-            }
+            for (let d=new Date(start); d<=end; d.setDate(d.getDate()+1))
+                dates.push(localDateStr(d));
             const raw = [...(rawData.raw2025||[]), ...(rawData.raw2026||[])];
             const getVal = (date, unit) => {
-                const recs = raw.filter(r => r.date === date);
-                if (unit === 'All Groups') return BUSINESS_UNITS.reduce((t,u)=>t+getNetValue(recs.filter(r=>r.business_unit===u).reduce((s,r)=>s+safeNum(r.revenue),0),u),0);
-                return getNetValue(recs.filter(r=>r.business_unit===unit).reduce((s,r)=>s+safeNum(r.revenue),0), unit);
+                const recs = raw.filter(r=>r.date===date);
+                if (unit==='All Groups') return BUSINESS_UNITS.reduce((t,u)=>t+getNetValue(recs.filter(r=>r.business_unit===u).reduce((s,r)=>s+safeNum(r.revenue),0),u),0);
+                return getNetValue(recs.filter(r=>r.business_unit===unit).reduce((s,r)=>s+safeNum(r.revenue),0),unit);
             };
-            return { labels: dates, datasets: selectedUnits.map(unit => ({ label: unit, data: dates.map(d=>getVal(d,unit)), borderColor: BU_COLORS[unit]||'#999', backgroundColor: BU_COLORS[unit]||'#999', tension:0.3, pointRadius:4, borderWidth:2 })) };
+            return { labels:dates, datasets:selectedUnits.map(unit=>({ label:unit, data:dates.map(d=>getVal(d,unit)), borderColor:BU_COLORS[unit]||'#999', backgroundColor:BU_COLORS[unit]||'#999', tension:0.3, pointRadius:4, borderWidth:2 })) };
         }
 
-        // ── MONTHLY / WEEKLY ──────────────────────────────────────────────────
-        const labels = viewType === 'monthly'
+        // ── MONTHLY / WEEKLY ──────────────────────────────────────────────
+        const labels = viewType==='monthly'
             ? MONTHS.slice(startPeriod, endPeriod+1)
             : wLbls.slice(startPeriod, endPeriod+1);
 
-        const slc = (sM, tM, spM, sWm, tWm, unit) => {
-            const sl = arr => (arr||[]).slice(startPeriod, endPeriod+1);
-            if (viewType === 'monthly') {
-                if (metric === 'sales') return sl((sM[unit]||[]).map(v => getNetValue(v,unit)));
-                if (metric === 'transactions') return sl(tM[unit]);
+        const slc = (sM,tM,spM,sWm,tWm,unit) => {
+            const sl = arr=>(arr||[]).slice(startPeriod,endPeriod+1);
+            if (viewType==='monthly') {
+                if (metric==='sales') return sl((sM[unit]||[]).map(v=>getNetValue(v,unit)));
+                if (metric==='transactions') return sl(tM[unit]);
                 return sl(spM[unit]);
             }
-            if (metric === 'sales') return sl((sWm[unit]||[]).map(v => getNetValue(v,unit)));
-            if (metric === 'transactions') return sl(tWm[unit]);
-            const sv = sWm[unit]||[], tv = tWm[unit]||[];
-            return sl(sv.map((v,i) => tv[i]>0 ? Math.round(getNetValue(v,unit)/tv[i]) : 0));
+            if (metric==='sales') return sl((sWm[unit]||[]).map(v=>getNetValue(v,unit)));
+            if (metric==='transactions') return sl(tWm[unit]);
+            const sv=sWm[unit]||[],tv=tWm[unit]||[];
+            return sl(sv.map((v,i)=>tv[i]>0?Math.round(getNetValue(v,unit)/tv[i]):0));
         };
 
-        const datasets = [];
+        const datasets=[];
         selectedUnits.filter(u=>u!=='All Groups').forEach((unit,i)=>{
-            const col = COLORS_ARRAY[i % COLORS_ARRAY.length];
+            const col=COLORS_ARRAY[i%COLORS_ARRAY.length];
             datasets.push({ label:`${unit} ${shCurr}`, data:slc(cS,cT,cSp,cSw,cTw,unit), borderColor:col, backgroundColor:col, tension:0.3, fill:false });
             if (compare24) datasets.push({ label:`${unit} ${shPrev}`, data:slc(pS,pT,pSp,pSw,pTw,unit), borderColor:col, backgroundColor:col, borderDash:[5,5], borderWidth:2, tension:0.3, fill:false, pointRadius:0 });
-            if (compareBudget && metric==='sales') {
-                const bd = (bud?.[unit]||[]).map(v=>getNetValue(v,unit));
-                const budSlice = viewType==='monthly' ? bd.slice(startPeriod,endPeriod+1)
-                    : Array.from({length:endPeriod-startPeriod+1},(_,wi)=>Math.round((bd[WEEK_MONTH_MAP[startPeriod+wi]??0]||0)/4));
+            if (compareBudget&&metric==='sales') {
+                const bd=(bud?.[unit]||[]).map(v=>getNetValue(v,unit));
+                const budSlice=viewType==='monthly'?bd.slice(startPeriod,endPeriod+1):Array.from({length:endPeriod-startPeriod+1},(_,wi)=>Math.round((bd[WEEK_MONTH_MAP[startPeriod+wi]??0]||0)/4));
                 datasets.push({ label:`${unit} Budget`, data:budSlice, borderColor:col, borderDash:[2,2], borderWidth:2, tension:0, fill:false });
             }
         });
 
         if (selectedUnits.includes('All Groups')) {
-            const dLen = endPeriod - startPeriod + 1;
-            const aggC = new Array(dLen).fill(0), aggP = new Array(dLen).fill(0), aggB = new Array(dLen).fill(0);
-            if (metric !== 'spend') {
-                BUSINESS_UNITS.forEach(unit => {
-                    slc(cS,cT,cSp,cSw,cTw,unit).forEach((v,i)=>{ aggC[i]+=v; });
-                    if (compare24) slc(pS,pT,pSp,pSw,pTw,unit).forEach((v,i)=>{ aggP[i]+=v; });
-                    if (compareBudget && metric==='sales') {
+            const dLen=endPeriod-startPeriod+1;
+            const aggC=new Array(dLen).fill(0),aggP=new Array(dLen).fill(0),aggB=new Array(dLen).fill(0);
+            if (metric!=='spend') {
+                BUSINESS_UNITS.forEach(unit=>{
+                    slc(cS,cT,cSp,cSw,cTw,unit).forEach((v,i)=>{aggC[i]+=v;});
+                    if (compare24) slc(pS,pT,pSp,pSw,pTw,unit).forEach((v,i)=>{aggP[i]+=v;});
+                    if (compareBudget&&metric==='sales') {
                         const bd=(bud?.[unit]||[]).map(v=>getNetValue(v,unit));
                         (viewType==='monthly'?bd.slice(startPeriod,endPeriod+1):Array.from({length:dLen},(_,wi)=>Math.round((bd[WEEK_MONTH_MAP[startPeriod+wi]??0]||0)/4))).forEach((v,i)=>{aggB[i]+=v;});
                     }
@@ -254,8 +243,8 @@ const DashboardDetails = () => {
                     let ps=0,pt=0,ps2=0,pt2=0;
                     BUSINESS_UNITS.forEach(u=>{
                         const idx=startPeriod+i;
-                        ps  += getNetValue((viewType==='monthly'?cS:cSw)?.[u]?.[idx]||0, u); pt  += (viewType==='monthly'?cT:cTw)?.[u]?.[idx]||0;
-                        ps2 += getNetValue((viewType==='monthly'?pS:pSw)?.[u]?.[idx]||0, u); pt2 += (viewType==='monthly'?pT:pTw)?.[u]?.[idx]||0;
+                        ps+=getNetValue((viewType==='monthly'?cS:cSw)?.[u]?.[idx]||0,u); pt+=(viewType==='monthly'?cT:cTw)?.[u]?.[idx]||0;
+                        ps2+=getNetValue((viewType==='monthly'?pS:pSw)?.[u]?.[idx]||0,u); pt2+=(viewType==='monthly'?pT:pTw)?.[u]?.[idx]||0;
                     });
                     aggC[i]=pt>0?Math.round(ps/pt):0; aggP[i]=pt2>0?Math.round(ps2/pt2):0;
                 }
@@ -268,26 +257,22 @@ const DashboardDetails = () => {
         return { labels, datasets };
     }, [rawData, selectedUnits, metric, viewType, selectedYear, startPeriod, endPeriod, compare24, compareBudget, dailyStart, dailyEnd, excludeVat]);
 
-    if (error) {
-        return (
-            <div className="flex flex-col items-center justify-center py-24 gap-4">
-                <p className="text-red-600 font-medium">Failed to load sales data.</p>
-                <p className="text-gray-500 text-sm font-mono">{error}</p>
-                <button onClick={() => window.location.reload()} className="px-4 py-2 bg-primary text-white rounded-lg text-sm">Reload</button>
-            </div>
-        );
-    }
+    if (error) return (
+        <div className="flex flex-col items-center justify-center py-24 gap-4">
+            <p className="text-red-600 font-medium">Failed to load sales data.</p>
+            <p className="text-gray-500 text-sm font-mono">{error}</p>
+            <button onClick={() => window.location.reload()} className="px-4 py-2 bg-primary text-white rounded-lg text-sm">Reload</button>
+        </div>
+    );
 
-    if (loading) {
-        return (
-            <div className="flex items-center justify-center py-24">
-                <div className="text-center">
-                    <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-3" />
-                    <p className="text-gray-500 text-sm">Loading sales data…</p>
-                </div>
+    if (loading) return (
+        <div className="flex items-center justify-center py-24">
+            <div className="text-center">
+                <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-3" />
+                <p className="text-gray-500 text-sm">Loading sales data…</p>
             </div>
-        );
-    }
+        </div>
+    );
 
     return (
         <div id="dashboard-details-page">
@@ -304,21 +289,21 @@ const DashboardDetails = () => {
                 startPeriod={startPeriod}     setStartPeriod={setStartPeriod}
                 endPeriod={endPeriod}         setEndPeriod={setEndPeriod}
                 dailyStart={dailyStart}       dailyEnd={dailyEnd}
-                onDailyRangeChange={(s,e) => { setDailyStart(s); if(e) setDailyEnd(e); }}
+                onDailyRangeChange={(s,e)=>{ setDailyStart(s); if(e) setDailyEnd(e); }}
                 compare24={compare24}         setCompare24={setCompare24}
                 compareBudget={compareBudget} setCompareBudget={setCompareBudget}
                 excludeVat={excludeVat}       setExcludeVat={setExcludeVat}
-                showLabels={showLabels}       setShowLabels={setShowLabels}
-                setIsFullScreen={setIsFullScreen}
                 handlePredefinedPeriod={handlePredefinedPeriod}
             />
 
+            {/* Chart card — Labels + Fullscreen buttons are INSIDE this card (in DetailsChart header) */}
             <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6 mb-6">
                 <DetailsChart
                     chartData={chartData}
                     chartType={chartType}
                     metric={metric}
                     showLabels={showLabels}
+                    setShowLabels={setShowLabels}
                     isFullScreen={isFullScreen}
                     setIsFullScreen={setIsFullScreen}
                     selectedYear={selectedYear}
