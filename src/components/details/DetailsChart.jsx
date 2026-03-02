@@ -1,19 +1,12 @@
 import React, { useRef, useEffect, useCallback } from 'react';
-import { Line, Bar } from 'react-chartjs-2';
+import { Bar, Line } from 'react-chartjs-2';
 import { formatCurrency, formatNumber } from '../../utils/formatters';
 import { X } from 'lucide-react';
-import clsx from 'clsx';
 
 /**
  * DetailsChart
- *
- * Label strategy (readability first):
- *  • Only CURRENT-YEAR datasets get a label (comparison & budget lines get none)
- *  • Labels float ABOVE the bar / point with a white pill background — always readable
- *  • Tooltip (hover) shows EVERYTHING: current value, prev-year, % change, vs budget
- *  • Line chart: same pill above the point
- *
- * Fullscreen: native browser fullscreen API — only the chart fills the screen.
+ * Labels: pill above bar/point (primary datasets only), rich tooltip.
+ * Fullscreen: native browser fullscreen, chart-only view.
  */
 const DetailsChart = ({
     chartData,
@@ -24,59 +17,66 @@ const DetailsChart = ({
     isFullScreen,
     setIsFullScreen,
 }) => {
-    const fullscreenRef = useRef(null);
+    const fsRef = useRef(null);
+    const prevFS  = useRef(false); // track previous value to avoid triggering on mount
 
-    // ── Native Fullscreen ─────────────────────────────────────────────────────
-    const enterFS = useCallback(() => {
-        const el = fullscreenRef.current;
-        if (!el) return;
-        (el.requestFullscreen || el.webkitRequestFullscreen || (() => {})).call(el);
-    }, []);
-    const exitFS = useCallback(() => {
-        if (document.fullscreenElement || document.webkitFullscreenElement)
-            (document.exitFullscreen || document.webkitExitFullscreen || (() => {})).call(document);
-    }, []);
-
+    // ── Sync React state ↔ native fullscreen events (ESC key etc.) ──────────────
     useEffect(() => {
-        const sync = () => setIsFullScreen(!!(document.fullscreenElement || document.webkitFullscreenElement));
+        const sync = () => {
+            const active = !!(document.fullscreenElement || document.webkitFullscreenElement);
+            setIsFullScreen(active);
+        };
         document.addEventListener('fullscreenchange', sync);
         document.addEventListener('webkitfullscreenchange', sync);
-        return () => { document.removeEventListener('fullscreenchange', sync); document.removeEventListener('webkitfullscreenchange', sync); };
+        return () => {
+            document.removeEventListener('fullscreenchange', sync);
+            document.removeEventListener('webkitfullscreenchange', sync);
+        };
     }, [setIsFullScreen]);
 
-    useEffect(() => { isFullScreen ? enterFS() : exitFS(); }, [isFullScreen]);
+    // ── Trigger native FS only when value CHANGES (not on initial mount) ───────
+    useEffect(() => {
+        if (prevFS.current === isFullScreen) return; // skip first render
+        prevFS.current = isFullScreen;
 
-    // ── Helpers ─────────────────────────────────────────────────────────────
+        const el = fsRef.current;
+        if (!el) return;
+
+        if (isFullScreen) {
+            const req = el.requestFullscreen || el.webkitRequestFullscreen;
+            if (req) req.call(el).catch(() => setIsFullScreen(false));
+        } else {
+            const hasFS = document.fullscreenElement || document.webkitFullscreenElement;
+            if (hasFS) {
+                const exit = document.exitFullscreen || document.webkitExitFullscreen;
+                if (exit) exit.call(document).catch(() => {});
+            }
+        }
+    }, [isFullScreen]);
+
+    // ── Helpers ─────────────────────────────────────────────────────────
     const fmt = (val) => metric === 'transactions' ? formatNumber(val) : formatCurrency(val);
 
-    // Determine if a dataset is a "primary" (current year) dataset that deserves a label
-    const isPrimary = (ds) => {
-        // Comparison datasets have a borderDash, budget datasets have 'Budget' in label
-        if (ds.borderDash?.length > 0) return false;
-        if (ds.label?.includes('Budget')) return false;
-        return true;
-    };
+    // A dataset is "primary" if it is the current year (not a dashed comparison or budget)
+    const isPrimary = (ds) => !ds.borderDash?.length && !ds.label?.includes('Budget');
 
-    // ── Datalabels config ───────────────────────────────────────────────────
+    // ── Data labels: pill above bar/point, current-year datasets only ───────
     const datalabels = {
-        // Only show for primary (current-year) datasets
-        display: (ctx) => showLabels && isPrimary(ctx.dataset) && ctx.parsed.y > 0,
+        display: (ctx) => showLabels && isPrimary(ctx.dataset) && ctx.parsed?.y > 0,
         anchor: 'end',
-        align: 'end',   // just above the bar/point top, never clipped inside
+        align: 'end',
         offset: 4,
-        // White pill background for max readability on any bar color
-        backgroundColor: 'rgba(255, 255, 255, 0.92)',
-        borderColor: 'rgba(0,0,0,0.08)',
+        backgroundColor: 'rgba(255,255,255,0.93)',
+        borderColor: 'rgba(0,0,0,0.09)',
         borderWidth: 1,
         borderRadius: 6,
         padding: { top: 3, bottom: 3, left: 6, right: 6 },
-        color: '#1f2937',      // dark gray — always readable
+        color: '#1f2937',
         font: { size: 11, weight: '600', family: 'Inter, sans-serif' },
-        clip: false,           // allow label to render outside chart area if needed
-        formatter: (value) => value ? fmt(value) : null,
+        formatter: (value) => (value ? fmt(value) : null),
     };
 
-    // ── Rich tooltip ───────────────────────────────────────────────────────
+    // ── Rich tooltip (shows % vs prev year and vs budget)─────────────────
     const tooltip = {
         mode: 'index',
         intersect: false,
@@ -87,54 +87,43 @@ const DetailsChart = ({
         borderWidth: 1,
         padding: 12,
         titleFont: { size: 12, weight: '700', family: 'Lora, serif' },
-        bodyFont: { size: 12, family: 'Inter, sans-serif' },
+        bodyFont:  { size: 12, family: 'Inter, sans-serif' },
         callbacks: {
             label: (ctx) => {
-                const ds = ctx.dataset;
-                const val = ctx.parsed.y;
-                const formatted = fmt(val);
+                const ds  = ctx.dataset;
+                const val = ctx.parsed?.y;
+                if (val == null) return ` ${ds.label}: —`;
+                const fmtVal = fmt(val);
+                if (!isPrimary(ds)) return ` ${ds.label}: ${fmtVal}`;
 
-                // For comparison datasets, just show value (no % calc here)
-                if (!isPrimary(ds)) return ` ${ds.label}: ${formatted}`;
-
-                // For primary datasets, also compute % vs prev year and vs budget
-                const datasets = ctx.chart.data.datasets;
-                const idx = ctx.dataIndex;
+                const datasets  = ctx.chart.data.datasets;
+                const idx       = ctx.dataIndex;
                 const prevShort = selectedYear === '2026' ? "'25" : "'24";
 
-                const lines = [` ${ds.label}: ${formatted}`];
+                // Match prev-year dashed dataset by stripping the year short-code from the label
+                const unitBase = ds.label.replace(/\s'\d{2}$/, '');
+                const dsPrev   = datasets.find(d => d.borderDash?.length > 0 && d.label?.startsWith(unitBase));
+                const dsBud    = datasets.find(d => d.label?.includes('Budget') && d.label?.startsWith(unitBase));
 
-                // vs prev year (find matching dashed dataset for same unit)
-                const unitBase = ds.label.replace(/\s'\d{2}$/, '').replace(/\s'\.?$/, '');
-                const dsPrev = datasets.find(d =>
-                    d.borderDash?.length > 0 &&
-                    !d.label?.includes('Budget') &&
-                    d.label?.startsWith(unitBase)
-                );
+                const lines = [` ${ds.label}: ${fmtVal}`];
                 if (dsPrev?.data[idx]) {
                     const pct = Math.round(((val - dsPrev.data[idx]) / dsPrev.data[idx]) * 100);
-                    const arrow = pct >= 0 ? '↑' : '↓';
-                    const sign  = pct >= 0 ? '+' : '';
-                    lines.push(`   ${arrow} ${sign}${pct}% vs ${prevShort}`);
+                    lines.push(`   ${pct >= 0 ? '\u2191' : '\u2193'} ${pct >= 0 ? '+' : ''}${pct}% vs ${prevShort}`);
                 }
-
-                // vs budget
-                const dsBud = datasets.find(d => d.label?.includes('Budget') && d.label?.startsWith(unitBase));
                 if (dsBud?.data[idx]) {
                     const pct = Math.round(((val - dsBud.data[idx]) / dsBud.data[idx]) * 100);
-                    const arrow = pct >= 0 ? '↑' : '↓';
-                    lines.push(`   ${arrow} ${pct >= 0 ? '+' : ''}${pct}% vs Budget`);
+                    lines.push(`   ${pct >= 0 ? '\u2191' : '\u2193'} ${pct >= 0 ? '+' : ''}${pct}% vs Budget`);
                 }
-
                 return lines;
             },
         },
     };
 
-    // ── Chart options ───────────────────────────────────────────────────────────
-    const baseOptions = {
+    // ── Chart options ─────────────────────────────────────────────────────
+    const options = {
         maintainAspectRatio: false,
         interaction: { mode: 'index', intersect: false },
+        layout: { padding: { top: 36 } }, // room for pill labels above tallest bar
         plugins: {
             legend: { position: 'bottom', labels: { usePointStyle: true, padding: 16, font: { size: 12 } } },
             tooltip,
@@ -149,11 +138,7 @@ const DetailsChart = ({
         },
     };
 
-    // Bar: extra top padding so pill labels have room above the tallest bar
-    const barOptions  = { ...baseOptions, layout: { padding: { top: 36 } } };
-    // Line: similar
-    const lineOptions = { ...baseOptions, layout: { padding: { top: 36 } } };
-
+    // ── Empty state ───────────────────────────────────────────────────────
     if (!chartData || !chartData.datasets?.length) {
         return (
             <div className="flex items-center justify-center h-64 text-gray-400 italic text-sm">
@@ -162,12 +147,11 @@ const DetailsChart = ({
         );
     }
 
+    const ChartComponent = chartType === 'line' ? Line : Bar;
+
     return (
-        <div
-            ref={fullscreenRef}
-            className="relative w-full h-[420px]"
-        >
-            {/* Fullscreen overlay (shown only in native FS) */}
+        <div ref={fsRef} className="relative w-full h-[420px] bg-white">
+            {/* Fullscreen overlay — only shown when native FS is active */}
             {isFullScreen && (
                 <div className="absolute inset-0 bg-white flex flex-col" style={{ zIndex: 10 }}>
                     <div className="flex justify-end p-4 flex-shrink-0">
@@ -179,20 +163,13 @@ const DetailsChart = ({
                         </button>
                     </div>
                     <div className="flex-1 px-6 pb-6 min-h-0">
-                        {chartType === 'line'
-                            ? <Line data={chartData} options={lineOptions} />
-                            : <Bar  data={chartData} options={barOptions}  />
-                        }
+                        <ChartComponent data={chartData} options={options} />
                     </div>
                 </div>
             )}
 
             {/* Normal view */}
-            {!isFullScreen && (
-                chartType === 'line'
-                    ? <Line data={chartData} options={lineOptions} />
-                    : <Bar  data={chartData} options={barOptions}  />
-            )}
+            {!isFullScreen && <ChartComponent data={chartData} options={options} />}
         </div>
     );
 };
