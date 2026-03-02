@@ -11,7 +11,6 @@ import DetailsTable from './details/DetailsTable';
 Chart.register(ChartDataLabels);
 
 // ── VAT Rates per business unit ────────────────────────────────────────────────
-// IVA reducido España: Restauración 10%, Distribución/Productos 10%, Actividades variable
 const VAT_RATES = {
     'Juntos house':      0.10,
     'Juntos boutique':   0.10,
@@ -52,32 +51,31 @@ const safeNum = (v) => Number(v) || 0;
 
 // ── Component ─────────────────────────────────────────────────────────────────
 const DashboardDetails = () => {
-    // ── State ─────────────────────────────────────────────────────────────────
-    const [loading, setLoading]           = useState(true);
-    const [rawData, setRawData]           = useState({});
-    const [selectedYear, setSelectedYear] = useState('2025');
+    // ── State
+    const [loading, setLoading]             = useState(true);
+    const [rawData, setRawData]             = useState({});
+    const [selectedYear, setSelectedYear]   = useState('2025');
     const [selectedUnits, setSelectedUnits] = useState(['All Groups']);
-    const [metric, setMetric]             = useState('sales');
-    const [viewType, setViewType]         = useState('monthly');
-    const [chartType, setChartType]       = useState('bar');
-    const [dailyStart, setDailyStart]     = useState('2025-12-29');
-    const [dailyEnd, setDailyEnd]         = useState('2026-01-04');
-    const [startPeriod, setStartPeriod]   = useState(0);
-    const [endPeriod, setEndPeriod]       = useState(11);
-    const [compare24, setCompare24]       = useState(true);
+    const [metric, setMetric]               = useState('sales');
+    const [viewType, setViewType]           = useState('monthly');
+    const [chartType, setChartType]         = useState('bar');
+    const [dailyStart, setDailyStart]       = useState('2025-12-29');
+    const [dailyEnd, setDailyEnd]           = useState('2026-01-04');
+    const [startPeriod, setStartPeriod]     = useState(0);
+    const [endPeriod, setEndPeriod]         = useState(11);
+    const [compare24, setCompare24]         = useState(true);
     const [compareBudget, setCompareBudget] = useState(false);
-    const [showLabels, setShowLabels]     = useState(true);
-    const [isFullScreen, setIsFullScreen] = useState(false);
-    const [excludeVat, setExcludeVat]     = useState(false);
+    const [showLabels, setShowLabels]       = useState(true);
+    const [isFullScreen, setIsFullScreen]   = useState(false);
+    const [excludeVat, setExcludeVat]       = useState(false);
 
-    // ── Net value helper ──────────────────────────────────────────────────────
+    // ── Net value helper
     const getNetValue = (val, unitName) => {
         if (!excludeVat || !val) return safeNum(val);
-        const rate = VAT_RATES[unitName] ?? 0;
-        return safeNum(val) / (1 + rate);
+        return safeNum(val) / (1 + (VAT_RATES[unitName] ?? 0));
     };
 
-    // ── Period reset on view change ───────────────────────────────────────────
+    // ── Period reset on view type change
     useEffect(() => {
         if (viewType === 'monthly') {
             setStartPeriod(0); setEndPeriod(11);
@@ -87,10 +85,9 @@ const DashboardDetails = () => {
         } else if (viewType === 'yearly') {
             setStartPeriod(0); setEndPeriod(1);
         }
-        // daily: period state not used, dailyStart/End is used instead
     }, [viewType]);
 
-    // ── Data fetch ────────────────────────────────────────────────────────────
+    // ── Data fetch (runs once on mount)
     useEffect(() => {
         const load = async () => {
             const [
@@ -100,27 +97,26 @@ const DashboardDetails = () => {
                 budget25u, budget26u,
                 raw2025, raw2026,
             ] = await Promise.all([
-                DataService.get2025SalesData(),       // sales25
-                DataService.get2025SalesDataWeekly(), // sales25w
-                DataService.get2025TransData(),       // trans25
-                DataService.get2025TransDataWeekly(), // trans25w
-                DataService.get2025SpendData(),       // spend25
-                DataService.get2024SalesData(),       // sales24
-                DataService.get2024SalesDataWeekly(), // sales24w
-                DataService.get2024TransData(),       // trans24
-                DataService.get2024TransDataWeekly(), // trans24w
-                DataService.get2024SpendData(),       // spend24
-                DataService.get2026SalesData(),       // sales26
-                DataService.get2026SalesDataWeekly(), // sales26w
-                DataService.get2026TransData(),       // trans26
-                DataService.get2026TransDataWeekly(), // trans26w
-                DataService.get2026SpendData(),       // spend26
-                DataService.get2025BudgetDataByUnit(), // budget25u
-                DataService.get2026BudgetData(),       // budget26u
-                DataService.get2025RawData(),          // raw2025 (for daily view 2025 dates)
-                DataService.get2026RawData(),          // raw2026 (for daily view 2026 dates)
+                DataService.get2025SalesData(),
+                DataService.get2025SalesDataWeekly(),
+                DataService.get2025TransData(),
+                DataService.get2025TransDataWeekly(),
+                DataService.get2025SpendData(),
+                DataService.get2024SalesData(),
+                DataService.get2024SalesDataWeekly(),
+                DataService.get2024TransData(),
+                DataService.get2024TransDataWeekly(),
+                DataService.get2024SpendData(),
+                DataService.get2026SalesData(),
+                DataService.get2026SalesDataWeekly(),
+                DataService.get2026TransData(),
+                DataService.get2026TransDataWeekly(),
+                DataService.get2026SpendData(),
+                DataService.get2025BudgetDataByUnit(),
+                DataService.get2026BudgetData(),
+                DataService.get2025RawData(),
+                DataService.get2026RawData(),
             ]);
-
             setRawData({
                 sales25, sales25w, trans25, trans25w, spend25,
                 sales24, sales24w, trans24, trans24w, spend24,
@@ -133,7 +129,7 @@ const DashboardDetails = () => {
         load();
     }, []);
 
-    // ── Event handlers ────────────────────────────────────────────────────────
+    // ── Event handlers
     const toggleUnit = (u) =>
         setSelectedUnits(prev => prev.includes(u) ? prev.filter(x => x !== u) : [...prev, u]);
 
@@ -142,7 +138,7 @@ const DashboardDetails = () => {
             const MAP = { q1:[0,2], q2:[3,5], q3:[6,8], q4:[9,11], summer:[3,9], ytd:[0, new Date().getMonth()] };
             if (MAP[val]) { setStartPeriod(MAP[val][0]); setEndPeriod(MAP[val][1]); }
         } else if (viewType === 'weekly') {
-            // Use correct label array length for the selected year
+            // Use the correct label set for the selected year
             const labels = selectedYear === '2026' ? WEEKLY_LABELS_2026 : WEEKLY_LABELS_2025;
             const last = labels.length - 1;
             const MAP = { q1:[0,12], q2:[13,25], q3:[26,38], q4:[39, last] };
@@ -150,51 +146,64 @@ const DashboardDetails = () => {
         }
     };
 
-    // ── Chart data computation (memoized) ─────────────────────────────────────
+    // ── Chart data (memoized)
     const chartData = useMemo(() => {
         if (!rawData.sales25) return null;
 
-        const is2026        = selectedYear === '2026';
+        const is2026 = selectedYear === '2026';
+
+        // Current year data sources
         const currentSales  = is2026 ? rawData.sales26  : rawData.sales25;
         const currentSalesW = is2026 ? rawData.sales26w : rawData.sales25w;
         const currentTrans  = is2026 ? rawData.trans26  : rawData.trans25;
         const currentTransW = is2026 ? rawData.trans26w : rawData.trans25w;
         const currentSpend  = is2026 ? rawData.spend26  : rawData.spend25;
+        // Previous year data sources
         const prevSales     = is2026 ? rawData.sales25  : rawData.sales24;
         const prevSalesW    = is2026 ? rawData.sales25w : rawData.sales24w;
         const prevTrans     = is2026 ? rawData.trans25  : rawData.trans24;
         const prevTransW    = is2026 ? rawData.trans25w : rawData.trans24w;
         const prevSpend     = is2026 ? rawData.spend25  : rawData.spend24;
-        // Use the correct budget for the selected year
+        // Budget for selected year
         const currentBudget = is2026 ? rawData.budget26u : rawData.budget25u;
+        // Weekly labels for selected year
         const labelsList    = is2026 ? WEEKLY_LABELS_2026 : WEEKLY_LABELS_2025;
+
+        // Year labels derived from selected year
+        const yearCurr = is2026 ? '2026' : '2025';
+        const yearPrev = is2026 ? '2025' : '2024';
+        const shortCurr = is2026 ? "'26" : "'25";
+        const shortPrev = is2026 ? "'25" : "'24";
 
         // ── YEARLY VIEW ─────────────────────────────────────────────────────
         if (viewType === 'yearly') {
-            const labels   = ['2024', '2025'];
+            // Labels reflect selected year: 2025 shows [2024,2025], 2026 shows [2025,2026]
+            const labels = [yearPrev, yearCurr];
             const datasets = [];
 
-            const getYearlySpend = (salesMap, transMap, unit) => {
+            const yearlySpend = (salesMap, transMap, unit) => {
                 const ts = sumArr(salesMap[unit]); const tt = sumArr(transMap[unit]);
                 return tt > 0 ? Math.round(ts / tt) : 0;
             };
 
             selectedUnits.filter(u => u !== 'All Groups').forEach((unit, i) => {
                 const color = COLORS_ARRAY[i % COLORS_ARRAY.length];
-                let d24, d25;
+                let dPrev, dCurr;
+
                 if (metric === 'sales') {
-                    d24 = sumArr((rawData.sales24[unit] || []).map(v => getNetValue(v, unit)));
-                    d25 = sumArr((rawData.sales25[unit] || []).map(v => getNetValue(v, unit)));
+                    dPrev = sumArr((prevSales[unit]    || []).map(v => getNetValue(v, unit)));
+                    dCurr = sumArr((currentSales[unit] || []).map(v => getNetValue(v, unit)));
                 } else if (metric === 'transactions') {
-                    d24 = sumArr(rawData.trans24[unit]);
-                    d25 = sumArr(rawData.trans25[unit]);
+                    dPrev = sumArr(prevTrans[unit]);
+                    dCurr = sumArr(currentTrans[unit]);
                 } else {
-                    d24 = getYearlySpend(rawData.sales24, rawData.trans24, unit);
-                    d25 = getYearlySpend(rawData.sales25, rawData.trans25, unit);
+                    dPrev = yearlySpend(prevSales,    prevTrans,    unit);
+                    dCurr = yearlySpend(currentSales, currentTrans, unit);
                 }
+
                 datasets.push({
                     label: unit,
-                    data: [d24, d25],
+                    data: [dPrev, dCurr],
                     backgroundColor: ['#A9A9A9', color],
                     borderColor: ['#A9A9A9', color],
                     borderWidth: 2,
@@ -202,25 +211,28 @@ const DashboardDetails = () => {
             });
 
             if (selectedUnits.includes('All Groups')) {
-                let t24 = 0, t25 = 0;
+                let tPrev = 0, tCurr = 0;
                 if (metric === 'spend') {
-                    let s24=0, r24=0, s25=0, r25=0;
+                    let sP=0,rP=0,sC=0,rC=0;
                     BUSINESS_UNITS.forEach(u => {
-                        s24 += sumArr(rawData.sales24[u]); r24 += sumArr(rawData.trans24[u]);
-                        s25 += sumArr(rawData.sales25[u]); r25 += sumArr(rawData.trans25[u]);
+                        sP+=sumArr(prevSales[u]);    rP+=sumArr(prevTrans[u]);
+                        sC+=sumArr(currentSales[u]); rC+=sumArr(currentTrans[u]);
                     });
-                    t24 = r24>0?Math.round(s24/r24):0;
-                    t25 = r25>0?Math.round(s25/r25):0;
+                    tPrev = rP>0?Math.round(sP/rP):0;
+                    tCurr = rC>0?Math.round(sC/rC):0;
                 } else {
                     const key = metric === 'sales' ? 'sales' : 'trans';
+                    // prev = is2026 ? 25 : 24 ; curr = is2026 ? 26 : 25
+                    const prevKey = is2026 ? `${key}25` : `${key}24`;
+                    const currKey = is2026 ? `${key}26` : `${key}25`;
                     BUSINESS_UNITS.forEach(u => {
-                        t24 += sumArr(rawData[`${key}24`][u]);
-                        t25 += sumArr(rawData[`${key}25`][u]);
+                        tPrev += sumArr(rawData[prevKey]?.[u]);
+                        tCurr += sumArr(rawData[currKey]?.[u]);
                     });
                 }
                 datasets.push({
                     label: 'All Groups',
-                    data: [t24, t25],
+                    data: [tPrev, tCurr],
                     backgroundColor: ['#A9A9A9', '#405846'],
                     borderColor: ['#A9A9A9', '#405846'],
                     borderWidth: 3,
@@ -237,8 +249,7 @@ const DashboardDetails = () => {
             for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
                 labels.push(d.toISOString().split('T')[0]);
             }
-
-            // Merge 2025 + 2026 raw data for cross-year daily ranges
+            // Merge both years so cross-year ranges work
             const rawList = [...(rawData.raw2025 || []), ...(rawData.raw2026 || [])];
 
             const getValue = (dateStr, unitName) => {
@@ -253,14 +264,16 @@ const DashboardDetails = () => {
                 return getNetValue(v, unitName);
             };
 
-            const datasets = selectedUnits.map(unit => ({
-                label: unit,
-                data: labels.map(date => getValue(date, unit)),
-                borderColor: BU_COLORS[unit] || '#999',
-                backgroundColor: BU_COLORS[unit] || '#999',
-                tension: 0.3, pointRadius: 4, pointHoverRadius: 6, borderWidth: 2,
-            }));
-            return { labels, datasets };
+            return {
+                labels,
+                datasets: selectedUnits.map(unit => ({
+                    label: unit,
+                    data: labels.map(date => getValue(date, unit)),
+                    borderColor: BU_COLORS[unit] || '#999',
+                    backgroundColor: BU_COLORS[unit] || '#999',
+                    tension: 0.3, pointRadius: 4, pointHoverRadius: 6, borderWidth: 2,
+                })),
+            };
         }
 
         // ── MONTHLY / WEEKLY VIEW ───────────────────────────────────────────
@@ -278,7 +291,6 @@ const DashboardDetails = () => {
             // weekly
             if (metric === 'sales')        return sl((salesMapW[unit] || []).map(v => getNetValue(v, unit)));
             if (metric === 'transactions') return sl(transMapW[unit]);
-            // weekly spend = sales/trans computed on the fly
             const s = salesMapW[unit] || []; const v = transMapW[unit] || [];
             return sl(s.map((val, idx) => v[idx] > 0 ? Math.round(getNetValue(val, unit) / v[idx]) : 0));
         };
@@ -287,21 +299,19 @@ const DashboardDetails = () => {
 
         selectedUnits.filter(u => u !== 'All Groups').forEach((unit, i) => {
             const color = COLORS_ARRAY[i % COLORS_ARRAY.length];
-            const yearLabel = is2026 ? "'26" : "'25";
-            const prevLabel = is2026 ? "'25" : "'24";
 
             datasets.push({
-                label: `${unit} ${yearLabel}`,
+                label: `${unit} ${shortCurr}`,
                 data: getDataSlice(currentSales, currentTrans, currentSpend, currentSalesW, currentTransW, unit),
                 borderColor: color, backgroundColor: color, tension: 0.3, fill: false,
             });
 
             if (compare24) {
                 datasets.push({
-                    label: `${unit} ${prevLabel}`,
+                    label: `${unit} ${shortPrev}`,
                     data: getDataSlice(prevSales, prevTrans, prevSpend, prevSalesW, prevTransW, unit),
                     borderColor: color, backgroundColor: color,
-                    borderDash: [5, 5], borderWidth: 2, tension: 0.3, fill: false, pointRadius: 0,
+                    borderDash: [5,5], borderWidth: 2, tension: 0.3, fill: false, pointRadius: 0,
                 });
             }
 
@@ -315,13 +325,13 @@ const DashboardDetails = () => {
                 datasets.push({
                     label: `${unit} Budget`,
                     data: budgetData,
-                    borderColor: color, borderDash: [2, 2], borderWidth: 2,
+                    borderColor: color, borderDash: [2,2], borderWidth: 2,
                     pointStyle: 'rectRot', tension: 0, fill: false,
                 });
             }
         });
 
-        // ── All Groups aggregation ─────────────────────────────────────────
+        // ── All Groups aggregation
         if (selectedUnits.includes('All Groups')) {
             const dataLen   = endPeriod - startPeriod + 1;
             const aggCur    = new Array(dataLen).fill(0);
@@ -346,7 +356,6 @@ const DashboardDetails = () => {
                     }
                 });
             } else {
-                // Weighted average spend
                 for (let i = 0; i < dataLen; i++) {
                     let ps=0, pt=0, ps2=0, pt2=0;
                     BUSINESS_UNITS.forEach(u => {
@@ -365,15 +374,13 @@ const DashboardDetails = () => {
                 }
             }
 
-            const yearLabel = is2026 ? "'26" : "'25";
-            const prevLabel = is2026 ? "'25" : "'24";
             datasets.unshift({
-                label: `All Groups ${yearLabel}`,
+                label: `All Groups ${shortCurr}`,
                 data: aggCur, borderColor: '#405846', backgroundColor: '#405846',
                 tension: 0.3, fill: false, borderWidth: 3,
             });
             if (compare24) datasets.push({
-                label: `All Groups ${prevLabel}`,
+                label: `All Groups ${shortPrev}`,
                 data: aggPrev, borderColor: '#A9A9A9', backgroundColor: '#A9A9A9',
                 borderDash: [5,5], borderWidth: 2, tension: 0.3, fill: false,
             });
@@ -391,7 +398,7 @@ const DashboardDetails = () => {
         dailyStart, dailyEnd, excludeVat,
     ]);
 
-    // ── Render ────────────────────────────────────────────────────────────────
+    // ── Loading state
     if (loading) {
         return (
             <div className="flex items-center justify-center py-24">
@@ -405,7 +412,6 @@ const DashboardDetails = () => {
 
     return (
         <div id="page-details" className={clsx('animate-in fade-in duration-500', isFullScreen && 'fullscreen-mode')}>
-            {/* Header */}
             <div className="flex justify-between items-center mb-5">
                 <h2 className="font-serif text-3xl font-semibold text-primary">Detailed Sales Analysis</h2>
                 {isFullScreen && (
@@ -418,7 +424,6 @@ const DashboardDetails = () => {
                 )}
             </div>
 
-            {/* Filter panel */}
             <DetailsFilters
                 selectedYear={selectedYear}   setSelectedYear={setSelectedYear}
                 selectedUnits={selectedUnits} toggleUnit={toggleUnit}
@@ -437,7 +442,6 @@ const DashboardDetails = () => {
                 handlePredefinedPeriod={handlePredefinedPeriod}
             />
 
-            {/* Chart card */}
             <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6 mb-6">
                 <DetailsChart
                     chartData={chartData}
@@ -449,7 +453,6 @@ const DashboardDetails = () => {
                 />
             </div>
 
-            {/* Data table */}
             <DetailsTable chartData={chartData} metric={metric} />
         </div>
     );
