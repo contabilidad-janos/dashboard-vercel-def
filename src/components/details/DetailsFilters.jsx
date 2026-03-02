@@ -1,6 +1,6 @@
 import React from 'react';
 import { MONTHS, BUSINESS_UNITS, WEEKLY_LABELS_2025, WEEKLY_LABELS_2026 } from '../../services/dataService';
-import { Tag, Maximize2, BarChart2, LineChart } from 'lucide-react';
+import { Tag, Maximize2 } from 'lucide-react';
 import clsx from 'clsx';
 import DateRangePicker from '../DateRangePicker';
 import SegmentedControl from '../ui/SegmentedControl';
@@ -13,9 +13,9 @@ const VIEW_OPTIONS = [
 ];
 
 const METRIC_OPTIONS = [
-    { value: 'sales',        label: 'Sales €'     },
-    { value: 'transactions', label: 'Volume'       },
-    { value: 'spend',        label: 'Avg Spend'    },
+    { value: 'sales',        label: 'Sales €'  },
+    { value: 'transactions', label: 'Volume'    },
+    { value: 'spend',        label: 'Avg Spend' },
 ];
 
 const CHART_OPTIONS = [
@@ -32,14 +32,6 @@ const PRESET_LABELS = [
     { value: 'ytd',    label: 'YTD'    },
 ];
 
-/**
- * DetailsFilters — redesigned control panel for DashboardDetails.
- * Organised into 4 clear rows:
- *   1. View · Metric · Chart segmented controls
- *   2. Business Unit chips
- *   3. Comparison toggles (vs prev year · Net Sales · vs Budget)
- *   4. Period range (monthly/weekly) OR DatePicker (daily)  [hidden for yearly]
- */
 const DetailsFilters = ({
     selectedYear, setSelectedYear,
     selectedUnits, toggleUnit,
@@ -61,7 +53,7 @@ const DetailsFilters = ({
     const isYearly = viewType === 'yearly';
     const showPeriod = !isDaily && !isYearly;
 
-    // Pill-checkbox component (replaces bare <input type="checkbox">)
+    // Pill toggle (visual pill-shaped checkbox)
     const PillToggle = ({ checked, onChange, label, disabled }) => (
         <button
             onClick={() => !disabled && onChange(!checked)}
@@ -80,9 +72,10 @@ const DetailsFilters = ({
     );
 
     return (
-        <div className="bg-white rounded-xl border border-gray-200 shadow-sm mb-6 overflow-hidden">
+        // NOTE: NO overflow-hidden here — DateRangePicker calendar dropdown must not be clipped
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm mb-6">
 
-            {/* ── Row 1: Main Controls ─────────────────────────────────────────── */}
+            {/* Row 1: Main Controls */}
             <div className="flex flex-wrap items-center gap-3 px-5 py-4 border-b border-gray-100">
                 {/* Year toggle */}
                 <SegmentedControl
@@ -91,12 +84,10 @@ const DetailsFilters = ({
                     onChange={setSelectedYear}
                     disabled={isDaily}
                 />
-
                 <div className="w-px h-7 bg-gray-200" />
 
                 {/* View type */}
                 <SegmentedControl options={VIEW_OPTIONS} value={viewType} onChange={setViewType} />
-
                 <div className="w-px h-7 bg-gray-200" />
 
                 {/* Metric */}
@@ -109,20 +100,21 @@ const DetailsFilters = ({
                     onChange={setMetric}
                     disabled={isDaily}
                 />
-
                 <div className="w-px h-7 bg-gray-200" />
 
                 {/* Chart type */}
                 <SegmentedControl options={CHART_OPTIONS} value={chartType} onChange={setChartType} />
 
-                {/* Spacer + icon buttons far right */}
+                {/* Right: Labels + Fullscreen icons */}
                 <div className="ml-auto flex items-center gap-2">
                     <button
                         onClick={() => setShowLabels(prev => !prev)}
                         title={showLabels ? 'Hide labels' : 'Show labels'}
                         className={clsx(
                             'p-2 rounded-lg transition-colors text-sm font-semibold',
-                            showLabels ? 'bg-primary text-white' : 'text-gray-400 hover:bg-gray-100 hover:text-primary'
+                            showLabels
+                                ? 'bg-primary text-white'
+                                : 'text-gray-400 hover:bg-gray-100 hover:text-primary'
                         )}
                     >
                         <Tag className="w-4 h-4" />
@@ -137,16 +129,13 @@ const DetailsFilters = ({
                 </div>
             </div>
 
-            {/* ── Row 2: Business Unit Chips ───────────────────────────────────── */}
+            {/* Row 2: Business Unit Chips */}
             <div className="px-5 py-3 border-b border-gray-100">
                 <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-2">Business Units</p>
                 <div className="flex flex-wrap gap-2">
                     <button
                         onClick={() => toggleUnit('All Groups')}
-                        className={clsx(
-                            'bu-chip font-semibold',
-                            selectedUnits.includes('All Groups') && 'active'
-                        )}
+                        className={clsx('bu-chip font-semibold', selectedUnits.includes('All Groups') && 'active')}
                     >
                         All Groups
                     </button>
@@ -162,13 +151,13 @@ const DetailsFilters = ({
                 </div>
             </div>
 
-            {/* ── Row 3: Comparison Toggles ────────────────────────────────────── */}
+            {/* Row 3: Comparison Toggles */}
             <div className="flex flex-wrap items-center gap-3 px-5 py-3 border-b border-gray-100 bg-gray-50/50">
                 <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider mr-1">Compare:</span>
                 <PillToggle
                     checked={compare24}
                     onChange={setCompare24}
-                    label={`vs '${selectedYear === '2026' ? '25' : '24'}`}
+                    label={`vs '​${selectedYear === '2026' ? '25' : '24'}`}
                     disabled={isDaily}
                 />
                 <PillToggle
@@ -184,12 +173,10 @@ const DetailsFilters = ({
                 />
             </div>
 
-            {/* ── Row 4: Period Selector ───────────────────────────────────────── */}
+            {/* Row 4a: Period Selector (Monthly / Weekly) */}
             {showPeriod && (
                 <div className="flex flex-wrap items-center gap-3 px-5 py-3">
                     <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider mr-1">Period:</span>
-
-                    {/* Preset pills */}
                     {PRESET_LABELS.map(p => (
                         <button
                             key={p.value}
@@ -199,10 +186,7 @@ const DetailsFilters = ({
                             {p.label}
                         </button>
                     ))}
-
                     <div className="w-px h-5 bg-gray-200" />
-
-                    {/* Custom From → To selects */}
                     <div className="flex items-center gap-2 text-sm">
                         <span className="text-gray-400 text-xs">From</span>
                         <select
@@ -228,10 +212,10 @@ const DetailsFilters = ({
                 </div>
             )}
 
-            {/* ── Daily DatePicker ─────────────────────────────────────────────── */}
+            {/* Row 4b: Daily DateRangePicker */}
             {isDaily && (
                 <div className="flex items-center gap-3 px-5 py-3">
-                    <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider mr-1">Date Range:</span>
+                    <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">Date Range:</span>
                     <DateRangePicker
                         startDate={dailyStart}
                         endDate={dailyEnd}
