@@ -1,12 +1,44 @@
 import React from 'react';
 import { MONTHS, BUSINESS_UNITS, WEEKLY_LABELS_2025, WEEKLY_LABELS_2026 } from '../../services/dataService';
-import { Tag, Maximize2 } from 'lucide-react';
+import { Tag, Maximize2, BarChart2, LineChart } from 'lucide-react';
 import clsx from 'clsx';
 import DateRangePicker from '../DateRangePicker';
+import SegmentedControl from '../ui/SegmentedControl';
+
+const VIEW_OPTIONS = [
+    { value: 'monthly', label: 'Monthly' },
+    { value: 'weekly',  label: 'Weekly'  },
+    { value: 'daily',   label: 'Daily'   },
+    { value: 'yearly',  label: 'Yearly'  },
+];
+
+const METRIC_OPTIONS = [
+    { value: 'sales',        label: 'Sales €'     },
+    { value: 'transactions', label: 'Volume'       },
+    { value: 'spend',        label: 'Avg Spend'    },
+];
+
+const CHART_OPTIONS = [
+    { value: 'bar',  label: 'Bar'  },
+    { value: 'line', label: 'Line' },
+];
+
+const PRESET_LABELS = [
+    { value: 'q1',     label: 'Q1'     },
+    { value: 'q2',     label: 'Q2'     },
+    { value: 'q3',     label: 'Q3'     },
+    { value: 'q4',     label: 'Q4'     },
+    { value: 'summer', label: 'Summer' },
+    { value: 'ytd',    label: 'YTD'    },
+];
 
 /**
- * DetailsFilters — all control widgets for DashboardDetails
- * (Business Unit chips, Year, Metric, ViewType, Period range, checkboxes)
+ * DetailsFilters — redesigned control panel for DashboardDetails.
+ * Organised into 4 clear rows:
+ *   1. View · Metric · Chart segmented controls
+ *   2. Business Unit chips
+ *   3. Comparison toggles (vs prev year · Net Sales · vs Budget)
+ *   4. Period range (monthly/weekly) OR DatePicker (daily)  [hidden for yearly]
  */
 const DetailsFilters = ({
     selectedYear, setSelectedYear,
@@ -24,130 +56,189 @@ const DetailsFilters = ({
     setIsFullScreen,
     handlePredefinedPeriod,
 }) => {
+    const weeklyLabels = selectedYear === '2026' ? WEEKLY_LABELS_2026 : WEEKLY_LABELS_2025;
+    const isDaily  = viewType === 'daily';
+    const isYearly = viewType === 'yearly';
+    const showPeriod = !isDaily && !isYearly;
+
+    // Pill-checkbox component (replaces bare <input type="checkbox">)
+    const PillToggle = ({ checked, onChange, label, disabled }) => (
+        <button
+            onClick={() => !disabled && onChange(!checked)}
+            className={clsx(
+                'px-3 py-1.5 text-xs font-semibold rounded-full border transition-all duration-200 select-none',
+                disabled
+                    ? 'border-gray-200 text-gray-300 cursor-not-allowed'
+                    : checked
+                        ? 'bg-primary text-white border-primary shadow-sm'
+                        : 'border-gray-300 text-gray-500 hover:border-accent hover:text-accent bg-white'
+            )}
+            disabled={disabled}
+        >
+            {checked ? '✓ ' : ''}{label}
+        </button>
+    );
+
     return (
-        <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm mb-8">
-            {/* Business Unit Chips */}
-            <div className="mb-6">
-                <div className="flex items-center gap-2 mb-2">
-                    <Tag className="w-4 h-4 text-primary" />
-                    <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Business Units</label>
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm mb-6 overflow-hidden">
+
+            {/* ── Row 1: Main Controls ─────────────────────────────────────────── */}
+            <div className="flex flex-wrap items-center gap-3 px-5 py-4 border-b border-gray-100">
+                {/* Year toggle */}
+                <SegmentedControl
+                    options={[{ value: '2025', label: '2025' }, { value: '2026', label: '2026' }]}
+                    value={selectedYear}
+                    onChange={setSelectedYear}
+                    disabled={isDaily}
+                />
+
+                <div className="w-px h-7 bg-gray-200" />
+
+                {/* View type */}
+                <SegmentedControl options={VIEW_OPTIONS} value={viewType} onChange={setViewType} />
+
+                <div className="w-px h-7 bg-gray-200" />
+
+                {/* Metric */}
+                <SegmentedControl
+                    options={METRIC_OPTIONS.map(o => ({
+                        ...o,
+                        disabled: isDaily && o.value !== 'sales',
+                    }))}
+                    value={metric}
+                    onChange={setMetric}
+                    disabled={isDaily}
+                />
+
+                <div className="w-px h-7 bg-gray-200" />
+
+                {/* Chart type */}
+                <SegmentedControl options={CHART_OPTIONS} value={chartType} onChange={setChartType} />
+
+                {/* Spacer + icon buttons far right */}
+                <div className="ml-auto flex items-center gap-2">
+                    <button
+                        onClick={() => setShowLabels(prev => !prev)}
+                        title={showLabels ? 'Hide labels' : 'Show labels'}
+                        className={clsx(
+                            'p-2 rounded-lg transition-colors text-sm font-semibold',
+                            showLabels ? 'bg-primary text-white' : 'text-gray-400 hover:bg-gray-100 hover:text-primary'
+                        )}
+                    >
+                        <Tag className="w-4 h-4" />
+                    </button>
+                    <button
+                        onClick={() => setIsFullScreen(true)}
+                        title="Fullscreen"
+                        className="p-2 rounded-lg text-gray-400 hover:bg-gray-100 hover:text-primary transition-colors"
+                    >
+                        <Maximize2 className="w-4 h-4" />
+                    </button>
                 </div>
+            </div>
+
+            {/* ── Row 2: Business Unit Chips ───────────────────────────────────── */}
+            <div className="px-5 py-3 border-b border-gray-100">
+                <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-2">Business Units</p>
                 <div className="flex flex-wrap gap-2">
-                    <div
+                    <button
                         onClick={() => toggleUnit('All Groups')}
-                        className={clsx('bu-chip bg-gray-200 border-gray-300 text-gray-800 font-semibold', selectedUnits.includes('All Groups') && 'active bg-primary text-white border-primary')}
+                        className={clsx(
+                            'bu-chip font-semibold',
+                            selectedUnits.includes('All Groups') && 'active'
+                        )}
                     >
                         All Groups
-                    </div>
+                    </button>
                     {BUSINESS_UNITS.map(u => (
-                        <div key={u} onClick={() => toggleUnit(u)} className={clsx('bu-chip', selectedUnits.includes(u) && 'active')}>
+                        <button
+                            key={u}
+                            onClick={() => toggleUnit(u)}
+                            className={clsx('bu-chip', selectedUnits.includes(u) && 'active')}
+                        >
                             {u}
-                        </div>
+                        </button>
                     ))}
                 </div>
             </div>
 
-            <hr className="border-gray-100 mb-6" />
-
-            {/* Main Controls */}
-            <div className="flex flex-col lg:flex-row gap-4 mb-6 flex-wrap">
-                <select value={selectedYear} onChange={e => setSelectedYear(e.target.value)} className="bg-white border border-gray-300 text-gray-900 rounded-lg px-4 py-2 focus:ring-accent" disabled={viewType === 'daily'}>
-                    <option value="2025">2025</option>
-                    <option value="2026">2026</option>
-                </select>
-
-                <select value={metric} onChange={e => setMetric(e.target.value)} className="bg-white border border-gray-300 text-gray-900 rounded-lg px-4 py-2 focus:ring-accent" disabled={viewType === 'daily'}>
-                    <option value="sales">Total Sales (€)</option>
-                    <option value="transactions" disabled={viewType === 'daily'}>Volume (Pax/Tickets/Orders)</option>
-                    <option value="spend" disabled={viewType === 'daily'}>Average Spend (€)</option>
-                </select>
-
-                <select value={viewType} onChange={e => setViewType(e.target.value)} className="bg-white border border-gray-300 text-gray-900 rounded-lg px-4 py-2 focus:ring-accent">
-                    <option value="monthly">Monthly View</option>
-                    <option value="weekly">Weekly View</option>
-                    <option value="yearly">Yearly View</option>
-                    <option value="daily">Daily View</option>
-                </select>
-
-                {viewType !== 'yearly' && viewType !== 'daily' && (
-                    <select onChange={handlePredefinedPeriod} className="bg-white border border-gray-300 text-gray-900 rounded-lg px-4 py-2 focus:ring-accent">
-                        <option value="custom">Custom Period</option>
-                        <option value="q1">Q1 (Jan-Mar)</option>
-                        <option value="q2">Q2 (Apr-Jun)</option>
-                        <option value="q3">Q3 (Jul-Sep)</option>
-                        <option value="q4">Q4 (Oct-Dec)</option>
-                        <option value="summer">Summer Season</option>
-                        <option value="ytd">YTD</option>
-                    </select>
-                )}
-
-                <select value={chartType} onChange={e => setChartType(e.target.value)} className="bg-white border border-gray-300 text-gray-900 rounded-lg px-4 py-2 focus:ring-accent">
-                    <option value="line">Line Chart</option>
-                    <option value="bar">Bar Chart</option>
-                </select>
-
-                {/* Period Range selectors */}
-                {viewType !== 'yearly' && viewType !== 'daily' && (
-                    <div className="flex items-center gap-2">
-                        <select value={startPeriod} onChange={e => setStartPeriod(Number(e.target.value))} className="bg-white border border-gray-300 rounded px-2 py-2 text-sm max-w-[120px]">
-                            {viewType === 'monthly'
-                                ? MONTHS.map((m, i) => <option key={i} value={i}>{m}</option>)
-                                : (selectedYear === '2026' ? WEEKLY_LABELS_2026 : WEEKLY_LABELS_2025).map((w, i) => <option key={i} value={i}>{w}</option>)
-                            }
-                        </select>
-                        <span>-</span>
-                        <select value={endPeriod} onChange={e => setEndPeriod(Number(e.target.value))} className="bg-white border border-gray-300 rounded px-2 py-2 text-sm max-w-[120px]">
-                            {viewType === 'monthly'
-                                ? MONTHS.map((m, i) => <option key={i} value={i}>{m}</option>)
-                                : (selectedYear === '2026' ? WEEKLY_LABELS_2026 : WEEKLY_LABELS_2025).map((w, i) => <option key={i} value={i}>{w}</option>)
-                            }
-                        </select>
-                    </div>
-                )}
-
-                {/* Date Range Picker for Daily View */}
-                {viewType === 'daily' && (
-                    <div className="flex items-center gap-2 animate-in fade-in zoom-in duration-300">
-                        <DateRangePicker
-                            startDate={dailyStart}
-                            endDate={dailyEnd}
-                            onChange={(start, end) => onDailyRangeChange(start, end)}
-                        />
-                    </div>
-                )}
-
-                {/* Right-side toggles */}
-                <div className="flex items-center gap-4 ml-auto">
-                    <label className="flex items-center gap-2 cursor-pointer">
-                        <input type="checkbox" checked={compare24} onChange={e => setCompare24(e.target.checked)} className="rounded text-accent" disabled={viewType === 'daily'} />
-                        <span className={clsx('text-sm font-medium', viewType === 'daily' ? 'text-gray-400' : 'text-gray-700')}>
-                            vs '{selectedYear === '2026' ? '25' : '24'}
-                        </span>
-                    </label>
-                    <label className="flex items-center gap-2 cursor-pointer">
-                        <input type="checkbox" checked={excludeVat} onChange={e => setExcludeVat(e.target.checked)} className="rounded text-accent" />
-                        <span className="text-sm font-medium text-gray-700">Net Sales</span>
-                    </label>
-                    <label className="flex items-center gap-2 cursor-pointer">
-                        <input type="checkbox" checked={compareBudget} onChange={e => setCompareBudget(e.target.checked)} className="rounded text-accent" disabled={viewType === 'yearly' || metric !== 'sales' || viewType === 'daily'} />
-                        <span className={clsx('text-sm font-medium', (viewType === 'yearly' || metric !== 'sales' || viewType === 'daily') ? 'text-gray-400' : 'text-gray-700')}>vs Bud.</span>
-                    </label>
-                    <button
-                        onClick={() => setShowLabels(prev => !prev)}
-                        className={clsx('p-2 rounded-lg transition-colors', showLabels ? 'bg-primary text-white' : 'text-gray-400 hover:text-primary hover:bg-gray-50')}
-                        title="Toggle Value Labels"
-                    >
-                        <Tag className="w-5 h-5" />
-                    </button>
-                    <button
-                        onClick={() => setIsFullScreen(true)}
-                        className="p-2 text-gray-400 hover:text-primary hover:bg-gray-50 rounded-lg transition-colors"
-                        title="Fullscreen Mode"
-                    >
-                        <Maximize2 className="w-5 h-5" />
-                    </button>
-                </div>
+            {/* ── Row 3: Comparison Toggles ────────────────────────────────────── */}
+            <div className="flex flex-wrap items-center gap-3 px-5 py-3 border-b border-gray-100 bg-gray-50/50">
+                <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider mr-1">Compare:</span>
+                <PillToggle
+                    checked={compare24}
+                    onChange={setCompare24}
+                    label={`vs '${selectedYear === '2026' ? '25' : '24'}`}
+                    disabled={isDaily}
+                />
+                <PillToggle
+                    checked={excludeVat}
+                    onChange={setExcludeVat}
+                    label="Net (ex. VAT)"
+                />
+                <PillToggle
+                    checked={compareBudget}
+                    onChange={setCompareBudget}
+                    label="vs Budget"
+                    disabled={isYearly || metric !== 'sales' || isDaily}
+                />
             </div>
+
+            {/* ── Row 4: Period Selector ───────────────────────────────────────── */}
+            {showPeriod && (
+                <div className="flex flex-wrap items-center gap-3 px-5 py-3">
+                    <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider mr-1">Period:</span>
+
+                    {/* Preset pills */}
+                    {PRESET_LABELS.map(p => (
+                        <button
+                            key={p.value}
+                            onClick={() => handlePredefinedPeriod({ target: { value: p.value } })}
+                            className="px-3 py-1 text-xs font-medium border border-gray-300 rounded-full text-gray-600 hover:border-accent hover:text-accent hover:bg-accent/5 transition-all"
+                        >
+                            {p.label}
+                        </button>
+                    ))}
+
+                    <div className="w-px h-5 bg-gray-200" />
+
+                    {/* Custom From → To selects */}
+                    <div className="flex items-center gap-2 text-sm">
+                        <span className="text-gray-400 text-xs">From</span>
+                        <select
+                            value={startPeriod}
+                            onChange={e => setStartPeriod(Number(e.target.value))}
+                            className="border border-gray-200 rounded-lg px-2 py-1.5 text-sm text-gray-700 focus:ring-1 focus:ring-accent focus:outline-none"
+                        >
+                            {(viewType === 'monthly' ? MONTHS : weeklyLabels).map((lbl, i) => (
+                                <option key={i} value={i}>{lbl}</option>
+                            ))}
+                        </select>
+                        <span className="text-gray-400">→</span>
+                        <select
+                            value={endPeriod}
+                            onChange={e => setEndPeriod(Number(e.target.value))}
+                            className="border border-gray-200 rounded-lg px-2 py-1.5 text-sm text-gray-700 focus:ring-1 focus:ring-accent focus:outline-none"
+                        >
+                            {(viewType === 'monthly' ? MONTHS : weeklyLabels).map((lbl, i) => (
+                                <option key={i} value={i}>{lbl}</option>
+                            ))}
+                        </select>
+                    </div>
+                </div>
+            )}
+
+            {/* ── Daily DatePicker ─────────────────────────────────────────────── */}
+            {isDaily && (
+                <div className="flex items-center gap-3 px-5 py-3">
+                    <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider mr-1">Date Range:</span>
+                    <DateRangePicker
+                        startDate={dailyStart}
+                        endDate={dailyEnd}
+                        onChange={(start, end) => onDailyRangeChange(start, end)}
+                    />
+                </div>
+            )}
         </div>
     );
 };
