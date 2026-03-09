@@ -14,7 +14,7 @@ const Dashboard2024 = () => {
     const [spendData, setSpendData] = useState(null);
     const [businessUnits, setBusinessUnits] = useState([]);
     const [selectedUnit, setSelectedUnit] = useState('all');
-    const [excludeVat, setExcludeVat] = useState(false);
+    const [includeVat, setIncludeVat] = useState(false);
 
     const [kpis, setKpis] = useState({
         totalSales: 0,
@@ -52,88 +52,65 @@ const Dashboard2024 = () => {
     useEffect(() => {
         if (!salesData || !businessUnits.length) return;
         updateView(selectedUnit);
-    }, [selectedUnit, salesData, businessUnits, excludeVat]);
+    }, [selectedUnit, salesData, businessUnits, includeVat]);
 
-    const getNetValue = (val, unitName) => {
-        if (!excludeVat) return val;
+    const getDisplayValue = (val, unitName) => {
+        if (!includeVat) return val;
         const rate = VAT_RATES[unitName] || 0;
-        return val / (1 + rate);
+        return val * (1 + rate);
     };
 
     const updateView = (unit) => {
         let currentSales = [];
         let currentTrans = [];
-        let currentSpend = []; // Monthly Average Spend array
+        let currentSpend = [];
 
         if (unit === 'all') {
-            currentSales = MONTHS.map((_, i) => businessUnits.reduce((sum, b) => sum + getNetValue((salesData[b.name][i] || 0), b.name), 0));
-            currentTrans = MONTHS.map((_, i) => businessUnits.reduce((sum, b) => sum + (transData[b.name][i] || 0), 0));
-            // For 'all', aggregate spend is Avg(Total Sales / Total Trans) or similar.
-            // Reference logic: "Avg Spend (Group) ... totalTransactionsGroup > 0 ? totalSales / totalTransactionsGroup : 0"
-            // But for the Chart, it's monthly.
+            currentSales = MONTHS.map((_, i) => businessUnits.reduce((sum, b) => sum + getDisplayValue((salesData[b.name][i] || 0), b.name), 0));
+            currentTrans = MONTHS.map((_, i) => businessUnits.reduce((sum, b) => sum + (transData[b.name]?.[i] || 0), 0));
             currentSpend = MONTHS.map((_, i) => {
                 const tSales = currentSales[i];
                 const tTrans = currentTrans[i];
                 return tTrans > 0 ? Math.round(tSales / tTrans) : 0;
             });
         } else {
-            currentSales = (salesData[unit] || []).map(v => getNetValue(v, unit));
+            currentSales = (salesData[unit] || []).map(v => getDisplayValue(v, unit));
             currentTrans = transData[unit] || [];
             currentSpend = spendData[unit] || [];
         }
 
-        // KPIs
         const totalSales = currentSales.reduce((a, b) => a + b, 0);
+        const avgMonthlySales = totalSales / 12;
         const totalTrans = currentTrans.reduce((a, b) => a + b, 0);
-        const avgMonthlySales = totalSales / MONTHS.length;
 
-        // Filter out 0s for Min calculation if we want "Actual" min (assuming 0 might be future/missing), 
-        // but for 2024 (past year) 0 is likely real or missing data. 2024 is full year presumably.
-        // Reference says: "Math.min(...monthlyTotalsGroup.filter(v => v > 0))"
+        let avgSpend = 0;
+        if (unit === 'all') {
+            avgSpend = totalTrans > 0 ? totalSales / totalTrans : 0;
+        } else {
+            avgSpend = totalTrans > 0 ? totalSales / totalTrans : 0;
+        }
+
         const nonZeroSales = currentSales.filter(v => v > 0);
         const minSales = nonZeroSales.length > 0 ? Math.min(...nonZeroSales) : 0;
         const maxSales = Math.max(...currentSales);
-
-        // Indices for month names (Careful with duplicate values, but standard indexOf finds first)
         const bestIndex = currentSales.indexOf(maxSales);
-        const worstIndex = currentSales.indexOf(minSales); // Points to first non-zero min if used filter logic? No, indexOf searches original array.
-        // Fix: We need the index of the min value we found.
         const worstMonthName = MONTHS.find((m, i) => currentSales[i] === minSales) || '-';
-
-        const avgSpend = totalTrans > 0 ? totalSales / totalTrans : 0;
-
-        // If Unit Selected -> avgSpend is average of monthly averages? Or Total/Total?
-        // Reference "avgSpendVal = kpis...", usually TotalSales / TotalTrans is safer for accurate "Average Spend".
-        // Reference HTML logic: 
-        // if all: avg = TotalSales / TotalTrans
-        // if unit: avg = Average of monthly averages (sum / 12). 
-        // Let's stick to Total/Total as it's mathematically sounder for a "Yearly Average", 
-        // but if reference explicitly did average of averages, we might see discrepancy. 
-        // Reference: "avgSpendVal = currentSpendData.reduce((a,b)=>a+b,0) / currentSpendData.length;" for Single Unit.
-        // Okay, I will follow reference logic for Single Unit to minimize "visual diffs".
-        let finalAvgSpend = 0;
-        if (unit !== 'all') {
-            const sumSpends = currentSpend.reduce((a, b) => a + b, 0);
-            finalAvgSpend = currentSpend.length > 0 ? sumSpends / currentSpend.length : 0;
-        } else {
-            finalAvgSpend = totalTrans > 0 ? totalSales / totalTrans : 0;
-        }
 
         setKpis({
             totalSales,
             avgMonthlySales,
             bestMonth: { name: MONTHS[bestIndex], value: maxSales },
             worstMonth: { name: worstMonthName, value: minSales },
-            avgSpend: finalAvgSpend,
+            avgSpend,
             totalTransactions: totalTrans
         });
 
-        // Charts
+        // Chart Data
         let barDatasets = [];
         if (unit === 'all') {
             barDatasets = businessUnits.map((u, i) => ({
                 label: u.name,
-                data: (salesData[u.name] || []).map(v => getNetValue(v, u.name)),
+                data: (salesData[u.name] || []).map(v => getDisplayValue(v, u.name)),
                 backgroundColor: CHART_COLORS[i % CHART_COLORS.length],
                 stack: 'Stack 0',
             }));
@@ -148,19 +125,9 @@ const Dashboard2024 = () => {
         }
 
         const pieTotalSales = businessUnits.map(u => {
-            return (salesData[u.name] || []).reduce((a, b) => a + getNetValue(b, u.name), 0);
+            return (salesData[u.name] || []).reduce((a, b) => a + getDisplayValue(b, u.name), 0);
         });
 
-        // Spend Chart
-        // For 'all', we derived currentSpend above. For unit, we have it.
-        // Reference: "spendDataSets2024 = Object.keys(monthlySpend2024)..." - it shows ALL lines in the chart usually?
-        // Reference HTML: "new Chart(..., { ... datasets: spendDataSets2024 ... })"
-        // It seems the Spend Chart in Reference 2024 page ALWAYS showed all lines regardless of filter?
-        // Wait, inside `update2024Focus`, it re-renders `yearlyChart2024` (Bar) but NOT `spendEvolutionChart2024`.
-        // It seems `spendEvolutionChart2024` was static in the original HTML (rendering all units).
-        // Let's keep it static for 'all' units to match reference, OR filter it if that makes more sense.
-        // The reference `update2024Focus` did NOT update the spend chart. So it's static.
-        // I will render ALL units in the spend chart.
         const spendDatasets = businessUnits.map((u, i) => ({
             label: u.name,
             data: spendData[u.name],
@@ -193,17 +160,17 @@ const Dashboard2024 = () => {
             {/* KPI Row 2 */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 <KPICard title="Avg. Monthly Sales" value={formatCurrency(kpis.avgMonthlySales)} />
-                <KPICard title="Avg. Spend" value={formatCurrency(kpis.avgSpend)} />
+                <KPICard title="Avg. Spend" value={formatCurrency(kpis.avgSpend)} subtext="per transaction" />
                 <KPICard title="Total Transactions" value={formatNumber(kpis.totalTransactions)} />
             </div>
 
             {/* Focus Filter */}
             <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm mb-8 flex flex-col md:flex-row items-center justify-between gap-4">
                 <div className="w-full md:w-1/2">
-                    <label htmlFor="businessSelector24" className="block text-lg font-medium text-gray-500 mb-2">Business Unit Focus</label>
+                    <label htmlFor="businessSelector" className="block text-lg font-medium text-gray-500 mb-2">Business Unit Focus</label>
                     <div className="relative">
                         <select
-                            id="businessSelector24"
+                            id="businessSelector"
                             className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg px-4 py-2 appearance-none focus:outline-none focus:ring-2 focus:ring-accent cursor-pointer w-full"
                             value={selectedUnit}
                             onChange={(e) => setSelectedUnit(e.target.value)}
@@ -223,9 +190,9 @@ const Dashboard2024 = () => {
                     <p className="text-3xl font-bold text-primary mt-1">{formatCurrency(kpis.totalSales)}</p>
                     <div className="mt-4 flex items-center gap-2">
                         <label className="inline-flex items-center cursor-pointer">
-                            <input type="checkbox" checked={excludeVat} onChange={(e) => setExcludeVat(e.target.checked)} className="sr-only peer" />
+                            <input type="checkbox" checked={includeVat} onChange={(e) => setIncludeVat(e.target.checked)} className="sr-only peer" />
                             <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-teal-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-teal-600"></div>
-                            <span className="ms-3 text-sm font-medium text-gray-900">Exclude VAT</span>
+                            <span className="ms-3 text-sm font-medium text-gray-900">Include VAT</span>
                         </label>
                     </div>
                 </div>
@@ -246,7 +213,13 @@ const Dashboard2024 = () => {
             {/* Spend Chart */}
             <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm mb-8">
                 <h2 className="font-serif text-2xl font-semibold text-primary mb-4">Average Spend per Customer Evolution 2024 (€)</h2>
-                <SpendEvolutionChart labels={MONTHS} datasets={chartData.spendDatasets} />
+                {chartData.spendDatasets.length > 0 ? (
+                    <SpendEvolutionChart labels={MONTHS} datasets={chartData.spendDatasets} />
+                ) : (
+                    <div className="h-[450px] flex items-center justify-center text-gray-400 border-2 border-dashed rounded-lg">
+                        Data migration in progress (Spend Data)
+                    </div>
+                )}
             </div>
         </div>
     );
