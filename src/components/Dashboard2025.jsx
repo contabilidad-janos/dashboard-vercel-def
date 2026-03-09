@@ -11,7 +11,7 @@ import { formatCurrency, formatNumber } from '../utils/formatters';
 const Dashboard2025 = () => {
     const [loading, setLoading] = useState(true);
     const [salesData, setSalesData] = useState(null);
-    const [salesData24, setSalesData24] = useState(null); // Added 2024 data
+    const [salesData24, setSalesData24] = useState(null);
     const [transData, setTransData] = useState(null);
     const [budgetData, setBudgetData] = useState(null);
     const [spendData, setSpendData] = useState(null);
@@ -33,21 +33,21 @@ const Dashboard2025 = () => {
         pieLabels: [],
         pieData: [],
         spendDatasets: [],
-        comparisonDatasets: [] // Added for comparison
+        comparisonDatasets: []
     });
 
     useEffect(() => {
         const fetchData = async () => {
             const units = await DataService.getBusinessUnits();
             const sales = await DataService.get2025SalesData();
-            const sales24 = await DataService.get2024SalesData(); // Fetch 2024
+            const sales24 = await DataService.get2024SalesData();
             const trans = await DataService.get2025TransData();
             const budget = await DataService.get2025BudgetData();
             const spend = await DataService.get2025SpendData();
 
             setBusinessUnits(units);
             setSalesData(sales);
-            setSalesData24(sales24); // Set 2024
+            setSalesData24(sales24);
             setTransData(trans);
             setBudgetData(budget);
             setSpendData(spend);
@@ -57,18 +57,13 @@ const Dashboard2025 = () => {
         fetchData();
     }, []);
 
-    useEffect(() => {
-        if (!salesData || !businessUnits.length) return;
-        updateView(selectedUnit);
-    }, [selectedUnit, salesData, salesData24, businessUnits, budgetData, includeVat]);
-
     const getDisplayValue = (val, unitName) => {
         if (!includeVat) return val;
         const rate = VAT_RATES[unitName] || 0;
         return val * (1 + rate);
     };
 
-    const updateView = (unit) => {
+    function updateView(unit) {
         let currentSales = [];
         let currentSales24 = [];
         let currentBudget = [];
@@ -77,13 +72,11 @@ const Dashboard2025 = () => {
 
         if (unit === 'all') {
             currentSales = MONTHS.map((_, i) => businessUnits.reduce((sum, b) => sum + getDisplayValue((salesData[b.name][i] || 0), b.name), 0));
-            // Aggregate 2024
             if (salesData24) {
                 currentSales24 = MONTHS.map((_, i) => businessUnits.reduce((sum, b) => sum + getDisplayValue((salesData24[b.name][i] || 0), b.name), 0));
             }
             currentBudget = MONTHS.map((_, i) => businessUnits.reduce((sum, b) => sum + getDisplayValue((budgetData[b.name][i] || 0), b.name), 0));
             currentTrans = MONTHS.map((_, i) => businessUnits.reduce((sum, b) => sum + (transData[b.name][i] || 0), 0));
-            // Derived Spend for group
             currentSpend = MONTHS.map((_, i) => {
                 const tSales = currentSales[i];
                 const tTrans = currentTrans[i];
@@ -97,9 +90,8 @@ const Dashboard2025 = () => {
             currentSpend = spendData[unit] || [];
         }
 
-        // KPI Calculation
         const totalSales = currentSales.reduce((a, b) => a + b, 0);
-        const avgMonthlySales = totalSales / MONTHS.length; // Or active months? Assume 12 for forecast.
+        const avgMonthlySales = totalSales / MONTHS.length;
         const nonZeroSales = currentSales.filter(v => v > 0);
         const minSales = nonZeroSales.length > 0 ? Math.min(...nonZeroSales) : 0;
         const maxSales = Math.max(...currentSales);
@@ -108,13 +100,10 @@ const Dashboard2025 = () => {
 
         const totalTrans = currentTrans.reduce((a, b) => a + b, 0);
 
-        // Avg Spend Calculation
         let avgSpend = 0;
         if (unit === 'all') {
             avgSpend = totalTrans > 0 ? totalSales / totalTrans : 0;
         } else {
-            // Average of monthly averages for unit? Or Total/Total?
-            // Reference logic usually prefers Total/Total for accuracy unless specified.
             avgSpend = totalTrans > 0 ? totalSales / totalTrans : 0;
         }
 
@@ -127,7 +116,6 @@ const Dashboard2025 = () => {
             totalTransactions: totalTrans
         });
 
-        // Chart Data Preparation
         let barDatasets = [];
         if (unit === 'all') {
             barDatasets = businessUnits.map((u, i) => ({
@@ -146,7 +134,6 @@ const Dashboard2025 = () => {
             }];
         }
 
-        // Add Budget Line
         barDatasets.push({
             type: 'line',
             label: 'Budget',
@@ -158,15 +145,10 @@ const Dashboard2025 = () => {
             order: -1
         });
 
-        // Pie Chart
         const pieTotalSales = businessUnits.map(u => {
             return (salesData[u.name] || []).reduce((a, b) => a + getDisplayValue(b, u.name), 0);
         });
 
-        // Spend Chart Logic
-        // If 'all' selected, do we show ALL lines or just the aggregate line?
-        // Reference HTML 2025: spendEvolutionChart2025 dataset construction:
-        // "datasets: spendDataSets2025". It seems it shows ALL lines always.
         const spendDatasets = businessUnits.map((u, i) => ({
             label: u.name,
             data: spendData[u.name],
@@ -175,12 +157,11 @@ const Dashboard2025 = () => {
             fill: false
         }));
 
-        // Comparison Chart Datasets
         const comparisonDatasets = [
             {
                 label: '2025',
                 data: currentSales,
-                borderColor: '#10B981', // Emerald-500
+                borderColor: '#10B981',
                 backgroundColor: '#10B981',
                 tension: 0.3,
                 fill: false,
@@ -189,7 +170,7 @@ const Dashboard2025 = () => {
             {
                 label: '2024',
                 data: currentSales24,
-                borderColor: '#9CA3AF', // Gray-400
+                borderColor: '#9CA3AF',
                 backgroundColor: '#9CA3AF',
                 tension: 0.3,
                 fill: false,
@@ -205,7 +186,12 @@ const Dashboard2025 = () => {
             spendDatasets,
             comparisonDatasets
         });
-    };
+    }
+
+    useEffect(() => {
+        if (!salesData || !businessUnits.length) return;
+        updateView(selectedUnit);
+    }, [selectedUnit, salesData, salesData24, businessUnits, budgetData, includeVat]);
 
     if (loading) return <div className="text-center py-20 text-gray-500">Loading Dashboard Data...</div>;
 
@@ -220,7 +206,7 @@ const Dashboard2025 = () => {
                 <KPICard title="Worst Month" value={kpis.worstMonth.name} subtext={formatCurrency(kpis.worstMonth.value)} color="text-red-500" />
             </div>
 
-            {/* KPI Row 2 (Added) */}
+            {/* KPI Row 2 */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 <KPICard title="Avg. Monthly Sales" value={formatCurrency(kpis.avgMonthlySales)} />
                 <KPICard title="Avg. Spend" value={formatCurrency(kpis.avgSpend)} subtext="per transaction" />

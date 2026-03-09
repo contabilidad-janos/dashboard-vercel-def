@@ -49,25 +49,20 @@ const Dashboard2024 = () => {
         fetchData();
     }, []);
 
-    useEffect(() => {
-        if (!salesData || !businessUnits.length) return;
-        updateView(selectedUnit);
-    }, [selectedUnit, salesData, businessUnits, includeVat]);
-
     const getDisplayValue = (val, unitName) => {
         if (!includeVat) return val;
         const rate = VAT_RATES[unitName] || 0;
         return val * (1 + rate);
     };
 
-    const updateView = (unit) => {
+    function updateView(unit) {
         let currentSales = [];
         let currentTrans = [];
         let currentSpend = [];
 
         if (unit === 'all') {
             currentSales = MONTHS.map((_, i) => businessUnits.reduce((sum, b) => sum + getDisplayValue((salesData[b.name][i] || 0), b.name), 0));
-            currentTrans = MONTHS.map((_, i) => businessUnits.reduce((sum, b) => sum + (transData[b.name]?.[i] || 0), 0));
+            currentTrans = MONTHS.map((_, i) => businessUnits.reduce((sum, b) => sum + (transData[b.name][i] || 0), 0));
             currentSpend = MONTHS.map((_, i) => {
                 const tSales = currentSales[i];
                 const tTrans = currentTrans[i];
@@ -80,32 +75,35 @@ const Dashboard2024 = () => {
         }
 
         const totalSales = currentSales.reduce((a, b) => a + b, 0);
-        const avgMonthlySales = totalSales / 12;
         const totalTrans = currentTrans.reduce((a, b) => a + b, 0);
-
-        let avgSpend = 0;
-        if (unit === 'all') {
-            avgSpend = totalTrans > 0 ? totalSales / totalTrans : 0;
-        } else {
-            avgSpend = totalTrans > 0 ? totalSales / totalTrans : 0;
-        }
+        const avgMonthlySales = totalSales / MONTHS.length;
 
         const nonZeroSales = currentSales.filter(v => v > 0);
         const minSales = nonZeroSales.length > 0 ? Math.min(...nonZeroSales) : 0;
         const maxSales = Math.max(...currentSales);
+
         const bestIndex = currentSales.indexOf(maxSales);
         const worstMonthName = MONTHS.find((m, i) => currentSales[i] === minSales) || '-';
+
+        const avgSpend = totalTrans > 0 ? totalSales / totalTrans : 0;
+
+        let finalAvgSpend = 0;
+        if (unit !== 'all') {
+            const sumSpends = currentSpend.reduce((a, b) => a + b, 0);
+            finalAvgSpend = currentSpend.length > 0 ? sumSpends / currentSpend.length : 0;
+        } else {
+            finalAvgSpend = totalTrans > 0 ? totalSales / totalTrans : 0;
+        }
 
         setKpis({
             totalSales,
             avgMonthlySales,
             bestMonth: { name: MONTHS[bestIndex], value: maxSales },
             worstMonth: { name: worstMonthName, value: minSales },
-            avgSpend,
+            avgSpend: finalAvgSpend,
             totalTransactions: totalTrans
         });
 
-        // Chart Data
         let barDatasets = [];
         if (unit === 'all') {
             barDatasets = businessUnits.map((u, i) => ({
@@ -142,7 +140,12 @@ const Dashboard2024 = () => {
             pieData: pieTotalSales,
             spendDatasets
         });
-    };
+    }
+
+    useEffect(() => {
+        if (!salesData || !businessUnits.length) return;
+        updateView(selectedUnit);
+    }, [selectedUnit, salesData, businessUnits, includeVat]);
 
     if (loading) return <div className="text-center py-20 text-gray-500">Loading Dashboard Data...</div>;
 
@@ -160,17 +163,17 @@ const Dashboard2024 = () => {
             {/* KPI Row 2 */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 <KPICard title="Avg. Monthly Sales" value={formatCurrency(kpis.avgMonthlySales)} />
-                <KPICard title="Avg. Spend" value={formatCurrency(kpis.avgSpend)} subtext="per transaction" />
+                <KPICard title="Avg. Spend" value={formatCurrency(kpis.avgSpend)} />
                 <KPICard title="Total Transactions" value={formatNumber(kpis.totalTransactions)} />
             </div>
 
             {/* Focus Filter */}
             <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm mb-8 flex flex-col md:flex-row items-center justify-between gap-4">
                 <div className="w-full md:w-1/2">
-                    <label htmlFor="businessSelector" className="block text-lg font-medium text-gray-500 mb-2">Business Unit Focus</label>
+                    <label htmlFor="businessSelector24" className="block text-lg font-medium text-gray-500 mb-2">Business Unit Focus</label>
                     <div className="relative">
                         <select
-                            id="businessSelector"
+                            id="businessSelector24"
                             className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg px-4 py-2 appearance-none focus:outline-none focus:ring-2 focus:ring-accent cursor-pointer w-full"
                             value={selectedUnit}
                             onChange={(e) => setSelectedUnit(e.target.value)}
@@ -213,13 +216,7 @@ const Dashboard2024 = () => {
             {/* Spend Chart */}
             <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm mb-8">
                 <h2 className="font-serif text-2xl font-semibold text-primary mb-4">Average Spend per Customer Evolution 2024 (€)</h2>
-                {chartData.spendDatasets.length > 0 ? (
-                    <SpendEvolutionChart labels={MONTHS} datasets={chartData.spendDatasets} />
-                ) : (
-                    <div className="h-[450px] flex items-center justify-center text-gray-400 border-2 border-dashed rounded-lg">
-                        Data migration in progress (Spend Data)
-                    </div>
-                )}
+                <SpendEvolutionChart labels={MONTHS} datasets={chartData.spendDatasets} />
             </div>
         </div>
     );
