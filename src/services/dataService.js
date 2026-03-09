@@ -151,6 +151,18 @@ export const DataService = {
 
     // ── INTERNAL FETCHERS ────────────────────────────────────────────────────
 
+    /** Fetch all daily records for 2024 (server-side filtered + cached) */
+    _fetchDailyDef2024: async () => {
+        return _fetchPaginated(
+            'sales_daily_def',
+            'date, revenue, business_unit, VOLUME',
+            [
+                { method: 'gte', col: 'date', val: '2024-01-01' },
+                { method: 'lte', col: 'date', val: '2024-12-31' },
+            ]
+        );
+    },
+
     /** Fetch all daily records for 2025 (server-side filtered + cached) */
     _fetchDailyDef2025: async () => {
         return _fetchPaginated(
@@ -224,7 +236,7 @@ export const DataService = {
             DataService.getBusinessUnits(),
         ]);
         const weeksCount = WEEKLY_LABELS_2025.length;
-        const result = initBuArrays(buList, weeksCount);
+        const result = initBuArrays(buList, 12);
 
         data.forEach(record => {
             if (!record.date) return;
@@ -334,47 +346,48 @@ export const DataService = {
 
     get2024SalesData: async () => {
         const [data, buList] = await Promise.all([
-            DataService._fetchYearData(2024),
+            DataService._fetchDailyDef2024(),
             DataService.getBusinessUnits(),
         ]);
         const result = initBuArrays(buList, 12);
+
         data.forEach(record => {
-            const unitName = record.business_units?.name;
-            if (!unitName || !result[unitName]) return;
-            result[unitName][new Date(record.date).getMonth()] += Number(record.amount);
+            if (!record.date) return;
+            const dateObj = new Date(record.date);
+            if (dateObj.getFullYear() !== 2024) return;
+            const buName = BU_MAP[record.business_unit] || record.business_unit;
+            if (!result[buName]) return;
+            result[buName][dateObj.getMonth()] += Number(record.revenue) || 0;
         });
         return result;
     },
 
     get2024SalesDataWeekly: async () => {
         const [data, buList] = await Promise.all([
-            DataService._fetchYearData(2024),
+            DataService._fetchDailyDef2024(),
             DataService.getBusinessUnits(),
         ]);
-
-        const { data: extraData } = await supabase
-            .from('sales_records')
-            .select('amount, transaction_count, date, business_units(name)')
-            .gte('date', '2025-01-01')
-            .lte('date', '2025-01-05');
-
-        const result = {};
-        buList.forEach(u => { result[u.name] = []; });
+        const weeksCount = 53; // Need 53 weeks to store up to December 31
+        const result = initBuArrays(buList, weeksCount);
 
         data.forEach(record => {
-            const unitName = record.business_units?.name;
-            if (!unitName || !result[unitName]) return;
-            result[unitName].push(Number(record.amount));
+            if (!record.date) return;
+            const dateObj = new Date(record.date);
+            const buName = BU_MAP[record.business_unit] || record.business_unit;
+            if (!result[buName]) return;
+
+            let weekIdx = getWeekNumber(dateObj);
+            const { y, m, d } = { y: dateObj.getFullYear(), m: dateObj.getMonth(), d: dateObj.getDate() };
+
+            // For cross-over week starting end of Dec 2023 
+            if ((y === 2024 && m === 11 && d >= 30) || (y === 2025 && m === 0 && d <= 5)) weekIdx = 52;
+
+            if (weekIdx >= 0 && weekIdx < weeksCount) {
+                result[buName][weekIdx] += Number(record.revenue) || 0;
+            }
         });
 
-        if (extraData) {
-            extraData.forEach(record => {
-                const unitName = record.business_units?.name;
-                if (!unitName || !result[unitName]) return;
-                const len = result[unitName].length;
-                if (len > 0) result[unitName][len - 1] += Number(record.amount);
-            });
-        }
+        Object.keys(result).forEach(k => { result[k] = result[k].slice(0, weeksCount); });
         return result;
     },
 
