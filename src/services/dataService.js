@@ -236,7 +236,7 @@ export const DataService = {
             DataService.getBusinessUnits(),
         ]);
         const weeksCount = WEEKLY_LABELS_2025.length;
-        const result = initBuArrays(buList, 12);
+        const result = initBuArrays(buList, weeksCount);
 
         data.forEach(record => {
             if (!record.date) return;
