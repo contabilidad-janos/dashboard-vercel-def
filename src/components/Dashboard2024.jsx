@@ -147,6 +147,11 @@ const Dashboard2024 = () => {
         updateView(selectedUnit);
     }, [selectedUnit, salesData, businessUnits, includeVat]);
 
+    useEffect(() => {
+        if (!salesData || !businessUnits.length) return;
+        updateView(selectedUnit);
+    }, [selectedUnit, salesData, businessUnits, includeVat]);
+
     if (loading) return <div className="text-center py-20 text-gray-500">Loading Dashboard Data...</div>;
 
     return (
