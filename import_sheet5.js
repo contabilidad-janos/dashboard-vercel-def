@@ -10,10 +10,10 @@ const envConfig = dotenv.parse(fs.readFileSync(envPath));
 
 const supabaseUrl = envConfig.VITE_SUPABASE_URL;
 // Use the write-capable key
-const supabaseKey = envConfig.VITE_SUPABASE_SERVICE_ROLE_KEY || process.env.VITE_SUPABASE_SERVICE_ROLE_KEY;
+const supabaseKey = envConfig.VITE_SUPABASE_SERVICE_ROLE_KEY || process.env.VITE_SUPABASE_SERVICE_ROLE_KEY || envConfig.VITE_SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-const CSV_FILE = 'downloadbyjanos/REPORTING PARA BASE DE DATOS - Sheet5 (6).csv';
+const CSV_FILE = 'downloadbyjanos/REPORTING PARA BASE DE DATOS - Sheet5 (11).csv';
 const TABLE_NAME = 'sales_daily_def';
 
 async function importCsv() {

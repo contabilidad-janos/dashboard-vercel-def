@@ -35,6 +35,16 @@ const safeNum = (v) => Number(v) || 0;
 const _pad = (n) => String(n).padStart(2, '0');
 const localDateStr = (d) => `${d.getFullYear()}-${_pad(d.getMonth() + 1)}-${_pad(d.getDate())}`;
 
+// Lighter (semi-transparent) variant of a hex color, used to distinguish
+// previous-year datasets from current-year ones at a glance.
+const lightenColor = (hex, alpha = 0.4) => {
+    if (typeof hex !== 'string' || hex[0] !== '#' || hex.length !== 7) return hex;
+    const r = parseInt(hex.slice(1, 3), 16);
+    const g = parseInt(hex.slice(3, 5), 16);
+    const b = parseInt(hex.slice(5, 7), 16);
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+};
+
 // Build weekly aggregates from raw records using calendar ranges parsed from labels
 // (e.g., "12/04-18/04"), so the bucket window matches the displayed label for both
 // current-year and previous-year comparisons.
@@ -78,7 +88,7 @@ const DashboardDetails = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [rawData, setRawData] = useState({});
-    const [selectedYear, setSelectedYear] = useState('2025');
+    const [selectedYear, setSelectedYear] = useState('2026');
     const [selectedUnits, setSelectedUnits] = useState(['All Groups']);
     const [metric, setMetric] = useState('sales');
     const [viewType, setViewType] = useState('monthly');
@@ -272,7 +282,7 @@ const DashboardDetails = () => {
                 ds.push({ label: `${unit} ${shCurr}`, data: dates.map(d => getVal(rawCurr, d, unit)), borderColor: col, backgroundColor: col, tension: 0.3, pointRadius: 4, borderWidth: 2 });
                 // Previous (vs 24/25)
                 if (compare24) {
-                    ds.push({ label: `${unit} ${shPrev}`, data: prevDates.map(d => getVal(rawPrev, d, unit)), borderColor: col, backgroundColor: col, borderDash: [5, 5], tension: 0.3, pointRadius: 0, borderWidth: 2 });
+                    ds.push({ label: `${unit} ${shPrev}`, data: prevDates.map(d => getVal(rawPrev, d, unit)), borderColor: lightenColor(col, 0.55), backgroundColor: lightenColor(col, 0.4), borderDash: [5, 5], tension: 0.3, pointRadius: 0, borderWidth: 2 });
                 }
                 // Budget
                 if (compareBudget && metric === 'sales') {
@@ -352,7 +362,7 @@ const DashboardDetails = () => {
         selectedUnits.filter(u => u !== 'All Groups').forEach((unit, i) => {
             const col = COLORS_ARRAY[i % COLORS_ARRAY.length];
             datasets.push({ label: `${unit} ${shCurr}`, data: slc(cS, cT, cSp, cSw, cTw, unit), borderColor: col, backgroundColor: col, tension: 0.3, fill: false });
-            if (compare24) datasets.push({ label: `${unit} ${shPrev}`, data: slc(pS, pT, pSp, pSw, pTw, unit), borderColor: col, backgroundColor: col, borderDash: [5, 5], borderWidth: 2, tension: 0.3, fill: false, pointRadius: 0 });
+            if (compare24) datasets.push({ label: `${unit} ${shPrev}`, data: slc(pS, pT, pSp, pSw, pTw, unit), borderColor: lightenColor(col, 0.55), backgroundColor: lightenColor(col, 0.4), borderDash: [5, 5], borderWidth: 2, tension: 0.3, fill: false, pointRadius: 0 });
             if (compareBudget && metric === 'sales') {
                 const bd = (bud?.[unit] || []).map(v => getDisplayValue(v, unit));
                 const budSlice = viewType === 'monthly' ? bd.slice(startPeriod, endPeriod + 1) : Array.from({ length: endPeriod - startPeriod + 1 }, (_, wi) => Math.round((bd[WEEK_MONTH_MAP[startPeriod + wi] ?? 0] || 0) / 4));
