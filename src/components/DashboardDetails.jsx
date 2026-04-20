@@ -35,6 +35,45 @@ const safeNum = (v) => Number(v) || 0;
 const _pad = (n) => String(n).padStart(2, '0');
 const localDateStr = (d) => `${d.getFullYear()}-${_pad(d.getMonth() + 1)}-${_pad(d.getDate())}`;
 
+// Build weekly aggregates from raw records using calendar ranges parsed from labels
+// (e.g., "12/04-18/04"), so the bucket window matches the displayed label for both
+// current-year and previous-year comparisons.
+const buildWeeklyFromRaw = (rawRecords, calendarYear, weekLabels) => {
+    const sales = {}, trans = {};
+    BUSINESS_UNITS.forEach(u => {
+        sales[u] = new Array(weekLabels.length).fill(0);
+        trans[u] = new Array(weekLabels.length).fill(0);
+    });
+    const ranges = weekLabels.map(lbl => {
+        if (!lbl || !lbl.includes('-')) return null;
+        const [s, e] = lbl.split('-');
+        const [sd, sm] = s.split('/').map(Number);
+        const [ed, em] = e.split('/').map(Number);
+        const endY = em < sm ? calendarYear + 1 : calendarYear;
+        return [
+            `${calendarYear}-${_pad(sm)}-${_pad(sd)}`,
+            `${endY}-${_pad(em)}-${_pad(ed)}`
+        ];
+    });
+    (rawRecords || []).forEach(r => {
+        if (!r.date) return;
+        if (!sales[r.business_unit]) return;
+        for (let i = 0; i < ranges.length; i++) {
+            const rg = ranges[i];
+            if (!rg) continue;
+            if (r.date >= rg[0] && r.date <= rg[1]) {
+                sales[r.business_unit][i] += Number(r.revenue) || 0;
+                const vol = r.VOLUME;
+                const v = (vol == null || vol === '') ? 0
+                    : (typeof vol === 'number' ? vol : parseFloat(String(vol).replace(/,/g, '')) || 0);
+                trans[r.business_unit][i] += v;
+                break;
+            }
+        }
+    });
+    return { sales, trans };
+};
+
 const DashboardDetails = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -141,14 +180,14 @@ const DashboardDetails = () => {
 
         const is2026 = selectedYear === '2026';
         const cS = is2026 ? rawData.sales26 : rawData.sales25;
-        const cSw = is2026 ? rawData.sales26w : rawData.sales25w;
+        let cSw = is2026 ? rawData.sales26w : rawData.sales25w;
         const cT = is2026 ? rawData.trans26 : rawData.trans25;
-        const cTw = is2026 ? rawData.trans26w : rawData.trans25w;
+        let cTw = is2026 ? rawData.trans26w : rawData.trans25w;
         const cSp = is2026 ? rawData.spend26 : rawData.spend25;
         const pS = is2026 ? rawData.sales25 : rawData.sales24;
-        const pSw = is2026 ? rawData.sales25w : rawData.sales24w;
+        let pSw = is2026 ? rawData.sales25w : rawData.sales24w;
         const pT = is2026 ? rawData.trans25 : rawData.trans24;
-        const pTw = is2026 ? rawData.trans25w : rawData.trans24w;
+        let pTw = is2026 ? rawData.trans25w : rawData.trans24w;
         const pSp = is2026 ? rawData.spend25 : rawData.spend24;
         const bud = is2026 ? rawData.budget26u : rawData.budget25u;
         const wLbls = is2026 ? WEEKLY_LABELS_2026 : WEEKLY_LABELS_2025;
@@ -156,6 +195,24 @@ const DashboardDetails = () => {
         const yPrev = is2026 ? '2025' : '2024';
         const shCurr = is2026 ? "'26" : "'25";
         const shPrev = is2026 ? "'25" : "'24";
+
+        // Re-aggregate weekly data from raw records using the calendar ranges
+        // in wLbls so current and previous year use matching date windows
+        // (labels like "12/04-18/04" bucketed by exact month/day, not ISO week).
+        if (viewType === 'weekly') {
+            const curYear = is2026 ? 2026 : 2025;
+            const prvYear = is2026 ? 2025 : 2024;
+            const curRaw = is2026 ? rawData.raw2026 : rawData.raw2025;
+            const prvRaw = is2026 ? rawData.raw2025 : rawData.raw2024;
+            if (curRaw) {
+                const a = buildWeeklyFromRaw(curRaw, curYear, wLbls);
+                cSw = a.sales; cTw = a.trans;
+            }
+            if (prvRaw) {
+                const a = buildWeeklyFromRaw(prvRaw, prvYear, wLbls);
+                pSw = a.sales; pTw = a.trans;
+            }
+        }
 
         // ── YEARLY ────────────────────────────────────────────────────────
         if (viewType === 'yearly') {
