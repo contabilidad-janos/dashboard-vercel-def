@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Download, ArrowUpDown, AlertTriangle } from 'lucide-react';
+import { Download, ArrowUpDown, AlertTriangle, Package } from 'lucide-react';
 import clsx from 'clsx';
 import { formatCurrency, formatNumber } from '../../utils/formatters';
 
@@ -16,16 +16,22 @@ const COLUMNS = [
     { key: 'publicShare', label: '% Público', numeric: true, fmt: v => `${v.toFixed(0)}%` },
     { key: 'topNamedClient', label: 'Cliente top (no varios)', numeric: false, sortable: false },
     { key: 'velocity', label: 'Vel. uds/día', numeric: true, fmt: v => v.toFixed(2) },
+    { key: 'stockUnits', label: 'Stock', numeric: true, fmt: v => v == null ? '—' : formatNumber(v) },
+    { key: 'daysOfStock', label: 'Días stock', numeric: true, fmt: v => v == null ? '—' : v.toFixed(1) },
     { key: 'daysSinceSold', label: 'Días sin venta', numeric: true, fmt: v => v == null ? '—' : formatNumber(v) },
 ];
 
 const STALE_DAYS = 14;
-const NAMED_DOMINANCE_THRESHOLD = 50; // % of revenue from named clients that triggers the warning
+const NAMED_DOMINANCE_THRESHOLD = 50;
+const LOW_STOCK_DAYS = 7;      // <= 7 días de stock → crítico (rojo)
+const WARN_STOCK_DAYS = 14;    // <= 14 días → aviso (ámbar)
 
-const PicadeliTopProductsTable = ({ products, windowDays }) => {
+const PicadeliTopProductsTable = ({ products, windowDays, inventorySnapshotDate, onSelectProduct }) => {
     const [sortKey, setSortKey] = useState('revenue');
     const [sortDir, setSortDir] = useState('desc');
     const [showAll, setShowAll] = useState(false);
+    // Replenishment modes: 'velocity' (old behaviour) vs 'urgent' (low days-of-stock first, public velocity > 0)
+    const [replMode, setReplMode] = useState(inventorySnapshotDate ? 'urgent' : 'velocity');
 
     const sorted = useMemo(() => {
         const arr = [...products];
@@ -52,11 +58,19 @@ const PicadeliTopProductsTable = ({ products, windowDays }) => {
     };
 
     const replenishmentCandidates = useMemo(() => {
+        if (replMode === 'urgent') {
+            // Products with inventory data AND public demand, sorted by days-of-stock asc.
+            // Fallback: products flagged dominated by named clients are still shown but deprioritised.
+            return [...products]
+                .filter(p => p.hasInventory && p.publicVelocity > 0 && p.daysOfStock != null)
+                .sort((a, b) => a.daysOfStock - b.daysOfStock)
+                .slice(0, 15);
+        }
         return [...products]
             .filter(p => p.units > 0)
             .sort((a, b) => b.velocity - a.velocity)
             .slice(0, 10);
-    }, [products]);
+    }, [products, replMode]);
 
     const handleDownload = () => {
         const header = COLUMNS.filter(c => c.key !== 'rank').map(c => c.label).join(',');
@@ -83,14 +97,42 @@ const PicadeliTopProductsTable = ({ products, windowDays }) => {
         <div className="space-y-6">
             {/* Replenishment panel */}
             <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
-                <div className="flex items-start justify-between gap-4 mb-4">
+                <div className="flex items-start justify-between gap-4 mb-4 flex-wrap">
                     <div>
                         <h3 className="text-lg font-serif text-primary">Replenishment candidates</h3>
-                        <p className="text-xs text-gray-500 mt-1">Top 10 by sales velocity — prioritise restock. Ámbar = dominado por cliente nombrado (probable consumo interno).</p>
+                        <p className="text-xs text-gray-500 mt-1">
+                            {replMode === 'urgent'
+                                ? 'Ordenado por días de stock restante (según velocidad pública). Rojo ≤7d, ámbar ≤14d.'
+                                : 'Top 10 por velocidad de venta — prioriza restock. Ámbar = dominado por cliente nombrado.'}
+                        </p>
+                        {inventorySnapshotDate && (
+                            <p className="text-[11px] text-gray-400 mt-0.5">Inventario snapshot: {inventorySnapshotDate}</p>
+                        )}
                     </div>
-                    <div className="flex items-center gap-2 text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 max-w-sm">
-                        <AlertTriangle className="w-4 h-4 flex-shrink-0" />
-                        <span>Based on sales velocity only — no stock data connected.</span>
+                    <div className="flex items-center gap-2">
+                        {inventorySnapshotDate && (
+                            <div className="flex items-center gap-1 bg-gray-100 rounded-lg p-0.5">
+                                {[
+                                    { v: 'urgent', l: 'Urgente (stock)' },
+                                    { v: 'velocity', l: 'Velocidad' },
+                                ].map(opt => (
+                                    <button
+                                        key={opt.v}
+                                        onClick={() => setReplMode(opt.v)}
+                                        className={clsx(
+                                            'px-3 py-1 text-xs font-medium rounded-md transition',
+                                            replMode === opt.v ? 'bg-white text-primary shadow-sm' : 'text-gray-500 hover:text-gray-700'
+                                        )}
+                                    >{opt.l}</button>
+                                ))}
+                            </div>
+                        )}
+                        {!inventorySnapshotDate && (
+                            <div className="flex items-center gap-2 text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 max-w-sm">
+                                <AlertTriangle className="w-4 h-4 flex-shrink-0" />
+                                <span>Sin inventario — solo velocidad.</span>
+                            </div>
+                        )}
                     </div>
                 </div>
                 <div className="overflow-x-auto">
@@ -98,21 +140,36 @@ const PicadeliTopProductsTable = ({ products, windowDays }) => {
                         <thead className="bg-gray-50 text-gray-500 text-xs uppercase tracking-wider">
                             <tr>
                                 <th className="py-2 px-4 text-left font-semibold">Product</th>
+                                <th className="py-2 px-4 text-right font-semibold">Stock</th>
+                                <th className="py-2 px-4 text-right font-semibold">Días stock</th>
+                                <th className="py-2 px-4 text-right font-semibold">Vel. pública</th>
                                 <th className="py-2 px-4 text-right font-semibold">Units ({windowDays}d)</th>
-                                <th className="py-2 px-4 text-right font-semibold">Velocity uds/día</th>
                                 <th className="py-2 px-4 text-right font-semibold">% Público</th>
-                                <th className="py-2 px-4 text-right font-semibold">Days since sold</th>
                                 <th className="py-2 px-4 text-right font-semibold">Revenue</th>
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-50">
                             {replenishmentCandidates.map(p => {
                                 const dominated = (p.namedShare || 0) > NAMED_DOMINANCE_THRESHOLD;
+                                const stockCritical = p.daysOfStock != null && p.daysOfStock <= LOW_STOCK_DAYS;
+                                const stockWarn = p.daysOfStock != null && p.daysOfStock > LOW_STOCK_DAYS && p.daysOfStock <= WARN_STOCK_DAYS;
                                 return (
-                                    <tr key={p.descripcion} className={clsx('hover:bg-green-50/30', dominated && 'bg-amber-50/40')}>
+                                    <tr
+                                        key={p.descripcion}
+                                        onClick={() => onSelectProduct && onSelectProduct(p.descripcion)}
+                                        className={clsx(
+                                            'cursor-pointer',
+                                            stockCritical ? 'bg-red-50/40 hover:bg-red-50/60' : (dominated ? 'bg-amber-50/40 hover:bg-amber-50/60' : 'hover:bg-green-50/30')
+                                        )}
+                                    >
                                         <td className="py-2 px-4 font-medium text-gray-800">
                                             <span className="inline-flex items-center gap-1.5">
-                                                {dominated && (
+                                                {stockCritical && (
+                                                    <span title={`Stock crítico: ${p.daysOfStock.toFixed(1)} días`}>
+                                                        <Package className="w-3.5 h-3.5 text-red-600 flex-shrink-0" />
+                                                    </span>
+                                                )}
+                                                {dominated && !stockCritical && (
                                                     <span title={`Consumo interno/B2B: ${p.topNamedClient} = ${p.topNamedClientShare.toFixed(0)}%`}>
                                                         <AlertTriangle className="w-3.5 h-3.5 text-amber-600 flex-shrink-0" />
                                                     </span>
@@ -125,26 +182,34 @@ const PicadeliTopProductsTable = ({ products, windowDays }) => {
                                                 </div>
                                             )}
                                         </td>
+                                        <td className="py-2 px-4 text-right tabular-nums">
+                                            {p.stockUnits == null ? <span className="text-gray-300">—</span> : formatNumber(p.stockUnits)}
+                                        </td>
+                                        <td className="py-2 px-4 text-right tabular-nums">
+                                            {p.daysOfStock == null ? <span className="text-gray-300">—</span> : (
+                                                <span className={clsx(
+                                                    'font-semibold',
+                                                    stockCritical && 'text-red-700',
+                                                    stockWarn && 'text-amber-700',
+                                                    !stockCritical && !stockWarn && 'text-gray-700'
+                                                )}>{p.daysOfStock.toFixed(1)}d</span>
+                                            )}
+                                        </td>
+                                        <td className="py-2 px-4 text-right tabular-nums text-primary">{p.publicVelocity.toFixed(2)}</td>
                                         <td className="py-2 px-4 text-right tabular-nums">{formatNumber(p.units)}</td>
-                                        <td className="py-2 px-4 text-right tabular-nums font-semibold text-primary">{p.velocity.toFixed(2)}</td>
                                         <td className="py-2 px-4 text-right tabular-nums">
                                             <span className={clsx(p.publicShare < NAMED_DOMINANCE_THRESHOLD ? 'text-amber-700 font-semibold' : 'text-gray-600')}>
                                                 {p.publicShare.toFixed(0)}%
                                             </span>
-                                        </td>
-                                        <td className="py-2 px-4 text-right tabular-nums">
-                                            {p.daysSinceSold == null ? '—' : (
-                                                <span className={clsx(p.daysSinceSold > STALE_DAYS && 'text-red-600 font-semibold')}>
-                                                    {p.daysSinceSold}
-                                                </span>
-                                            )}
                                         </td>
                                         <td className="py-2 px-4 text-right tabular-nums">{formatCurrency(p.revenue)}</td>
                                     </tr>
                                 );
                             })}
                             {replenishmentCandidates.length === 0 && (
-                                <tr><td colSpan={6} className="py-6 text-center text-gray-400 italic">No data in selected range.</td></tr>
+                                <tr><td colSpan={7} className="py-6 text-center text-gray-400 italic">
+                                    {replMode === 'urgent' ? 'Sin productos con inventario y velocidad pública > 0 en este rango.' : 'No data in selected range.'}
+                                </td></tr>
                             )}
                         </tbody>
                     </table>
@@ -201,8 +266,14 @@ const PicadeliTopProductsTable = ({ products, windowDays }) => {
                         <tbody className="divide-y divide-gray-50">
                             {visible.map(p => {
                                 const dominated = (p.namedShare || 0) > NAMED_DOMINANCE_THRESHOLD;
+                                const stockCritical = p.daysOfStock != null && p.daysOfStock <= LOW_STOCK_DAYS;
+                                const stockWarn = p.daysOfStock != null && p.daysOfStock > LOW_STOCK_DAYS && p.daysOfStock <= WARN_STOCK_DAYS;
                                 return (
-                                    <tr key={p.descripcion} className={clsx('hover:bg-green-50/30', dominated && 'bg-amber-50/30')}>
+                                    <tr
+                                        key={p.descripcion}
+                                        onClick={() => onSelectProduct && onSelectProduct(p.descripcion)}
+                                        className={clsx('cursor-pointer hover:bg-green-50/30', dominated && 'bg-amber-50/30')}
+                                    >
                                         <td className="py-2 px-4 text-right tabular-nums text-gray-400">{p.rank}</td>
                                         <td className="py-2 px-4 font-medium text-gray-800 max-w-[280px] truncate" title={p.descripcion_raw}>
                                             <span className="inline-flex items-center gap-1.5">
@@ -235,6 +306,17 @@ const PicadeliTopProductsTable = ({ products, windowDays }) => {
                                             ) : <span className="text-gray-300">—</span>}
                                         </td>
                                         <td className="py-2 px-4 text-right tabular-nums">{p.velocity.toFixed(2)}</td>
+                                        <td className="py-2 px-4 text-right tabular-nums">
+                                            {p.stockUnits == null ? <span className="text-gray-300">—</span> : formatNumber(p.stockUnits)}
+                                        </td>
+                                        <td className="py-2 px-4 text-right tabular-nums">
+                                            {p.daysOfStock == null ? <span className="text-gray-300">—</span> : (
+                                                <span className={clsx(
+                                                    stockCritical && 'text-red-700 font-semibold',
+                                                    stockWarn && 'text-amber-700 font-semibold'
+                                                )}>{p.daysOfStock.toFixed(1)}</span>
+                                            )}
+                                        </td>
                                         <td className="py-2 px-4 text-right tabular-nums">
                                             {p.daysSinceSold == null ? '—' : (
                                                 <span className={clsx(p.daysSinceSold > STALE_DAYS && 'text-red-600 font-semibold')}>

@@ -5,6 +5,7 @@ import PicadeliFilters from './picadeli/PicadeliFilters';
 import PicadeliKPIs from './picadeli/PicadeliKPIs';
 import PicadeliHourlyChart from './picadeli/PicadeliHourlyChart';
 import PicadeliTopProductsTable from './picadeli/PicadeliTopProductsTable';
+import PicadeliProductModal from './picadeli/PicadeliProductModal';
 
 const today = () => format(new Date(), 'yyyy-MM-dd');
 
@@ -24,6 +25,8 @@ const PicadeliProducts = () => {
     const [rows, setRows] = useState([]);
     const [filterOptions, setFilterOptions] = useState({ departamentos: [], secciones: [], marcasMapeadas: [] });
     const [dateBounds, setDateBounds] = useState({ min: null, max: null });
+    const [inventory, setInventory] = useState({ snapshotDate: null, items: [] });
+    const [selectedProductKey, setSelectedProductKey] = useState(null);
 
     // Filters
     const [startDate, setStartDate] = useState(format(subDays(new Date(), 90), 'yyyy-MM-dd'));
@@ -34,18 +37,20 @@ const PicadeliProducts = () => {
     const [excludedClients, setExcludedClients] = useState([]);
     const [search, setSearch] = useState('');
 
-    // Load filter options + date bounds once
+    // Load filter options + date bounds + inventory snapshot once
     useEffect(() => {
         let cancelled = false;
         (async () => {
             try {
-                const [opts, bounds] = await Promise.all([
+                const [opts, bounds, inv] = await Promise.all([
                     DataService.getPicadeliFilterOptions(),
                     DataService.getPicadeliDateBounds(),
+                    DataService.getPicadeliInventory(),
                 ]);
                 if (cancelled) return;
                 setFilterOptions(opts);
                 setDateBounds(bounds);
+                setInventory(inv);
             } catch (e) {
                 if (!cancelled) setError(e.message || String(e));
             }
@@ -149,6 +154,12 @@ const PicadeliProducts = () => {
     );
     const endParsed = useMemo(() => parseISO(endDate), [endDate]);
 
+    const inventoryByKey = useMemo(() => {
+        const m = new Map();
+        inventory.items.forEach(i => { m.set(i.articulo_normalized, i); });
+        return m;
+    }, [inventory]);
+
     const products = useMemo(() => {
         const map = new Map();
         filteredRows.forEach(r => {
@@ -196,6 +207,13 @@ const PicadeliProducts = () => {
                 if (rev > topNamedClientRevenue) { topNamedClient = name; topNamedClientRevenue = rev; }
             });
             const namedRevenue = p.revenue - p.publicRevenue;
+            const inv = inventoryByKey.get(p.descripcion) || null;
+            const velocity = p.units / windowDays;
+            const publicVelocity = p.publicUnits / windowDays;
+            // Days of stock is computed against *public* velocity so internal
+            // consumption doesn't compress the runway estimate.
+            const stockUnits = inv ? Number(inv.stock_units) : null;
+            const daysOfStock = (inv && publicVelocity > 0) ? stockUnits / publicVelocity : null;
             return {
                 descripcion: p.descripcion,
                 descripcion_raw: p.descripcion_raw,
@@ -212,13 +230,19 @@ const PicadeliProducts = () => {
                 namedShare: p.revenue > 0 ? (namedRevenue / p.revenue) * 100 : 0,
                 topNamedClient,
                 topNamedClientShare: p.revenue > 0 ? (topNamedClientRevenue / p.revenue) * 100 : 0,
-                velocity: p.units / windowDays,
-                publicVelocity: p.publicUnits / windowDays,
+                velocity,
+                publicVelocity,
                 lastDate: p.lastDate,
                 daysSinceSold: p.lastDate ? differenceInCalendarDays(endParsed, parseISO(p.lastDate)) : null,
+                stockUnits,
+                stockValue: inv ? Number(inv.stock_value) : null,
+                stockPrice: inv ? Number(inv.precio_unidad) : null,
+                stockProveedor: inv?.proveedor || null,
+                hasInventory: !!inv,
+                daysOfStock,
             };
         });
-    }, [filteredRows, windowDays, endParsed]);
+    }, [filteredRows, windowDays, endParsed, inventoryByKey]);
 
     const hourly = useMemo(() => {
         const rev = new Array(24).fill(0);
@@ -309,8 +333,26 @@ const PicadeliProducts = () => {
                 <>
                     <PicadeliKPIs metrics={metrics} />
                     <PicadeliHourlyChart hourly={hourly} />
-                    <PicadeliTopProductsTable products={products} windowDays={windowDays} />
+                    <PicadeliTopProductsTable
+                        products={products}
+                        windowDays={windowDays}
+                        inventorySnapshotDate={inventory.snapshotDate}
+                        onSelectProduct={setSelectedProductKey}
+                    />
                 </>
+            )}
+
+            {selectedProductKey && (
+                <PicadeliProductModal
+                    productKey={selectedProductKey}
+                    rows={filteredRows}
+                    allRows={rows}
+                    startDate={startDate}
+                    endDate={endDate}
+                    windowDays={windowDays}
+                    product={products.find(p => p.descripcion === selectedProductKey) || null}
+                    onClose={() => setSelectedProductKey(null)}
+                />
             )}
         </div>
     );

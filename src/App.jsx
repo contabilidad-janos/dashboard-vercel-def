@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, LineElement, PointElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, LineElement, PointElement, Title, Tooltip, Legend, ArcElement, Filler } from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import Header from './components/Header';
 import Tabs from './components/Tabs';
@@ -20,6 +20,7 @@ ChartJS.register(
   Tooltip,
   Legend,
   ArcElement,
+  Filler,
   ChartDataLabels
 );
 

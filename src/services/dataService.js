@@ -665,6 +665,43 @@ export const DataService = {
         return result;
     },
 
+    /** Fetch the most recent inventory snapshot (or a specific snapshot_date). */
+    getPicadeliInventory: async (snapshotDate = null) => {
+        const cacheKey = `picadeli_inventory::${snapshotDate || 'latest'}`;
+        if (_cache[cacheKey]) return _cache[cacheKey];
+
+        let effectiveDate = snapshotDate;
+        if (!effectiveDate) {
+            const { data: latest } = await supabase
+                .from('picadeli_inventory')
+                .select('snapshot_date')
+                .order('snapshot_date', { ascending: false })
+                .limit(1);
+            effectiveDate = latest?.[0]?.snapshot_date || null;
+        }
+        if (!effectiveDate) return { snapshotDate: null, items: [] };
+
+        let allData = [];
+        let from = 0;
+        const chunkSize = 1000;
+        while (true) {
+            const { data, error } = await supabase
+                .from('picadeli_inventory')
+                .select('articulo, articulo_normalized, proveedor, departamento, precio_unidad, stock_units, stock_value')
+                .eq('snapshot_date', effectiveDate)
+                .range(from, from + chunkSize - 1);
+            if (error) { console.error('Error fetching picadeli_inventory:', error); break; }
+            if (!data || data.length === 0) break;
+            allData = allData.concat(data);
+            if (data.length < chunkSize) break;
+            from += chunkSize;
+        }
+
+        const result = { snapshotDate: effectiveDate, items: allData };
+        _cache[cacheKey] = result;
+        return result;
+    },
+
     /** Fetch the min/max date present in picadeli_sales (for sensible default ranges). */
     getPicadeliDateBounds: async () => {
         const cacheKey = 'picadeli_sales::date_bounds';
