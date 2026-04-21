@@ -590,4 +590,96 @@ export const DataService = {
     getCanEscarrerData: async () => {
         return _fetchPaginated('ventas can escarrer', '*');
     },
+
+    // ── PICADELI (product-level transactional data) ──────────────────────────
+
+    /** Fetch Picadeli transactional rows within [startDate, endDate] (inclusive, YYYY-MM-DD). */
+    getPicadeliRaw: async (startDate, endDate) => {
+        const cacheKey = `picadeli_sales::${startDate}::${endDate}`;
+        if (_cache[cacheKey]) return _cache[cacheKey];
+
+        let allData = [];
+        let from = 0;
+        const chunkSize = 1000;
+        let done = false;
+
+        while (!done) {
+            const { data, error } = await supabase
+                .from('picadeli_sales')
+                .select('date, hour, serie, cliente, descripcion, descripcion_raw, departamento, seccion, marca, marca_mapeada, uds, importe')
+                .gte('date', startDate)
+                .lte('date', endDate)
+                .range(from, from + chunkSize - 1)
+                .order('date', { ascending: true });
+
+            if (error) {
+                console.error('Error fetching picadeli_sales:', error);
+                break;
+            }
+            if (data && data.length > 0) {
+                allData = allData.concat(data);
+                from += chunkSize;
+                if (data.length < chunkSize) done = true;
+            } else {
+                done = true;
+            }
+        }
+
+        _cache[cacheKey] = allData;
+        return allData;
+    },
+
+    /** Fetch distinct filter option values (departamento, seccion, marca_mapeada). */
+    getPicadeliFilterOptions: async () => {
+        const cacheKey = 'picadeli_sales::filter_options';
+        if (_cache[cacheKey]) return _cache[cacheKey];
+
+        // Pull a distinct-ish sample by paging over the full table; values are small
+        // cardinality (~15 departamentos, ~30 secciones, ~50 marcas), so even over
+        // 130k rows a single page with limit(50000) typically covers all values.
+        const { data, error } = await supabase
+            .from('picadeli_sales')
+            .select('departamento, seccion, marca_mapeada')
+            .limit(50000);
+
+        if (error) {
+            console.error('Error fetching picadeli filter options:', error);
+            return { departamentos: [], secciones: [], marcasMapeadas: [] };
+        }
+
+        const deps = new Set();
+        const secs = new Set();
+        const marcas = new Set();
+        (data || []).forEach(r => {
+            if (r.departamento) deps.add(r.departamento);
+            if (r.seccion) secs.add(r.seccion);
+            if (r.marca_mapeada) marcas.add(r.marca_mapeada);
+        });
+
+        const result = {
+            departamentos: [...deps].sort(),
+            secciones: [...secs].sort(),
+            marcasMapeadas: [...marcas].sort(),
+        };
+        _cache[cacheKey] = result;
+        return result;
+    },
+
+    /** Fetch the min/max date present in picadeli_sales (for sensible default ranges). */
+    getPicadeliDateBounds: async () => {
+        const cacheKey = 'picadeli_sales::date_bounds';
+        if (_cache[cacheKey]) return _cache[cacheKey];
+
+        const [minRes, maxRes] = await Promise.all([
+            supabase.from('picadeli_sales').select('date').order('date', { ascending: true }).limit(1),
+            supabase.from('picadeli_sales').select('date').order('date', { ascending: false }).limit(1),
+        ]);
+
+        const result = {
+            min: minRes.data?.[0]?.date || null,
+            max: maxRes.data?.[0]?.date || null,
+        };
+        _cache[cacheKey] = result;
+        return result;
+    },
 };

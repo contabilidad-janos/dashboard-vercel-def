@@ -7,7 +7,7 @@ import Dashboard2026 from './components/Dashboard2026';
 import Dashboard2025 from './components/Dashboard2025';
 import Dashboard2024 from './components/Dashboard2024';
 import DashboardDetails from './components/DashboardDetails';
-import CanEscarrerDashboard from './components/CanEscarrerDashboard';
+import PicadeliProducts from './components/PicadeliProducts';
 
 // Register ChartJS components globally
 ChartJS.register(
@@ -61,9 +61,9 @@ function App() {
           </div>
         )}
 
-        {activeTab === 'can-escarrer' && (
-          <div id="page-can-escarrer" className="animate-in fade-in duration-500">
-            <CanEscarrerDashboard />
+        {activeTab === 'picadeli-products' && (
+          <div id="page-picadeli-products" className="animate-in fade-in duration-500">
+            <PicadeliProducts />
           </div>
         )}
       </main>
