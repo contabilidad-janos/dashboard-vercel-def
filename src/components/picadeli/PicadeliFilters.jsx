@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
 import DateRangePicker from '../DateRangePicker';
-import { Search } from 'lucide-react';
+import { Search, UserX, ChevronDown, ChevronUp } from 'lucide-react';
+import { formatCurrency } from '../../utils/formatters';
 
 const PRESETS = [
     { value: '30d', label: '30d' },
@@ -17,8 +18,14 @@ const PicadeliFilters = ({
     departamentos, selectedDeps, toggleDep,
     secciones, selectedSecs, toggleSec,
     marcas, selectedMarcas, setSelectedMarcas,
+    clientOptions = [], excludedClients = [], toggleClient,
+    onExcludeInternal, onClearExcludedClients,
     search, setSearch,
 }) => {
+    const [showAllClients, setShowAllClients] = useState(false);
+    const namedClients = clientOptions.filter(c => !c.isPublic);
+    const visibleClients = showAllClients ? namedClients : namedClients.slice(0, 12);
+    const clientLabel = (c) => c.cliente === '' ? '(sin cliente)' : c.cliente;
     return (
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm mb-6">
 
@@ -62,6 +69,67 @@ const PicadeliFilters = ({
                         {secciones.map(s => (
                             <button key={s} onClick={() => toggleSec(s)} className={clsx('bu-chip text-xs', selectedSecs.includes(s) && 'active')}>{s}</button>
                         ))}
+                    </div>
+                </div>
+            )}
+
+            {/* Row 3.5: Client exclusion (internal consumption) */}
+            {namedClients.length > 0 && (
+                <div className="px-5 py-3 border-b border-gray-100">
+                    <div className="flex items-center justify-between mb-2 gap-3">
+                        <div className="flex items-center gap-2">
+                            <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">Excluir clientes (consumo interno / B2B)</p>
+                            {excludedClients.length > 0 && (
+                                <span className="text-[11px] font-semibold text-red-600 bg-red-50 border border-red-200 rounded-full px-2 py-0.5">
+                                    {excludedClients.length} excluido{excludedClients.length === 1 ? '' : 's'}
+                                </span>
+                            )}
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <button
+                                onClick={onExcludeInternal}
+                                className="inline-flex items-center gap-1.5 text-[11px] font-medium border border-amber-300 text-amber-700 bg-amber-50 hover:bg-amber-100 rounded-full px-2.5 py-1"
+                            >
+                                <UserX className="w-3 h-3" /> Excluir internos (Christian + Empleados)
+                            </button>
+                            {excludedClients.length > 0 && (
+                                <button
+                                    onClick={onClearExcludedClients}
+                                    className="text-[11px] text-gray-500 hover:text-gray-700 underline"
+                                >Limpiar</button>
+                            )}
+                        </div>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                        {visibleClients.map(c => {
+                            const excluded = excludedClients.includes(c.cliente);
+                            return (
+                                <button
+                                    key={c.cliente}
+                                    onClick={() => toggleClient(c.cliente)}
+                                    title={`${clientLabel(c)} — ${formatCurrency(c.revenue)}`}
+                                    className={clsx(
+                                        'inline-flex items-center gap-1.5 text-xs border rounded-full px-2.5 py-1 transition-colors',
+                                        excluded
+                                            ? 'bg-red-50 border-red-300 text-red-700 line-through'
+                                            : 'bg-white border-gray-200 text-gray-700 hover:border-accent hover:text-accent'
+                                    )}
+                                >
+                                    <span className="max-w-[220px] truncate">{clientLabel(c)}</span>
+                                    <span className="text-[10px] text-gray-400">{formatCurrency(c.revenue)}</span>
+                                </button>
+                            );
+                        })}
+                        {namedClients.length > 12 && (
+                            <button
+                                onClick={() => setShowAllClients(s => !s)}
+                                className="inline-flex items-center gap-1 text-xs text-gray-500 hover:text-accent px-2"
+                            >
+                                {showAllClients
+                                    ? <>Ver menos <ChevronUp className="w-3 h-3" /></>
+                                    : <>+{namedClients.length - 12} más <ChevronDown className="w-3 h-3" /></>}
+                            </button>
+                        )}
                     </div>
                 </div>
             )}

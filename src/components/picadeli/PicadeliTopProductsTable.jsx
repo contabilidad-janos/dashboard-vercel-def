@@ -13,11 +13,14 @@ const COLUMNS = [
     { key: 'revenue', label: 'Revenue', numeric: true, fmt: v => formatCurrency(v) },
     { key: 'avgPrice', label: 'Avg €', numeric: true, fmt: v => formatCurrency(v) },
     { key: 'pctRevenue', label: '% Rev', numeric: true, fmt: v => `${v.toFixed(1)}%` },
+    { key: 'publicShare', label: '% Público', numeric: true, fmt: v => `${v.toFixed(0)}%` },
+    { key: 'topNamedClient', label: 'Cliente top (no varios)', numeric: false, sortable: false },
     { key: 'velocity', label: 'Vel. uds/día', numeric: true, fmt: v => v.toFixed(2) },
     { key: 'daysSinceSold', label: 'Días sin venta', numeric: true, fmt: v => v == null ? '—' : formatNumber(v) },
 ];
 
 const STALE_DAYS = 14;
+const NAMED_DOMINANCE_THRESHOLD = 50; // % of revenue from named clients that triggers the warning
 
 const PicadeliTopProductsTable = ({ products, windowDays }) => {
     const [sortKey, setSortKey] = useState('revenue');
@@ -83,7 +86,7 @@ const PicadeliTopProductsTable = ({ products, windowDays }) => {
                 <div className="flex items-start justify-between gap-4 mb-4">
                     <div>
                         <h3 className="text-lg font-serif text-primary">Replenishment candidates</h3>
-                        <p className="text-xs text-gray-500 mt-1">Top 10 by sales velocity — prioritise restock.</p>
+                        <p className="text-xs text-gray-500 mt-1">Top 10 by sales velocity — prioritise restock. Ámbar = dominado por cliente nombrado (probable consumo interno).</p>
                     </div>
                     <div className="flex items-center gap-2 text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 max-w-sm">
                         <AlertTriangle className="w-4 h-4 flex-shrink-0" />
@@ -97,28 +100,51 @@ const PicadeliTopProductsTable = ({ products, windowDays }) => {
                                 <th className="py-2 px-4 text-left font-semibold">Product</th>
                                 <th className="py-2 px-4 text-right font-semibold">Units ({windowDays}d)</th>
                                 <th className="py-2 px-4 text-right font-semibold">Velocity uds/día</th>
+                                <th className="py-2 px-4 text-right font-semibold">% Público</th>
                                 <th className="py-2 px-4 text-right font-semibold">Days since sold</th>
                                 <th className="py-2 px-4 text-right font-semibold">Revenue</th>
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-50">
-                            {replenishmentCandidates.map(p => (
-                                <tr key={p.descripcion} className="hover:bg-green-50/30">
-                                    <td className="py-2 px-4 font-medium text-gray-800">{p.descripcion_raw}</td>
-                                    <td className="py-2 px-4 text-right tabular-nums">{formatNumber(p.units)}</td>
-                                    <td className="py-2 px-4 text-right tabular-nums font-semibold text-primary">{p.velocity.toFixed(2)}</td>
-                                    <td className="py-2 px-4 text-right tabular-nums">
-                                        {p.daysSinceSold == null ? '—' : (
-                                            <span className={clsx(p.daysSinceSold > STALE_DAYS && 'text-red-600 font-semibold')}>
-                                                {p.daysSinceSold}
+                            {replenishmentCandidates.map(p => {
+                                const dominated = (p.namedShare || 0) > NAMED_DOMINANCE_THRESHOLD;
+                                return (
+                                    <tr key={p.descripcion} className={clsx('hover:bg-green-50/30', dominated && 'bg-amber-50/40')}>
+                                        <td className="py-2 px-4 font-medium text-gray-800">
+                                            <span className="inline-flex items-center gap-1.5">
+                                                {dominated && (
+                                                    <span title={`Consumo interno/B2B: ${p.topNamedClient} = ${p.topNamedClientShare.toFixed(0)}%`}>
+                                                        <AlertTriangle className="w-3.5 h-3.5 text-amber-600 flex-shrink-0" />
+                                                    </span>
+                                                )}
+                                                {p.descripcion_raw}
                                             </span>
-                                        )}
-                                    </td>
-                                    <td className="py-2 px-4 text-right tabular-nums">{formatCurrency(p.revenue)}</td>
-                                </tr>
-                            ))}
+                                            {dominated && p.topNamedClient && (
+                                                <div className="text-[10px] text-amber-700 mt-0.5">
+                                                    {p.topNamedClient} ({p.topNamedClientShare.toFixed(0)}%)
+                                                </div>
+                                            )}
+                                        </td>
+                                        <td className="py-2 px-4 text-right tabular-nums">{formatNumber(p.units)}</td>
+                                        <td className="py-2 px-4 text-right tabular-nums font-semibold text-primary">{p.velocity.toFixed(2)}</td>
+                                        <td className="py-2 px-4 text-right tabular-nums">
+                                            <span className={clsx(p.publicShare < NAMED_DOMINANCE_THRESHOLD ? 'text-amber-700 font-semibold' : 'text-gray-600')}>
+                                                {p.publicShare.toFixed(0)}%
+                                            </span>
+                                        </td>
+                                        <td className="py-2 px-4 text-right tabular-nums">
+                                            {p.daysSinceSold == null ? '—' : (
+                                                <span className={clsx(p.daysSinceSold > STALE_DAYS && 'text-red-600 font-semibold')}>
+                                                    {p.daysSinceSold}
+                                                </span>
+                                            )}
+                                        </td>
+                                        <td className="py-2 px-4 text-right tabular-nums">{formatCurrency(p.revenue)}</td>
+                                    </tr>
+                                );
+                            })}
                             {replenishmentCandidates.length === 0 && (
-                                <tr><td colSpan={5} className="py-6 text-center text-gray-400 italic">No data in selected range.</td></tr>
+                                <tr><td colSpan={6} className="py-6 text-center text-gray-400 italic">No data in selected range.</td></tr>
                             )}
                         </tbody>
                     </table>
@@ -173,27 +199,52 @@ const PicadeliTopProductsTable = ({ products, windowDays }) => {
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-50">
-                            {visible.map(p => (
-                                <tr key={p.descripcion} className="hover:bg-green-50/30">
-                                    <td className="py-2 px-4 text-right tabular-nums text-gray-400">{p.rank}</td>
-                                    <td className="py-2 px-4 font-medium text-gray-800 max-w-[280px] truncate" title={p.descripcion_raw}>{p.descripcion_raw}</td>
-                                    <td className="py-2 px-4 text-gray-600">{p.departamento || '—'}</td>
-                                    <td className="py-2 px-4 text-gray-600">{p.seccion || '—'}</td>
-                                    <td className="py-2 px-4 text-gray-600">{p.marca_mapeada || '—'}</td>
-                                    <td className="py-2 px-4 text-right tabular-nums">{formatNumber(p.units)}</td>
-                                    <td className="py-2 px-4 text-right tabular-nums font-semibold">{formatCurrency(p.revenue)}</td>
-                                    <td className="py-2 px-4 text-right tabular-nums">{formatCurrency(p.avgPrice)}</td>
-                                    <td className="py-2 px-4 text-right tabular-nums">{p.pctRevenue.toFixed(1)}%</td>
-                                    <td className="py-2 px-4 text-right tabular-nums">{p.velocity.toFixed(2)}</td>
-                                    <td className="py-2 px-4 text-right tabular-nums">
-                                        {p.daysSinceSold == null ? '—' : (
-                                            <span className={clsx(p.daysSinceSold > STALE_DAYS && 'text-red-600 font-semibold')}>
-                                                {p.daysSinceSold}
+                            {visible.map(p => {
+                                const dominated = (p.namedShare || 0) > NAMED_DOMINANCE_THRESHOLD;
+                                return (
+                                    <tr key={p.descripcion} className={clsx('hover:bg-green-50/30', dominated && 'bg-amber-50/30')}>
+                                        <td className="py-2 px-4 text-right tabular-nums text-gray-400">{p.rank}</td>
+                                        <td className="py-2 px-4 font-medium text-gray-800 max-w-[280px] truncate" title={p.descripcion_raw}>
+                                            <span className="inline-flex items-center gap-1.5">
+                                                {dominated && (
+                                                    <span title={`Consumo interno/B2B: ${(100 - p.publicShare).toFixed(0)}% de la venta no es público`}>
+                                                        <AlertTriangle className="w-3.5 h-3.5 text-amber-600 flex-shrink-0" />
+                                                    </span>
+                                                )}
+                                                <span className="truncate">{p.descripcion_raw}</span>
                                             </span>
-                                        )}
-                                    </td>
-                                </tr>
-                            ))}
+                                        </td>
+                                        <td className="py-2 px-4 text-gray-600">{p.departamento || '—'}</td>
+                                        <td className="py-2 px-4 text-gray-600">{p.seccion || '—'}</td>
+                                        <td className="py-2 px-4 text-gray-600">{p.marca_mapeada || '—'}</td>
+                                        <td className="py-2 px-4 text-right tabular-nums">{formatNumber(p.units)}</td>
+                                        <td className="py-2 px-4 text-right tabular-nums font-semibold">{formatCurrency(p.revenue)}</td>
+                                        <td className="py-2 px-4 text-right tabular-nums">{formatCurrency(p.avgPrice)}</td>
+                                        <td className="py-2 px-4 text-right tabular-nums">{p.pctRevenue.toFixed(1)}%</td>
+                                        <td className="py-2 px-4 text-right tabular-nums">
+                                            <span className={clsx(p.publicShare < NAMED_DOMINANCE_THRESHOLD ? 'text-amber-700 font-semibold' : 'text-gray-700')}>
+                                                {p.publicShare.toFixed(0)}%
+                                            </span>
+                                        </td>
+                                        <td className="py-2 px-4 text-xs text-gray-600 max-w-[200px]">
+                                            {p.topNamedClient ? (
+                                                <span className="inline-flex items-center gap-1">
+                                                    <span className="truncate max-w-[140px]" title={p.topNamedClient}>{p.topNamedClient}</span>
+                                                    <span className="text-gray-400">{p.topNamedClientShare.toFixed(0)}%</span>
+                                                </span>
+                                            ) : <span className="text-gray-300">—</span>}
+                                        </td>
+                                        <td className="py-2 px-4 text-right tabular-nums">{p.velocity.toFixed(2)}</td>
+                                        <td className="py-2 px-4 text-right tabular-nums">
+                                            {p.daysSinceSold == null ? '—' : (
+                                                <span className={clsx(p.daysSinceSold > STALE_DAYS && 'text-red-600 font-semibold')}>
+                                                    {p.daysSinceSold}
+                                                </span>
+                                            )}
+                                        </td>
+                                    </tr>
+                                );
+                            })}
                             {visible.length === 0 && (
                                 <tr><td colSpan={COLUMNS.length} className="py-12 text-center text-gray-400 italic">No data in selected range.</td></tr>
                             )}

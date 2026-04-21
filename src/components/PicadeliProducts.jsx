@@ -8,6 +8,16 @@ import PicadeliTopProductsTable from './picadeli/PicadeliTopProductsTable';
 
 const today = () => format(new Date(), 'yyyy-MM-dd');
 
+// "Public" clients are the anonymous retail / walk-in buckets — everything else
+// is a named client (owner, employees, B2B accounts). Used to compute the
+// named-client concentration warning per product.
+const PUBLIC_CLIENTS = new Set(['Clientes varios', 'CLIENTES CONTADO', '0', '', null]);
+const isPublicClient = (c) => PUBLIC_CLIENTS.has(c);
+
+// Clients pre-selected by the "Excluir internos" preset. Matched case-insensitively
+// as substrings so minor name variants still catch (e.g. "EMPLEADOS 20").
+const INTERNAL_CLIENT_PATTERNS = ['CHRISTIAN', 'EMPLEADOS'];
+
 const PicadeliProducts = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -21,6 +31,7 @@ const PicadeliProducts = () => {
     const [selectedDeps, setSelectedDeps] = useState([]);
     const [selectedSecs, setSelectedSecs] = useState([]);
     const [selectedMarcas, setSelectedMarcas] = useState([]);
+    const [excludedClients, setExcludedClients] = useState([]);
     const [search, setSearch] = useState('');
 
     // Load filter options + date bounds once
@@ -80,6 +91,10 @@ const PicadeliProducts = () => {
         if (v === '__ALL__') { setSelectedSecs([]); return; }
         setSelectedSecs(s => s.includes(v) ? s.filter(x => x !== v) : [...s, v]);
     };
+    const toggleClient = (v) => {
+        setExcludedClients(s => s.includes(v) ? s.filter(x => x !== v) : [...s, v]);
+    };
+    const clearExcludedClients = () => setExcludedClients([]);
 
     // Sección list: narrow to selected Departamento when applicable
     const seccionesForDep = useMemo(() => {
@@ -94,14 +109,39 @@ const PicadeliProducts = () => {
 
     const filteredRows = useMemo(() => {
         const s = search.trim().toUpperCase();
+        const excl = new Set(excludedClients);
         return rows.filter(r => {
             if (selectedDeps.length > 0 && !selectedDeps.includes(r.departamento)) return false;
             if (selectedSecs.length > 0 && !selectedSecs.includes(r.seccion)) return false;
             if (selectedMarcas.length > 0 && !selectedMarcas.includes(r.marca_mapeada)) return false;
+            if (excl.size > 0 && excl.has(r.cliente || '')) return false;
             if (s && !(r.descripcion || '').includes(s)) return false;
             return true;
         });
-    }, [rows, selectedDeps, selectedSecs, selectedMarcas, search]);
+    }, [rows, selectedDeps, selectedSecs, selectedMarcas, excludedClients, search]);
+
+    // Client list derived from current date-range rows, sorted by revenue desc.
+    // We always compute over the full (pre-client-filter) set so excluded
+    // clients remain visible in the UI and can be toggled back on.
+    const clientOptions = useMemo(() => {
+        const byClient = new Map();
+        rows.forEach(r => {
+            const c = r.cliente || '';
+            const agg = byClient.get(c) || { cliente: c, revenue: 0 };
+            agg.revenue += Number(r.importe) || 0;
+            byClient.set(c, agg);
+        });
+        return [...byClient.values()]
+            .sort((a, b) => b.revenue - a.revenue)
+            .map(x => ({ ...x, isPublic: isPublicClient(x.cliente) }));
+    }, [rows]);
+
+    const applyInternalPreset = () => {
+        const matched = clientOptions
+            .filter(c => !c.isPublic && INTERNAL_CLIENT_PATTERNS.some(p => c.cliente.toUpperCase().includes(p)))
+            .map(c => c.cliente);
+        setExcludedClients(matched);
+    };
 
     const windowDays = useMemo(
         () => Math.max(1, differenceInCalendarDays(parseISO(endDate), parseISO(startDate)) + 1),
@@ -124,26 +164,60 @@ const PicadeliProducts = () => {
                     marca_mapeada: r.marca_mapeada,
                     units: 0,
                     revenue: 0,
+                    publicRevenue: 0,
+                    publicUnits: 0,
+                    clientRevenue: new Map(),
                     salesDates: new Set(),
                     lastDate: null,
                 };
                 map.set(key, agg);
             }
-            agg.units += Number(r.uds) || 0;
-            agg.revenue += Number(r.importe) || 0;
+            const uds = Number(r.uds) || 0;
+            const imp = Number(r.importe) || 0;
+            agg.units += uds;
+            agg.revenue += imp;
+            if (isPublicClient(r.cliente)) {
+                agg.publicRevenue += imp;
+                agg.publicUnits += uds;
+            } else {
+                const key2 = r.cliente || '';
+                agg.clientRevenue.set(key2, (agg.clientRevenue.get(key2) || 0) + imp);
+            }
             if (r.date) {
                 agg.salesDates.add(r.date);
                 if (!agg.lastDate || r.date > agg.lastDate) agg.lastDate = r.date;
             }
         });
         const totalRevenue = [...map.values()].reduce((s, p) => s + p.revenue, 0) || 1;
-        return [...map.values()].map(p => ({
-            ...p,
-            avgPrice: p.units > 0 ? p.revenue / p.units : 0,
-            pctRevenue: (p.revenue / totalRevenue) * 100,
-            velocity: p.units / windowDays,
-            daysSinceSold: p.lastDate ? differenceInCalendarDays(endParsed, parseISO(p.lastDate)) : null,
-        }));
+        return [...map.values()].map(p => {
+            let topNamedClient = null;
+            let topNamedClientRevenue = 0;
+            p.clientRevenue.forEach((rev, name) => {
+                if (rev > topNamedClientRevenue) { topNamedClient = name; topNamedClientRevenue = rev; }
+            });
+            const namedRevenue = p.revenue - p.publicRevenue;
+            return {
+                descripcion: p.descripcion,
+                descripcion_raw: p.descripcion_raw,
+                departamento: p.departamento,
+                seccion: p.seccion,
+                marca_mapeada: p.marca_mapeada,
+                units: p.units,
+                revenue: p.revenue,
+                publicUnits: p.publicUnits,
+                publicRevenue: p.publicRevenue,
+                avgPrice: p.units > 0 ? p.revenue / p.units : 0,
+                pctRevenue: (p.revenue / totalRevenue) * 100,
+                publicShare: p.revenue > 0 ? (p.publicRevenue / p.revenue) * 100 : 0,
+                namedShare: p.revenue > 0 ? (namedRevenue / p.revenue) * 100 : 0,
+                topNamedClient,
+                topNamedClientShare: p.revenue > 0 ? (topNamedClientRevenue / p.revenue) * 100 : 0,
+                velocity: p.units / windowDays,
+                publicVelocity: p.publicUnits / windowDays,
+                lastDate: p.lastDate,
+                daysSinceSold: p.lastDate ? differenceInCalendarDays(endParsed, parseISO(p.lastDate)) : null,
+            };
+        });
     }, [filteredRows, windowDays, endParsed]);
 
     const hourly = useMemo(() => {
@@ -168,11 +242,17 @@ const PicadeliProducts = () => {
     }, [filteredRows]);
 
     const metrics = useMemo(() => {
-        const totalRevenue = filteredRows.reduce((s, r) => s + (Number(r.importe) || 0), 0);
-        const totalUnits = filteredRows.reduce((s, r) => s + (Number(r.uds) || 0), 0);
+        let totalRevenue = 0, totalUnits = 0, publicRevenue = 0;
+        filteredRows.forEach(r => {
+            const imp = Number(r.importe) || 0;
+            totalRevenue += imp;
+            totalUnits += Number(r.uds) || 0;
+            if (isPublicClient(r.cliente)) publicRevenue += imp;
+        });
         const lineCount = filteredRows.length;
         const avgLineValue = lineCount > 0 ? totalRevenue / lineCount : 0;
         const activeProducts = products.length;
+        const publicShare = totalRevenue > 0 ? (publicRevenue / totalRevenue) * 100 : 0;
 
         const topProduct = products.reduce((t, p) => (!t || p.revenue > t.revenue) ? p : t, null);
         const topProductShare = topProduct && totalRevenue > 0 ? (topProduct.revenue / totalRevenue) * 100 : 0;
@@ -188,6 +268,7 @@ const PicadeliProducts = () => {
             totalRevenue, totalUnits, avgLineValue, activeProducts,
             topProductShare, topProductName: topProduct?.descripcion_raw || '—',
             bestHour, bestHourShare,
+            publicShare,
         };
     }, [filteredRows, products, hourly]);
 
@@ -208,6 +289,11 @@ const PicadeliProducts = () => {
                 selectedSecs={selectedSecs} toggleSec={toggleSec}
                 marcas={filterOptions.marcasMapeadas}
                 selectedMarcas={selectedMarcas} setSelectedMarcas={setSelectedMarcas}
+                clientOptions={clientOptions}
+                excludedClients={excludedClients}
+                toggleClient={toggleClient}
+                onExcludeInternal={applyInternalPreset}
+                onClearExcludedClients={clearExcludedClients}
                 search={search} setSearch={setSearch}
             />
 
