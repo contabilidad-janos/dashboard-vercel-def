@@ -53,9 +53,22 @@ const parseDate = (dateStr, monthCol, yearCol) => {
     return `${y}-${pad(m)}-${pad(d)}`;
 };
 
+// Normalise product descriptions for grouping:
+//   1. Strip accents (MATÉRIA → MATERIA) so accented variants collide
+//   2. Uppercase
+//   3. Unwrap parenthesised unit tags with an optional slash:
+//      "(KG)", "(/KG)", "( M3 )" → "KG", "KG", "M3".
+//      This lets "MEZCLUM KG" and "MEZCLUM (/KG)" group together.
+//   4. Collapse whitespace + trim.
+// `descripcion_raw` keeps the original string for display.
 const normalizeDesc = (s) => {
     if (!s) return '';
-    return String(s).trim().toUpperCase().replace(/\s+/g, ' ');
+    return String(s)
+        .normalize('NFD').replace(/[̀-ͯ]/g, '')
+        .toUpperCase()
+        .replace(/\(\s*\/?\s*([A-Z0-9]+)\s*\)/g, '$1')
+        .replace(/\s+/g, ' ')
+        .trim();
 };
 
 const normalizeBu = (s) => {
