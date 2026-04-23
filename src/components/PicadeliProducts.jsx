@@ -6,6 +6,8 @@ import PicadeliKPIs from './picadeli/PicadeliKPIs';
 import PicadeliHourlyChart from './picadeli/PicadeliHourlyChart';
 import PicadeliTopProductsTable from './picadeli/PicadeliTopProductsTable';
 import PicadeliProductModal from './picadeli/PicadeliProductModal';
+import ComparePanel from './shared/ComparePanel';
+import { presetPreviousPeriod } from '../utils/compare';
 
 const today = () => format(new Date(), 'yyyy-MM-dd');
 
@@ -36,6 +38,12 @@ const PicadeliProducts = () => {
     const [selectedMarcas, setSelectedMarcas] = useState([]);
     const [excludedClients, setExcludedClients] = useState([]);
     const [search, setSearch] = useState('');
+
+    // Compare (Period B)
+    const [compareEnabled, setCompareEnabled] = useState(false);
+    const [compareStartDate, setCompareStartDate] = useState('');
+    const [compareEndDate, setCompareEndDate] = useState('');
+    const [rowsB, setRowsB] = useState([]);
 
     // Load filter options + date bounds + inventory snapshot once
     useEffect(() => {
@@ -75,6 +83,34 @@ const PicadeliProducts = () => {
         })();
         return () => { cancelled = true; };
     }, [startDate, endDate]);
+
+    // Period B fetch (silent — error surfaces via rowsB being empty)
+    useEffect(() => {
+        if (!compareEnabled || !compareStartDate || !compareEndDate) {
+            setRowsB([]);
+            return;
+        }
+        let cancelled = false;
+        (async () => {
+            try {
+                const data = await DataService.getPicadeliRaw(compareStartDate, compareEndDate);
+                if (!cancelled) setRowsB(data || []);
+            } catch {
+                if (!cancelled) setRowsB([]);
+            }
+        })();
+        return () => { cancelled = true; };
+    }, [compareEnabled, compareStartDate, compareEndDate]);
+
+    // When user enables compare, auto-populate B with "previous period" if empty
+    const handleToggleCompare = (enabled) => {
+        setCompareEnabled(enabled);
+        if (enabled && (!compareStartDate || !compareEndDate)) {
+            const [s, e] = presetPreviousPeriod(startDate, endDate);
+            setCompareStartDate(s);
+            setCompareEndDate(e);
+        }
+    };
 
     const applyPreset = (preset) => {
         const now = new Date();
@@ -296,6 +332,56 @@ const PicadeliProducts = () => {
         };
     }, [filteredRows, products, hourly]);
 
+    // Period-B aggregates. Same filter predicates as A so the comparison is
+    // apples-to-apples. We only compute the bits the KPIs + table need
+    // (totals, active SKU count, per-product revenue/units/velocity).
+    const windowDaysB = useMemo(() => {
+        if (!compareEnabled || !compareStartDate || !compareEndDate) return 0;
+        return Math.max(1, differenceInCalendarDays(parseISO(compareEndDate), parseISO(compareStartDate)) + 1);
+    }, [compareEnabled, compareStartDate, compareEndDate]);
+
+    const compareAggregates = useMemo(() => {
+        if (!compareEnabled) return null;
+        const s = search.trim().toUpperCase();
+        const excl = new Set(excludedClients);
+        const byDesc = new Map();
+        let totalRevenue = 0, totalUnits = 0, lineCount = 0;
+
+        rowsB.forEach(r => {
+            if (selectedDeps.length > 0 && !selectedDeps.includes(r.departamento)) return;
+            if (selectedSecs.length > 0 && !selectedSecs.includes(r.seccion)) return;
+            if (selectedMarcas.length > 0 && !selectedMarcas.includes(r.marca_mapeada)) return;
+            if (excl.size > 0 && excl.has(r.cliente || '')) return;
+            if (s && !(r.descripcion || '').includes(s)) return;
+
+            const imp = Number(r.importe) || 0;
+            const uds = Number(r.uds) || 0;
+            totalRevenue += imp;
+            totalUnits += uds;
+            lineCount++;
+
+            if (r.descripcion) {
+                const agg = byDesc.get(r.descripcion) || { revenue: 0, units: 0 };
+                agg.revenue += imp;
+                agg.units += uds;
+                byDesc.set(r.descripcion, agg);
+            }
+        });
+
+        const days = windowDaysB || 1;
+        byDesc.forEach(v => { v.velocity = v.units / days; });
+
+        return {
+            byDesc,
+            metrics: {
+                totalRevenue,
+                totalUnits,
+                avgLineValue: lineCount > 0 ? totalRevenue / lineCount : 0,
+                activeProducts: byDesc.size,
+            },
+        };
+    }, [compareEnabled, rowsB, selectedDeps, selectedSecs, selectedMarcas, excludedClients, search, windowDaysB]);
+
     return (
         <div className="animate-in fade-in duration-500">
             <div className="mb-6">
@@ -319,6 +405,17 @@ const PicadeliProducts = () => {
                 onExcludeInternal={applyInternalPreset}
                 onClearExcludedClients={clearExcludedClients}
                 search={search} setSearch={setSearch}
+                compareEnabled={compareEnabled}
+                onToggleCompare={handleToggleCompare}
+                compareSlot={(
+                    <ComparePanel
+                        enabled={compareEnabled}
+                        onToggle={handleToggleCompare}
+                        startA={startDate} endA={endDate}
+                        startB={compareStartDate} endB={compareEndDate}
+                        onChangeB={(s, e) => { setCompareStartDate(s); setCompareEndDate(e); }}
+                    />
+                )}
             />
 
             {error && (
@@ -331,13 +428,18 @@ const PicadeliProducts = () => {
                 <div className="text-center text-gray-400 italic py-12">Loading Picadeli sales…</div>
             ) : (
                 <>
-                    <PicadeliKPIs metrics={metrics} />
+                    <PicadeliKPIs
+                        metrics={metrics}
+                        metricsB={compareAggregates?.metrics || null}
+                    />
                     <PicadeliHourlyChart hourly={hourly} />
                     <PicadeliTopProductsTable
                         products={products}
                         windowDays={windowDays}
                         inventorySnapshotDate={inventory.snapshotDate}
                         onSelectProduct={setSelectedProductKey}
+                        compareByDesc={compareAggregates?.byDesc || null}
+                        compareRange={compareEnabled ? { start: compareStartDate, end: compareEndDate } : null}
                     />
                 </>
             )}

@@ -6,6 +6,8 @@ import CanEscarrerKPIs from './canEscarrer/CanEscarrerKPIs';
 import CanEscarrerTrendChart from './canEscarrer/CanEscarrerTrendChart';
 import CanEscarrerTopProductsTable from './canEscarrer/CanEscarrerTopProductsTable';
 import CanEscarrerProductModal from './canEscarrer/CanEscarrerProductModal';
+import ComparePanel from './shared/ComparePanel';
+import { presetPreviousPeriod } from '../utils/compare';
 
 const today = () => format(new Date(), 'yyyy-MM-dd');
 
@@ -26,8 +28,10 @@ const CanEscarrerProducts = ({ bu }) => {
     const [dateBounds, setDateBounds] = useState({ min: null, max: null });
     const [selectedProductKey, setSelectedProductKey] = useState(null);
 
-    // Filters
-    const [startDate, setStartDate] = useState(format(subDays(new Date(), 90), 'yyyy-MM-dd'));
+    // Filters — default to YTD for Can Escarrer BUs. B2B/retail benefits from
+    // seeing the full year-in-progress rather than a rolling 90d window
+    // (which leaves the current month's first weeks invisible).
+    const [startDate, setStartDate] = useState(format(startOfYear(new Date()), 'yyyy-MM-dd'));
     const [endDate, setEndDate] = useState(today());
     const [selectedDeps, setSelectedDeps] = useState([]);
     const [selectedSecs, setSelectedSecs] = useState([]);
@@ -36,6 +40,12 @@ const CanEscarrerProducts = ({ bu }) => {
     const [selectedOrigen, setSelectedOrigen] = useState(null);
     const [excludedClients, setExcludedClients] = useState([]);
     const [search, setSearch] = useState('');
+
+    // Compare (Period B)
+    const [compareEnabled, setCompareEnabled] = useState(false);
+    const [compareStartDate, setCompareStartDate] = useState('');
+    const [compareEndDate, setCompareEndDate] = useState('');
+    const [rowsB, setRowsB] = useState([]);
 
     // Reset filters when BU changes — the option sets are BU-specific
     useEffect(() => {
@@ -84,6 +94,39 @@ const CanEscarrerProducts = ({ bu }) => {
         })();
         return () => { cancelled = true; };
     }, [bu, startDate, endDate]);
+
+    // Period B fetch
+    useEffect(() => {
+        if (!compareEnabled || !compareStartDate || !compareEndDate) {
+            setRowsB([]);
+            return;
+        }
+        let cancelled = false;
+        (async () => {
+            try {
+                const data = await DataService.getCanEscarrerRaw(bu, compareStartDate, compareEndDate);
+                if (!cancelled) setRowsB(data || []);
+            } catch {
+                if (!cancelled) setRowsB([]);
+            }
+        })();
+        return () => { cancelled = true; };
+    }, [bu, compareEnabled, compareStartDate, compareEndDate]);
+
+    const handleToggleCompare = (enabled) => {
+        setCompareEnabled(enabled);
+        if (enabled && (!compareStartDate || !compareEndDate)) {
+            const [s, e] = presetPreviousPeriod(startDate, endDate);
+            setCompareStartDate(s);
+            setCompareEndDate(e);
+        }
+    };
+
+    // Reset compare when BU changes (the previous range may not have data in the new BU)
+    useEffect(() => {
+        setCompareEnabled(false);
+        setRowsB([]);
+    }, [bu]);
 
     const applyPreset = (preset) => {
         const now = new Date();
@@ -268,6 +311,58 @@ const CanEscarrerProducts = ({ bu }) => {
         return { labels: WEEKDAY_LABELS, revenue: rev, units: uds };
     }, [filteredRows]);
 
+    // Period-B aggregates mirror the A-side filter logic so deltas are
+    // apples-to-apples.
+    const windowDaysB = useMemo(() => {
+        if (!compareEnabled || !compareStartDate || !compareEndDate) return 0;
+        return Math.max(1, differenceInCalendarDays(parseISO(compareEndDate), parseISO(compareStartDate)) + 1);
+    }, [compareEnabled, compareStartDate, compareEndDate]);
+
+    const compareAggregates = useMemo(() => {
+        if (!compareEnabled) return null;
+        const s = search.trim().toUpperCase();
+        const excl = new Set(excludedClients);
+        const tipos = new Set(selectedTipos);
+        const byDesc = new Map();
+        let totalRevenue = 0, totalUnits = 0, lineCount = 0;
+
+        rowsB.forEach(r => {
+            if (selectedDeps.length > 0 && !selectedDeps.includes(r.departamento)) return;
+            if (selectedSecs.length > 0 && !selectedSecs.includes(r.seccion)) return;
+            if (selectedMarcas.length > 0 && !selectedMarcas.includes(r.marca)) return;
+            if (tipos.size > 0 && !tipos.has(r.tipo_cliente)) return;
+            if (selectedOrigen && r.origen !== selectedOrigen) return;
+            if (excl.size > 0 && excl.has(r.cliente || '')) return;
+            if (s && !(r.descripcion || '').includes(s)) return;
+
+            const imp = Number(r.importe) || 0;
+            const uds = Number(r.uds) || 0;
+            totalRevenue += imp;
+            totalUnits += uds;
+            lineCount++;
+
+            if (r.descripcion) {
+                const agg = byDesc.get(r.descripcion) || { revenue: 0, units: 0 };
+                agg.revenue += imp;
+                agg.units += uds;
+                byDesc.set(r.descripcion, agg);
+            }
+        });
+
+        const days = windowDaysB || 1;
+        byDesc.forEach(v => { v.velocity = v.units / days; });
+
+        return {
+            byDesc,
+            metrics: {
+                totalRevenue,
+                totalUnits,
+                avgLineValue: lineCount > 0 ? totalRevenue / lineCount : 0,
+                activeProducts: byDesc.size,
+            },
+        };
+    }, [compareEnabled, rowsB, selectedDeps, selectedSecs, selectedMarcas, selectedTipos, selectedOrigen, excludedClients, search, windowDaysB]);
+
     const metrics = useMemo(() => {
         let totalRevenue = 0, totalUnits = 0, externalRevenue = 0;
         const clientRev = new Map();
@@ -330,6 +425,17 @@ const CanEscarrerProducts = ({ bu }) => {
                 onExcludeInternos={applyInternosPreset}
                 onClearExcludedClients={clearExcludedClients}
                 search={search} setSearch={setSearch}
+                compareEnabled={compareEnabled}
+                onToggleCompare={handleToggleCompare}
+                compareSlot={(
+                    <ComparePanel
+                        enabled={compareEnabled}
+                        onToggle={handleToggleCompare}
+                        startA={startDate} endA={endDate}
+                        startB={compareStartDate} endB={compareEndDate}
+                        onChangeB={(s, e) => { setCompareStartDate(s); setCompareEndDate(e); }}
+                    />
+                )}
             />
 
             {error && (
@@ -342,13 +448,18 @@ const CanEscarrerProducts = ({ bu }) => {
                 <div className="text-center text-gray-400 italic py-12">Loading {BU_LABELS[bu] || bu} sales…</div>
             ) : (
                 <>
-                    <CanEscarrerKPIs metrics={metrics} />
+                    <CanEscarrerKPIs
+                        metrics={metrics}
+                        metricsB={compareAggregates?.metrics || null}
+                    />
                     <CanEscarrerTrendChart monthly={monthly} weekday={weekday} />
                     <CanEscarrerTopProductsTable
                         products={products}
                         windowDays={windowDays}
                         bu={bu}
                         onSelectProduct={setSelectedProductKey}
+                        compareByDesc={compareAggregates?.byDesc || null}
+                        compareRange={compareEnabled ? { start: compareStartDate, end: compareEndDate } : null}
                     />
                 </>
             )}

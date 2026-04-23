@@ -2,8 +2,9 @@ import React, { useState, useMemo } from 'react';
 import { Download, ArrowUpDown, AlertTriangle, Package } from 'lucide-react';
 import clsx from 'clsx';
 import { formatCurrency, formatNumber } from '../../utils/formatters';
+import { pctDelta } from '../../utils/compare';
 
-const COLUMNS = [
+const BASE_COLUMNS = [
     { key: 'rank', label: '#', numeric: true, sortable: false },
     { key: 'descripcion_raw', label: 'Product', numeric: false },
     { key: 'departamento', label: 'Depto', numeric: false },
@@ -21,20 +22,55 @@ const COLUMNS = [
     { key: 'daysSinceSold', label: 'Días sin venta', numeric: true, fmt: v => v == null ? '—' : formatNumber(v) },
 ];
 
+// Compare columns inserted right after revenue/units when Period B is active.
+const COMPARE_COLUMNS = [
+    { key: 'revenueB', label: 'Rev B', numeric: true, fmt: v => v == null ? '—' : formatCurrency(v) },
+    { key: 'dRevenue', label: 'Δ Rev %', numeric: true, fmt: v => v == null ? '—' : `${v >= 0 ? '+' : ''}${v.toFixed(0)}%`, compareCell: true },
+    { key: 'unitsB', label: 'Units B', numeric: true, fmt: v => v == null ? '—' : formatNumber(v) },
+    { key: 'dUnits', label: 'Δ Units %', numeric: true, fmt: v => v == null ? '—' : `${v >= 0 ? '+' : ''}${v.toFixed(0)}%`, compareCell: true },
+];
+
 const STALE_DAYS = 14;
 const NAMED_DOMINANCE_THRESHOLD = 50;
 const LOW_STOCK_DAYS = 7;      // <= 7 días de stock → crítico (rojo)
 const WARN_STOCK_DAYS = 14;    // <= 14 días → aviso (ámbar)
 
-const PicadeliTopProductsTable = ({ products, windowDays, inventorySnapshotDate, onSelectProduct }) => {
+const PicadeliTopProductsTable = ({ products, windowDays, inventorySnapshotDate, onSelectProduct, compareByDesc = null, compareRange = null }) => {
     const [sortKey, setSortKey] = useState('revenue');
     const [sortDir, setSortDir] = useState('desc');
     const [showAll, setShowAll] = useState(false);
     // Replenishment modes: 'velocity' (old behaviour) vs 'urgent' (low days-of-stock first, public velocity > 0)
     const [replMode, setReplMode] = useState(inventorySnapshotDate ? 'urgent' : 'velocity');
 
+    // Decorate products with compare columns when Period B is active.
+    const decorated = useMemo(() => {
+        if (!compareByDesc) return products;
+        return products.map(p => {
+            const b = compareByDesc.get(p.descripcion);
+            return {
+                ...p,
+                revenueB: b?.revenue ?? null,
+                unitsB: b?.units ?? null,
+                dRevenue: b ? pctDelta(p.revenue, b.revenue) : null,
+                dUnits: b ? pctDelta(p.units, b.units) : null,
+            };
+        });
+    }, [products, compareByDesc]);
+
+    const COLUMNS = useMemo(() => {
+        if (!compareByDesc) return BASE_COLUMNS;
+        // Insert compare columns right after 'revenue'
+        const out = [];
+        for (const col of BASE_COLUMNS) {
+            out.push(col);
+            if (col.key === 'revenue') out.push(COMPARE_COLUMNS[0], COMPARE_COLUMNS[1]);
+            if (col.key === 'units') out.push(COMPARE_COLUMNS[2], COMPARE_COLUMNS[3]);
+        }
+        return out;
+    }, [compareByDesc]);
+
     const sorted = useMemo(() => {
-        const arr = [...products];
+        const arr = [...decorated];
         arr.sort((a, b) => {
             const va = a[sortKey], vb = b[sortKey];
             if (va == null && vb == null) return 0;
@@ -48,7 +84,7 @@ const PicadeliTopProductsTable = ({ products, windowDays, inventorySnapshotDate,
                 : String(vb).localeCompare(String(va));
         });
         return arr.map((r, i) => ({ ...r, rank: i + 1 }));
-    }, [products, sortKey, sortDir]);
+    }, [decorated, sortKey, sortDir]);
 
     const visible = showAll ? sorted : sorted.slice(0, 50);
 
@@ -92,6 +128,15 @@ const PicadeliTopProductsTable = ({ products, windowDays, inventorySnapshotDate,
         link.click();
         document.body.removeChild(link);
     };
+
+    // Compare cell classnames: green on positive delta, red on negative.
+    const deltaCls = (v) => {
+        if (v == null) return 'text-gray-300';
+        if (v > 0) return 'text-emerald-700 font-semibold';
+        if (v < 0) return 'text-red-700 font-semibold';
+        return 'text-gray-600';
+    };
+    const fmtDelta = (v) => v == null ? '—' : `${v >= 0 ? '+' : ''}${v.toFixed(0)}%`;
 
     return (
         <div className="space-y-6">
@@ -221,7 +266,14 @@ const PicadeliTopProductsTable = ({ products, windowDays, inventorySnapshotDate,
                 <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
                     <div>
                         <h3 className="text-lg font-serif text-primary">All products</h3>
-                        <p className="text-xs text-gray-500 mt-1">{sorted.length} products — showing {visible.length}.</p>
+                        <p className="text-xs text-gray-500 mt-1">
+                            {sorted.length} products — showing {visible.length}.
+                            {compareRange && (
+                                <span className="ml-2 text-amber-700">
+                                    · Comparando con B: {compareRange.start} → {compareRange.end}
+                                </span>
+                            )}
+                        </p>
                     </div>
                     <div className="flex items-center gap-2">
                         {sorted.length > 50 && (
@@ -289,7 +341,19 @@ const PicadeliTopProductsTable = ({ products, windowDays, inventorySnapshotDate,
                                         <td className="py-2 px-4 text-gray-600">{p.seccion || '—'}</td>
                                         <td className="py-2 px-4 text-gray-600">{p.marca_mapeada || '—'}</td>
                                         <td className="py-2 px-4 text-right tabular-nums">{formatNumber(p.units)}</td>
+                                        {compareByDesc && (
+                                            <>
+                                                <td className="py-2 px-4 text-right tabular-nums text-gray-500">{p.unitsB == null ? '—' : formatNumber(p.unitsB)}</td>
+                                                <td className={clsx('py-2 px-4 text-right tabular-nums', deltaCls(p.dUnits))}>{fmtDelta(p.dUnits)}</td>
+                                            </>
+                                        )}
                                         <td className="py-2 px-4 text-right tabular-nums font-semibold">{formatCurrency(p.revenue)}</td>
+                                        {compareByDesc && (
+                                            <>
+                                                <td className="py-2 px-4 text-right tabular-nums text-gray-500">{p.revenueB == null ? '—' : formatCurrency(p.revenueB)}</td>
+                                                <td className={clsx('py-2 px-4 text-right tabular-nums', deltaCls(p.dRevenue))}>{fmtDelta(p.dRevenue)}</td>
+                                            </>
+                                        )}
                                         <td className="py-2 px-4 text-right tabular-nums">{formatCurrency(p.avgPrice)}</td>
                                         <td className="py-2 px-4 text-right tabular-nums">{p.pctRevenue.toFixed(1)}%</td>
                                         <td className="py-2 px-4 text-right tabular-nums">

@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import DateRangePicker from '../DateRangePicker';
 import { Search, UserX, ChevronDown, ChevronUp } from 'lucide-react';
 import { formatCurrency } from '../../utils/formatters';
+import { CompareToggleButton } from '../shared/ComparePanel';
 
 const PRESETS = [
     { value: '30d', label: '30d' },
@@ -23,6 +24,9 @@ const CanEscarrerFilters = ({
     clientOptions = [], excludedClients = [], toggleClient,
     onExcludeInternos, onClearExcludedClients,
     search, setSearch,
+    compareSlot = null,
+    compareEnabled = false,
+    onToggleCompare = null,
 }) => {
     const [showAllClients, setShowAllClients] = useState(false);
     const visibleClients = showAllClients ? clientOptions : clientOptions.slice(0, 12);
@@ -43,7 +47,19 @@ const CanEscarrerFilters = ({
                         className="px-3 py-1 text-xs font-medium border border-gray-300 rounded-full text-gray-600 hover:border-accent hover:text-accent hover:bg-accent/5 transition-all"
                     >{p.label}</button>
                 ))}
+                {onToggleCompare && (
+                    <>
+                        <div className="w-px h-5 bg-gray-200" />
+                        <CompareToggleButton
+                            enabled={compareEnabled}
+                            onClick={() => onToggleCompare(!compareEnabled)}
+                        />
+                    </>
+                )}
             </div>
+
+            {/* Compare (Period B) — expanded panel, renders only when enabled */}
+            {compareSlot}
 
             {/* Row 2: Departamento chips */}
             {departamentos.length > 0 && (
