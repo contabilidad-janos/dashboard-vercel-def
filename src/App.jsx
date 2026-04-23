@@ -7,7 +7,7 @@ import Dashboard2026 from './components/Dashboard2026';
 import Dashboard2025 from './components/Dashboard2025';
 import Dashboard2024 from './components/Dashboard2024';
 import DashboardDetails from './components/DashboardDetails';
-import PicadeliProducts from './components/PicadeliProducts';
+import BestSellingProducts from './components/BestSellingProducts';
 
 // Register ChartJS components globally
 ChartJS.register(
@@ -62,9 +62,9 @@ function App() {
           </div>
         )}
 
-        {activeTab === 'picadeli-products' && (
-          <div id="page-picadeli-products" className="animate-in fade-in duration-500">
-            <PicadeliProducts />
+        {activeTab === 'best-selling' && (
+          <div id="page-best-selling" className="animate-in fade-in duration-500">
+            <BestSellingProducts />
           </div>
         )}
       </main>

@@ -7,7 +7,7 @@ const Tabs = ({ activeTab, onTabChange }) => {
         { id: '2025', label: '2025 Overview' },
         { id: '2024', label: '2024 Overview' },
         { id: 'details', label: 'Detailed Sales & Comparison' },
-        { id: 'picadeli-products', label: 'Best Selling Products' },
+        { id: 'best-selling', label: 'Best Selling Products' },
     ];
 
     return (

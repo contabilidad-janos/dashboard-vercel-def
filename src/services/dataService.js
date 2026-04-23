@@ -585,12 +585,6 @@ export const DataService = {
         return result;
     },
 
-    // ── CAN ESCARRER ─────────────────────────────────────────────────────────
-
-    getCanEscarrerData: async () => {
-        return _fetchPaginated('ventas can escarrer', '*');
-    },
-
     // ── PICADELI (product-level transactional data) ──────────────────────────
 
     /** Fetch Picadeli transactional rows within [startDate, endDate] (inclusive, YYYY-MM-DD). */
@@ -710,6 +704,103 @@ export const DataService = {
         const [minRes, maxRes] = await Promise.all([
             supabase.from('picadeli_sales').select('date').order('date', { ascending: true }).limit(1),
             supabase.from('picadeli_sales').select('date').order('date', { ascending: false }).limit(1),
+        ]);
+
+        const result = {
+            min: minRes.data?.[0]?.date || null,
+            max: maxRes.data?.[0]?.date || null,
+        };
+        _cache[cacheKey] = result;
+        return result;
+    },
+
+    // ── CAN ESCARRER (line-level invoice data: DISTRIBUCION / SHOP / TASTING) ──
+
+    /** Fetch Can Escarrer transactional rows for a given BU within [startDate, endDate]. */
+    getCanEscarrerRaw: async (bu, startDate, endDate) => {
+        const cacheKey = `can_escarrer_sales::${bu}::${startDate}::${endDate}`;
+        if (_cache[cacheKey]) return _cache[cacheKey];
+
+        let allData = [];
+        let from = 0;
+        const chunkSize = 1000;
+        let done = false;
+
+        while (!done) {
+            const { data, error } = await supabase
+                .from('can_escarrer_sales')
+                .select('date, bu, serie, cliente, tipo_cliente, origen, descripcion, descripcion_raw, departamento, seccion, familia, marca, budget, uds, importe, precio_unitario')
+                .eq('bu', bu)
+                .gte('date', startDate)
+                .lte('date', endDate)
+                .range(from, from + chunkSize - 1)
+                .order('date', { ascending: true });
+
+            if (error) {
+                console.error('Error fetching can_escarrer_sales:', error);
+                break;
+            }
+            if (data && data.length > 0) {
+                allData = allData.concat(data);
+                from += chunkSize;
+                if (data.length < chunkSize) done = true;
+            } else {
+                done = true;
+            }
+        }
+
+        _cache[cacheKey] = allData;
+        return allData;
+    },
+
+    /** Distinct filter option values per BU (departamento, seccion, marca, tipo_cliente, budget). */
+    getCanEscarrerFilterOptions: async (bu) => {
+        const cacheKey = `can_escarrer_sales::filter_options::${bu}`;
+        if (_cache[cacheKey]) return _cache[cacheKey];
+
+        const { data, error } = await supabase
+            .from('can_escarrer_sales')
+            .select('departamento, seccion, marca, tipo_cliente, budget')
+            .eq('bu', bu)
+            .limit(50000);
+
+        if (error) {
+            console.error('Error fetching can_escarrer filter options:', error);
+            return { departamentos: [], secciones: [], marcas: [], tiposCliente: [], budgets: [] };
+        }
+
+        const deps = new Set();
+        const secs = new Set();
+        const marcas = new Set();
+        const tipos = new Set();
+        const budgets = new Set();
+        (data || []).forEach(r => {
+            if (r.departamento) deps.add(r.departamento);
+            if (r.seccion) secs.add(r.seccion);
+            if (r.marca) marcas.add(r.marca);
+            if (r.tipo_cliente) tipos.add(r.tipo_cliente);
+            if (r.budget) budgets.add(r.budget);
+        });
+
+        const result = {
+            departamentos: [...deps].sort(),
+            secciones: [...secs].sort(),
+            marcas: [...marcas].sort(),
+            tiposCliente: [...tipos].sort(),
+            budgets: [...budgets].sort(),
+        };
+        _cache[cacheKey] = result;
+        return result;
+    },
+
+    /** Min/max dates per BU. */
+    getCanEscarrerDateBounds: async (bu) => {
+        const cacheKey = `can_escarrer_sales::date_bounds::${bu}`;
+        if (_cache[cacheKey]) return _cache[cacheKey];
+
+        const [minRes, maxRes] = await Promise.all([
+            supabase.from('can_escarrer_sales').select('date').eq('bu', bu).order('date', { ascending: true }).limit(1),
+            supabase.from('can_escarrer_sales').select('date').eq('bu', bu).order('date', { ascending: false }).limit(1),
         ]);
 
         const result = {
