@@ -7,6 +7,7 @@ import DetailsTable from './details/DetailsTable';
 // Chart.js is fully registered in App.jsx — do NOT re-register here.
 
 import { VAT_RATES } from '../data/SEED_DATA';
+import { displayBuName } from '../utils/buLabels';
 
 const BU_COLORS = {
     'Juntos house': '#6E8C71',
@@ -232,7 +233,7 @@ const DashboardDetails = () => {
                 const col = COLORS_ARRAY[i % COLORS_ARRAY.length];
                 const dP = metric === 'sales' ? sumArr((pS[unit] || []).map(v => getDisplayValue(v, unit))) : metric === 'transactions' ? sumArr(pT[unit]) : ySpend(pS, pT, unit);
                 const dC = metric === 'sales' ? sumArr((cS[unit] || []).map(v => getDisplayValue(v, unit))) : metric === 'transactions' ? sumArr(cT[unit]) : ySpend(cS, cT, unit);
-                ds.push({ label: unit, data: [dP, dC], backgroundColor: ['#A9A9A9', col], borderColor: ['#A9A9A9', col], borderWidth: 2 });
+                ds.push({ label: displayBuName(unit), data: [dP, dC], backgroundColor: ['#A9A9A9', col], borderColor: ['#A9A9A9', col], borderWidth: 2 });
             });
             if (selectedUnits.includes('All Groups')) {
                 let tP = 0, tC = 0;
@@ -279,10 +280,10 @@ const DashboardDetails = () => {
             selectedUnits.filter(u => u !== 'All Groups').forEach(unit => {
                 const col = BU_COLORS[unit] || '#999';
                 // Current
-                ds.push({ label: `${unit} ${shCurr}`, data: dates.map(d => getVal(rawCurr, d, unit)), borderColor: col, backgroundColor: col, tension: 0.3, pointRadius: 4, borderWidth: 2 });
+                ds.push({ label: `${displayBuName(unit)} ${shCurr}`, data: dates.map(d => getVal(rawCurr, d, unit)), borderColor: col, backgroundColor: col, tension: 0.3, pointRadius: 4, borderWidth: 2 });
                 // Previous (vs 24/25)
                 if (compare24) {
-                    ds.push({ label: `${unit} ${shPrev}`, data: prevDates.map(d => getVal(rawPrev, d, unit)), borderColor: lightenColor(col, 0.55), backgroundColor: lightenColor(col, 0.4), borderDash: [5, 5], tension: 0.3, pointRadius: 0, borderWidth: 2 });
+                    ds.push({ label: `${displayBuName(unit)} ${shPrev}`, data: prevDates.map(d => getVal(rawPrev, d, unit)), borderColor: lightenColor(col, 0.55), backgroundColor: lightenColor(col, 0.4), borderDash: [5, 5], tension: 0.3, pointRadius: 0, borderWidth: 2 });
                 }
                 // Budget
                 if (compareBudget && metric === 'sales') {
@@ -294,7 +295,7 @@ const DashboardDetails = () => {
                         const bVal = (bud?.[unit]?.[m] || 0);
                         return getDisplayValue(bVal / days, unit);
                     });
-                    ds.push({ label: `${unit} Budget`, data: budData, borderColor: col, borderDash: [2, 2], tension: 0, pointRadius: 0, borderWidth: 1 });
+                    ds.push({ label: `${displayBuName(unit)} Budget`, data: budData, borderColor: col, borderDash: [2, 2], tension: 0, pointRadius: 0, borderWidth: 1 });
                 }
             });
 
@@ -361,12 +362,12 @@ const DashboardDetails = () => {
         const datasets = [];
         selectedUnits.filter(u => u !== 'All Groups').forEach((unit, i) => {
             const col = COLORS_ARRAY[i % COLORS_ARRAY.length];
-            datasets.push({ label: `${unit} ${shCurr}`, data: slc(cS, cT, cSp, cSw, cTw, unit), borderColor: col, backgroundColor: col, tension: 0.3, fill: false });
-            if (compare24) datasets.push({ label: `${unit} ${shPrev}`, data: slc(pS, pT, pSp, pSw, pTw, unit), borderColor: lightenColor(col, 0.55), backgroundColor: lightenColor(col, 0.4), borderDash: [5, 5], borderWidth: 2, tension: 0.3, fill: false, pointRadius: 0 });
+            datasets.push({ label: `${displayBuName(unit)} ${shCurr}`, data: slc(cS, cT, cSp, cSw, cTw, unit), borderColor: col, backgroundColor: col, tension: 0.3, fill: false });
+            if (compare24) datasets.push({ label: `${displayBuName(unit)} ${shPrev}`, data: slc(pS, pT, pSp, pSw, pTw, unit), borderColor: lightenColor(col, 0.55), backgroundColor: lightenColor(col, 0.4), borderDash: [5, 5], borderWidth: 2, tension: 0.3, fill: false, pointRadius: 0 });
             if (compareBudget && metric === 'sales') {
                 const bd = (bud?.[unit] || []).map(v => getDisplayValue(v, unit));
                 const budSlice = viewType === 'monthly' ? bd.slice(startPeriod, endPeriod + 1) : Array.from({ length: endPeriod - startPeriod + 1 }, (_, wi) => Math.round((bd[WEEK_MONTH_MAP[startPeriod + wi] ?? 0] || 0) / 4));
-                datasets.push({ label: `${unit} Budget`, data: budSlice, borderColor: col, borderDash: [2, 2], borderWidth: 2, tension: 0, fill: false });
+                datasets.push({ label: `${displayBuName(unit)} Budget`, data: budSlice, borderColor: col, borderDash: [2, 2], borderWidth: 2, tension: 0, fill: false });
             }
         });
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { MONTHS, BUSINESS_UNITS, WEEKLY_LABELS_2025, WEEKLY_LABELS_2026 } from '../../services/dataService';
+import { displayBuName } from '../../utils/buLabels';
 import clsx from 'clsx';
 import DateRangePicker from '../DateRangePicker';
 import SegmentedControl from '../ui/SegmentedControl';
@@ -102,7 +103,7 @@ const DetailsFilters = ({
                         className={clsx('bu-chip font-semibold', selectedUnits.includes('All Groups') && 'active')}
                     >All Groups</button>
                     {BUSINESS_UNITS.map(u => (
-                        <button key={u} onClick={() => toggleUnit(u)} className={clsx('bu-chip', selectedUnits.includes(u) && 'active')}>{u}</button>
+                        <button key={u} onClick={() => toggleUnit(u)} className={clsx('bu-chip', selectedUnits.includes(u) && 'active')}>{displayBuName(u)}</button>
                     ))}
                 </div>
             </div>

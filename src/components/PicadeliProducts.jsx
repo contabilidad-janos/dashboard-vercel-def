@@ -385,7 +385,7 @@ const PicadeliProducts = () => {
     return (
         <div className="animate-in fade-in duration-500">
             <div className="mb-6">
-                <h2 className="text-3xl md:text-4xl font-serif text-primary">Best Selling Products — Picadeli</h2>
+                <h2 className="text-3xl md:text-4xl font-serif text-primary">Best Selling Products — Juntos deli</h2>
                 <p className="text-sm text-gray-500 mt-1">Product-level analytics: what sells, when, and what to restock.</p>
             </div>
 
@@ -425,7 +425,7 @@ const PicadeliProducts = () => {
             )}
 
             {loading ? (
-                <div className="text-center text-gray-400 italic py-12">Loading Picadeli sales…</div>
+                <div className="text-center text-gray-400 italic py-12">Loading Juntos deli sales…</div>
             ) : (
                 <>
                     <PicadeliKPIs

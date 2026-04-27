@@ -4,6 +4,7 @@ import { formatCurrency, formatNumber } from '../../utils/formatters';
 import { Tag, Maximize2, X } from 'lucide-react';
 import clsx from 'clsx';
 import YearlyPieChart from '../YearlyPieChart';
+import { displayBuName } from '../../utils/buLabels';
 
 const DetailsChart = ({
     chartData,
@@ -154,8 +155,9 @@ const DetailsChart = ({
     const chartKey = `${chartType}-${metric}-${showLabels}`;
 
     if (chartType === 'donut') {
-        const units = Object.keys(chartData.unitTotals || {}).filter(u => u !== 'All Groups');
-        const dataVals = units.map(u => chartData.unitTotals[u] || 0);
+        const unitsRaw = Object.keys(chartData.unitTotals || {}).filter(u => u !== 'All Groups');
+        const dataVals = unitsRaw.map(u => chartData.unitTotals[u] || 0);
+        const units = unitsRaw.map(u => displayBuName(u));
 
         return (
             <div ref={fsRef} className="relative w-full bg-white">

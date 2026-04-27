@@ -7,6 +7,7 @@ import YearlyPieChart from './YearlyPieChart';
 import SpendEvolutionChart from './SpendEvolutionChart';
 import { Line } from 'react-chartjs-2';
 import { formatCurrency, formatNumber } from '../utils/formatters';
+import { displayBuName } from '../utils/buLabels';
 
 const Dashboard2026 = () => {
     const [loading, setLoading] = useState(true);
@@ -119,7 +120,7 @@ const Dashboard2026 = () => {
         let barDatasets = [];
         if (unit === 'all') {
             barDatasets = businessUnits.map((u, i) => ({
-                label: u.name,
+                label: displayBuName(u.name),
                 data: (salesData[u.name] || []).map(v => getDisplayValue(v, u.name)),
                 backgroundColor: CHART_COLORS[i % CHART_COLORS.length],
                 stack: 'Stack 0',
@@ -127,7 +128,7 @@ const Dashboard2026 = () => {
         } else {
             const uIndex = businessUnits.findIndex(u => u.name === unit);
             barDatasets = [{
-                label: unit,
+                label: displayBuName(unit),
                 data: currentSales,
                 backgroundColor: CHART_COLORS[uIndex % CHART_COLORS.length],
                 stack: 'Stack 0',
@@ -150,7 +151,7 @@ const Dashboard2026 = () => {
         });
 
         const spendDatasets = businessUnits.map((u, i) => ({
-            label: u.name,
+            label: displayBuName(u.name),
             data: spendData[u.name],
             borderColor: CHART_COLORS[i % CHART_COLORS.length],
             tension: 0.3,
@@ -181,7 +182,7 @@ const Dashboard2026 = () => {
 
         setChartData({
             barDatasets,
-            pieLabels: businessUnits.map(u => u.name),
+            pieLabels: businessUnits.map(u => displayBuName(u.name)),
             pieData: pieTotalSales,
             spendDatasets,
             comparisonDatasets
@@ -231,7 +232,7 @@ const Dashboard2026 = () => {
                         >
                             <option value="all">All Business Units</option>
                             {businessUnits.map(u => (
-                                <option key={u.name} value={u.name}>{u.name}</option>
+                                <option key={u.name} value={u.name}>{displayBuName(u.name)}</option>
                             ))}
                         </select>
                         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
@@ -240,7 +241,7 @@ const Dashboard2026 = () => {
                     </div>
                 </div>
                 <div className="bg-gray-50 p-6 rounded-lg w-full md:w-1/2 text-center md:text-left h-[100px] flex flex-col justify-center">
-                    <h3 className="text-lg font-medium text-gray-500">Focus: {selectedUnit === 'all' ? 'Total Group' : selectedUnit}</h3>
+                    <h3 className="text-lg font-medium text-gray-500">Focus: {selectedUnit === 'all' ? 'Total Group' : displayBuName(selectedUnit)}</h3>
                     <p className="text-3xl font-bold text-primary mt-1">{formatCurrency(kpis.totalSales)}</p>
                     <div className="mt-4 flex items-center gap-2">
                         <label className="inline-flex items-center cursor-pointer">

@@ -4,10 +4,11 @@ import PicadeliProducts from './PicadeliProducts';
 import CanEscarrerProducts from './CanEscarrerProducts';
 
 // BU selector for the Best Selling Products tab.
-// Picadeli is its own table (picadeli_sales); the other three all live in
-// can_escarrer_sales filtered by the `bu` column.
+// "Juntos deli" is the customer-facing label for what the data layer
+// still calls "Picadeli" (table picadeli_sales, BU name in sales_daily_def).
+// The other three all live in can_escarrer_sales filtered by `bu`.
 const BUS = [
-    { key: 'picadeli',     label: 'Picadeli' },
+    { key: 'picadeli',     label: 'Juntos deli' },
     { key: 'DISTRIBUCION', label: 'Distribución' },
     { key: 'SHOP',         label: 'Shop' },
     { key: 'TASTING',      label: 'Tasting' },
