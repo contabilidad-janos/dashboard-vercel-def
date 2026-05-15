@@ -187,21 +187,32 @@ export const DataService = {
         );
     },
 
-    /** Fetch aggregated monthly data from sales_records (2024 historic) */
+    /** Fetch sales_records rows for a full year. Paginated so years with
+     *  daily granularity (e.g. 2025 has ~1.7k rows) don't get truncated
+     *  at the Supabase default page size of 1000. */
     _fetchYearData: async (year) => {
         const cacheKey = `sales_records::${year}`;
         if (_cache[cacheKey]) return _cache[cacheKey];
 
-        const { data, error } = await supabase
-            .from('sales_records')
-            .select('amount, transaction_count, date, business_units(name)')
-            .gte('date', `${year}-01-01`)
-            .lte('date', `${year}-12-31`)
-            .order('date', { ascending: true });
-
-        if (error) { console.error(`Error fetching ${year} data:`, error); return []; }
-        _cache[cacheKey] = data;
-        return data;
+        let allData = [];
+        let from = 0;
+        const chunkSize = 1000;
+        while (true) {
+            const { data, error } = await supabase
+                .from('sales_records')
+                .select('amount, transaction_count, date, business_units(name)')
+                .gte('date', `${year}-01-01`)
+                .lte('date', `${year}-12-31`)
+                .order('date', { ascending: true })
+                .range(from, from + chunkSize - 1);
+            if (error) { console.error(`Error fetching ${year} data:`, error); break; }
+            if (!data || data.length === 0) break;
+            allData = allData.concat(data);
+            if (data.length < chunkSize) break;
+            from += chunkSize;
+        }
+        _cache[cacheKey] = allData;
+        return allData;
     },
 
     // ── 2025 METHODS ─────────────────────────────────────────────────────────
