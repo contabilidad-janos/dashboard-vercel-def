@@ -8,6 +8,7 @@ import Dashboard2025 from './components/Dashboard2025';
 import Dashboard2024 from './components/Dashboard2024';
 import DashboardDetails from './components/DashboardDetails';
 import BestSellingProducts from './components/BestSellingProducts';
+import ChatLauncher from './components/chat/ChatLauncher';
 
 // Register ChartJS components globally
 ChartJS.register(
@@ -68,6 +69,8 @@ function App() {
           </div>
         )}
       </main>
+
+      <ChatLauncher />
     </div>
   );
 }

@@ -100,3 +100,54 @@ input[type="checkbox"] {
 .tabular-nums {
   font-variant-numeric: tabular-nums;
 }
+
+/* Chat markdown styling — assistant bubbles */
+.markdown-body {
+  @apply text-[14px] leading-relaxed text-gray-800;
+}
+.markdown-body p {
+  @apply my-2;
+}
+.markdown-body p:first-child { @apply mt-0; }
+.markdown-body p:last-child { @apply mb-0; }
+.markdown-body strong { @apply font-semibold text-primary; }
+.markdown-body em { @apply italic text-gray-700; }
+.markdown-body h1 { @apply text-lg font-serif text-primary mt-3 mb-2; }
+.markdown-body h2 { @apply text-base font-serif text-primary mt-3 mb-2; }
+.markdown-body h3 { @apply text-sm font-semibold text-primary mt-3 mb-1; }
+.markdown-body ul { @apply list-disc pl-5 my-2 space-y-1; }
+.markdown-body ol { @apply list-decimal pl-5 my-2 space-y-1; }
+.markdown-body li { @apply leading-snug; }
+.markdown-body code {
+  @apply bg-gray-100 text-primary px-1.5 py-0.5 rounded text-[12.5px] font-mono;
+}
+.markdown-body pre {
+  @apply bg-gray-900 text-gray-100 rounded-lg p-3 my-3 overflow-x-auto text-[12.5px];
+}
+.markdown-body pre code {
+  @apply bg-transparent text-gray-100 p-0;
+}
+.markdown-body blockquote {
+  @apply border-l-3 border-accent pl-3 my-2 italic text-gray-600;
+}
+.markdown-body a {
+  @apply text-accent underline hover:text-primary;
+}
+.markdown-body hr {
+  @apply my-4 border-gray-200;
+}
+.markdown-body table {
+  @apply my-3 border-collapse w-full text-[12.5px];
+}
+.markdown-body thead {
+  @apply bg-gray-50;
+}
+.markdown-body th {
+  @apply text-left font-semibold text-gray-600 uppercase tracking-wider text-[10.5px] px-3 py-2 border border-gray-200;
+}
+.markdown-body td {
+  @apply px-3 py-1.5 border border-gray-200 align-top;
+}
+.markdown-body tr:nth-child(even) td {
+  @apply bg-gray-50/50;
+}
