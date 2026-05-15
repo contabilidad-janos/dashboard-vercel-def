@@ -257,44 +257,39 @@ export const DataService = {
         return result;
     },
 
+    // 2025 transactions come from sales_records.transaction_count (Pax /
+    // Tickets / Orders) — same source as 2024. Previously read from
+    // sales_daily_def.VOLUME which only holds units sold, not headcount.
     get2025TransData: async () => {
         const [data, buList] = await Promise.all([
-            DataService._fetchDailyDef2025(),
+            DataService._fetchYearData(2025),
             DataService.getBusinessUnits(),
         ]);
         const result = initBuArrays(buList, 12);
-
         data.forEach(record => {
-            if (!record.date) return;
-            const dateObj = new Date(record.date);
-            if (dateObj.getFullYear() !== 2025) return;
-            const buName = BU_MAP[record.business_unit] || record.business_unit;
-            if (!result[buName]) return;
-            result[buName][dateObj.getMonth()] += parseVolume(record.VOLUME);
+            const unitName = record.business_units?.name;
+            if (!unitName || !result[unitName]) return;
+            result[unitName][new Date(record.date).getMonth()] += Number(record.transaction_count) || 0;
         });
         return result;
     },
 
     get2025TransDataWeekly: async () => {
         const [data, buList] = await Promise.all([
-            DataService._fetchDailyDef2025(),
+            DataService._fetchYearData(2025),
             DataService.getBusinessUnits(),
         ]);
         const weeksCount = WEEKLY_LABELS_2025.length;
         const result = initBuArrays(buList, weeksCount);
-
         data.forEach(record => {
-            if (!record.date) return;
+            const unitName = record.business_units?.name;
+            if (!unitName || !result[unitName]) return;
             const dateObj = new Date(record.date);
-            const buName = BU_MAP[record.business_unit] || record.business_unit;
-            if (!result[buName]) return;
-
             let weekIdx = getWeekNumber(dateObj);
             const { y, m, d } = { y: dateObj.getFullYear(), m: dateObj.getMonth(), d: dateObj.getDate() };
             if ((y === 2025 && m === 11 && d >= 29) || (y === 2026 && m === 0 && d <= 4)) weekIdx = 52;
-
             if (weekIdx >= 0 && weekIdx < weeksCount) {
-                result[buName][weekIdx] += parseVolume(record.VOLUME);
+                result[unitName][weekIdx] += Number(record.transaction_count) || 0;
             }
         });
         return result;
@@ -410,30 +405,31 @@ export const DataService = {
             DataService._fetchYearData(2024),
             DataService.getBusinessUnits(),
         ]);
-
+        // Crossover week (29 dec - 5 jan) — pull jan 2025 days into the
+        // last 2024 bucket so the partial week reconciles.
         const { data: extraData } = await supabase
             .from('sales_records')
             .select('amount, transaction_count, date, business_units(name)')
             .gte('date', '2025-01-01')
             .lte('date', '2025-01-05');
 
-        const result = {};
-        buList.forEach(u => { result[u.name] = []; });
+        // 2024 has 53 ISO weeks (it's a leap year that ends on a Tuesday).
+        const weeksCount = 53;
+        const result = initBuArrays(buList, weeksCount);
 
-        data.forEach(record => {
+        const addToWeek = (record, isCrossover) => {
             const unitName = record.business_units?.name;
             if (!unitName || !result[unitName]) return;
-            result[unitName].push(Number(record.transaction_count));
-        });
+            const dateObj = new Date(record.date);
+            let weekIdx = getWeekNumber(dateObj);
+            if (isCrossover) weekIdx = 52;
+            if (weekIdx >= 0 && weekIdx < weeksCount) {
+                result[unitName][weekIdx] += Number(record.transaction_count) || 0;
+            }
+        };
 
-        if (extraData) {
-            extraData.forEach(record => {
-                const unitName = record.business_units?.name;
-                if (!unitName || !result[unitName]) return;
-                const len = result[unitName].length;
-                if (len > 0) result[unitName][len - 1] += Number(record.transaction_count);
-            });
-        }
+        data.forEach(r => addToWeek(r, false));
+        (extraData || []).forEach(r => addToWeek(r, true));
         return result;
     },
 
