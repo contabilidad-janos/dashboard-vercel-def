@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { X, Send, Sparkles, Loader2 } from 'lucide-react';
+import { X, Send, Sparkles, Loader2, FileText, Sheet } from 'lucide-react';
 import clsx from 'clsx';
+import { exportMessageToPDF, exportMessageToXLSX } from './exportUtils';
 
 const WEBHOOK_URL = 'https://n8n.juntosfarmn8n.cloud/webhook/sales-chat';
 
@@ -61,7 +62,9 @@ const ChatFullscreen = ({ open, onClose }) => {
             }
             const data = await res.json();
             const reply = data.reply || data.output || data.text || JSON.stringify(data);
-            setMessages(m => [...m, { role: 'assistant', text: reply }]);
+            // Tag each assistant message with the question that prompted it so the
+            // export buttons can record context inside the generated file.
+            setMessages(m => [...m, { role: 'assistant', text: reply, question: message }]);
         } catch (e) {
             setError(e.message || String(e));
             setMessages(m => [...m, { role: 'assistant', text: '_Lo siento, hubo un error consultando los datos._' }]);
@@ -122,7 +125,7 @@ const ChatFullscreen = ({ open, onClose }) => {
 
                 <div className="max-w-3xl mx-auto space-y-6">
                     {messages.map((m, i) => (
-                        <MessageBubble key={i} role={m.role} text={m.text} />
+                        <MessageBubble key={i} role={m.role} text={m.text} question={m.question} />
                     ))}
                     {busy && (
                         <div className="flex items-center gap-2 text-sm text-gray-500 px-2">
@@ -173,8 +176,16 @@ const ChatFullscreen = ({ open, onClose }) => {
     );
 };
 
-const MessageBubble = ({ role, text }) => {
+const MessageBubble = ({ role, text, question }) => {
     const isUser = role === 'user';
+    // First line / first heading of the reply makes a decent filename slug
+    const inferredTitle = (() => {
+        if (!text) return 'Respuesta';
+        const firstHeading = text.match(/^##?#?\s+(.+)$/m);
+        if (firstHeading) return firstHeading[1].slice(0, 60);
+        const firstLine = text.split('\n').find(l => l.trim().length > 0) || '';
+        return firstLine.replace(/[*_`]/g, '').slice(0, 60) || 'Respuesta';
+    })();
     return (
         <div className={clsx('flex', isUser ? 'justify-end' : 'justify-start')}>
             <div
@@ -188,9 +199,27 @@ const MessageBubble = ({ role, text }) => {
                 {isUser ? (
                     <p className="text-sm whitespace-pre-wrap">{text}</p>
                 ) : (
-                    <div className="markdown-body prose-sm max-w-none">
-                        <ReactMarkdown remarkPlugins={[remarkGfm]}>{text}</ReactMarkdown>
-                    </div>
+                    <>
+                        <div className="markdown-body prose-sm max-w-none">
+                            <ReactMarkdown remarkPlugins={[remarkGfm]}>{text}</ReactMarkdown>
+                        </div>
+                        <div className="flex items-center gap-2 mt-3 pt-2 border-t border-gray-100">
+                            <button
+                                onClick={() => exportMessageToPDF(text, { title: inferredTitle })}
+                                className="inline-flex items-center gap-1.5 text-[11px] font-medium text-gray-500 hover:text-primary hover:bg-gray-50 px-2 py-1 rounded-md transition-colors"
+                                title="Descargar como PDF"
+                            >
+                                <FileText className="w-3.5 h-3.5" /> PDF
+                            </button>
+                            <button
+                                onClick={() => exportMessageToXLSX(text, { title: inferredTitle, question })}
+                                className="inline-flex items-center gap-1.5 text-[11px] font-medium text-gray-500 hover:text-primary hover:bg-gray-50 px-2 py-1 rounded-md transition-colors"
+                                title="Descargar como Excel"
+                            >
+                                <Sheet className="w-3.5 h-3.5" /> Excel
+                            </button>
+                        </div>
+                    </>
                 )}
             </div>
         </div>
