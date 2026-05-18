@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1500" viewBox="0 0 2400 1500">
+<svg xmlns="http://www.w3.org/2000/svg" width="2480" height="3508" viewBox="0 0 2480 3508">
   <defs>
     <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#FBF8F4"/>
@@ -9,281 +9,282 @@
   <rect width="100%" height="100%" fill="url(#bgGrad)"/>
 
   <!-- Header -->
-  <text x="80" y="100" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#6E8C71" text-anchor="start">THE JOURNEY OF A LEMONADE</text>
-  <text x="80" y="168" font-family="Lora, serif" font-size="40" font-weight="600" fill="#3D4C41" text-anchor="start">From a sale at the counter to an answer on your screen</text>
-  <text x="80" y="215" font-family="Inter, sans-serif" font-size="16" font-weight="normal" fill="#555" text-anchor="start">How every sale is captured, stored, and turned into a conversation with the assistant.</text>
+  <text x="110" y="230" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#6E8C71" text-anchor="start">THE JOURNEY OF A LEMONADE</text>
+  <text x="110" y="330" font-family="Lora, serif" font-size="60" font-weight="600" fill="#3D4C41" text-anchor="start">From a sale at the counter</text>
+  <text x="110" y="410" font-family="Lora, serif" font-size="60" font-weight="600" fill="#3D4C41" text-anchor="start">to an answer on your screen</text>
+  <text x="110" y="475" font-family="Inter, sans-serif" font-size="20" font-weight="normal" fill="#555" text-anchor="start">How every sale is captured, stored, and turned into a conversation with the assistant.</text>
 
-  <line x1="80" y1="252" x2="2320" y2="252" stroke="#6E8C71" stroke-width="1.5" opacity="0.35"/>
-  <text x="2320" y="168" font-family="Lora, serif" font-size="16" font-weight="600" fill="#3D4C41" text-anchor="end">Juntos · Sales Dashboard</text>
+  <line x1="110" y1="540" x2="2370" y2="540" stroke="#6E8C71" stroke-width="2" opacity="0.35"/>
+  <text x="2370" y="230" font-family="Lora, serif" font-size="20" font-weight="600" fill="#3D4C41" text-anchor="end">Juntos · Sales Dashboard</text>
 
   <!-- CAPTURE timeline -->
   
-        <rect x="80" y="270" width="170" height="28" rx="14" ry="14" fill="#B09B80"/>
-        <text x="165" y="288" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">STEP 1 · CAPTURE</text>
+        <rect x="110" y="630" width="240" height="36" rx="18" ry="18" fill="#B09B80"/>
+        <text x="230" y="654" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">STEP 1 · CAPTURE</text>
     
-            <line x1="336" y1="440" x2="404" y2="440" stroke="#A9A9A9" stroke-width="2"/>
-            <polygon points="404,435 412,440 404,445" fill="#A9A9A9"/>
+            <line x1="396" y1="845" x2="432.3333333333333" y2="845" stroke="#A9A9A9" stroke-width="2"/>
+            <polygon points="432.3333333333333,840 440.3333333333333,845 432.3333333333333,850" fill="#A9A9A9"/>
         
-            <line x1="666" y1="440" x2="734" y2="440" stroke="#A9A9A9" stroke-width="2"/>
-            <polygon points="734,435 742,440 734,445" fill="#A9A9A9"/>
+            <line x1="724.3333333333333" y1="845" x2="760.6666666666666" y2="845" stroke="#A9A9A9" stroke-width="2"/>
+            <polygon points="760.6666666666666,840 768.6666666666666,845 760.6666666666666,850" fill="#A9A9A9"/>
         
-            <line x1="996" y1="440" x2="1064" y2="440" stroke="#A9A9A9" stroke-width="2"/>
-            <polygon points="1064,435 1072,440 1064,445" fill="#A9A9A9"/>
+            <line x1="1052.6666666666665" y1="845" x2="1089" y2="845" stroke="#A9A9A9" stroke-width="2"/>
+            <polygon points="1089,840 1097,845 1089,850" fill="#A9A9A9"/>
         
-            <line x1="1326" y1="440" x2="1394" y2="440" stroke="#A9A9A9" stroke-width="2"/>
-            <polygon points="1394,435 1402,440 1394,445" fill="#A9A9A9"/>
+            <line x1="1381" y1="845" x2="1417.3333333333333" y2="845" stroke="#A9A9A9" stroke-width="2"/>
+            <polygon points="1417.3333333333333,840 1425.3333333333333,845 1417.3333333333333,850" fill="#A9A9A9"/>
         
-            <line x1="1656" y1="440" x2="1724" y2="440" stroke="#A9A9A9" stroke-width="2"/>
-            <polygon points="1724,435 1732,440 1724,445" fill="#A9A9A9"/>
+            <line x1="1709.3333333333333" y1="845" x2="1745.6666666666665" y2="845" stroke="#A9A9A9" stroke-width="2"/>
+            <polygon points="1745.6666666666665,840 1753.6666666666665,845 1745.6666666666665,850" fill="#A9A9A9"/>
         
-            <line x1="1986" y1="440" x2="2054" y2="440" stroke="#A9A9A9" stroke-width="2"/>
-            <polygon points="2054,435 2062,440 2054,445" fill="#A9A9A9"/>
+            <line x1="2037.6666666666665" y1="845" x2="2074" y2="845" stroke="#A9A9A9" stroke-width="2"/>
+            <polygon points="2074,840 2082,845 2074,850" fill="#A9A9A9"/>
         
-        <rect x="80" y="320" width="260" height="240" rx="16" ry="16"
+        <rect x="110" y="700" width="290" height="290" rx="18" ry="18"
               fill="#F2EBE0" stroke="#E5E0D5" stroke-width="1.5"/>
     
-        <circle cx="108" cy="348" r="20" fill="#3D4C41"/>
-        <text x="108" y="355" font-family="Lora, serif" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">1</text>
+        <circle cx="142" cy="732" r="22" fill="#3D4C41"/>
+        <text x="142" y="740" font-family="Lora, serif" font-size="18" font-weight="700" fill="#fff" text-anchor="middle">1</text>
     
-        <rect x="269" y="338" width="57" height="22" rx="11" ry="11" fill="#B09B80"/>
-        <text x="297.5" y="353" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">OUTLET</text>
+        <rect x="322" y="720" width="62" height="24" rx="12" ry="12" fill="#B09B80"/>
+        <text x="353" y="736" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">OUTLET</text>
     
-        <g transform="translate(186, 396) scale(2)"
+        <g transform="translate(223, 798) scale(2.6666666666666665)"
            fill="none" stroke="#3D4C41" stroke-width="1.7"
            stroke-linecap="round" stroke-linejoin="round">
             <path d="M5.116 4.104A1 1 0 0 1 6.11 3h11.78a1 1 0 0 1 .994 1.105L17.19 20.21A2 2 0 0 1 15.2 22H8.8a2 2 0 0 1-2-1.79z"/><path d="M6 12a5 5 0 0 1 6 0 5 5 0 0 0 6 0"/>
-        </g><text x="210" y="470" font-family="Lora, serif" font-size="14.5" font-weight="600" fill="#3D4C41" text-anchor="middle">Customer buys a lemonade</text><text x="210" y="500" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">At any Juntos location.</text>
-        <rect x="410" y="320" width="260" height="240" rx="16" ry="16"
+        </g><text x="255" y="900" font-family="Lora, serif" font-size="16" font-weight="600" fill="#3D4C41" text-anchor="middle">Customer buys a</text><text x="255" y="922" font-family="Lora, serif" font-size="16" font-weight="600" fill="#3D4C41" text-anchor="middle">lemonade</text><text x="255" y="956" font-family="Inter, sans-serif" font-size="12" font-weight="normal" fill="#555" text-anchor="middle">At any Juntos location.</text>
+        <rect x="438.3333333333333" y="700" width="290" height="290" rx="18" ry="18"
               fill="#F2EBE0" stroke="#E5E0D5" stroke-width="1.5"/>
     
-        <circle cx="438" cy="348" r="20" fill="#3D4C41"/>
-        <text x="438" y="355" font-family="Lora, serif" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">2</text>
+        <circle cx="470.3333333333333" cy="732" r="22" fill="#3D4C41"/>
+        <text x="470.3333333333333" y="740" font-family="Lora, serif" font-size="18" font-weight="700" fill="#fff" text-anchor="middle">2</text>
     
-        <rect x="618.5" y="338" width="37.5" height="22" rx="11" ry="11" fill="#B09B80"/>
-        <text x="637.25" y="353" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">POS</text>
+        <rect x="671.3333333333333" y="720" width="41" height="24" rx="12" ry="12" fill="#B09B80"/>
+        <text x="691.8333333333333" y="736" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">POS</text>
     
-        <g transform="translate(516, 396) scale(2)"
+        <g transform="translate(551.3333333333333, 798) scale(2.6666666666666665)"
            fill="none" stroke="#3D4C41" stroke-width="1.7"
            stroke-linecap="round" stroke-linejoin="round">
             <path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M7 12h10"/>
-        </g><text x="540" y="470" font-family="Lora, serif" font-size="14.5" font-weight="600" fill="#3D4C41" text-anchor="middle">POS records the sale</text><text x="540" y="500" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">Item, price, time.</text>
-        <rect x="740" y="320" width="260" height="240" rx="16" ry="16"
+        </g><text x="583.3333333333333" y="900" font-family="Lora, serif" font-size="16" font-weight="600" fill="#3D4C41" text-anchor="middle">POS records the sale</text><text x="583.3333333333333" y="934" font-family="Inter, sans-serif" font-size="12" font-weight="normal" fill="#555" text-anchor="middle">Item, price, time.</text>
+        <rect x="766.6666666666666" y="700" width="290" height="290" rx="18" ry="18"
               fill="#F2EBE0" stroke="#E5E0D5" stroke-width="1.5"/>
     
-        <circle cx="768" cy="348" r="20" fill="#3D4C41"/>
-        <text x="768" y="355" font-family="Lora, serif" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">3</text>
+        <circle cx="798.6666666666666" cy="732" r="22" fill="#3D4C41"/>
+        <text x="798.6666666666666" y="740" font-family="Lora, serif" font-size="18" font-weight="700" fill="#fff" text-anchor="middle">3</text>
     
-        <rect x="903" y="338" width="83" height="22" rx="11" ry="11" fill="#B09B80"/>
-        <text x="944.5" y="353" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">ACCOUNTING</text>
+        <rect x="950.6666666666665" y="720" width="90" height="24" rx="12" ry="12" fill="#B09B80"/>
+        <text x="995.6666666666665" y="736" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">ACCOUNTING</text>
     
-        <g transform="translate(846, 396) scale(2)"
+        <g transform="translate(879.6666666666666, 798) scale(2.6666666666666665)"
            fill="none" stroke="#3D4C41" stroke-width="1.7"
            stroke-linecap="round" stroke-linejoin="round">
             <path d="M10 18v-7"/><path d="M11.119 2.205a2 2 0 0 1 1.762 0l7.84 3.846A.5.5 0 0 1 20.5 7h-17a.5.5 0 0 1-.22-.949z"/><path d="M14 18v-7"/><path d="M18 18v-7"/><path d="M3 22h18"/><path d="M6 18v-7"/>
-        </g><text x="870" y="470" font-family="Lora, serif" font-size="14.5" font-weight="600" fill="#3D4C41" text-anchor="middle">Sale lands in accounting</text><text x="870" y="500" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">Daily roll-up by outlet.</text>
-        <rect x="1070" y="320" width="260" height="240" rx="16" ry="16"
+        </g><text x="911.6666666666666" y="900" font-family="Lora, serif" font-size="16" font-weight="600" fill="#3D4C41" text-anchor="middle">Sale lands in</text><text x="911.6666666666666" y="922" font-family="Lora, serif" font-size="16" font-weight="600" fill="#3D4C41" text-anchor="middle">accounting</text><text x="911.6666666666666" y="956" font-family="Inter, sans-serif" font-size="12" font-weight="normal" fill="#555" text-anchor="middle">Daily roll-up by outlet.</text>
+        <rect x="1095" y="700" width="290" height="290" rx="18" ry="18"
               fill="#F2EBE0" stroke="#E5E0D5" stroke-width="1.5"/>
     
-        <circle cx="1098" cy="348" r="20" fill="#3D4C41"/>
-        <text x="1098" y="355" font-family="Lora, serif" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">4</text>
+        <circle cx="1127" cy="732" r="22" fill="#3D4C41"/>
+        <text x="1127" y="740" font-family="Lora, serif" font-size="18" font-weight="700" fill="#fff" text-anchor="middle">4</text>
     
-        <rect x="1259" y="338" width="57" height="22" rx="11" ry="11" fill="#B09B80"/>
-        <text x="1287.5" y="353" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">WEEKLY</text>
+        <rect x="1307" y="720" width="62" height="24" rx="12" ry="12" fill="#B09B80"/>
+        <text x="1338" y="736" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">WEEKLY</text>
     
-        <g transform="translate(1176, 396) scale(2)"
+        <g transform="translate(1208, 798) scale(2.6666666666666665)"
            fill="none" stroke="#3D4C41" stroke-width="1.7"
            stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/>
-        </g><text x="1200" y="470" font-family="Lora, serif" font-size="14.5" font-weight="600" fill="#3D4C41" text-anchor="middle">Weekly export</text><text x="1200" y="500" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">Spreadsheets pulled once a week.</text>
-        <rect x="1400" y="320" width="260" height="240" rx="16" ry="16"
+        </g><text x="1240" y="900" font-family="Lora, serif" font-size="16" font-weight="600" fill="#3D4C41" text-anchor="middle">Weekly export</text><text x="1240" y="934" font-family="Inter, sans-serif" font-size="12" font-weight="normal" fill="#555" text-anchor="middle">Spreadsheets pulled once a</text><text x="1240" y="950" font-family="Inter, sans-serif" font-size="12" font-weight="normal" fill="#555" text-anchor="middle">week.</text>
+        <rect x="1423.3333333333333" y="700" width="290" height="290" rx="18" ry="18"
               fill="#F2EBE0" stroke="#E5E0D5" stroke-width="1.5"/>
     
-        <circle cx="1428" cy="348" r="20" fill="#3D4C41"/>
-        <text x="1428" y="355" font-family="Lora, serif" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">5</text>
+        <circle cx="1455.3333333333333" cy="732" r="22" fill="#3D4C41"/>
+        <text x="1455.3333333333333" y="740" font-family="Lora, serif" font-size="18" font-weight="700" fill="#fff" text-anchor="middle">5</text>
     
-        <rect x="1563" y="338" width="83" height="22" rx="11" ry="11" fill="#B09B80"/>
-        <text x="1604.5" y="353" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">AUTOMATION</text>
+        <rect x="1607.3333333333333" y="720" width="90" height="24" rx="12" ry="12" fill="#B09B80"/>
+        <text x="1652.3333333333333" y="736" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">AUTOMATION</text>
     
-        <g transform="translate(1506, 396) scale(2)"
+        <g transform="translate(1536.3333333333333, 798) scale(2.6666666666666665)"
            fill="none" stroke="#3D4C41" stroke-width="1.7"
            stroke-linecap="round" stroke-linejoin="round">
             <path d="M11 10.27 7 3.34"/><path d="m11 13.73-4 6.93"/><path d="M12 22v-2"/><path d="M12 2v2"/><path d="M14 12h8"/><path d="m17 20.66-1-1.73"/><path d="m17 3.34-1 1.73"/><path d="M2 12h2"/><path d="m20.66 17-1.73-1"/><path d="m20.66 7-1.73 1"/><path d="m3.34 17 1.73-1"/><path d="m3.34 7 1.73 1"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="12" r="8"/>
-        </g><text x="1530" y="470" font-family="Lora, serif" font-size="14.5" font-weight="600" fill="#3D4C41" text-anchor="middle">Importer cleans the data</text><text x="1530" y="500" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">Normalizes and deduplicates.</text>
-        <rect x="1730" y="320" width="260" height="240" rx="16" ry="16"
+        </g><text x="1568.3333333333333" y="900" font-family="Lora, serif" font-size="16" font-weight="600" fill="#3D4C41" text-anchor="middle">Importer cleans the</text><text x="1568.3333333333333" y="922" font-family="Lora, serif" font-size="16" font-weight="600" fill="#3D4C41" text-anchor="middle">data</text><text x="1568.3333333333333" y="956" font-family="Inter, sans-serif" font-size="12" font-weight="normal" fill="#555" text-anchor="middle">Normalizes and deduplicates.</text>
+        <rect x="1751.6666666666665" y="700" width="290" height="290" rx="18" ry="18"
               fill="#F2EBE0" stroke="#E5E0D5" stroke-width="1.5"/>
     
-        <circle cx="1758" cy="348" r="20" fill="#3D4C41"/>
-        <text x="1758" y="355" font-family="Lora, serif" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">6</text>
+        <circle cx="1783.6666666666665" cy="732" r="22" fill="#3D4C41"/>
+        <text x="1783.6666666666665" y="740" font-family="Lora, serif" font-size="18" font-weight="700" fill="#fff" text-anchor="middle">6</text>
     
-        <rect x="1906" y="338" width="70" height="22" rx="11" ry="11" fill="#B09B80"/>
-        <text x="1941" y="353" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">DATABASE</text>
+        <rect x="1949.6666666666665" y="720" width="76" height="24" rx="12" ry="12" fill="#B09B80"/>
+        <text x="1987.6666666666665" y="736" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">DATABASE</text>
     
-        <g transform="translate(1836, 396) scale(2)"
+        <g transform="translate(1864.6666666666665, 798) scale(2.6666666666666665)"
            fill="none" stroke="#3D4C41" stroke-width="1.7"
            stroke-linecap="round" stroke-linejoin="round">
             <ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/>
-        </g><text x="1860" y="470" font-family="Lora, serif" font-size="14.5" font-weight="600" fill="#3D4C41" text-anchor="middle">Database stores it</text><text x="1860" y="500" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">Ready to query.</text>
-        <rect x="2060" y="320" width="260" height="240" rx="16" ry="16"
+        </g><text x="1896.6666666666665" y="900" font-family="Lora, serif" font-size="16" font-weight="600" fill="#3D4C41" text-anchor="middle">Database stores it</text><text x="1896.6666666666665" y="934" font-family="Inter, sans-serif" font-size="12" font-weight="normal" fill="#555" text-anchor="middle">Ready to query.</text>
+        <rect x="2080" y="700" width="290" height="290" rx="18" ry="18"
               fill="#F2EBE0" stroke="#E5E0D5" stroke-width="1.5"/>
     
-        <circle cx="2088" cy="348" r="20" fill="#3D4C41"/>
-        <text x="2088" y="355" font-family="Lora, serif" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">7</text>
+        <circle cx="2112" cy="732" r="22" fill="#3D4C41"/>
+        <text x="2112" y="740" font-family="Lora, serif" font-size="18" font-weight="700" fill="#fff" text-anchor="middle">7</text>
     
-        <rect x="2229.5" y="338" width="76.5" height="22" rx="11" ry="11" fill="#B09B80"/>
-        <text x="2267.75" y="353" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">DASHBOARD</text>
+        <rect x="2271" y="720" width="83" height="24" rx="12" ry="12" fill="#B09B80"/>
+        <text x="2312.5" y="736" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">DASHBOARD</text>
     
-        <g transform="translate(2166, 396) scale(2)"
+        <g transform="translate(2193, 798) scale(2.6666666666666665)"
            fill="none" stroke="#3D4C41" stroke-width="1.7"
            stroke-linecap="round" stroke-linejoin="round">
             <path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/>
-        </g><text x="2190" y="470" font-family="Lora, serif" font-size="14.5" font-weight="600" fill="#3D4C41" text-anchor="middle">Dashboard shows it</text><text x="2190" y="500" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">KPIs and year-over-year trends.</text>
+        </g><text x="2225" y="900" font-family="Lora, serif" font-size="16" font-weight="600" fill="#3D4C41" text-anchor="middle">Dashboard shows it</text><text x="2225" y="934" font-family="Inter, sans-serif" font-size="12" font-weight="normal" fill="#555" text-anchor="middle">KPIs and year-over-year</text><text x="2225" y="950" font-family="Inter, sans-serif" font-size="12" font-weight="normal" fill="#555" text-anchor="middle">trends.</text>
 
   <!-- Bridge -->
   <g>
-    <line x1="80" y1="610" x2="2320" y2="610" stroke="#A9A9A9" stroke-dasharray="4,4" stroke-width="1" opacity="0.5"/>
-    <rect x="1020" y="598" width="360" height="26" rx="13" ry="13" fill="#E8EFE8" stroke="#6E8C71"/>
-    <text x="1200" y="616" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#3D4C41" text-anchor="middle">Data is ready in the database</text>
+    <line x1="110" y1="1120" x2="2370" y2="1120" stroke="#A9A9A9" stroke-dasharray="6,6" stroke-width="1.5" opacity="0.5"/>
+    <rect x="1010" y="1103" width="460" height="36" rx="18" ry="18" fill="#E8EFE8" stroke="#6E8C71" stroke-width="1.5"/>
+    <text x="1240" y="1127" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#3D4C41" text-anchor="middle">Data is ready in the database</text>
   </g>
 
   <!-- CHAT timeline -->
   
-        <rect x="80" y="900" width="170" height="28" rx="14" ry="14" fill="#D9825F"/>
-        <text x="165" y="918" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">STEP 2 · ASK THE ASSISTANT</text>
+        <rect x="110" y="1830" width="240" height="36" rx="18" ry="18" fill="#D9825F"/>
+        <text x="230" y="1854" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">STEP 2 · ASK THE ASSISTANT</text>
     
-            <line x1="336" y1="1070" x2="404" y2="1070" stroke="#A9A9A9" stroke-width="2"/>
-            <polygon points="404,1065 412,1070 404,1075" fill="#A9A9A9"/>
+            <line x1="396" y1="2045" x2="432.3333333333333" y2="2045" stroke="#A9A9A9" stroke-width="2"/>
+            <polygon points="432.3333333333333,2040 440.3333333333333,2045 432.3333333333333,2050" fill="#A9A9A9"/>
         
-            <line x1="666" y1="1070" x2="734" y2="1070" stroke="#A9A9A9" stroke-width="2"/>
-            <polygon points="734,1065 742,1070 734,1075" fill="#A9A9A9"/>
+            <line x1="724.3333333333333" y1="2045" x2="760.6666666666666" y2="2045" stroke="#A9A9A9" stroke-width="2"/>
+            <polygon points="760.6666666666666,2040 768.6666666666666,2045 760.6666666666666,2050" fill="#A9A9A9"/>
         
-            <line x1="996" y1="1070" x2="1064" y2="1070" stroke="#A9A9A9" stroke-width="2"/>
-            <polygon points="1064,1065 1072,1070 1064,1075" fill="#A9A9A9"/>
+            <line x1="1052.6666666666665" y1="2045" x2="1089" y2="2045" stroke="#A9A9A9" stroke-width="2"/>
+            <polygon points="1089,2040 1097,2045 1089,2050" fill="#A9A9A9"/>
         
-            <line x1="1326" y1="1070" x2="1394" y2="1070" stroke="#A9A9A9" stroke-width="2"/>
-            <polygon points="1394,1065 1402,1070 1394,1075" fill="#A9A9A9"/>
+            <line x1="1381" y1="2045" x2="1417.3333333333333" y2="2045" stroke="#A9A9A9" stroke-width="2"/>
+            <polygon points="1417.3333333333333,2040 1425.3333333333333,2045 1417.3333333333333,2050" fill="#A9A9A9"/>
         
-            <line x1="1656" y1="1070" x2="1724" y2="1070" stroke="#A9A9A9" stroke-width="2"/>
-            <polygon points="1724,1065 1732,1070 1724,1075" fill="#A9A9A9"/>
+            <line x1="1709.3333333333333" y1="2045" x2="1745.6666666666665" y2="2045" stroke="#A9A9A9" stroke-width="2"/>
+            <polygon points="1745.6666666666665,2040 1753.6666666666665,2045 1745.6666666666665,2050" fill="#A9A9A9"/>
         
-            <line x1="1986" y1="1070" x2="2054" y2="1070" stroke="#A9A9A9" stroke-width="2"/>
-            <polygon points="2054,1065 2062,1070 2054,1075" fill="#A9A9A9"/>
+            <line x1="2037.6666666666665" y1="2045" x2="2074" y2="2045" stroke="#A9A9A9" stroke-width="2"/>
+            <polygon points="2074,2040 2082,2045 2074,2050" fill="#A9A9A9"/>
         
-        <rect x="80" y="950" width="260" height="240" rx="16" ry="16"
+        <rect x="110" y="1900" width="290" height="290" rx="18" ry="18"
               fill="#FBE9DC" stroke="#E5E0D5" stroke-width="1.5"/>
     
-        <circle cx="108" cy="978" r="20" fill="#3D4C41"/>
-        <text x="108" y="985" font-family="Lora, serif" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">1</text>
+        <circle cx="142" cy="1932" r="22" fill="#3D4C41"/>
+        <text x="142" y="1940" font-family="Lora, serif" font-size="18" font-weight="700" fill="#fff" text-anchor="middle">1</text>
     
-        <rect x="282" y="968" width="44" height="22" rx="11" ry="11" fill="#D9825F"/>
-        <text x="304" y="983" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">USER</text>
+        <rect x="336" y="1920" width="48" height="24" rx="12" ry="12" fill="#D9825F"/>
+        <text x="360" y="1936" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">USER</text>
     
-        <g transform="translate(186, 1026) scale(2)"
+        <g transform="translate(223, 1998) scale(2.6666666666666665)"
            fill="none" stroke="#3D4C41" stroke-width="1.7"
            stroke-linecap="round" stroke-linejoin="round">
             <path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"/>
-        </g><text x="210" y="1100" font-family="Lora, serif" font-size="14.5" font-weight="600" fill="#3D4C41" text-anchor="middle">"How many lemonades did</text><text x="210" y="1120" font-family="Lora, serif" font-size="14.5" font-weight="600" fill="#3D4C41" text-anchor="middle">we sell?"</text><text x="210" y="1150" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">A simple question in plain</text><text x="210" y="1164" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">language.</text>
-        <rect x="410" y="950" width="260" height="240" rx="16" ry="16"
+        </g><text x="255" y="2100" font-family="Lora, serif" font-size="16" font-weight="600" fill="#3D4C41" text-anchor="middle">"How many lemonades</text><text x="255" y="2122" font-family="Lora, serif" font-size="16" font-weight="600" fill="#3D4C41" text-anchor="middle">did we sell?"</text><text x="255" y="2156" font-family="Inter, sans-serif" font-size="12" font-weight="normal" fill="#555" text-anchor="middle">A simple question in plain</text><text x="255" y="2172" font-family="Inter, sans-serif" font-size="12" font-weight="normal" fill="#555" text-anchor="middle">language.</text>
+        <rect x="438.3333333333333" y="1900" width="290" height="290" rx="18" ry="18"
               fill="#FBE9DC" stroke="#E5E0D5" stroke-width="1.5"/>
     
-        <circle cx="438" cy="978" r="20" fill="#3D4C41"/>
-        <text x="438" y="985" font-family="Lora, serif" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">2</text>
+        <circle cx="470.3333333333333" cy="1932" r="22" fill="#3D4C41"/>
+        <text x="470.3333333333333" y="1940" font-family="Lora, serif" font-size="18" font-weight="700" fill="#fff" text-anchor="middle">2</text>
     
-        <rect x="592.5" y="968" width="63.5" height="22" rx="11" ry="11" fill="#D9825F"/>
-        <text x="624.25" y="983" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">BACKEND</text>
+        <rect x="643.3333333333333" y="1920" width="69" height="24" rx="12" ry="12" fill="#D9825F"/>
+        <text x="677.8333333333333" y="1936" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">BACKEND</text>
     
-        <g transform="translate(516, 1026) scale(2)"
+        <g transform="translate(551.3333333333333, 1998) scale(2.6666666666666665)"
            fill="none" stroke="#3D4C41" stroke-width="1.7"
            stroke-linecap="round" stroke-linejoin="round">
             <path d="M18 16.98h-5.99c-1.1 0-1.95.94-2.48 1.9A4 4 0 0 1 2 17c.01-.7.2-1.4.57-2"/><path d="m6 17 3.13-5.78c.53-.97.1-2.18-.5-3.1a4 4 0 1 1 6.89-4.06"/><path d="m12 6 3.13 5.73C15.66 12.7 16.9 13 18 13a4 4 0 0 1 0 8"/>
-        </g><text x="540" y="1100" font-family="Lora, serif" font-size="14.5" font-weight="600" fill="#3D4C41" text-anchor="middle">Assistant receives the</text><text x="540" y="1120" font-family="Lora, serif" font-size="14.5" font-weight="600" fill="#3D4C41" text-anchor="middle">question</text><text x="540" y="1150" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">Routed to the AI workflow.</text>
-        <rect x="740" y="950" width="260" height="240" rx="16" ry="16"
+        </g><text x="583.3333333333333" y="2100" font-family="Lora, serif" font-size="16" font-weight="600" fill="#3D4C41" text-anchor="middle">Assistant receives the</text><text x="583.3333333333333" y="2122" font-family="Lora, serif" font-size="16" font-weight="600" fill="#3D4C41" text-anchor="middle">question</text><text x="583.3333333333333" y="2156" font-family="Inter, sans-serif" font-size="12" font-weight="normal" fill="#555" text-anchor="middle">Routed to the AI workflow.</text>
+        <rect x="766.6666666666666" y="1900" width="290" height="290" rx="18" ry="18"
               fill="#FBE9DC" stroke="#E5E0D5" stroke-width="1.5"/>
     
-        <circle cx="768" cy="978" r="20" fill="#3D4C41"/>
-        <text x="768" y="985" font-family="Lora, serif" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">3</text>
+        <circle cx="798.6666666666666" cy="1932" r="22" fill="#3D4C41"/>
+        <text x="798.6666666666666" y="1940" font-family="Lora, serif" font-size="18" font-weight="700" fill="#fff" text-anchor="middle">3</text>
     
-        <rect x="955" y="968" width="31" height="22" rx="11" ry="11" fill="#D9825F"/>
-        <text x="970.5" y="983" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">AI</text>
+        <rect x="1006.6666666666665" y="1920" width="34" height="24" rx="12" ry="12" fill="#D9825F"/>
+        <text x="1023.6666666666665" y="1936" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">AI</text>
     
-        <g transform="translate(846, 1026) scale(2)"
+        <g transform="translate(879.6666666666666, 1998) scale(2.6666666666666665)"
            fill="none" stroke="#3D4C41" stroke-width="1.7"
            stroke-linecap="round" stroke-linejoin="round">
             <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/>
-        </g><text x="870" y="1100" font-family="Lora, serif" font-size="14.5" font-weight="600" fill="#3D4C41" text-anchor="middle">AI picks the right tool</text><text x="870" y="1130" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">Understands intent, plans the</text><text x="870" y="1144" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">query.</text>
-        <rect x="1070" y="950" width="260" height="240" rx="16" ry="16"
+        </g><text x="911.6666666666666" y="2100" font-family="Lora, serif" font-size="16" font-weight="600" fill="#3D4C41" text-anchor="middle">AI picks the right</text><text x="911.6666666666666" y="2122" font-family="Lora, serif" font-size="16" font-weight="600" fill="#3D4C41" text-anchor="middle">tool</text><text x="911.6666666666666" y="2156" font-family="Inter, sans-serif" font-size="12" font-weight="normal" fill="#555" text-anchor="middle">Understands intent, plans the</text><text x="911.6666666666666" y="2172" font-family="Inter, sans-serif" font-size="12" font-weight="normal" fill="#555" text-anchor="middle">query.</text>
+        <rect x="1095" y="1900" width="290" height="290" rx="18" ry="18"
               fill="#FBE9DC" stroke="#E5E0D5" stroke-width="1.5"/>
     
-        <circle cx="1098" cy="978" r="20" fill="#3D4C41"/>
-        <text x="1098" y="985" font-family="Lora, serif" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">4</text>
+        <circle cx="1127" cy="1932" r="22" fill="#3D4C41"/>
+        <text x="1127" y="1940" font-family="Lora, serif" font-size="18" font-weight="700" fill="#fff" text-anchor="middle">4</text>
     
-        <rect x="1259" y="968" width="57" height="22" rx="11" ry="11" fill="#D9825F"/>
-        <text x="1287.5" y="983" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">LOOKUP</text>
+        <rect x="1307" y="1920" width="62" height="24" rx="12" ry="12" fill="#D9825F"/>
+        <text x="1338" y="1936" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">LOOKUP</text>
     
-        <g transform="translate(1176, 1026) scale(2)"
+        <g transform="translate(1208, 1998) scale(2.6666666666666665)"
            fill="none" stroke="#3D4C41" stroke-width="1.7"
            stroke-linecap="round" stroke-linejoin="round">
             <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"/>
-        </g><text x="1200" y="1100" font-family="Lora, serif" font-size="14.5" font-weight="600" fill="#3D4C41" text-anchor="middle">Tool queries the</text><text x="1200" y="1120" font-family="Lora, serif" font-size="14.5" font-weight="600" fill="#3D4C41" text-anchor="middle">database</text><text x="1200" y="1150" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">Fetches only the rows that</text><text x="1200" y="1164" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">matter.</text>
-        <rect x="1400" y="950" width="260" height="240" rx="16" ry="16"
+        </g><text x="1240" y="2100" font-family="Lora, serif" font-size="16" font-weight="600" fill="#3D4C41" text-anchor="middle">Tool queries the</text><text x="1240" y="2122" font-family="Lora, serif" font-size="16" font-weight="600" fill="#3D4C41" text-anchor="middle">database</text><text x="1240" y="2156" font-family="Inter, sans-serif" font-size="12" font-weight="normal" fill="#555" text-anchor="middle">Fetches only the rows that</text><text x="1240" y="2172" font-family="Inter, sans-serif" font-size="12" font-weight="normal" fill="#555" text-anchor="middle">matter.</text>
+        <rect x="1423.3333333333333" y="1900" width="290" height="290" rx="18" ry="18"
               fill="#FBE9DC" stroke="#E5E0D5" stroke-width="1.5"/>
     
-        <circle cx="1428" cy="978" r="20" fill="#3D4C41"/>
-        <text x="1428" y="985" font-family="Lora, serif" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">5</text>
+        <circle cx="1455.3333333333333" cy="1932" r="22" fill="#3D4C41"/>
+        <text x="1455.3333333333333" y="1940" font-family="Lora, serif" font-size="18" font-weight="700" fill="#fff" text-anchor="middle">5</text>
     
-        <rect x="1576" y="968" width="70" height="22" rx="11" ry="11" fill="#D9825F"/>
-        <text x="1611" y="983" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">DATABASE</text>
+        <rect x="1621.3333333333333" y="1920" width="76" height="24" rx="12" ry="12" fill="#D9825F"/>
+        <text x="1659.3333333333333" y="1936" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">DATABASE</text>
     
-        <g transform="translate(1506, 1026) scale(2)"
+        <g transform="translate(1536.3333333333333, 1998) scale(2.6666666666666665)"
            fill="none" stroke="#3D4C41" stroke-width="1.7"
            stroke-linecap="round" stroke-linejoin="round">
             <ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/>
-        </g><text x="1530" y="1100" font-family="Lora, serif" font-size="14.5" font-weight="600" fill="#3D4C41" text-anchor="middle">Database returns the</text><text x="1530" y="1120" font-family="Lora, serif" font-size="14.5" font-weight="600" fill="#3D4C41" text-anchor="middle">data</text><text x="1530" y="1150" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">Filtered and aggregated.</text>
-        <rect x="1730" y="950" width="260" height="240" rx="16" ry="16"
+        </g><text x="1568.3333333333333" y="2100" font-family="Lora, serif" font-size="16" font-weight="600" fill="#3D4C41" text-anchor="middle">Database returns the</text><text x="1568.3333333333333" y="2122" font-family="Lora, serif" font-size="16" font-weight="600" fill="#3D4C41" text-anchor="middle">data</text><text x="1568.3333333333333" y="2156" font-family="Inter, sans-serif" font-size="12" font-weight="normal" fill="#555" text-anchor="middle">Filtered and aggregated.</text>
+        <rect x="1751.6666666666665" y="1900" width="290" height="290" rx="18" ry="18"
               fill="#FBE9DC" stroke="#E5E0D5" stroke-width="1.5"/>
     
-        <circle cx="1758" cy="978" r="20" fill="#3D4C41"/>
-        <text x="1758" y="985" font-family="Lora, serif" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">6</text>
+        <circle cx="1783.6666666666665" cy="1932" r="22" fill="#3D4C41"/>
+        <text x="1783.6666666666665" y="1940" font-family="Lora, serif" font-size="18" font-weight="700" fill="#fff" text-anchor="middle">6</text>
     
-        <rect x="1919" y="968" width="57" height="22" rx="11" ry="11" fill="#D9825F"/>
-        <text x="1947.5" y="983" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">ANSWER</text>
+        <rect x="1963.6666666666665" y="1920" width="62" height="24" rx="12" ry="12" fill="#D9825F"/>
+        <text x="1994.6666666666665" y="1936" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">ANSWER</text>
     
-        <g transform="translate(1836, 1026) scale(2)"
+        <g transform="translate(1864.6666666666665, 1998) scale(2.6666666666666665)"
            fill="none" stroke="#3D4C41" stroke-width="1.7"
            stroke-linecap="round" stroke-linejoin="round">
             <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/>
-        </g><text x="1860" y="1100" font-family="Lora, serif" font-size="14.5" font-weight="600" fill="#3D4C41" text-anchor="middle">AI writes a clear answer</text><text x="1860" y="1130" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">Numbers, table, short summary.</text>
-        <rect x="2060" y="950" width="260" height="240" rx="16" ry="16"
+        </g><text x="1896.6666666666665" y="2100" font-family="Lora, serif" font-size="16" font-weight="600" fill="#3D4C41" text-anchor="middle">AI writes a clear</text><text x="1896.6666666666665" y="2122" font-family="Lora, serif" font-size="16" font-weight="600" fill="#3D4C41" text-anchor="middle">answer</text><text x="1896.6666666666665" y="2156" font-family="Inter, sans-serif" font-size="12" font-weight="normal" fill="#555" text-anchor="middle">Numbers, table, short summary.</text>
+        <rect x="2080" y="1900" width="290" height="290" rx="18" ry="18"
               fill="#FBE9DC" stroke="#E5E0D5" stroke-width="1.5"/>
     
-        <circle cx="2088" cy="978" r="20" fill="#3D4C41"/>
-        <text x="2088" y="985" font-family="Lora, serif" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">7</text>
+        <circle cx="2112" cy="1932" r="22" fill="#3D4C41"/>
+        <text x="2112" y="1940" font-family="Lora, serif" font-size="18" font-weight="700" fill="#fff" text-anchor="middle">7</text>
     
-        <rect x="2249" y="968" width="57" height="22" rx="11" ry="11" fill="#D9825F"/>
-        <text x="2277.5" y="983" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">EXPORT</text>
+        <rect x="2292" y="1920" width="62" height="24" rx="12" ry="12" fill="#D9825F"/>
+        <text x="2323" y="1936" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">EXPORT</text>
     
-        <g transform="translate(2166, 1026) scale(2)"
+        <g transform="translate(2193, 1998) scale(2.6666666666666665)"
            fill="none" stroke="#3D4C41" stroke-width="1.7"
            stroke-linecap="round" stroke-linejoin="round">
             <path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/>
-        </g><text x="2190" y="1100" font-family="Lora, serif" font-size="14.5" font-weight="600" fill="#3D4C41" text-anchor="middle">User exports if needed</text><text x="2190" y="1130" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">One click to PDF or Excel.</text>
+        </g><text x="2225" y="2100" font-family="Lora, serif" font-size="16" font-weight="600" fill="#3D4C41" text-anchor="middle">User exports if needed</text><text x="2225" y="2134" font-family="Inter, sans-serif" font-size="12" font-weight="normal" fill="#555" text-anchor="middle">One click to PDF or Excel.</text>
 
-  <!-- Footer KPIs -->
-  <g transform="translate(80, 1360)">
-    <rect x="0"    y="0" width="700" height="100" rx="14" ry="14" fill="#fff" stroke="#E5E0D5"/>
-    <text x="24" y="42" font-family="Lora, serif" font-size="32" font-weight="700" fill="#3D4C41" text-anchor="start">~7 days</text>
-    <text x="24" y="70" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#444" text-anchor="start">Data freshness</text>
-    <text x="24" y="90" font-family="Inter, sans-serif" font-size="12" font-weight="normal" fill="#A9A9A9" text-anchor="start">from the counter to the dashboard</text>
+  <!-- Footer KPIs — three tiles side by side, room to breathe -->
+  <g transform="translate(110, 3048)">
+    <rect x="0"    y="0" width="730" height="180" rx="18" ry="18" fill="#fff" stroke="#E5E0D5" stroke-width="1.5"/>
+    <text x="40" y="80" font-family="Lora, serif" font-size="56" font-weight="700" fill="#3D4C41" text-anchor="start">~7 days</text>
+    <text x="40" y="125" font-family="Inter, sans-serif" font-size="22" font-weight="600" fill="#444" text-anchor="start">Data freshness</text>
+    <text x="40" y="155" font-family="Inter, sans-serif" font-size="16" font-weight="normal" fill="#A9A9A9" text-anchor="start">from the counter to the dashboard</text>
 
-    <rect x="740"  y="0" width="700" height="100" rx="14" ry="14" fill="#fff" stroke="#E5E0D5"/>
-    <text x="764" y="42" font-family="Lora, serif" font-size="32" font-weight="700" fill="#3D4C41" text-anchor="start">~4 sec</text>
-    <text x="764" y="70" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#444" text-anchor="start">Answer time</text>
-    <text x="764" y="90" font-family="Inter, sans-serif" font-size="12" font-weight="normal" fill="#A9A9A9" text-anchor="start">from question to written answer</text>
+    <rect x="765"  y="0" width="730" height="180" rx="18" ry="18" fill="#fff" stroke="#E5E0D5" stroke-width="1.5"/>
+    <text x="805" y="80" font-family="Lora, serif" font-size="56" font-weight="700" fill="#3D4C41" text-anchor="start">~4 sec</text>
+    <text x="805" y="125" font-family="Inter, sans-serif" font-size="22" font-weight="600" fill="#444" text-anchor="start">Answer time</text>
+    <text x="805" y="155" font-family="Inter, sans-serif" font-size="16" font-weight="normal" fill="#A9A9A9" text-anchor="start">from question to written answer</text>
 
-    <rect x="1480" y="0" width="760" height="100" rx="14" ry="14" fill="#fff" stroke="#E5E0D5"/>
-    <text x="1504" y="42" font-family="Lora, serif" font-size="32" font-weight="700" fill="#3D4C41" text-anchor="start">€0.002</text>
-    <text x="1504" y="70" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#444" text-anchor="start">Cost per question</text>
-    <text x="1504" y="90" font-family="Inter, sans-serif" font-size="12" font-weight="normal" fill="#A9A9A9" text-anchor="start">less than a third of a cent</text>
+    <rect x="1530" y="0" width="730" height="180" rx="18" ry="18" fill="#fff" stroke="#E5E0D5" stroke-width="1.5"/>
+    <text x="1570" y="80" font-family="Lora, serif" font-size="56" font-weight="700" fill="#3D4C41" text-anchor="start">€0.002</text>
+    <text x="1570" y="125" font-family="Inter, sans-serif" font-size="22" font-weight="600" fill="#444" text-anchor="start">Cost per question</text>
+    <text x="1570" y="155" font-family="Inter, sans-serif" font-size="16" font-weight="normal" fill="#A9A9A9" text-anchor="start">less than a third of a cent</text>
   </g>
 
-  <text x="1200" y="1478" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#A9A9A9" text-anchor="middle">Juntos · Sales Dashboard</text>
+  <text x="1240" y="3408" font-family="Inter, sans-serif" font-size="16" font-weight="normal" fill="#A9A9A9" text-anchor="middle">Juntos · Sales Dashboard</text>
 </svg>

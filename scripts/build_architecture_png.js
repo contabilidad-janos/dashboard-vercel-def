@@ -90,61 +90,61 @@ const wrap = (s, maxChars) => {
     return lines;
 };
 
-// ─── Layout constants ───────────────────────────────────────────────────────
-const W = 2400, H = 1500;
-const MARGIN = 80;
-const TIMELINE_TOP = 320;
-const TIMELINE_BOT = 950;
+// ─── Layout constants — A4 portrait at 300 dpi (2480 × 3508) ───────────────
+const W = 2480, H = 3508;
+const MARGIN = 110;
+const TIMELINE_TOP = 700;
+const TIMELINE_BOT = 1900;
 
 const colCount = 7;
-const cardW = 260;
-const cardH = 240;
+const cardW = 290;
+const cardH = 290;
 const colSpacing = (W - 2 * MARGIN - cardW * colCount) / (colCount - 1) + cardW;
 
 // ─── Drawing ────────────────────────────────────────────────────────────────
 const drawStep = (x, y, step, idx, palette) => {
     // Card background
     const cardSvg = `
-        <rect x="${x}" y="${y}" width="${cardW}" height="${cardH}" rx="16" ry="16"
+        <rect x="${x}" y="${y}" width="${cardW}" height="${cardH}" rx="18" ry="18"
               fill="${palette.card}" stroke="${C.border}" stroke-width="1.5"/>
     `;
     // Numbered circle (top-left)
     const numSvg = `
-        <circle cx="${x + 28}" cy="${y + 28}" r="20" fill="${C.primary}"/>
-        ${text(x + 28, y + 35, String(idx + 1), { size: 16, weight: '700', color: '#fff', family: 'Lora, serif', anchor: 'middle' })}
+        <circle cx="${x + 32}" cy="${y + 32}" r="22" fill="${C.primary}"/>
+        ${text(x + 32, y + 40, String(idx + 1), { size: 18, weight: '700', color: '#fff', family: 'Lora, serif', anchor: 'middle' })}
     `;
-    // Tech badge (top-right) — dynamic width based on text length, font 9pt
+    // Tech badge (top-right)
     const techStr = step.tech.toUpperCase();
-    const badgeW = techStr.length * 6.5 + 18;
-    const badgeX = x + cardW - 14 - badgeW;
+    const badgeW = techStr.length * 7 + 20;
+    const badgeX = x + cardW - 16 - badgeW;
     const badgeSvg = `
-        <rect x="${badgeX}" y="${y + 18}" width="${badgeW}" height="22" rx="11" ry="11" fill="${palette.badge}"/>
-        ${text(badgeX + badgeW / 2, y + 33, techStr, { size: 10, weight: '700', color: '#fff', anchor: 'middle' })}
+        <rect x="${badgeX}" y="${y + 20}" width="${badgeW}" height="24" rx="12" ry="12" fill="${palette.badge}"/>
+        ${text(badgeX + badgeW / 2, y + 36, techStr, { size: 11, weight: '700', color: '#fff', anchor: 'middle' })}
     `;
-    // Icon
-    const iconSvg = renderIcon(step.icon, x + cardW / 2, y + 100, 48, C.primary);
+    // Icon, larger for A4
+    const iconSvg = renderIcon(step.icon, x + cardW / 2, y + 130, 64, C.primary);
     // Title (1-2 lines)
-    const titleLines = wrap(step.title, 24);
+    const titleLines = wrap(step.title, 22);
     const titleSvg = titleLines.map((line, i) =>
-        text(x + cardW / 2, y + 150 + i * 20, line, { size: 14.5, weight: '600', color: C.primary, family: 'Lora, serif', anchor: 'middle' })
+        text(x + cardW / 2, y + 200 + i * 22, line, { size: 16, weight: '600', color: C.primary, family: 'Lora, serif', anchor: 'middle' })
     ).join('');
     // Description
-    const descStart = y + 150 + titleLines.length * 20 + 10;
-    const descSvg = wrap(step.desc, 33).map((line, i) =>
-        text(x + cardW / 2, descStart + i * 14, line, { size: 11, color: '#555', anchor: 'middle' })
+    const descStart = y + 200 + titleLines.length * 22 + 12;
+    const descSvg = wrap(step.desc, 30).map((line, i) =>
+        text(x + cardW / 2, descStart + i * 16, line, { size: 12, color: '#555', anchor: 'middle' })
     ).join('');
 
     return cardSvg + numSvg + badgeSvg + iconSvg + titleSvg + descSvg;
 };
 
 const drawTimeline = (steps, y, palette, label) => {
-    const arrowY = y + 120;
+    const arrowY = y + 145;
     let svg = '';
 
     // Label band
     svg += `
-        <rect x="${MARGIN}" y="${y - 50}" width="170" height="28" rx="14" ry="14" fill="${palette.badge}"/>
-        ${text(MARGIN + 85, y - 32, label, { size: 11, weight: '700', color: '#fff', anchor: 'middle' })}
+        <rect x="${MARGIN}" y="${y - 70}" width="240" height="36" rx="18" ry="18" fill="${palette.badge}"/>
+        ${text(MARGIN + 120, y - 46, label, { size: 13, weight: '700', color: '#fff', anchor: 'middle' })}
     `;
 
     // Arrows between cards
@@ -183,45 +183,46 @@ function buildSvg() {
   <rect width="100%" height="100%" fill="url(#bgGrad)"/>
 
   <!-- Header -->
-  ${text(MARGIN, 100, 'THE JOURNEY OF A LEMONADE', { size: 16, weight: '700', color: C.accent })}
-  ${text(MARGIN, 168, 'From a sale at the counter to an answer on your screen', { size: 40, weight: '600', color: C.primary, family: 'Lora, serif' })}
-  ${text(MARGIN, 215, 'How every sale is captured, stored, and turned into a conversation with the assistant.', { size: 16, color: '#555' })}
+  ${text(MARGIN, 230, 'THE JOURNEY OF A LEMONADE', { size: 22, weight: '700', color: C.accent })}
+  ${text(MARGIN, 330, 'From a sale at the counter', { size: 60, weight: '600', color: C.primary, family: 'Lora, serif' })}
+  ${text(MARGIN, 410, 'to an answer on your screen', { size: 60, weight: '600', color: C.primary, family: 'Lora, serif' })}
+  ${text(MARGIN, 475, 'How every sale is captured, stored, and turned into a conversation with the assistant.', { size: 20, color: '#555' })}
 
-  <line x1="${MARGIN}" y1="252" x2="${W - MARGIN}" y2="252" stroke="${C.accent}" stroke-width="1.5" opacity="0.35"/>
-  ${text(W - MARGIN, 168, 'Juntos · Sales Dashboard', { size: 16, weight: '600', color: C.primary, family: 'Lora, serif', anchor: 'end' })}
+  <line x1="${MARGIN}" y1="540" x2="${W - MARGIN}" y2="540" stroke="${C.accent}" stroke-width="2" opacity="0.35"/>
+  ${text(W - MARGIN, 230, 'Juntos · Sales Dashboard', { size: 20, weight: '600', color: C.primary, family: 'Lora, serif', anchor: 'end' })}
 
   <!-- CAPTURE timeline -->
   ${drawTimeline(CAPTURE, TIMELINE_TOP, PALETTES.capture, 'STEP 1 · CAPTURE')}
 
   <!-- Bridge -->
   <g>
-    <line x1="${MARGIN}" y1="${TIMELINE_TOP + 290}" x2="${W - MARGIN}" y2="${TIMELINE_TOP + 290}" stroke="${C.muted}" stroke-dasharray="4,4" stroke-width="1" opacity="0.5"/>
-    <rect x="${W/2 - 180}" y="${TIMELINE_TOP + 278}" width="360" height="26" rx="13" ry="13" fill="${C.cardGreen}" stroke="${C.accent}"/>
-    ${text(W/2, TIMELINE_TOP + 296, 'Data is ready in the database', { size: 12, weight: '600', color: C.primary, anchor: 'middle' })}
+    <line x1="${MARGIN}" y1="${TIMELINE_TOP + cardH + 130}" x2="${W - MARGIN}" y2="${TIMELINE_TOP + cardH + 130}" stroke="${C.muted}" stroke-dasharray="6,6" stroke-width="1.5" opacity="0.5"/>
+    <rect x="${W/2 - 230}" y="${TIMELINE_TOP + cardH + 113}" width="460" height="36" rx="18" ry="18" fill="${C.cardGreen}" stroke="${C.accent}" stroke-width="1.5"/>
+    ${text(W/2, TIMELINE_TOP + cardH + 137, 'Data is ready in the database', { size: 16, weight: '600', color: C.primary, anchor: 'middle' })}
   </g>
 
   <!-- CHAT timeline -->
   ${drawTimeline(CHAT, TIMELINE_BOT, PALETTES.chat, 'STEP 2 · ASK THE ASSISTANT')}
 
-  <!-- Footer KPIs -->
-  <g transform="translate(${MARGIN}, ${H - 140})">
-    <rect x="0"    y="0" width="700" height="100" rx="14" ry="14" fill="#fff" stroke="${C.border}"/>
-    ${text(24, 42, '~7 days', { size: 32, weight: '700', color: C.primary, family: 'Lora, serif' })}
-    ${text(24, 70, 'Data freshness', { size: 14, weight: '600', color: '#444' })}
-    ${text(24, 90, 'from the counter to the dashboard', { size: 12, color: C.muted })}
+  <!-- Footer KPIs — three tiles side by side, room to breathe -->
+  <g transform="translate(${MARGIN}, ${H - 460})">
+    <rect x="0"    y="0" width="730" height="180" rx="18" ry="18" fill="#fff" stroke="${C.border}" stroke-width="1.5"/>
+    ${text(40, 80, '~7 days', { size: 56, weight: '700', color: C.primary, family: 'Lora, serif' })}
+    ${text(40, 125, 'Data freshness', { size: 22, weight: '600', color: '#444' })}
+    ${text(40, 155, 'from the counter to the dashboard', { size: 16, color: C.muted })}
 
-    <rect x="740"  y="0" width="700" height="100" rx="14" ry="14" fill="#fff" stroke="${C.border}"/>
-    ${text(764, 42, '~4 sec', { size: 32, weight: '700', color: C.primary, family: 'Lora, serif' })}
-    ${text(764, 70, 'Answer time', { size: 14, weight: '600', color: '#444' })}
-    ${text(764, 90, 'from question to written answer', { size: 12, color: C.muted })}
+    <rect x="765"  y="0" width="730" height="180" rx="18" ry="18" fill="#fff" stroke="${C.border}" stroke-width="1.5"/>
+    ${text(805, 80, '~4 sec', { size: 56, weight: '700', color: C.primary, family: 'Lora, serif' })}
+    ${text(805, 125, 'Answer time', { size: 22, weight: '600', color: '#444' })}
+    ${text(805, 155, 'from question to written answer', { size: 16, color: C.muted })}
 
-    <rect x="1480" y="0" width="760" height="100" rx="14" ry="14" fill="#fff" stroke="${C.border}"/>
-    ${text(1504, 42, '€0.002', { size: 32, weight: '700', color: C.primary, family: 'Lora, serif' })}
-    ${text(1504, 70, 'Cost per question', { size: 14, weight: '600', color: '#444' })}
-    ${text(1504, 90, 'less than a third of a cent', { size: 12, color: C.muted })}
+    <rect x="1530" y="0" width="730" height="180" rx="18" ry="18" fill="#fff" stroke="${C.border}" stroke-width="1.5"/>
+    ${text(1570, 80, '€0.002', { size: 56, weight: '700', color: C.primary, family: 'Lora, serif' })}
+    ${text(1570, 125, 'Cost per question', { size: 22, weight: '600', color: '#444' })}
+    ${text(1570, 155, 'less than a third of a cent', { size: 16, color: C.muted })}
   </g>
 
-  ${text(W / 2, H - 22, 'Juntos · Sales Dashboard', { size: 11, color: C.muted, anchor: 'middle' })}
+  ${text(W / 2, H - 100, 'Juntos · Sales Dashboard', { size: 16, color: C.muted, anchor: 'middle' })}
 </svg>`;
 }
 
