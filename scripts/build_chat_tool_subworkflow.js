@@ -37,16 +37,27 @@ const callRpc = async (fn, body) => {
 };
 
 let result;
-if (tool === 'search') {
-  result = await callRpc('chat_search_products', { q: params.q || '' });
-} else if (tool === 'transactions') {
-  result = await callRpc('chat_transactions_by_bu', { year_arg: Number(params.year_arg), bu_names_csv: params.bu_names_csv || '' });
-} else if (tool === 'revenue') {
-  result = await callRpc('chat_revenue_for_dates', { date_list_csv: params.date_list_csv || '' });
-} else if (tool === 'list') {
-  result = await callRpc('chat_list_business_units', {});
-} else {
-  result = { error: 'Unknown tool. Use: search | transactions | revenue | list', received: tool };
+try {
+  if (tool === 'search') {
+    result = await callRpc('chat_search_products', { q: params.q || '' });
+  } else if (tool === 'transactions') {
+    result = await callRpc('chat_transactions_by_bu', { year_arg: Number(params.year_arg), bu_names_csv: params.bu_names_csv || '' });
+  } else if (tool === 'revenue') {
+    result = await callRpc('chat_revenue_for_dates', { date_list_csv: params.date_list_csv || '' });
+  } else if (tool === 'top_products') {
+    result = await callRpc('chat_top_products_by_bu', {
+      bu_name: params.bu_name || '',
+      start_date: params.start_date || '2024-01-01',
+      end_date: params.end_date || '2030-12-31',
+      limit_n: Number(params.limit_n) || 10,
+    });
+  } else if (tool === 'list') {
+    result = await callRpc('chat_list_business_units', {});
+  } else {
+    result = { error: 'Unknown tool. Use: search | transactions | revenue | top_products | list', received: tool };
+  }
+} catch (e) {
+  result = { error: String(e.message || e).slice(0, 300), tool };
 }
 
 return [{ json: { tool, rows: result } }];

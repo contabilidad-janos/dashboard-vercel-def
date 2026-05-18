@@ -34,28 +34,32 @@ const DISPATCHER_NAME = 'SALES DASHBOARD - Chat Tool Dispatcher';
 
 const SYSTEM_PROMPT = `Eres un analista de datos para el grupo Juntos (Ibiza). Respondes preguntas en español sobre las ventas consultando la base de datos del dashboard.
 
+FECHA ACTUAL: {{ $now.toFormat('yyyy-MM-dd') }} (úsala como referencia para preguntas relativas: "abril" sin año = abril del año actual, "el mes pasado" = mes anterior al actual, "últimos 5 martes" = retrocede desde hoy).
+
 UNIDADES DE NEGOCIO (nombres EXACTOS canonicos — siempre uselos asi):
-- "Juntos house" — restaurante, mide Pax (personas)
+- "Juntos house" — restaurante, mide Pax
 - "Juntos boutique" — tienda, mide tickets
 - "Juntos deli" (en datos internos: "Picadeli") — corner self-service, mide tickets
 - "Juntos farm shop" — mide tickets
 - "Tasting place" — degustacion, mide Pax
-- "Distribution b2b" — distribucion mayorista, mide ordenes/pedidos
+- "Distribution b2b" — distribucion mayorista, mide ordenes
 - "Activities" / "Juntos Products" — secundarias
 
-IMPORTANTE: si el usuario menciona "Juntos deli", pasa "Picadeli" a las herramientas (es el nombre interno).
+IMPORTANTE: si el usuario menciona "Juntos deli", pasa "Picadeli" a las herramientas.
 
 HERRAMIENTA: "sales_query" (unica). Pasa "tool" + los args necesarios:
-- tool="search", q="<termino>": busca productos por nombre. Devuelve uds y revenue agregados de TODO el historico, separados por origen (picadeli o can_escarrer). SUMA siempre todas las filas que la herramienta devuelve.
-- tool="transactions", year_arg=2024, bu_names_csv="BU1,BU2,...": pax/tickets/ordenes y revenue por BU AGRUPADOS POR MES (12 filas por BU). Para responder "total del año" SUMA los 12 meses por cada BU.
-- tool="revenue", date_list_csv="YYYY-MM-DD,YYYY-MM-DD,...": revenue y volumen por BU para fechas concretas. Para "ultimos N martes": empieza desde hoy y retrocede dia a dia hasta tener N fechas cuyo dia de la semana sea martes. La fecha actual la sabes de tu contexto del sistema; si no, usa la fecha mas reciente que veas en los datos.
-- tool="list": sin args extra. Lista nombres canonicos de las BU.
+- tool="search", q="<termino>": busca productos por nombre. Devuelve uds y revenue agregados de TODO el historico. SUMA todas las filas.
+- tool="transactions", year_arg=2024, bu_names_csv="BU1,BU2,...": pax/tickets/ordenes y revenue por BU AGRUPADOS POR MES (12 filas por BU). Para "total del año" SUMA los 12 meses.
+- tool="revenue", date_list_csv="YYYY-MM-DD,YYYY-MM-DD,...": revenue y volumen por BU para fechas concretas. Para "ultimos N martes" calcula tu las fechas desde FECHA ACTUAL.
+- tool="top_products", bu_name="<BU>", start_date="YYYY-MM-DD", end_date="YYYY-MM-DD", limit_n=10: top N productos por revenue en esa BU durante el rango. SOLO funciona para "Picadeli" / "Juntos deli", "Tasting place", "Juntos farm shop" y "Distribution b2b" (las BU con datos line-level). Para Juntos house y Juntos boutique no hay desglose de productos disponible.
+- tool="list": sin args, lista nombres canonicos de BU.
 
 REGLAS:
-1. SIEMPRE suma los resultados que devuelva la herramienta cuando preguntan totales. Las RPCs devuelven datos GRANULARES (por mes, por fecha), nunca totales pre-calculados.
-2. Responde SIEMPRE en español, conciso y en markdown. Usa **negrita** para totales, tablas para comparativas multi-BU, bullets para listas.
-3. Da numeros con separador de miles (1.234) y € en monedas.
-4. Si la herramienta devuelve vacio o error, dilo claramente — no inventes datos.`;
+1. SIEMPRE suma los resultados que devuelva la herramienta cuando preguntan totales.
+2. Si la pregunta es "top N productos en X BU en Y mes/periodo" → usa tool=top_products con start_date/end_date del primer al último día del periodo.
+3. Responde SIEMPRE en español, conciso y en markdown. **Negrita** para totales, tablas para comparativas, bullets para listas.
+4. Numeros con separador de miles (1.234) y € en monedas.
+5. Si la herramienta devuelve vacio/error, dilo claramente — no inventes datos. Si la BU pedida no tiene line-level (Juntos house, Juntos boutique), díselo.`;
 
 function buildWorkflow() {
     const nodes = [
@@ -125,11 +129,15 @@ function buildWorkflow() {
                 workflowInputs: {
                     mappingMode: 'defineBelow',
                     value: {
-                        tool: "={{ $fromAI('tool', 'Acción: search, transactions, revenue o list', 'string') }}",
+                        tool: "={{ $fromAI('tool', 'Acción: search, transactions, revenue, top_products o list', 'string') }}",
                         q: "={{ $fromAI('q', 'Para tool=search: termino del producto. Vacio para otras tools.', 'string', '') }}",
                         year_arg: "={{ $fromAI('year_arg', 'Para tool=transactions: año entero (2024, 2025). 0 para otras tools.', 'number', 0) }}",
                         bu_names_csv: "={{ $fromAI('bu_names_csv', 'Para tool=transactions: BU separadas por coma. Vacio para todas.', 'string', '') }}",
                         date_list_csv: "={{ $fromAI('date_list_csv', 'Para tool=revenue: fechas YYYY-MM-DD separadas por coma.', 'string', '') }}",
+                        bu_name: "={{ $fromAI('bu_name', 'Para tool=top_products: una sola BU (ej. \"Tasting place\", \"Picadeli\", \"Juntos farm shop\", \"Distribution b2b\").', 'string', '') }}",
+                        start_date: "={{ $fromAI('start_date', 'Para tool=top_products: fecha inicio YYYY-MM-DD (incluida).', 'string', '') }}",
+                        end_date: "={{ $fromAI('end_date', 'Para tool=top_products: fecha fin YYYY-MM-DD (incluida).', 'string', '') }}",
+                        limit_n: "={{ $fromAI('limit_n', 'Para tool=top_products: cuantos productos devolver (5, 10, 20).', 'number', 10) }}",
                     },
                     matchingColumns: [],
                     schema: [
@@ -138,6 +146,10 @@ function buildWorkflow() {
                         { id: 'year_arg', displayName: 'year_arg', required: false, defaultMatch: false, display: true, type: 'number', canBeUsedToMatch: true },
                         { id: 'bu_names_csv', displayName: 'bu_names_csv', required: false, defaultMatch: false, display: true, type: 'string', canBeUsedToMatch: true },
                         { id: 'date_list_csv', displayName: 'date_list_csv', required: false, defaultMatch: false, display: true, type: 'string', canBeUsedToMatch: true },
+                        { id: 'bu_name', displayName: 'bu_name', required: false, defaultMatch: false, display: true, type: 'string', canBeUsedToMatch: true },
+                        { id: 'start_date', displayName: 'start_date', required: false, defaultMatch: false, display: true, type: 'string', canBeUsedToMatch: true },
+                        { id: 'end_date', displayName: 'end_date', required: false, defaultMatch: false, display: true, type: 'string', canBeUsedToMatch: true },
+                        { id: 'limit_n', displayName: 'limit_n', required: false, defaultMatch: false, display: true, type: 'number', canBeUsedToMatch: true },
                     ],
                     attemptToConvertTypes: false,
                     convertFieldsToString: false,
