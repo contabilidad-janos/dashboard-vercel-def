@@ -12,10 +12,10 @@ const WEBHOOK_URL = 'https://n8n.juntosfarmn8n.cloud/webhook/sales-chat';
 const newSessionId = () => `s_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`;
 
 const EXAMPLE_PROMPTS = [
-    '¿Cuántas limonadas se han vendido en total?',
-    '¿Cuántas transacciones tuvieron Juntos house, Tasting place y Distribution b2b en 2024?',
-    'Compara los últimos 5 martes por revenue de cada BU',
-    'Top 5 productos vendidos en Tasting place en abril',
+    'How many lemonades have been sold in total?',
+    'How many transactions did Juntos house, Tasting place and Distribution b2b have in 2024?',
+    'Compare the last 5 Tuesdays by revenue for each BU',
+    'Top 5 products sold at Tasting place in April',
 ];
 
 const ChatFullscreen = ({ open, onClose }) => {
@@ -67,7 +67,7 @@ const ChatFullscreen = ({ open, onClose }) => {
             setMessages(m => [...m, { role: 'assistant', text: reply, question: message }]);
         } catch (e) {
             setError(e.message || String(e));
-            setMessages(m => [...m, { role: 'assistant', text: '_Lo siento, hubo un error consultando los datos._' }]);
+            setMessages(m => [...m, { role: 'assistant', text: '_Sorry, there was an error querying the data._' }]);
         } finally {
             setBusy(false);
         }
@@ -91,14 +91,14 @@ const ChatFullscreen = ({ open, onClose }) => {
                         <Sparkles className="w-4 h-4 text-primary" />
                     </div>
                     <div>
-                        <h2 className="font-serif text-lg text-primary">Asistente de ventas</h2>
-                        <p className="text-[11px] text-gray-500">Gemini 3 Flash · consulta tu base de datos</p>
+                        <h2 className="font-serif text-lg text-primary">Sales Assistant</h2>
+                        <p className="text-[11px] text-gray-500">Gemini 3 Flash · queries your database</p>
                     </div>
                 </div>
                 <button
                     onClick={onClose}
                     className="text-gray-400 hover:text-gray-700 p-2 rounded-lg hover:bg-gray-100 transition"
-                    title="Cerrar (Esc)"
+                    title="Close (Esc)"
                 >
                     <X className="w-5 h-5" />
                 </button>
@@ -109,8 +109,8 @@ const ChatFullscreen = ({ open, onClose }) => {
                 {messages.length === 0 && (
                     <div className="max-w-2xl mx-auto text-center mt-8">
                         <Sparkles className="w-10 h-10 text-primary/40 mx-auto mb-4" />
-                        <h3 className="font-serif text-2xl text-primary mb-2">¿Sobre qué quieres preguntar?</h3>
-                        <p className="text-sm text-gray-500 mb-8">Pregunto sobre productos, transacciones, comparativas de fechas. Tengo memoria durante esta sesión.</p>
+                        <h3 className="font-serif text-2xl text-primary mb-2">What would you like to ask?</h3>
+                        <p className="text-sm text-gray-500 mb-8">Ask me about products, transactions, date comparisons. I keep memory during this session.</p>
                         <div className="grid sm:grid-cols-2 gap-3">
                             {EXAMPLE_PROMPTS.map(p => (
                                 <button
@@ -130,7 +130,7 @@ const ChatFullscreen = ({ open, onClose }) => {
                     {busy && (
                         <div className="flex items-center gap-2 text-sm text-gray-500 px-2">
                             <Loader2 className="w-4 h-4 animate-spin" />
-                            Pensando…
+                            Thinking…
                         </div>
                     )}
                     {error && (
@@ -150,7 +150,7 @@ const ChatFullscreen = ({ open, onClose }) => {
                         value={input}
                         onChange={e => setInput(e.target.value)}
                         onKeyDown={onKeyDownInput}
-                        placeholder="Escribe tu pregunta…  (Enter para enviar · Shift+Enter para salto de línea)"
+                        placeholder="Type your question…  (Enter to send · Shift+Enter for new line)"
                         className="flex-1 resize-none rounded-xl border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent max-h-40"
                         style={{ minHeight: '52px' }}
                     />
@@ -165,11 +165,11 @@ const ChatFullscreen = ({ open, onClose }) => {
                         )}
                     >
                         <Send className="w-4 h-4" />
-                        Enviar
+                        Send
                     </button>
                 </div>
                 <p className="text-[10px] text-gray-400 text-center mt-2">
-                    Las respuestas vienen de tu base de datos del dashboard. La IA puede equivocarse — verifica cifras críticas.
+                    Answers come from your dashboard's database. AI can make mistakes — verify critical figures.
                 </p>
             </div>
         </div>
@@ -207,14 +207,14 @@ const MessageBubble = ({ role, text, question }) => {
                             <button
                                 onClick={() => exportMessageToPDF(text, { title: inferredTitle })}
                                 className="inline-flex items-center gap-1.5 text-[11px] font-medium text-gray-500 hover:text-primary hover:bg-gray-50 px-2 py-1 rounded-md transition-colors"
-                                title="Descargar como PDF"
+                                title="Download as PDF"
                             >
                                 <FileText className="w-3.5 h-3.5" /> PDF
                             </button>
                             <button
                                 onClick={() => exportMessageToXLSX(text, { title: inferredTitle, question })}
                                 className="inline-flex items-center gap-1.5 text-[11px] font-medium text-gray-500 hover:text-primary hover:bg-gray-50 px-2 py-1 rounded-md transition-colors"
-                                title="Descargar como Excel"
+                                title="Download as Excel"
                             >
                                 <Sheet className="w-3.5 h-3.5" /> Excel
                             </button>
