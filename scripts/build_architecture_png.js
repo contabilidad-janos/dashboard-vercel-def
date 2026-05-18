@@ -25,25 +25,25 @@ const C = {
     cardOrange:'#FBE9DC',
 };
 
-// Each step gets a lucide icon name + its stroke color
+// Plain-English steps, no codebase jargon, no personal names.
 const CAPTURE = [
-    { icon: 'GlassWater',    title: 'Cliente compra una limonada', tech: 'Físico',       desc: 'En Juntos deli (o cualquier outlet del grupo).' },
-    { icon: 'ScanLine',      title: 'TPV del outlet la registra',  tech: 'TPV',          desc: 'Producto, precio, hora, método de pago.' },
-    { icon: 'Landmark',      title: 'ICG recibe la venta',          tech: 'Contabilidad', desc: 'Sistema contable consolida ventas del día.' },
-    { icon: 'Download',      title: 'Janos descarga CSV',           tech: 'Semanal',      desc: 'Sheet5, VENTAS PICADELI, VENTAS CAN ESCARRER.' },
-    { icon: 'Cog',           title: 'Scripts importan',             tech: 'Node.js',      desc: 'Normalizan, deduplican (row_hash), upsert.' },
-    { icon: 'Database',      title: 'Supabase guarda',              tech: 'Postgres',     desc: 'sales_daily_def, sales_records, picadeli/can_escarrer_sales.' },
-    { icon: 'BarChart3',     title: 'Dashboard React lo pinta',     tech: 'Vite + React', desc: 'KPIs, comparativas YoY, Best Selling Products.' },
+    { icon: 'GlassWater', title: 'Customer buys a lemonade', tech: 'Outlet',       desc: 'At any Juntos location.' },
+    { icon: 'ScanLine',   title: 'POS records the sale',     tech: 'POS',          desc: 'Item, price, time.' },
+    { icon: 'Landmark',   title: 'Sale lands in accounting', tech: 'Accounting',   desc: 'Daily roll-up by outlet.' },
+    { icon: 'Download',   title: 'Weekly export',            tech: 'Weekly',       desc: 'Spreadsheets pulled once a week.' },
+    { icon: 'Cog',        title: 'Importer cleans the data', tech: 'Automation',   desc: 'Normalizes and deduplicates.' },
+    { icon: 'Database',   title: 'Database stores it',       tech: 'Database',     desc: 'Ready to query.' },
+    { icon: 'BarChart3',  title: 'Dashboard shows it',       tech: 'Dashboard',    desc: 'KPIs and year-over-year trends.' },
 ];
 
 const CHAT = [
-    { icon: 'MessageSquare', title: '«¿Cuántas limonadas vendimos?»', tech: 'Usuario',      desc: 'POST al webhook n8n con sessionId.' },
-    { icon: 'Webhook',       title: 'Webhook n8n arranca',             tech: 'n8n',          desc: 'Workflow "SALES DASHBOARD - Chat AI".' },
-    { icon: 'Sparkles',      title: 'AI Agent elige tool',             tech: 'Gemini 3.1',   desc: 'Decide tool=search, q="LIMONADA".' },
-    { icon: 'Wrench',        title: 'Dispatcher despacha',             tech: 'Sub-workflow', desc: 'Route a la RPC correcta de Supabase.' },
-    { icon: 'Database',      title: 'RPC busca y agrega',              tech: 'Postgres',     desc: 'ILIKE con índice GIN trigram, <100ms.' },
-    { icon: 'FileText',      title: 'Gemini formatea respuesta',       tech: 'Markdown',     desc: 'Tabla + total + composición de variantes.' },
-    { icon: 'Send',          title: 'Usuario recibe la respuesta',     tech: 'PDF · XLSX',   desc: 'Descarga generada en el navegador.' },
+    { icon: 'MessageSquare', title: '"How many lemonades did we sell?"', tech: 'User',     desc: 'A simple question in plain language.' },
+    { icon: 'Webhook',       title: 'Assistant receives the question',   tech: 'Backend',  desc: 'Routed to the AI workflow.' },
+    { icon: 'Sparkles',      title: 'AI picks the right tool',           tech: 'AI',       desc: 'Understands intent, plans the query.' },
+    { icon: 'Wrench',        title: 'Tool queries the database',         tech: 'Lookup',   desc: 'Fetches only the rows that matter.' },
+    { icon: 'Database',      title: 'Database returns the data',         tech: 'Database', desc: 'Filtered and aggregated.' },
+    { icon: 'FileText',      title: 'AI writes a clear answer',          tech: 'Answer',   desc: 'Numbers, table, short summary.' },
+    { icon: 'Send',          title: 'User exports if needed',            tech: 'Export',   desc: 'One click to PDF or Excel.' },
 ];
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
@@ -183,47 +183,45 @@ function buildSvg() {
   <rect width="100%" height="100%" fill="url(#bgGrad)"/>
 
   <!-- Header -->
-  ${text(MARGIN, 100, 'EL VIAJE DE UNA LIMONADA', { size: 16, weight: '700', color: C.accent })}
-  ${text(MARGIN, 168, 'De la venta física a la respuesta del asistente IA', { size: 42, weight: '600', color: C.primary, family: 'Lora, serif' })}
-  ${text(MARGIN, 215, 'Cómo cada limonada vendida en Juntos deli acaba en una conversación con Juntos Inteligence —', { size: 16, color: '#555' })}
-  ${text(MARGIN, 238, 'dos flujos que conectan tienda, contabilidad y modelos de lenguaje.', { size: 16, color: '#555' })}
+  ${text(MARGIN, 100, 'THE JOURNEY OF A LEMONADE', { size: 16, weight: '700', color: C.accent })}
+  ${text(MARGIN, 168, 'From a sale at the counter to an answer on your screen', { size: 40, weight: '600', color: C.primary, family: 'Lora, serif' })}
+  ${text(MARGIN, 215, 'How every sale is captured, stored, and turned into a conversation with the assistant.', { size: 16, color: '#555' })}
 
-  <line x1="${MARGIN}" y1="265" x2="${W - MARGIN}" y2="265" stroke="${C.accent}" stroke-width="1.5" opacity="0.35"/>
-  ${text(W - MARGIN, 200, 'Juntos · Sales Dashboard', { size: 16, weight: '600', color: C.primary, family: 'Lora, serif', anchor: 'end' })}
-  ${text(W - MARGIN, 222, new Date().toLocaleDateString('es-ES', { day: '2-digit', month: 'long', year: 'numeric' }), { size: 11, color: C.muted, anchor: 'end' })}
+  <line x1="${MARGIN}" y1="252" x2="${W - MARGIN}" y2="252" stroke="${C.accent}" stroke-width="1.5" opacity="0.35"/>
+  ${text(W - MARGIN, 168, 'Juntos · Sales Dashboard', { size: 16, weight: '600', color: C.primary, family: 'Lora, serif', anchor: 'end' })}
 
   <!-- CAPTURE timeline -->
-  ${drawTimeline(CAPTURE, TIMELINE_TOP, PALETTES.capture, 'FASE 1 · CAPTURA')}
+  ${drawTimeline(CAPTURE, TIMELINE_TOP, PALETTES.capture, 'STEP 1 · CAPTURE')}
 
   <!-- Bridge -->
   <g>
     <line x1="${MARGIN}" y1="${TIMELINE_TOP + 290}" x2="${W - MARGIN}" y2="${TIMELINE_TOP + 290}" stroke="${C.muted}" stroke-dasharray="4,4" stroke-width="1" opacity="0.5"/>
-    <rect x="${W/2 - 200}" y="${TIMELINE_TOP + 278}" width="400" height="26" rx="13" ry="13" fill="${C.cardGreen}" stroke="${C.accent}"/>
-    ${text(W/2, TIMELINE_TOP + 296, 'Los datos quedan listos en Supabase', { size: 12, weight: '600', color: C.primary, anchor: 'middle' })}
+    <rect x="${W/2 - 180}" y="${TIMELINE_TOP + 278}" width="360" height="26" rx="13" ry="13" fill="${C.cardGreen}" stroke="${C.accent}"/>
+    ${text(W/2, TIMELINE_TOP + 296, 'Data is ready in the database', { size: 12, weight: '600', color: C.primary, anchor: 'middle' })}
   </g>
 
   <!-- CHAT timeline -->
-  ${drawTimeline(CHAT, TIMELINE_BOT, PALETTES.chat, 'FASE 2 · IA EN VIVO')}
+  ${drawTimeline(CHAT, TIMELINE_BOT, PALETTES.chat, 'STEP 2 · ASK THE ASSISTANT')}
 
   <!-- Footer KPIs -->
   <g transform="translate(${MARGIN}, ${H - 140})">
     <rect x="0"    y="0" width="700" height="100" rx="14" ry="14" fill="#fff" stroke="${C.border}"/>
-    ${text(24, 42, '~7 días', { size: 30, weight: '700', color: C.primary, family: 'Lora, serif' })}
-    ${text(24, 68, 'Latencia datos · desde TPV hasta dashboard', { size: 12, color: '#666' })}
-    ${text(24, 87, 'limitado por el export semanal de ICG', { size: 11, color: C.muted })}
+    ${text(24, 42, '~7 days', { size: 32, weight: '700', color: C.primary, family: 'Lora, serif' })}
+    ${text(24, 70, 'Data freshness', { size: 14, weight: '600', color: '#444' })}
+    ${text(24, 90, 'from the counter to the dashboard', { size: 12, color: C.muted })}
 
     <rect x="740"  y="0" width="700" height="100" rx="14" ry="14" fill="#fff" stroke="${C.border}"/>
-    ${text(764, 42, '~4 seg', { size: 30, weight: '700', color: C.primary, family: 'Lora, serif' })}
-    ${text(764, 68, 'Respuesta IA · pregunta hasta markdown', { size: 12, color: '#666' })}
-    ${text(764, 87, 'incluye lookup en Postgres con índice trigram', { size: 11, color: C.muted })}
+    ${text(764, 42, '~4 sec', { size: 32, weight: '700', color: C.primary, family: 'Lora, serif' })}
+    ${text(764, 70, 'Answer time', { size: 14, weight: '600', color: '#444' })}
+    ${text(764, 90, 'from question to written answer', { size: 12, color: C.muted })}
 
     <rect x="1480" y="0" width="760" height="100" rx="14" ry="14" fill="#fff" stroke="${C.border}"/>
-    ${text(1504, 42, '€0,002', { size: 30, weight: '700', color: C.primary, family: 'Lora, serif' })}
-    ${text(1504, 68, 'Coste medio por consulta · Gemini 3.1 Flash Lite', { size: 12, color: '#666' })}
-    ${text(1504, 87, 'OpenRouter $0.25 input / $1.50 output por M tokens', { size: 11, color: C.muted })}
+    ${text(1504, 42, '€0.002', { size: 32, weight: '700', color: C.primary, family: 'Lora, serif' })}
+    ${text(1504, 70, 'Cost per question', { size: 14, weight: '600', color: '#444' })}
+    ${text(1504, 90, 'less than a third of a cent', { size: 12, color: C.muted })}
   </g>
 
-  ${text(W / 2, H - 22, 'Juntos · Sales Dashboard · arquitectura end-to-end', { size: 11, color: C.muted, anchor: 'middle' })}
+  ${text(W / 2, H - 22, 'Juntos · Sales Dashboard', { size: 11, color: C.muted, anchor: 'middle' })}
 </svg>`;
 }
 
