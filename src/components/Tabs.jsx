@@ -8,7 +8,6 @@ const Tabs = ({ activeTab, onTabChange }) => {
         { id: '2024', label: '2024 Overview' },
         { id: 'details', label: 'Detailed Sales & Comparison' },
         { id: 'best-selling', label: 'Best Selling Products' },
-        { id: 'architecture', label: 'Cómo funciona' },
     ];
 
     return (

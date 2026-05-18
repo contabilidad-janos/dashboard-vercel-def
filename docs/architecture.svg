@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1500" viewBox="0 0 2400 1500">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FBF8F4"/>
+      <stop offset="100%" stop-color="#F9F6F2"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#bgGrad)"/>
+
+  <!-- Header -->
+  <text x="80" y="100" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#6E8C71" text-anchor="start">EL VIAJE DE UNA LIMONADA</text>
+  <text x="80" y="168" font-family="Lora, serif" font-size="42" font-weight="600" fill="#3D4C41" text-anchor="start">De la venta física a la respuesta del asistente IA</text>
+  <text x="80" y="215" font-family="Inter, sans-serif" font-size="16" font-weight="normal" fill="#555" text-anchor="start">Cómo cada limonada vendida en Juntos deli acaba en una conversación con Juntos Inteligence —</text>
+  <text x="80" y="238" font-family="Inter, sans-serif" font-size="16" font-weight="normal" fill="#555" text-anchor="start">dos flujos que conectan tienda, contabilidad y modelos de lenguaje.</text>
+
+  <line x1="80" y1="265" x2="2320" y2="265" stroke="#6E8C71" stroke-width="1.5" opacity="0.35"/>
+  <text x="2320" y="200" font-family="Lora, serif" font-size="16" font-weight="600" fill="#3D4C41" text-anchor="end">Juntos · Sales Dashboard</text>
+  <text x="2320" y="222" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#A9A9A9" text-anchor="end">18 de mayo de 2026</text>
+
+  <!-- CAPTURE timeline -->
+  
+        <rect x="80" y="270" width="170" height="28" rx="14" ry="14" fill="#B09B80"/>
+        <text x="165" y="288" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">FASE 1 · CAPTURA</text>
+    
+            <line x1="336" y1="440" x2="404" y2="440" stroke="#A9A9A9" stroke-width="2"/>
+            <polygon points="404,435 412,440 404,445" fill="#A9A9A9"/>
+        
+            <line x1="666" y1="440" x2="734" y2="440" stroke="#A9A9A9" stroke-width="2"/>
+            <polygon points="734,435 742,440 734,445" fill="#A9A9A9"/>
+        
+            <line x1="996" y1="440" x2="1064" y2="440" stroke="#A9A9A9" stroke-width="2"/>
+            <polygon points="1064,435 1072,440 1064,445" fill="#A9A9A9"/>
+        
+            <line x1="1326" y1="440" x2="1394" y2="440" stroke="#A9A9A9" stroke-width="2"/>
+            <polygon points="1394,435 1402,440 1394,445" fill="#A9A9A9"/>
+        
+            <line x1="1656" y1="440" x2="1724" y2="440" stroke="#A9A9A9" stroke-width="2"/>
+            <polygon points="1724,435 1732,440 1724,445" fill="#A9A9A9"/>
+        
+            <line x1="1986" y1="440" x2="2054" y2="440" stroke="#A9A9A9" stroke-width="2"/>
+            <polygon points="2054,435 2062,440 2054,445" fill="#A9A9A9"/>
+        
+        <rect x="80" y="320" width="260" height="240" rx="16" ry="16"
+              fill="#F2EBE0" stroke="#E5E0D5" stroke-width="1.5"/>
+    
+        <circle cx="108" cy="348" r="20" fill="#3D4C41"/>
+        <text x="108" y="355" font-family="Lora, serif" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">1</text>
+    
+        <rect x="269" y="338" width="57" height="22" rx="11" ry="11" fill="#B09B80"/>
+        <text x="297.5" y="353" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">FÍSICO</text>
+    
+        <g transform="translate(186, 396) scale(2)"
+           fill="none" stroke="#3D4C41" stroke-width="1.7"
+           stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5.116 4.104A1 1 0 0 1 6.11 3h11.78a1 1 0 0 1 .994 1.105L17.19 20.21A2 2 0 0 1 15.2 22H8.8a2 2 0 0 1-2-1.79z"/><path d="M6 12a5 5 0 0 1 6 0 5 5 0 0 0 6 0"/>
+        </g><text x="210" y="470" font-family="Lora, serif" font-size="14.5" font-weight="600" fill="#3D4C41" text-anchor="middle">Cliente compra una</text><text x="210" y="490" font-family="Lora, serif" font-size="14.5" font-weight="600" fill="#3D4C41" text-anchor="middle">limonada</text><text x="210" y="520" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">En Juntos deli (o cualquier</text><text x="210" y="534" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">outlet del grupo).</text>
+        <rect x="410" y="320" width="260" height="240" rx="16" ry="16"
+              fill="#F2EBE0" stroke="#E5E0D5" stroke-width="1.5"/>
+    
+        <circle cx="438" cy="348" r="20" fill="#3D4C41"/>
+        <text x="438" y="355" font-family="Lora, serif" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">2</text>
+    
+        <rect x="618.5" y="338" width="37.5" height="22" rx="11" ry="11" fill="#B09B80"/>
+        <text x="637.25" y="353" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">TPV</text>
+    
+        <g transform="translate(516, 396) scale(2)"
+           fill="none" stroke="#3D4C41" stroke-width="1.7"
+           stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M7 12h10"/>
+        </g><text x="540" y="470" font-family="Lora, serif" font-size="14.5" font-weight="600" fill="#3D4C41" text-anchor="middle">TPV del outlet la</text><text x="540" y="490" font-family="Lora, serif" font-size="14.5" font-weight="600" fill="#3D4C41" text-anchor="middle">registra</text><text x="540" y="520" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">Producto, precio, hora, método de</text><text x="540" y="534" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">pago.</text>
+        <rect x="740" y="320" width="260" height="240" rx="16" ry="16"
+              fill="#F2EBE0" stroke="#E5E0D5" stroke-width="1.5"/>
+    
+        <circle cx="768" cy="348" r="20" fill="#3D4C41"/>
+        <text x="768" y="355" font-family="Lora, serif" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">3</text>
+    
+        <rect x="890" y="338" width="96" height="22" rx="11" ry="11" fill="#B09B80"/>
+        <text x="938" y="353" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">CONTABILIDAD</text>
+    
+        <g transform="translate(846, 396) scale(2)"
+           fill="none" stroke="#3D4C41" stroke-width="1.7"
+           stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 18v-7"/><path d="M11.119 2.205a2 2 0 0 1 1.762 0l7.84 3.846A.5.5 0 0 1 20.5 7h-17a.5.5 0 0 1-.22-.949z"/><path d="M14 18v-7"/><path d="M18 18v-7"/><path d="M3 22h18"/><path d="M6 18v-7"/>
+        </g><text x="870" y="470" font-family="Lora, serif" font-size="14.5" font-weight="600" fill="#3D4C41" text-anchor="middle">ICG recibe la venta</text><text x="870" y="500" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">Sistema contable consolida ventas</text><text x="870" y="514" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">del día.</text>
+        <rect x="1070" y="320" width="260" height="240" rx="16" ry="16"
+              fill="#F2EBE0" stroke="#E5E0D5" stroke-width="1.5"/>
+    
+        <circle cx="1098" cy="348" r="20" fill="#3D4C41"/>
+        <text x="1098" y="355" font-family="Lora, serif" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">4</text>
+    
+        <rect x="1252.5" y="338" width="63.5" height="22" rx="11" ry="11" fill="#B09B80"/>
+        <text x="1284.25" y="353" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">SEMANAL</text>
+    
+        <g transform="translate(1176, 396) scale(2)"
+           fill="none" stroke="#3D4C41" stroke-width="1.7"
+           stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/>
+        </g><text x="1200" y="470" font-family="Lora, serif" font-size="14.5" font-weight="600" fill="#3D4C41" text-anchor="middle">Janos descarga CSV</text><text x="1200" y="500" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">Sheet5, VENTAS PICADELI, VENTAS</text><text x="1200" y="514" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">CAN ESCARRER.</text>
+        <rect x="1400" y="320" width="260" height="240" rx="16" ry="16"
+              fill="#F2EBE0" stroke="#E5E0D5" stroke-width="1.5"/>
+    
+        <circle cx="1428" cy="348" r="20" fill="#3D4C41"/>
+        <text x="1428" y="355" font-family="Lora, serif" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">5</text>
+    
+        <rect x="1582.5" y="338" width="63.5" height="22" rx="11" ry="11" fill="#B09B80"/>
+        <text x="1614.25" y="353" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">NODE.JS</text>
+    
+        <g transform="translate(1506, 396) scale(2)"
+           fill="none" stroke="#3D4C41" stroke-width="1.7"
+           stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 10.27 7 3.34"/><path d="m11 13.73-4 6.93"/><path d="M12 22v-2"/><path d="M12 2v2"/><path d="M14 12h8"/><path d="m17 20.66-1-1.73"/><path d="m17 3.34-1 1.73"/><path d="M2 12h2"/><path d="m20.66 17-1.73-1"/><path d="m20.66 7-1.73 1"/><path d="m3.34 17 1.73-1"/><path d="m3.34 7 1.73 1"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="12" r="8"/>
+        </g><text x="1530" y="470" font-family="Lora, serif" font-size="14.5" font-weight="600" fill="#3D4C41" text-anchor="middle">Scripts importan</text><text x="1530" y="500" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">Normalizan, deduplican</text><text x="1530" y="514" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">(row_hash), upsert.</text>
+        <rect x="1730" y="320" width="260" height="240" rx="16" ry="16"
+              fill="#F2EBE0" stroke="#E5E0D5" stroke-width="1.5"/>
+    
+        <circle cx="1758" cy="348" r="20" fill="#3D4C41"/>
+        <text x="1758" y="355" font-family="Lora, serif" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">6</text>
+    
+        <rect x="1906" y="338" width="70" height="22" rx="11" ry="11" fill="#B09B80"/>
+        <text x="1941" y="353" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">POSTGRES</text>
+    
+        <g transform="translate(1836, 396) scale(2)"
+           fill="none" stroke="#3D4C41" stroke-width="1.7"
+           stroke-linecap="round" stroke-linejoin="round">
+            <ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/>
+        </g><text x="1860" y="470" font-family="Lora, serif" font-size="14.5" font-weight="600" fill="#3D4C41" text-anchor="middle">Supabase guarda</text><text x="1860" y="500" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">sales_daily_def, sales_records,</text><text x="1860" y="514" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">picadeli/can_escarrer_sales.</text>
+        <rect x="2060" y="320" width="260" height="240" rx="16" ry="16"
+              fill="#F2EBE0" stroke="#E5E0D5" stroke-width="1.5"/>
+    
+        <circle cx="2088" cy="348" r="20" fill="#3D4C41"/>
+        <text x="2088" y="355" font-family="Lora, serif" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">7</text>
+    
+        <rect x="2210" y="338" width="96" height="22" rx="11" ry="11" fill="#B09B80"/>
+        <text x="2258" y="353" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">VITE + REACT</text>
+    
+        <g transform="translate(2166, 396) scale(2)"
+           fill="none" stroke="#3D4C41" stroke-width="1.7"
+           stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/>
+        </g><text x="2190" y="470" font-family="Lora, serif" font-size="14.5" font-weight="600" fill="#3D4C41" text-anchor="middle">Dashboard React lo pinta</text><text x="2190" y="500" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">KPIs, comparativas YoY, Best</text><text x="2190" y="514" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">Selling Products.</text>
+
+  <!-- Bridge -->
+  <g>
+    <line x1="80" y1="610" x2="2320" y2="610" stroke="#A9A9A9" stroke-dasharray="4,4" stroke-width="1" opacity="0.5"/>
+    <rect x="1000" y="598" width="400" height="26" rx="13" ry="13" fill="#E8EFE8" stroke="#6E8C71"/>
+    <text x="1200" y="616" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#3D4C41" text-anchor="middle">Los datos quedan listos en Supabase</text>
+  </g>
+
+  <!-- CHAT timeline -->
+  
+        <rect x="80" y="900" width="170" height="28" rx="14" ry="14" fill="#D9825F"/>
+        <text x="165" y="918" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">FASE 2 · IA EN VIVO</text>
+    
+            <line x1="336" y1="1070" x2="404" y2="1070" stroke="#A9A9A9" stroke-width="2"/>
+            <polygon points="404,1065 412,1070 404,1075" fill="#A9A9A9"/>
+        
+            <line x1="666" y1="1070" x2="734" y2="1070" stroke="#A9A9A9" stroke-width="2"/>
+            <polygon points="734,1065 742,1070 734,1075" fill="#A9A9A9"/>
+        
+            <line x1="996" y1="1070" x2="1064" y2="1070" stroke="#A9A9A9" stroke-width="2"/>
+            <polygon points="1064,1065 1072,1070 1064,1075" fill="#A9A9A9"/>
+        
+            <line x1="1326" y1="1070" x2="1394" y2="1070" stroke="#A9A9A9" stroke-width="2"/>
+            <polygon points="1394,1065 1402,1070 1394,1075" fill="#A9A9A9"/>
+        
+            <line x1="1656" y1="1070" x2="1724" y2="1070" stroke="#A9A9A9" stroke-width="2"/>
+            <polygon points="1724,1065 1732,1070 1724,1075" fill="#A9A9A9"/>
+        
+            <line x1="1986" y1="1070" x2="2054" y2="1070" stroke="#A9A9A9" stroke-width="2"/>
+            <polygon points="2054,1065 2062,1070 2054,1075" fill="#A9A9A9"/>
+        
+        <rect x="80" y="950" width="260" height="240" rx="16" ry="16"
+              fill="#FBE9DC" stroke="#E5E0D5" stroke-width="1.5"/>
+    
+        <circle cx="108" cy="978" r="20" fill="#3D4C41"/>
+        <text x="108" y="985" font-family="Lora, serif" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">1</text>
+    
+        <rect x="262.5" y="968" width="63.5" height="22" rx="11" ry="11" fill="#D9825F"/>
+        <text x="294.25" y="983" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">USUARIO</text>
+    
+        <g transform="translate(186, 1026) scale(2)"
+           fill="none" stroke="#3D4C41" stroke-width="1.7"
+           stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"/>
+        </g><text x="210" y="1100" font-family="Lora, serif" font-size="14.5" font-weight="600" fill="#3D4C41" text-anchor="middle">«¿Cuántas limonadas</text><text x="210" y="1120" font-family="Lora, serif" font-size="14.5" font-weight="600" fill="#3D4C41" text-anchor="middle">vendimos?»</text><text x="210" y="1150" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">POST al webhook n8n con</text><text x="210" y="1164" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">sessionId.</text>
+        <rect x="410" y="950" width="260" height="240" rx="16" ry="16"
+              fill="#FBE9DC" stroke="#E5E0D5" stroke-width="1.5"/>
+    
+        <circle cx="438" cy="978" r="20" fill="#3D4C41"/>
+        <text x="438" y="985" font-family="Lora, serif" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">2</text>
+    
+        <rect x="618.5" y="968" width="37.5" height="22" rx="11" ry="11" fill="#D9825F"/>
+        <text x="637.25" y="983" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">N8N</text>
+    
+        <g transform="translate(516, 1026) scale(2)"
+           fill="none" stroke="#3D4C41" stroke-width="1.7"
+           stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 16.98h-5.99c-1.1 0-1.95.94-2.48 1.9A4 4 0 0 1 2 17c.01-.7.2-1.4.57-2"/><path d="m6 17 3.13-5.78c.53-.97.1-2.18-.5-3.1a4 4 0 1 1 6.89-4.06"/><path d="m12 6 3.13 5.73C15.66 12.7 16.9 13 18 13a4 4 0 0 1 0 8"/>
+        </g><text x="540" y="1100" font-family="Lora, serif" font-size="14.5" font-weight="600" fill="#3D4C41" text-anchor="middle">Webhook n8n arranca</text><text x="540" y="1130" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">Workflow "SALES DASHBOARD - Chat</text><text x="540" y="1144" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">AI".</text>
+        <rect x="740" y="950" width="260" height="240" rx="16" ry="16"
+              fill="#FBE9DC" stroke="#E5E0D5" stroke-width="1.5"/>
+    
+        <circle cx="768" cy="978" r="20" fill="#3D4C41"/>
+        <text x="768" y="985" font-family="Lora, serif" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">3</text>
+    
+        <rect x="903" y="968" width="83" height="22" rx="11" ry="11" fill="#D9825F"/>
+        <text x="944.5" y="983" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">GEMINI 3.1</text>
+    
+        <g transform="translate(846, 1026) scale(2)"
+           fill="none" stroke="#3D4C41" stroke-width="1.7"
+           stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/>
+        </g><text x="870" y="1100" font-family="Lora, serif" font-size="14.5" font-weight="600" fill="#3D4C41" text-anchor="middle">AI Agent elige tool</text><text x="870" y="1130" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">Decide tool=search, q="LIMONADA".</text>
+        <rect x="1070" y="950" width="260" height="240" rx="16" ry="16"
+              fill="#FBE9DC" stroke="#E5E0D5" stroke-width="1.5"/>
+    
+        <circle cx="1098" cy="978" r="20" fill="#3D4C41"/>
+        <text x="1098" y="985" font-family="Lora, serif" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">4</text>
+    
+        <rect x="1220" y="968" width="96" height="22" rx="11" ry="11" fill="#D9825F"/>
+        <text x="1268" y="983" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">SUB-WORKFLOW</text>
+    
+        <g transform="translate(1176, 1026) scale(2)"
+           fill="none" stroke="#3D4C41" stroke-width="1.7"
+           stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"/>
+        </g><text x="1200" y="1100" font-family="Lora, serif" font-size="14.5" font-weight="600" fill="#3D4C41" text-anchor="middle">Dispatcher despacha</text><text x="1200" y="1130" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">Route a la RPC correcta de</text><text x="1200" y="1144" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">Supabase.</text>
+        <rect x="1400" y="950" width="260" height="240" rx="16" ry="16"
+              fill="#FBE9DC" stroke="#E5E0D5" stroke-width="1.5"/>
+    
+        <circle cx="1428" cy="978" r="20" fill="#3D4C41"/>
+        <text x="1428" y="985" font-family="Lora, serif" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">5</text>
+    
+        <rect x="1576" y="968" width="70" height="22" rx="11" ry="11" fill="#D9825F"/>
+        <text x="1611" y="983" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">POSTGRES</text>
+    
+        <g transform="translate(1506, 1026) scale(2)"
+           fill="none" stroke="#3D4C41" stroke-width="1.7"
+           stroke-linecap="round" stroke-linejoin="round">
+            <ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/>
+        </g><text x="1530" y="1100" font-family="Lora, serif" font-size="14.5" font-weight="600" fill="#3D4C41" text-anchor="middle">RPC busca y agrega</text><text x="1530" y="1130" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">ILIKE con índice GIN trigram,</text><text x="1530" y="1144" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">&lt;100ms.</text>
+        <rect x="1730" y="950" width="260" height="240" rx="16" ry="16"
+              fill="#FBE9DC" stroke="#E5E0D5" stroke-width="1.5"/>
+    
+        <circle cx="1758" cy="978" r="20" fill="#3D4C41"/>
+        <text x="1758" y="985" font-family="Lora, serif" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">6</text>
+    
+        <rect x="1906" y="968" width="70" height="22" rx="11" ry="11" fill="#D9825F"/>
+        <text x="1941" y="983" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">MARKDOWN</text>
+    
+        <g transform="translate(1836, 1026) scale(2)"
+           fill="none" stroke="#3D4C41" stroke-width="1.7"
+           stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/>
+        </g><text x="1860" y="1100" font-family="Lora, serif" font-size="14.5" font-weight="600" fill="#3D4C41" text-anchor="middle">Gemini formatea</text><text x="1860" y="1120" font-family="Lora, serif" font-size="14.5" font-weight="600" fill="#3D4C41" text-anchor="middle">respuesta</text><text x="1860" y="1150" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">Tabla + total + composición de</text><text x="1860" y="1164" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">variantes.</text>
+        <rect x="2060" y="950" width="260" height="240" rx="16" ry="16"
+              fill="#FBE9DC" stroke="#E5E0D5" stroke-width="1.5"/>
+    
+        <circle cx="2088" cy="978" r="20" fill="#3D4C41"/>
+        <text x="2088" y="985" font-family="Lora, serif" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">7</text>
+    
+        <rect x="2223" y="968" width="83" height="22" rx="11" ry="11" fill="#D9825F"/>
+        <text x="2264.5" y="983" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">PDF · XLSX</text>
+    
+        <g transform="translate(2166, 1026) scale(2)"
+           fill="none" stroke="#3D4C41" stroke-width="1.7"
+           stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/>
+        </g><text x="2190" y="1100" font-family="Lora, serif" font-size="14.5" font-weight="600" fill="#3D4C41" text-anchor="middle">Usuario recibe la</text><text x="2190" y="1120" font-family="Lora, serif" font-size="14.5" font-weight="600" fill="#3D4C41" text-anchor="middle">respuesta</text><text x="2190" y="1150" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">Descarga generada en el</text><text x="2190" y="1164" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#555" text-anchor="middle">navegador.</text>
+
+  <!-- Footer KPIs -->
+  <g transform="translate(80, 1360)">
+    <rect x="0"    y="0" width="700" height="100" rx="14" ry="14" fill="#fff" stroke="#E5E0D5"/>
+    <text x="24" y="42" font-family="Lora, serif" font-size="30" font-weight="700" fill="#3D4C41" text-anchor="start">~7 días</text>
+    <text x="24" y="68" font-family="Inter, sans-serif" font-size="12" font-weight="normal" fill="#666" text-anchor="start">Latencia datos · desde TPV hasta dashboard</text>
+    <text x="24" y="87" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#A9A9A9" text-anchor="start">limitado por el export semanal de ICG</text>
+
+    <rect x="740"  y="0" width="700" height="100" rx="14" ry="14" fill="#fff" stroke="#E5E0D5"/>
+    <text x="764" y="42" font-family="Lora, serif" font-size="30" font-weight="700" fill="#3D4C41" text-anchor="start">~4 seg</text>
+    <text x="764" y="68" font-family="Inter, sans-serif" font-size="12" font-weight="normal" fill="#666" text-anchor="start">Respuesta IA · pregunta hasta markdown</text>
+    <text x="764" y="87" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#A9A9A9" text-anchor="start">incluye lookup en Postgres con índice trigram</text>
+
+    <rect x="1480" y="0" width="760" height="100" rx="14" ry="14" fill="#fff" stroke="#E5E0D5"/>
+    <text x="1504" y="42" font-family="Lora, serif" font-size="30" font-weight="700" fill="#3D4C41" text-anchor="start">€0,002</text>
+    <text x="1504" y="68" font-family="Inter, sans-serif" font-size="12" font-weight="normal" fill="#666" text-anchor="start">Coste medio por consulta · Gemini 3.1 Flash Lite</text>
+    <text x="1504" y="87" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#A9A9A9" text-anchor="start">OpenRouter $0.25 input / $1.50 output por M tokens</text>
+  </g>
+
+  <text x="1200" y="1478" font-family="Inter, sans-serif" font-size="11" font-weight="normal" fill="#A9A9A9" text-anchor="middle">Juntos · Sales Dashboard · arquitectura end-to-end</text>
+</svg>
