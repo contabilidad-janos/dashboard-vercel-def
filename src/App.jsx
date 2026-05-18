@@ -8,6 +8,7 @@ import Dashboard2025 from './components/Dashboard2025';
 import Dashboard2024 from './components/Dashboard2024';
 import DashboardDetails from './components/DashboardDetails';
 import BestSellingProducts from './components/BestSellingProducts';
+import Architecture from './components/Architecture';
 import ChatLauncher from './components/chat/ChatLauncher';
 
 // Register ChartJS components globally
@@ -66,6 +67,12 @@ function App() {
         {activeTab === 'best-selling' && (
           <div id="page-best-selling" className="animate-in fade-in duration-500">
             <BestSellingProducts />
+          </div>
+        )}
+
+        {activeTab === 'architecture' && (
+          <div id="page-architecture" className="animate-in fade-in duration-500">
+            <Architecture />
           </div>
         )}
       </main>
