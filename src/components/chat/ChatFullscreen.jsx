@@ -15,19 +15,19 @@ const MODEL_LABEL = 'GLM 5.2 · OpenRouter';
 const newSessionId = () => `s_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`;
 
 const EXAMPLE_PROMPTS = [
-    '¿Cuántas limonadas se han vendido este año?',
-    '¿Cómo va Juntos house esta semana vs la semana anterior?',
-    'Top 5 productos en Tasting place este mes',
-    'Compara revenue por BU en mayo',
+    'How many lemonades have been sold this year?',
+    'How is Juntos house doing this week vs last week?',
+    'Top 5 products at Tasting place this month',
+    'Compare revenue by BU in May',
 ];
 
 // Status text that cycles while waiting for the agent. Sets the expectation
 // that the bot is doing real work, not silently hanging.
 const STATUS_STEPS = [
-    'Leyendo la pregunta…',
-    'Consultando la base de datos…',
-    'Analizando los datos…',
-    'Componiendo la respuesta…',
+    'Reading the question…',
+    'Querying the database…',
+    'Analyzing the data…',
+    'Composing the answer…',
 ];
 
 const ChatFullscreen = ({ open, onClose }) => {
@@ -111,7 +111,7 @@ const ChatFullscreen = ({ open, onClose }) => {
             const res = await fetch(WEBHOOK_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ message, sessionId: sessionIdRef.current, today }),
+                body: JSON.stringify({ message, sessionId: sessionIdRef.current, today, locale: 'en' }),
                 signal: ctrl.signal,
             });
             if (!res.ok) {
@@ -122,7 +122,7 @@ const ChatFullscreen = ({ open, onClose }) => {
             setMessages(m => [...m, { role: 'assistant', text: reply, question: message }]);
         } catch (e) {
             if (e.name === 'AbortError') {
-                setMessages(m => [...m, { role: 'assistant', text: '_Respuesta cancelada._', question: message, cancelled: true }]);
+                setMessages(m => [...m, { role: 'assistant', text: '_Response cancelled._', question: message, cancelled: true }]);
             } else {
                 setError(e.message || String(e));
             }
@@ -186,15 +186,15 @@ const ChatFullscreen = ({ open, onClose }) => {
                         <button
                             onClick={newConversation}
                             className="inline-flex items-center gap-1.5 text-[12px] font-medium text-gray-500 hover:text-primary px-3 py-2 rounded-lg hover:bg-gray-50 transition"
-                            title="Empezar nueva conversación"
+                            title="Start a new conversation"
                         >
-                            <Plus className="w-3.5 h-3.5" /> Nueva
+                            <Plus className="w-3.5 h-3.5" /> New
                         </button>
                     )}
                     <button
                         onClick={onClose}
                         className="text-gray-400 hover:text-gray-700 p-2 rounded-lg hover:bg-gray-100 transition"
-                        title="Cerrar (Esc)"
+                        title="Close (Esc)"
                     >
                         <X className="w-5 h-5" />
                     </button>
@@ -206,9 +206,9 @@ const ChatFullscreen = ({ open, onClose }) => {
                 {messages.length === 0 && (
                     <div className="max-w-2xl mx-auto text-center mt-8">
                         <Sparkles className="w-10 h-10 text-primary/40 mx-auto mb-4" />
-                        <h3 className="font-serif text-2xl text-primary mb-2">¿Sobre qué quieres preguntar?</h3>
+                        <h3 className="font-serif text-2xl text-primary mb-2">What would you like to ask?</h3>
                         <p className="text-sm text-gray-500 mb-8">
-                            Pregunto sobre productos, transacciones, comparativas de fechas y BUs. Recuerdo el contexto durante esta conversación.
+                            Ask me about products, transactions, date comparisons and BUs. I keep context across this conversation.
                         </p>
                         <div className="grid sm:grid-cols-2 gap-3">
                             {EXAMPLE_PROMPTS.map(p => (
@@ -251,7 +251,7 @@ const ChatFullscreen = ({ open, onClose }) => {
                                 onClick={retry}
                                 className="inline-flex items-center gap-1.5 text-xs font-medium bg-white border border-red-300 hover:bg-red-100 px-2.5 py-1 rounded-md transition"
                             >
-                                <RefreshCcw className="w-3 h-3" /> Reintentar
+                                <RefreshCcw className="w-3 h-3" /> Retry
                             </button>
                         </div>
                     )}
@@ -263,7 +263,7 @@ const ChatFullscreen = ({ open, onClose }) => {
                         onClick={scrollToBottom}
                         className="sticky bottom-4 left-1/2 -translate-x-1/2 mx-auto flex items-center gap-1.5 bg-primary text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-lg hover:scale-105 transition-transform"
                     >
-                        <ArrowDown className="w-3 h-3" /> Bajar
+                        <ArrowDown className="w-3 h-3" /> Jump down
                     </button>
                 )}
             </div>
@@ -278,7 +278,7 @@ const ChatFullscreen = ({ open, onClose }) => {
                         onChange={e => setInput(e.target.value)}
                         onKeyDown={onKeyDownInput}
                         disabled={busy}
-                        placeholder={busy ? 'Esperando respuesta…' : 'Escribe tu pregunta…  (Enter para enviar · Shift+Enter para salto de línea)'}
+                        placeholder={busy ? 'Waiting for the answer…' : 'Type your question…  (Enter to send · Shift+Enter for new line)'}
                         className="flex-1 resize-none rounded-xl border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all disabled:bg-gray-50 disabled:cursor-not-allowed"
                         style={{ minHeight: '52px', maxHeight: '200px' }}
                     />
@@ -286,10 +286,10 @@ const ChatFullscreen = ({ open, onClose }) => {
                         <button
                             onClick={cancel}
                             className="rounded-xl px-4 py-3 flex items-center gap-2 text-sm font-medium bg-red-50 border border-red-200 text-red-700 hover:bg-red-100 transition"
-                            title="Detener la respuesta"
+                            title="Stop the response"
                         >
                             <StopCircle className="w-4 h-4" />
-                            Detener
+                            Stop
                         </button>
                     ) : (
                         <button
@@ -303,12 +303,12 @@ const ChatFullscreen = ({ open, onClose }) => {
                             )}
                         >
                             <Send className="w-4 h-4" />
-                            Enviar
+                            Send
                         </button>
                     )}
                 </div>
                 <p className="text-[10px] text-gray-400 text-center mt-2">
-                    Las respuestas vienen de la base de datos del dashboard. La IA puede equivocarse — verifica cifras críticas.
+                    Answers come from the dashboard's database. AI can make mistakes — verify critical figures.
                 </p>
             </div>
         </div>
@@ -395,23 +395,23 @@ const MessageBubble = ({ role, text, question, cancelled, isLast, onSuggestion }
                                 <button
                                     onClick={copy}
                                     className="inline-flex items-center gap-1.5 text-[11px] font-medium text-gray-500 hover:text-primary hover:bg-gray-50 px-2 py-1 rounded-md transition-colors"
-                                    title="Copiar respuesta"
+                                    title="Copy answer"
                                 >
                                     {copied
-                                        ? <><Check className="w-3.5 h-3.5 text-emerald-600" /> <span className="text-emerald-700">Copiado</span></>
-                                        : <><Copy className="w-3.5 h-3.5" /> Copiar</>}
+                                        ? <><Check className="w-3.5 h-3.5 text-emerald-600" /> <span className="text-emerald-700">Copied</span></>
+                                        : <><Copy className="w-3.5 h-3.5" /> Copy</>}
                                 </button>
                                 <button
                                     onClick={() => exportMessageToPDF(text, { title: inferredTitle })}
                                     className="inline-flex items-center gap-1.5 text-[11px] font-medium text-gray-500 hover:text-primary hover:bg-gray-50 px-2 py-1 rounded-md transition-colors"
-                                    title="Descargar como PDF"
+                                    title="Download as PDF"
                                 >
                                     <FileText className="w-3.5 h-3.5" /> PDF
                                 </button>
                                 <button
                                     onClick={() => exportMessageToXLSX(text, { title: inferredTitle, question })}
                                     className="inline-flex items-center gap-1.5 text-[11px] font-medium text-gray-500 hover:text-primary hover:bg-gray-50 px-2 py-1 rounded-md transition-colors"
-                                    title="Descargar como Excel"
+                                    title="Download as Excel"
                                 >
                                     <Sheet className="w-3.5 h-3.5" /> Excel
                                 </button>
@@ -446,21 +446,21 @@ const buildSuggestions = (question, reply) => {
     const has = (re) => re.test(q) || re.test((reply || '').toLowerCase());
 
     // Time-based
-    if (has(/semana|week/)) out.push('¿Cómo va vs la semana anterior?');
-    if (has(/mes|month|abril|mayo|junio|julio|enero|febrero|marzo|agosto|septiembre|octubre|noviembre|diciembre/)) out.push('¿Y vs el mismo mes de 2025?');
-    if (has(/(2025|2026)/)) out.push('Compáralo con el año anterior');
+    if (has(/week|semana/)) out.push('How does it compare to last week?');
+    if (has(/month|january|february|march|april|may|june|july|august|september|october|november|december|enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre/)) out.push('And vs the same month in 2025?');
+    if (has(/(2025|2026)/)) out.push('Compare it to the previous year');
 
     // BU-based
-    if (has(/juntos house|tasting|picadeli|juntos deli|farm shop|boutique|distribution/)) out.push('Desglosa por día');
-    if (has(/revenue|facturación|ventas|ingresos/)) out.push('Sácame el volumen de transacciones también');
-    if (has(/transacciones|tickets|pax|órdenes/)) out.push('Y el revenue por BU');
+    if (has(/juntos house|tasting|picadeli|juntos deli|farm shop|boutique|distribution/)) out.push('Break it down by day');
+    if (has(/revenue|sales|ingresos/)) out.push('Show me transaction volume too');
+    if (has(/transactions|tickets|pax|orders|transacciones|órdenes/)) out.push('And revenue by BU');
 
     // Product-based
-    if (has(/producto|top|vendido|limonada/)) out.push('Hazme un gráfico');
-    if (has(/limonada|cerveza|pollo|pita|hummus/)) out.push('¿Cuántas se vendieron el mes pasado?');
+    if (has(/product|top|sold|lemonade|limonada/)) out.push('Show me a chart');
+    if (has(/lemonade|beer|chicken|pita|hummus|limonada|pollo/)) out.push('How many were sold last month?');
 
     // Default for empty
-    if (!out.length) out.push('Hazme un gráfico', 'Compáralo con el año anterior');
+    if (!out.length) out.push('Show me a chart', 'Compare it to last year');
 
     // Dedupe + cap to 3
     return [...new Set(out)].slice(0, 3);
