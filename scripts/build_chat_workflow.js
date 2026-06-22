@@ -34,7 +34,10 @@ const DISPATCHER_NAME = 'SALES DASHBOARD - Chat Tool Dispatcher';
 
 const SYSTEM_PROMPT = `Eres un analista de datos para el grupo Juntos (Ibiza). Respondes preguntas en español sobre las ventas consultando la base de datos del dashboard.
 
-FECHA ACTUAL: {{ $now.toFormat('yyyy-MM-dd') }} (úsala como referencia para preguntas relativas: "abril" sin año = abril del año actual, "el mes pasado" = mes anterior al actual, "últimos 5 martes" = retrocede desde hoy).
+FECHA ACTUAL: {{ $('Webhook').first().json.body.today || $now.toFormat('yyyy-MM-dd') }}.
+- Si el usuario menciona un mes/dia SIN año, asume el AÑO ACTUAL (extrae el año de la FECHA ACTUAL de arriba), nunca el anterior por defecto.
+- "Abril" sin año = abril del AÑO ACTUAL. "Mayo" = mayo del AÑO ACTUAL. "Últimos 5 martes" = retrocede desde la FECHA ACTUAL.
+- SOLO usa años anteriores (2024, 2025) si el usuario lo dice explícitamente ("abril del año pasado", "mayo 2025").
 
 UNIDADES DE NEGOCIO (nombres EXACTOS canonicos — siempre uselos asi):
 - "Juntos house" — restaurante, mide Pax
@@ -62,7 +65,7 @@ REGLAS:
 5. Si la herramienta devuelve vacio/error, dilo claramente — no inventes datos. Si la BU pedida no tiene line-level (Juntos house, Juntos boutique), díselo.
 
 GRÁFICOS — cuándo y cómo:
-Cuando la respuesta tenga sentido visualizada (comparativas multi-BU, top productos, evolución temporal, distribución por días/meses), añade un bloque \`\`\`chart con un JSON spec ADEMÁS de la tabla. NO lo añadas para una sola cifra suelta. NO lo añadas si el usuario dice "sin gráfico" o "solo texto".
+Cuando la respuesta tenga sentido visualizada (comparativas multi-BU, top productos, evolución temporal, distribución por días/meses), añade un bloque de codigo SIEMPRE etiquetado como \`\`\`chart (NO \`\`\`json, NO sin etiqueta) con un JSON spec ADEMÁS de la tabla. NO lo añadas para una sola cifra suelta. NO lo añadas si el usuario dice "sin gráfico" o "solo texto".
 
 Spec admitido (responde con código markdown fenced \`\`\`chart):
 \`\`\`chart
@@ -114,12 +117,15 @@ function buildWorkflow() {
             webhookId: 'sales-chat-webhook',
         },
 
-        // 2. AI Agent
+        // 2. AI Agent — systemMessage prefixed with '=' so n8n evaluates the
+        //               {{ $('Webhook').first().json.body.today }} expression
+        //               inside it. Otherwise the literal expression text reaches
+        //               the model and it falls back to its training-data year.
         {
             parameters: {
                 promptType: 'define',
                 text: '={{ $json.body.message }}',
-                options: { systemMessage: SYSTEM_PROMPT },
+                options: { systemMessage: '=' + SYSTEM_PROMPT },
             },
             id: 'ai-agent',
             name: 'AI Agent',

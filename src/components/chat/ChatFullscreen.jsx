@@ -53,10 +53,11 @@ const ChatFullscreen = ({ open, onClose }) => {
         setMessages(m => [...m, { role: 'user', text: message }]);
         setBusy(true);
         try {
+            const today = new Date().toISOString().slice(0, 10);
             const res = await fetch(WEBHOOK_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ message, sessionId: sessionIdRef.current }),
+                body: JSON.stringify({ message, sessionId: sessionIdRef.current, today }),
             });
             if (!res.ok) {
                 throw new Error(`HTTP ${res.status} — ${(await res.text()).slice(0, 200)}`);
@@ -205,20 +206,29 @@ const MessageBubble = ({ role, text, question }) => {
                             <ReactMarkdown
                                 remarkPlugins={[remarkGfm]}
                                 components={{
-                                    // Intercept ```chart ...``` fenced blocks and render with ChatChart.
+                                    // Intercept code blocks that look like a chart spec (either
+                                    // explicit ```chart, ```json with the right shape, or no lang
+                                    // tag at all). Models often emit ```json instead of ```chart.
                                     code({ inline, className, children, ...props }) {
-                                        const isChart = /(^|\s)language-chart(\s|$)/.test(className || '');
-                                        if (!inline && isChart) {
-                                            const raw = String(children).trim();
+                                        if (inline) return <code className={className} {...props}>{children}</code>;
+                                        const lang = (className || '').match(/language-([\w-]+)/)?.[1] || '';
+                                        const raw = String(children).trim();
+                                        const looksLikeChart = lang === 'chart' || lang === '' || lang === 'json';
+                                        if (looksLikeChart && raw.startsWith('{') && raw.endsWith('}')) {
                                             try {
                                                 const spec = JSON.parse(raw);
-                                                return <ChatChart spec={spec} />;
+                                                const isChartSpec =
+                                                    ['bar', 'line', 'pie', 'doughnut'].includes(spec.type) &&
+                                                    (Array.isArray(spec.labels) || Array.isArray(spec.values) || Array.isArray(spec.datasets));
+                                                if (isChartSpec) return <ChatChart spec={spec} />;
                                             } catch {
-                                                return (
-                                                    <pre className="text-[11px] text-red-700 bg-red-50 border border-red-200 rounded p-2">
-                                                        Chart JSON inválido: {raw.slice(0, 200)}…
-                                                    </pre>
-                                                );
+                                                if (lang === 'chart') {
+                                                    return (
+                                                        <pre className="text-[11px] text-red-700 bg-red-50 border border-red-200 rounded p-2">
+                                                            Chart JSON inválido: {raw.slice(0, 200)}…
+                                                        </pre>
+                                                    );
+                                                }
                                             }
                                         }
                                         return <code className={className} {...props}>{children}</code>;
