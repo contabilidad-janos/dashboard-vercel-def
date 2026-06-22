@@ -28,7 +28,7 @@ const N8N_HOST = 'n8n.juntosfarmn8n.cloud';
 const N8N_KEY = process.env.N8N_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZTUxOGRiOS01MzVkLTRiMDMtYjk5Zi0xM2QyOWI3YzVkMzQiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiZTBiZDljM2MtZDZmNi00MmU5LWJkYmItNjcxNTkyYjA0YzM5IiwiaWF0IjoxNzczMDAwMDcwfQ.t0VchsyvDrgYIVzuq0EClvp1nipbuZIJgM9IRsRqDBA';
 
 const WEBHOOK_PATH = 'sales-chat';
-const MODEL = 'google/gemini-3.1-flash-lite';
+const MODEL = 'z-ai/glm-5.2';
 const DISPATCHER_ID = '8Pvf8ZyvgBSirdN6'; // Sub-workflow id created by build_chat_tool_subworkflow.js
 const DISPATCHER_NAME = 'SALES DASHBOARD - Chat Tool Dispatcher';
 
@@ -59,7 +59,42 @@ REGLAS:
 2. Si la pregunta es "top N productos en X BU en Y mes/periodo" → usa tool=top_products con start_date/end_date del primer al último día del periodo.
 3. Responde SIEMPRE en español, conciso y en markdown. **Negrita** para totales, tablas para comparativas, bullets para listas.
 4. Numeros con separador de miles (1.234) y € en monedas.
-5. Si la herramienta devuelve vacio/error, dilo claramente — no inventes datos. Si la BU pedida no tiene line-level (Juntos house, Juntos boutique), díselo.`;
+5. Si la herramienta devuelve vacio/error, dilo claramente — no inventes datos. Si la BU pedida no tiene line-level (Juntos house, Juntos boutique), díselo.
+
+GRÁFICOS — cuándo y cómo:
+Cuando la respuesta tenga sentido visualizada (comparativas multi-BU, top productos, evolución temporal, distribución por días/meses), añade un bloque \`\`\`chart con un JSON spec ADEMÁS de la tabla. NO lo añadas para una sola cifra suelta. NO lo añadas si el usuario dice "sin gráfico" o "solo texto".
+
+Spec admitido (responde con código markdown fenced \`\`\`chart):
+\`\`\`chart
+{
+  "type": "bar" | "line" | "pie" | "doughnut",
+  "title": "Texto descriptivo corto",
+  "labels": ["L1", "L2", ...],
+  "values": [n1, n2, ...],
+  "unit": "€" | "uds" | "pax" | "%" | ""
+}
+\`\`\`
+
+Para series múltiples (ej. comparar 2 años o varias BU):
+\`\`\`chart
+{
+  "type": "line",
+  "title": "Revenue por BU — última semana",
+  "labels": ["Lun","Mar","Mié","Jue","Vie","Sáb","Dom"],
+  "datasets": [
+    {"name": "Juntos house", "values": [82,79,64,58,96,118,57]},
+    {"name": "Picadeli",     "values": [208,219,230,241,214,138,0]}
+  ],
+  "unit": "uds"
+}
+\`\`\`
+
+Reglas para el chart:
+- bar = comparativa entre categorías o BUs. line = evolución temporal. pie/doughnut = distribución (parte/todo) cuando son ≤ 8 categorías.
+- title breve (≤ 60 chars).
+- unit: "€" para revenue, "uds" para units, "pax" para personas, "%" para porcentajes.
+- Los valores y labels deben coincidir 1:1 en longitud.
+- NO inventes datos. Solo grafica lo que la herramienta devolvió.`;
 
 function buildWorkflow() {
     const nodes = [

@@ -4,6 +4,7 @@ import remarkGfm from 'remark-gfm';
 import { X, Send, Sparkles, Loader2, FileText, Sheet } from 'lucide-react';
 import clsx from 'clsx';
 import { exportMessageToPDF, exportMessageToXLSX } from './exportUtils';
+import ChatChart from './ChatChart';
 
 const WEBHOOK_URL = 'https://n8n.juntosfarmn8n.cloud/webhook/sales-chat';
 
@@ -201,7 +202,31 @@ const MessageBubble = ({ role, text, question }) => {
                 ) : (
                     <>
                         <div className="markdown-body prose-sm max-w-none">
-                            <ReactMarkdown remarkPlugins={[remarkGfm]}>{text}</ReactMarkdown>
+                            <ReactMarkdown
+                                remarkPlugins={[remarkGfm]}
+                                components={{
+                                    // Intercept ```chart ...``` fenced blocks and render with ChatChart.
+                                    code({ inline, className, children, ...props }) {
+                                        const isChart = /(^|\s)language-chart(\s|$)/.test(className || '');
+                                        if (!inline && isChart) {
+                                            const raw = String(children).trim();
+                                            try {
+                                                const spec = JSON.parse(raw);
+                                                return <ChatChart spec={spec} />;
+                                            } catch {
+                                                return (
+                                                    <pre className="text-[11px] text-red-700 bg-red-50 border border-red-200 rounded p-2">
+                                                        Chart JSON inválido: {raw.slice(0, 200)}…
+                                                    </pre>
+                                                );
+                                            }
+                                        }
+                                        return <code className={className} {...props}>{children}</code>;
+                                    },
+                                }}
+                            >
+                                {text}
+                            </ReactMarkdown>
                         </div>
                         <div className="flex items-center gap-2 mt-3 pt-2 border-t border-gray-100">
                             <button
