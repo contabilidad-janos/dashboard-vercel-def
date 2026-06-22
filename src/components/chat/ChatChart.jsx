@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Bar, Line, Pie, Doughnut } from 'react-chartjs-2';
 import { Maximize2, X } from 'lucide-react';
 import { formatCurrency, formatNumber } from '../../utils/formatters';
+import BubbleField from './BubbleField';
+import KpiTiles from './KpiTiles';
 
 // Dashboard palette
 const PALETTE = ['#6E8C71', '#B09B80', '#D9825F', '#E8C89A', '#879FA8', '#566E7A', '#C4BFAA', '#A9A9A9'];
@@ -28,8 +30,15 @@ const formatValue = (v, unit) => {
  *     unit?: '€' | 'uds' | 'pax' | '%' | '',
  *   }
  */
-const ChatChart = ({ spec }) => {
+const ChatChart = ({ spec, onDrill }) => {
     const [full, setFull] = useState(false);
+
+    // Specialised renderers for the non-cartesian spec types.
+    if (spec.type === 'bubble') return <BubbleField spec={spec} onDrill={onDrill} />;
+    if (spec.type === 'kpi') return <KpiTiles spec={spec} />;
+
+    const drillFor = (label) =>
+        (spec.drill ? spec.drill.replace('{label}', label) : `Break down "${label}" in more detail`);
 
     const datasets = (spec.datasets && spec.datasets.length)
         ? spec.datasets
@@ -55,6 +64,14 @@ const ChatChart = ({ spec }) => {
     const options = {
         responsive: true,
         maintainAspectRatio: false,
+        onClick: onDrill ? (_evt, elements) => {
+            if (!elements?.length) return;
+            const label = (spec.labels || [])[elements[0].index];
+            if (label != null) onDrill(drillFor(String(label)));
+        } : undefined,
+        onHover: onDrill ? (evt, elements) => {
+            if (evt?.native?.target) evt.native.target.style.cursor = elements?.length ? 'pointer' : 'default';
+        } : undefined,
         plugins: {
             legend: { display: isPie || datasets.length > 1, position: 'bottom', labels: { font: { size: 11 } } },
             tooltip: {

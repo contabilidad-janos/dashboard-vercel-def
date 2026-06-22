@@ -14,6 +14,25 @@ const MODEL_LABEL = 'GLM 5.2 · OpenRouter';
 
 const newSessionId = () => `s_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`;
 
+const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+
+// Pull display text out of one n8n streaming chunk line. Tolerant of several
+// shapes: SSE `data:` lines, raw JSON event objects, or plain text.
+const extractDelta = (line) => {
+    let s = line.trim();
+    if (!s || s === '[DONE]') return '';
+    if (s.startsWith('data:')) s = s.slice(5).trim();
+    if (!s || s === '[DONE]') return '';
+    try {
+        const o = JSON.parse(s);
+        if (typeof o === 'string') return o;
+        if (o.type && ['begin', 'end', 'error'].includes(o.type)) return o.content || '';
+        return o.content ?? o.delta ?? o.text ?? o.output ?? o.reply ?? o.chunk ?? '';
+    } catch {
+        return s; // plain-text chunk
+    }
+};
+
 const EXAMPLE_PROMPTS = [
     'How many lemonades have been sold this year?',
     'How is Juntos house doing this week vs last week?',
@@ -94,6 +113,20 @@ const ChatFullscreen = ({ open, onClose }) => {
     }, [input]);
 
     // ─── Networking ────────────────────────────────────────────────────────
+    // Update / finalise the trailing assistant message (the one being streamed).
+    const patchAssistant = useCallback((patch) => {
+        setMessages(m => {
+            const copy = m.slice();
+            for (let i = copy.length - 1; i >= 0; i--) {
+                if (copy[i].role === 'assistant') {
+                    copy[i] = { ...copy[i], ...(typeof patch === 'function' ? patch(copy[i]) : patch) };
+                    break;
+                }
+            }
+            return copy;
+        });
+    }, []);
+
     const send = useCallback(async (text) => {
         const message = (text ?? input).trim();
         if (!message || busy) return;
@@ -105,32 +138,80 @@ const ChatFullscreen = ({ open, onClose }) => {
 
         const ctrl = new AbortController();
         abortRef.current = ctrl;
+        let assistantOpen = false;
+        const openAssistant = () => {
+            if (assistantOpen) return;
+            assistantOpen = true;
+            setMessages(m => [...m, { role: 'assistant', text: '', question: message, streaming: true }]);
+        };
 
         try {
             const today = new Date().toISOString().slice(0, 10);
             const res = await fetch(WEBHOOK_URL, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 'Content-Type': 'application/json', Accept: 'text/event-stream, application/json' },
                 body: JSON.stringify({ message, sessionId: sessionIdRef.current, today, locale: 'en' }),
                 signal: ctrl.signal,
             });
             if (!res.ok) {
                 throw new Error(`HTTP ${res.status} — ${(await res.text()).slice(0, 200)}`);
             }
-            const data = await res.json();
-            const reply = data.reply || data.output || data.text || JSON.stringify(data);
-            setMessages(m => [...m, { role: 'assistant', text: reply, question: message }]);
+
+            const ctype = res.headers.get('content-type') || '';
+            const isStream = ctype.includes('text/event-stream') || ctype.includes('stream');
+
+            if (isStream && res.body?.getReader) {
+                // ── Real server-side streaming (SSE) ──
+                openAssistant();
+                const reader = res.body.getReader();
+                const decoder = new TextDecoder();
+                let buffer = '';
+                let got = false;
+                for (;;) {
+                    const { done, value } = await reader.read();
+                    if (done) break;
+                    buffer += decoder.decode(value, { stream: true });
+                    const lines = buffer.split('\n');
+                    buffer = lines.pop() || '';
+                    for (const ln of lines) {
+                        const d = extractDelta(ln);
+                        if (d) { got = true; patchAssistant(a => ({ text: a.text + d })); }
+                    }
+                }
+                const tail = extractDelta(buffer);
+                if (tail) { got = true; patchAssistant(a => ({ text: a.text + tail })); }
+                if (!got) throw new Error('Empty streaming response');
+                patchAssistant({ streaming: false });
+            } else {
+                // ── Plain JSON: reveal it progressively for a streaming feel ──
+                const data = await res.json();
+                const reply = data.reply || data.output || data.text || JSON.stringify(data);
+                openAssistant();
+                // Reveal by chunks, ~45 steps max, abortable, capped to ~1.3s total.
+                const total = reply.length;
+                const steps = Math.min(45, Math.max(1, Math.ceil(total / 14)));
+                const size = Math.ceil(total / steps);
+                for (let i = 0; i < total; i += size) {
+                    if (ctrl.signal.aborted) { patchAssistant({ text: reply, streaming: false }); break; }
+                    const upto = reply.slice(0, Math.min(total, i + size));
+                    patchAssistant({ text: upto });
+                    await sleep(Math.max(12, 1300 / steps));
+                }
+                patchAssistant({ text: reply, streaming: false });
+            }
         } catch (e) {
             if (e.name === 'AbortError') {
-                setMessages(m => [...m, { role: 'assistant', text: '_Response cancelled._', question: message, cancelled: true }]);
+                if (assistantOpen) patchAssistant(a => ({ streaming: false, text: a.text || '_Response cancelled._', cancelled: !a.text }));
+                else setMessages(m => [...m, { role: 'assistant', text: '_Response cancelled._', question: message, cancelled: true }]);
             } else {
+                if (assistantOpen) patchAssistant({ streaming: false });
                 setError(e.message || String(e));
             }
         } finally {
             setBusy(false);
             abortRef.current = null;
         }
-    }, [input, busy]);
+    }, [input, busy, patchAssistant]);
 
     const cancel = () => abortRef.current?.abort();
 
@@ -167,6 +248,8 @@ const ChatFullscreen = ({ open, onClose }) => {
     };
 
     if (!open) return null;
+
+    const lastMsg = messages[messages.length - 1];
 
     return (
         <div className="fixed inset-0 z-[60] bg-background flex flex-col">
@@ -230,11 +313,13 @@ const ChatFullscreen = ({ open, onClose }) => {
                             text={m.text}
                             question={m.question}
                             cancelled={m.cancelled}
+                            streaming={m.streaming}
                             isLast={i === messages.length - 1}
                             onSuggestion={send}
+                            onDrill={send}
                         />
                     ))}
-                    {busy && (
+                    {busy && !(lastMsg?.role === 'assistant' && lastMsg?.streaming && lastMsg?.text) && (
                         <div className="flex items-center gap-2 text-sm text-gray-500 px-2 transition-all">
                             <Loader2 className="w-4 h-4 animate-spin text-primary" />
                             <span className="animate-in fade-in duration-300" key={statusIdx}>
@@ -316,7 +401,7 @@ const ChatFullscreen = ({ open, onClose }) => {
 };
 
 // ─── Message bubble ────────────────────────────────────────────────────────
-const MessageBubble = ({ role, text, question, cancelled, isLast, onSuggestion }) => {
+const MessageBubble = ({ role, text, question, cancelled, streaming, isLast, onSuggestion, onDrill }) => {
     const isUser = role === 'user';
     const [copied, setCopied] = useState(false);
 
@@ -340,7 +425,7 @@ const MessageBubble = ({ role, text, question, cancelled, isLast, onSuggestion }
 
     // Suggestion chips: derive 2-3 follow-up questions from the previous turn.
     // We do it client-side rather than asking the model, to avoid round-trips.
-    const suggestions = isLast && !cancelled && !isUser ? buildSuggestions(question, text) : [];
+    const suggestions = isLast && !cancelled && !isUser && !streaming ? buildSuggestions(question, text) : [];
 
     return (
         <div className={clsx('flex animate-in fade-in slide-in-from-bottom-2 duration-300', isUser ? 'justify-end' : 'justify-start')}>
@@ -356,6 +441,13 @@ const MessageBubble = ({ role, text, question, cancelled, isLast, onSuggestion }
                     <p className="text-sm whitespace-pre-wrap leading-relaxed">{text}</p>
                 ) : (
                     <>
+                        {streaming && !text && (
+                            <div className="flex items-center gap-1 py-1">
+                                <span className="w-1.5 h-1.5 rounded-full bg-primary/50 animate-bounce" style={{ animationDelay: '0ms' }} />
+                                <span className="w-1.5 h-1.5 rounded-full bg-primary/50 animate-bounce" style={{ animationDelay: '150ms' }} />
+                                <span className="w-1.5 h-1.5 rounded-full bg-primary/50 animate-bounce" style={{ animationDelay: '300ms' }} />
+                            </div>
+                        )}
                         <div className="markdown-body prose-sm max-w-none">
                             <ReactMarkdown
                                 remarkPlugins={[remarkGfm]}
@@ -364,19 +456,26 @@ const MessageBubble = ({ role, text, question, cancelled, isLast, onSuggestion }
                                         if (inline) return <code className={className} {...props}>{children}</code>;
                                         const lang = (className || '').match(/language-([\w-]+)/)?.[1] || '';
                                         const raw = String(children).trim();
-                                        const looksLikeChart = lang === 'chart' || lang === '' || lang === 'json';
+                                        const looksLikeChart = ['chart', 'bubble', 'kpi', 'json', ''].includes(lang);
                                         if (looksLikeChart && raw.startsWith('{') && raw.endsWith('}')) {
                                             try {
                                                 const spec = JSON.parse(raw);
                                                 const isChartSpec =
-                                                    ['bar', 'line', 'pie', 'doughnut'].includes(spec.type) &&
-                                                    (Array.isArray(spec.labels) || Array.isArray(spec.values) || Array.isArray(spec.datasets));
-                                                if (isChartSpec) return <ChatChart spec={spec} />;
+                                                    (['bar', 'line', 'pie', 'doughnut'].includes(spec.type) &&
+                                                        (Array.isArray(spec.labels) || Array.isArray(spec.values) || Array.isArray(spec.datasets))) ||
+                                                    (spec.type === 'bubble' && Array.isArray(spec.bubbles)) ||
+                                                    (spec.type === 'kpi' && Array.isArray(spec.kpis));
+                                                if (isChartSpec) return <ChatChart spec={spec} onDrill={onDrill} />;
                                             } catch {
-                                                if (lang === 'chart') {
+                                                // While streaming, a chart block may still be incomplete —
+                                                // don't flash a parse error; just hold until it closes.
+                                                if (streaming && (lang === 'chart' || lang === 'bubble' || lang === 'kpi')) {
+                                                    return null;
+                                                }
+                                                if (lang === 'chart' || lang === 'bubble' || lang === 'kpi') {
                                                     return (
                                                         <pre className="text-[11px] text-red-700 bg-red-50 border border-red-200 rounded p-2">
-                                                            Chart JSON inválido: {raw.slice(0, 200)}…
+                                                            Invalid chart JSON: {raw.slice(0, 200)}…
                                                         </pre>
                                                     );
                                                 }
@@ -384,13 +483,34 @@ const MessageBubble = ({ role, text, question, cancelled, isLast, onSuggestion }
                                         }
                                         return <code className={className} {...props}>{children}</code>;
                                     },
+                                    tr({ children, ...props }) {
+                                        // Click-to-drill: clicking a body row asks a follow-up about its first cell.
+                                        return (
+                                            <tr
+                                                {...props}
+                                                className="hover:bg-primary/5 transition-colors"
+                                                onClick={(e) => {
+                                                    if (!onDrill) return;
+                                                    if (window.getSelection()?.toString()) return; // don't hijack text selection
+                                                    const cell = e.currentTarget.querySelector('td');
+                                                    const label = cell?.textContent?.trim();
+                                                    if (label) onDrill(`Break down "${label}" in more detail`);
+                                                }}
+                                            >
+                                                {children}
+                                            </tr>
+                                        );
+                                    },
                                 }}
                             >
                                 {text}
                             </ReactMarkdown>
+                            {streaming && text && (
+                                <span className="inline-block w-2 h-4 align-text-bottom bg-primary/60 ml-0.5 animate-pulse rounded-sm" />
+                            )}
                         </div>
 
-                        {!cancelled && (
+                        {!cancelled && !streaming && (
                             <div className="flex items-center gap-1 mt-3 pt-2 border-t border-gray-100">
                                 <button
                                     onClick={copy}
