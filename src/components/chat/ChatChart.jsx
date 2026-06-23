@@ -123,12 +123,12 @@ const ChatChart = ({ spec, onDrill }) => {
     return (
         <>
             {card(260)}
-            <div className="fixed inset-0 z-[70] bg-black/50 flex items-center justify-center p-6" onClick={() => setFull(false)}>
-                <div className="bg-white rounded-xl shadow-2xl w-full max-w-5xl max-h-[90vh] p-6 flex flex-col" onClick={(e) => e.stopPropagation()}>
+            <div className="fixed inset-0 z-[70] bg-white flex" onClick={() => setFull(false)}>
+                <div className="w-full h-full p-4 md:p-6 flex flex-col" onClick={(e) => e.stopPropagation()}>
                     <div className="flex items-start justify-between mb-3">
                         <h3 className="font-serif text-xl text-primary">{spec.title || 'Chart'}</h3>
-                        <button onClick={() => setFull(false)} className="text-gray-400 hover:text-gray-700 p-1">
-                            <X className="w-5 h-5" />
+                        <button onClick={() => setFull(false)} className="text-gray-400 hover:text-gray-700 p-1" title="Close">
+                            <X className="w-6 h-6" />
                         </button>
                     </div>
                     <div className="flex-1 min-h-0">

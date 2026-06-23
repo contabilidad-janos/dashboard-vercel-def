@@ -286,12 +286,8 @@ const ChatFullscreen = ({ open, onClose }) => {
                 </div>
             </header>
 
-            {/* Body: chat column + optional artifact panel on the left */}
+            {/* Body: chat column (left) + optional artifact panel (right, Claude-style) */}
             <div className="flex-1 flex min-h-0">
-                {artifact && (
-                    <ArtifactPanel artifact={artifact} onClose={() => setArtifact(null)} />
-                )}
-
                 <div className={clsx('flex-1 flex flex-col min-h-0', artifact && 'hidden md:flex')}>
                     {/* Messages */}
                     <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 md:px-8 py-8 relative">
@@ -407,6 +403,10 @@ const ChatFullscreen = ({ open, onClose }) => {
                         </p>
                     </div>
                 </div>
+
+                {artifact && (
+                    <ArtifactPanel artifact={artifact} onClose={() => setArtifact(null)} />
+                )}
             </div>
         </div>
     );
@@ -615,7 +615,7 @@ const ArtifactPanel = ({ artifact, onClose }) => {
         } catch { /* clipboard can be blocked on non-https */ }
     };
     return (
-        <div className="w-full md:w-1/2 md:max-w-[760px] border-r border-gray-200 bg-gray-100 flex flex-col min-h-0 animate-in slide-in-from-left duration-300">
+        <div className="w-full md:w-[58%] lg:w-[62%] shrink-0 border-l border-gray-200 bg-gray-100 flex flex-col min-h-0 animate-in slide-in-from-right duration-300">
             <div className="flex items-center justify-between gap-2 px-4 py-3 border-b border-gray-200 bg-white">
                 <div className="flex items-center gap-2 min-w-0">
                     <FileText className="w-4 h-4 text-primary shrink-0" />
