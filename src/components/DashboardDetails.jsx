@@ -74,10 +74,9 @@ const buildWeeklyFromRaw = (rawRecords, calendarYear, weekLabels) => {
             if (!rg) continue;
             if (r.date >= rg[0] && r.date <= rg[1]) {
                 sales[r.business_unit][i] += Number(r.revenue) || 0;
-                const vol = r.VOLUME;
-                const v = (vol == null || vol === '') ? 0
-                    : (typeof vol === 'number' ? vol : parseFloat(String(vol).replace(/,/g, '')) || 0);
-                trans[r.business_unit][i] += v;
+                // transactions = Pax / Tickets / Orders (merged from sales_records),
+                // NOT r.VOLUME which holds units sold.
+                trans[r.business_unit][i] += Number(r.transaction_count) || 0;
                 break;
             }
         }
@@ -270,10 +269,27 @@ const DashboardDetails = () => {
             const rawCurr = [...(rawData.raw2025 || []), ...(rawData.raw2026 || [])];
             const rawPrev = [...(rawData.raw2024 || []), ...(rawData.raw2025 || [])];
 
+            // Respect the selected metric: sales (€, VAT-aware), transactions
+            // (Pax/Tickets/Orders — no VAT), or spend (€/transaction).
+            const dayUnitVal = (recs, unit) => {
+                const rev = recs.reduce((s, r) => s + safeNum(r.revenue), 0);
+                const tr = recs.reduce((s, r) => s + (Number(r.transaction_count) || 0), 0);
+                if (metric === 'transactions') return tr;
+                if (metric === 'spend') return tr > 0 ? Math.round(getDisplayValue(rev, unit) / tr) : 0;
+                return getDisplayValue(rev, unit);
+            };
             const getVal = (rArr, dateStr, unit) => {
                 const recs = rArr.filter(r => r.date === dateStr);
-                if (unit === 'All Groups') return BUSINESS_UNITS.reduce((t, u) => t + getDisplayValue(recs.filter(r => r.business_unit === u).reduce((s, r) => s + safeNum(r.revenue), 0), u), 0);
-                return getDisplayValue(recs.filter(r => r.business_unit === unit).reduce((s, r) => s + safeNum(r.revenue), 0), unit);
+                if (unit === 'All Groups') {
+                    const grp = recs.filter(r => BUSINESS_UNITS.includes(r.business_unit));
+                    if (metric === 'spend') {
+                        const rev = grp.reduce((s, r) => s + getDisplayValue(safeNum(r.revenue), r.business_unit), 0);
+                        const tr = grp.reduce((s, r) => s + (Number(r.transaction_count) || 0), 0);
+                        return tr > 0 ? Math.round(rev / tr) : 0;
+                    }
+                    return BUSINESS_UNITS.reduce((t, u) => t + dayUnitVal(recs.filter(r => r.business_unit === u), u), 0);
+                }
+                return dayUnitVal(recs.filter(r => r.business_unit === unit), unit);
             };
 
             const ds = [];

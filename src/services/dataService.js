@@ -215,13 +215,28 @@ export const DataService = {
         return allData;
     },
 
+    /** Daily-def rows for a year, augmented with transaction_count (Pax / Tickets
+     *  / Orders) merged from sales_records by (date, business_unit). Lets the
+     *  raw-driven Weekly/Daily views show real transactions instead of
+     *  sales_daily_def.VOLUME (units sold, ≈4-5x headcount). */
+    _rawWithTrans: async (year, fetchDdef) => {
+        const [ddef, sr] = await Promise.all([fetchDdef(), DataService._fetchYearData(year)]);
+        const tc = {};
+        for (const r of sr) {
+            const name = r.business_units?.name;
+            if (!name) continue;
+            tc[`${r.date}__${name}`] = (tc[`${r.date}__${name}`] || 0) + (Number(r.transaction_count) || 0);
+        }
+        return ddef.map(r => ({ ...r, transaction_count: tc[`${r.date}__${r.business_unit}`] || 0 }));
+    },
+
     // ── 2025 METHODS ─────────────────────────────────────────────────────────
 
-    /** Returns raw daily records for 2025 (used for Daily view) */
-    get2025RawData: async () => DataService._fetchDailyDef2025(),
+    /** Returns raw daily records for 2025 (used for Daily/Weekly views) */
+    get2025RawData: async () => DataService._rawWithTrans(2025, DataService._fetchDailyDef2025),
 
-    /** Returns raw daily records for 2026 (used for Daily view that crosses year boundary) */
-    get2026RawData: async () => DataService._fetchDailyDef2026(),
+    /** Returns raw daily records for 2026 (used for Daily/Weekly views that cross year boundary) */
+    get2026RawData: async () => DataService._rawWithTrans(2026, DataService._fetchDailyDef2026),
 
     get2025SalesData: async () => {
         const [data, buList] = await Promise.all([
@@ -492,18 +507,20 @@ export const DataService = {
         return result;
     },
 
+    // Volume = transactions (Pax / Tickets / Orders) from sales_records.
+    // NOT sales_daily_def.VOLUME, which holds units sold (≈4-5x headcount) — same
+    // fix already applied to 2024/2025; 2026 had been left reading the wrong column.
     get2026TransData: async () => {
         const [data, buList] = await Promise.all([
-            DataService._fetchDailyDef2026(),
+            DataService._fetchYearData(2026),
             DataService.getBusinessUnits(),
         ]);
         const result = initBuArrays(buList, 12);
 
         data.forEach(record => {
-            if (!record.date) return;
-            const buName = BU_MAP[record.business_unit] || record.business_unit;
-            if (!result[buName]) return;
-            result[buName][new Date(record.date).getMonth()] += parseVolume(record.VOLUME);
+            const unitName = record.business_units?.name;
+            if (!unitName || !result[unitName]) return;
+            result[unitName][new Date(record.date).getMonth()] += Number(record.transaction_count) || 0;
         });
         return result;
     },
@@ -572,21 +589,19 @@ export const DataService = {
 
     get2026TransDataWeekly: async () => {
         const [data, buList] = await Promise.all([
-            DataService._fetchDailyDef2026(),
+            DataService._fetchYearData(2026),
             DataService.getBusinessUnits(),
         ]);
         const weeksCount = WEEKLY_LABELS_2026.length;
         const result = initBuArrays(buList, weeksCount);
 
         data.forEach(record => {
-            if (!record.date) return;
+            const unitName = record.business_units?.name;
+            if (!unitName || !result[unitName]) return;
             const dateObj = new Date(record.date);
-            const buName = BU_MAP[record.business_unit] || record.business_unit;
-            if (!result[buName]) return;
-
             const weekIdx = getWeekNumber(dateObj);
             if (weekIdx >= 0 && weekIdx < weeksCount) {
-                result[buName][weekIdx] += parseVolume(record.VOLUME);
+                result[unitName][weekIdx] += Number(record.transaction_count) || 0;
             }
         });
         return result;
