@@ -76,6 +76,14 @@ const ChatFullscreen = ({ open, onClose }) => {
         };
     }, [open, onClose]);
 
+    // Esc closes the artifact panel first (before closing the whole chat).
+    useEffect(() => {
+        if (!artifact) return;
+        const onKey = (e) => { if (e.key === 'Escape') { e.stopPropagation(); setArtifact(null); } };
+        window.addEventListener('keydown', onKey, true); // capture: runs before the chat-close handler
+        return () => window.removeEventListener('keydown', onKey, true);
+    }, [artifact]);
+
     // Auto-scroll to bottom on new messages, unless the user has scrolled up.
     useEffect(() => {
         const el = scrollRef.current;
@@ -288,7 +296,7 @@ const ChatFullscreen = ({ open, onClose }) => {
 
             {/* Body: chat column (left) + optional artifact panel (right, Claude-style) */}
             <div className="flex-1 flex min-h-0">
-                <div className={clsx('flex-1 flex flex-col min-h-0', artifact && 'hidden md:flex')}>
+                <div className={clsx('flex flex-col min-h-0 min-w-0', artifact ? 'hidden md:flex md:w-[36%] lg:w-[32%] shrink-0' : 'flex-1')}>
                     {/* Messages */}
                     <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 md:px-8 py-8 relative">
                 {messages.length === 0 && (
@@ -615,7 +623,7 @@ const ArtifactPanel = ({ artifact, onClose }) => {
         } catch { /* clipboard can be blocked on non-https */ }
     };
     return (
-        <div className="w-full md:w-[58%] lg:w-[62%] shrink-0 border-l border-gray-200 bg-gray-100 flex flex-col min-h-0 animate-in slide-in-from-right duration-300">
+        <div className="w-full md:flex-1 min-w-0 border-l border-gray-200 bg-gray-100 flex flex-col min-h-0 animate-in slide-in-from-right duration-300">
             <div className="flex items-center justify-between gap-2 px-4 py-3 border-b border-gray-200 bg-white">
                 <div className="flex items-center gap-2 min-w-0">
                     <FileText className="w-4 h-4 text-primary shrink-0" />
@@ -644,8 +652,8 @@ const ArtifactPanel = ({ artifact, onClose }) => {
                     </button>
                 </div>
             </div>
-            <div className="flex-1 overflow-y-auto p-4 md:p-6">
-                <div className="bg-white shadow-sm border border-gray-200 rounded-lg mx-auto max-w-[680px] p-6 md:p-8 markdown-body prose-sm">
+            <div className="flex-1 overflow-auto p-4 md:p-6">
+                <div className="bg-white shadow-sm border border-gray-200 rounded-lg mx-auto max-w-[900px] p-6 md:p-8 markdown-body prose-sm">
                     <RichMarkdown text={artifact.text} />
                 </div>
             </div>
