@@ -56,6 +56,7 @@ const ChatFullscreen = ({ open, onClose }) => {
     const [error, setError] = useState(null);
     const [statusIdx, setStatusIdx] = useState(0);
     const [showScrollDown, setShowScrollDown] = useState(false);
+    const [artifact, setArtifact] = useState(null); // { title, text, question } — opens the left side panel
     const sessionIdRef = useRef(newSessionId());
     const abortRef = useRef(null);
     const lastQuestionRef = useRef(null);
@@ -233,6 +234,7 @@ const ChatFullscreen = ({ open, onClose }) => {
         sessionIdRef.current = newSessionId();
         setMessages([]);
         setError(null);
+        setArtifact(null);
         setTimeout(() => inputRef.current?.focus(), 50);
     };
 
@@ -284,8 +286,15 @@ const ChatFullscreen = ({ open, onClose }) => {
                 </div>
             </header>
 
-            {/* Messages */}
-            <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 md:px-12 lg:px-32 py-8 relative">
+            {/* Body: chat column + optional artifact panel on the left */}
+            <div className="flex-1 flex min-h-0">
+                {artifact && (
+                    <ArtifactPanel artifact={artifact} onClose={() => setArtifact(null)} />
+                )}
+
+                <div className={clsx('flex-1 flex flex-col min-h-0', artifact && 'hidden md:flex')}>
+                    {/* Messages */}
+                    <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 md:px-8 py-8 relative">
                 {messages.length === 0 && (
                     <div className="max-w-2xl mx-auto text-center mt-8">
                         <Sparkles className="w-10 h-10 text-primary/40 mx-auto mb-4" />
@@ -305,7 +314,7 @@ const ChatFullscreen = ({ open, onClose }) => {
                     </div>
                 )}
 
-                <div className="max-w-3xl mx-auto space-y-6">
+                <div className="max-w-5xl mx-auto space-y-6">
                     {messages.map((m, i) => (
                         <MessageBubble
                             key={i}
@@ -317,6 +326,7 @@ const ChatFullscreen = ({ open, onClose }) => {
                             isLast={i === messages.length - 1}
                             onSuggestion={send}
                             onDrill={send}
+                            onOpenArtifact={setArtifact}
                         />
                     ))}
                     {busy && !(lastMsg?.role === 'assistant' && lastMsg?.streaming && lastMsg?.text) && (
@@ -353,9 +363,9 @@ const ChatFullscreen = ({ open, onClose }) => {
                 )}
             </div>
 
-            {/* Input bar */}
-            <div className="border-t border-gray-200 bg-white px-4 md:px-12 lg:px-32 py-4">
-                <div className="max-w-3xl mx-auto flex items-end gap-2">
+                    {/* Input bar */}
+                    <div className="border-t border-gray-200 bg-white px-4 md:px-8 py-4">
+                        <div className="max-w-5xl mx-auto flex items-end gap-2">
                     <textarea
                         ref={inputRef}
                         rows={1}
@@ -392,16 +402,79 @@ const ChatFullscreen = ({ open, onClose }) => {
                         </button>
                     )}
                 </div>
-                <p className="text-[10px] text-gray-400 text-center mt-2">
-                    Answers come from the dashboard's database. AI can make mistakes — verify critical figures.
-                </p>
+                        <p className="text-[10px] text-gray-400 text-center mt-2">
+                            Answers come from the dashboard's database. AI can make mistakes — verify critical figures.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     );
 };
 
+// ─── Rich markdown renderer (shared by chat bubbles and the artifact panel) ──
+// Detects ```chart / ```kpi / ```bubble JSON blocks and renders them as visuals,
+// and makes table rows clickable to drill in. `onDrill`/`streaming` are optional.
+const RichMarkdown = ({ text, onDrill, streaming }) => (
+    <ReactMarkdown
+        remarkPlugins={[remarkGfm]}
+        components={{
+            code({ inline, className, children, ...props }) {
+                if (inline) return <code className={className} {...props}>{children}</code>;
+                const lang = (className || '').match(/language-([\w-]+)/)?.[1] || '';
+                const raw = String(children).trim();
+                const looksLikeChart = ['chart', 'bubble', 'kpi', 'json', ''].includes(lang);
+                if (looksLikeChart && raw.startsWith('{') && raw.endsWith('}')) {
+                    try {
+                        const spec = JSON.parse(raw);
+                        const isChartSpec =
+                            (['bar', 'line', 'pie', 'doughnut'].includes(spec.type) &&
+                                (Array.isArray(spec.labels) || Array.isArray(spec.values) || Array.isArray(spec.datasets))) ||
+                            (spec.type === 'bubble' && Array.isArray(spec.bubbles)) ||
+                            (spec.type === 'kpi' && Array.isArray(spec.kpis));
+                        if (isChartSpec) return <ChatChart spec={spec} onDrill={onDrill} />;
+                    } catch {
+                        // While streaming, a chart block may still be incomplete —
+                        // don't flash a parse error; just hold until it closes.
+                        if (streaming && (lang === 'chart' || lang === 'bubble' || lang === 'kpi')) {
+                            return null;
+                        }
+                        if (lang === 'chart' || lang === 'bubble' || lang === 'kpi') {
+                            return (
+                                <pre className="text-[11px] text-red-700 bg-red-50 border border-red-200 rounded p-2">
+                                    Invalid chart JSON: {raw.slice(0, 200)}…
+                                </pre>
+                            );
+                        }
+                    }
+                }
+                return <code className={className} {...props}>{children}</code>;
+            },
+            tr({ children, ...props }) {
+                // Click-to-drill: clicking a body row asks a follow-up about its first cell.
+                return (
+                    <tr
+                        {...props}
+                        className={onDrill ? 'hover:bg-primary/5 transition-colors' : undefined}
+                        onClick={onDrill ? (e) => {
+                            if (window.getSelection()?.toString()) return; // don't hijack text selection
+                            const cell = e.currentTarget.querySelector('td');
+                            const label = cell?.textContent?.trim();
+                            if (label) onDrill(`Break down "${label}" in more detail`);
+                        } : undefined}
+                    >
+                        {children}
+                    </tr>
+                );
+            },
+        }}
+    >
+        {text}
+    </ReactMarkdown>
+);
+
 // ─── Message bubble ────────────────────────────────────────────────────────
-const MessageBubble = ({ role, text, question, cancelled, streaming, isLast, onSuggestion, onDrill }) => {
+const MessageBubble = ({ role, text, question, cancelled, streaming, isLast, onSuggestion, onDrill, onOpenArtifact }) => {
     const isUser = role === 'user';
     const [copied, setCopied] = useState(false);
 
@@ -431,10 +504,10 @@ const MessageBubble = ({ role, text, question, cancelled, streaming, isLast, onS
         <div className={clsx('flex animate-in fade-in slide-in-from-bottom-2 duration-300', isUser ? 'justify-end' : 'justify-start')}>
             <div
                 className={clsx(
-                    'max-w-[88%] rounded-2xl px-4 py-3',
+                    'rounded-2xl px-4 py-3',
                     isUser
-                        ? 'bg-primary text-white rounded-br-sm'
-                        : 'bg-white border border-gray-200 rounded-bl-sm shadow-sm'
+                        ? 'max-w-[85%] bg-primary text-white rounded-br-sm'
+                        : 'w-full max-w-full bg-white border border-gray-200 rounded-bl-sm shadow-sm'
                 )}
             >
                 {isUser ? (
@@ -449,62 +522,7 @@ const MessageBubble = ({ role, text, question, cancelled, streaming, isLast, onS
                             </div>
                         )}
                         <div className="markdown-body prose-sm max-w-none">
-                            <ReactMarkdown
-                                remarkPlugins={[remarkGfm]}
-                                components={{
-                                    code({ inline, className, children, ...props }) {
-                                        if (inline) return <code className={className} {...props}>{children}</code>;
-                                        const lang = (className || '').match(/language-([\w-]+)/)?.[1] || '';
-                                        const raw = String(children).trim();
-                                        const looksLikeChart = ['chart', 'bubble', 'kpi', 'json', ''].includes(lang);
-                                        if (looksLikeChart && raw.startsWith('{') && raw.endsWith('}')) {
-                                            try {
-                                                const spec = JSON.parse(raw);
-                                                const isChartSpec =
-                                                    (['bar', 'line', 'pie', 'doughnut'].includes(spec.type) &&
-                                                        (Array.isArray(spec.labels) || Array.isArray(spec.values) || Array.isArray(spec.datasets))) ||
-                                                    (spec.type === 'bubble' && Array.isArray(spec.bubbles)) ||
-                                                    (spec.type === 'kpi' && Array.isArray(spec.kpis));
-                                                if (isChartSpec) return <ChatChart spec={spec} onDrill={onDrill} />;
-                                            } catch {
-                                                // While streaming, a chart block may still be incomplete —
-                                                // don't flash a parse error; just hold until it closes.
-                                                if (streaming && (lang === 'chart' || lang === 'bubble' || lang === 'kpi')) {
-                                                    return null;
-                                                }
-                                                if (lang === 'chart' || lang === 'bubble' || lang === 'kpi') {
-                                                    return (
-                                                        <pre className="text-[11px] text-red-700 bg-red-50 border border-red-200 rounded p-2">
-                                                            Invalid chart JSON: {raw.slice(0, 200)}…
-                                                        </pre>
-                                                    );
-                                                }
-                                            }
-                                        }
-                                        return <code className={className} {...props}>{children}</code>;
-                                    },
-                                    tr({ children, ...props }) {
-                                        // Click-to-drill: clicking a body row asks a follow-up about its first cell.
-                                        return (
-                                            <tr
-                                                {...props}
-                                                className="hover:bg-primary/5 transition-colors"
-                                                onClick={(e) => {
-                                                    if (!onDrill) return;
-                                                    if (window.getSelection()?.toString()) return; // don't hijack text selection
-                                                    const cell = e.currentTarget.querySelector('td');
-                                                    const label = cell?.textContent?.trim();
-                                                    if (label) onDrill(`Break down "${label}" in more detail`);
-                                                }}
-                                            >
-                                                {children}
-                                            </tr>
-                                        );
-                                    },
-                                }}
-                            >
-                                {text}
-                            </ReactMarkdown>
+                            <RichMarkdown text={text} onDrill={onDrill} streaming={streaming} />
                             {streaming && text && (
                                 <span className="inline-block w-2 h-4 align-text-bottom bg-primary/60 ml-0.5 animate-pulse rounded-sm" />
                             )}
@@ -522,9 +540,9 @@ const MessageBubble = ({ role, text, question, cancelled, streaming, isLast, onS
                                         : <><Copy className="w-3.5 h-3.5" /> Copy</>}
                                 </button>
                                 <button
-                                    onClick={() => exportMessageToPDF(text, { title: inferredTitle })}
+                                    onClick={() => onOpenArtifact?.({ title: inferredTitle, text, question })}
                                     className="inline-flex items-center gap-1.5 text-[11px] font-medium text-gray-500 hover:text-primary hover:bg-gray-50 px-2 py-1 rounded-md transition-colors"
-                                    title="Download as PDF"
+                                    title="Open as document (preview + PDF export) on the side"
                                 >
                                     <FileText className="w-3.5 h-3.5" /> PDF
                                 </button>
@@ -584,6 +602,55 @@ const buildSuggestions = (question, reply) => {
 
     // Dedupe + cap to 3
     return [...new Set(out)].slice(0, 3);
+};
+
+// ─── Artifact side panel (left) — Claude-style document view ────────────────
+const ArtifactPanel = ({ artifact, onClose }) => {
+    const [copied, setCopied] = useState(false);
+    const copy = async () => {
+        try {
+            await navigator.clipboard.writeText(artifact.text);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 1500);
+        } catch { /* clipboard can be blocked on non-https */ }
+    };
+    return (
+        <div className="w-full md:w-1/2 md:max-w-[760px] border-r border-gray-200 bg-gray-100 flex flex-col min-h-0 animate-in slide-in-from-left duration-300">
+            <div className="flex items-center justify-between gap-2 px-4 py-3 border-b border-gray-200 bg-white">
+                <div className="flex items-center gap-2 min-w-0">
+                    <FileText className="w-4 h-4 text-primary shrink-0" />
+                    <span className="text-sm font-serif text-primary truncate" title={artifact.title}>{artifact.title || 'Document'}</span>
+                </div>
+                <div className="flex items-center gap-1 shrink-0">
+                    <button
+                        onClick={() => exportMessageToPDF(artifact.text, { title: artifact.title })}
+                        className="inline-flex items-center gap-1.5 text-[11px] font-medium text-gray-600 hover:text-primary border border-gray-200 hover:border-primary/40 px-2 py-1 rounded-md transition-colors"
+                        title="Download PDF"
+                    >
+                        <FileText className="w-3.5 h-3.5" /> PDF
+                    </button>
+                    <button
+                        onClick={() => exportMessageToXLSX(artifact.text, { title: artifact.title, question: artifact.question })}
+                        className="inline-flex items-center gap-1.5 text-[11px] font-medium text-gray-600 hover:text-primary border border-gray-200 hover:border-primary/40 px-2 py-1 rounded-md transition-colors"
+                        title="Download Excel"
+                    >
+                        <Sheet className="w-3.5 h-3.5" /> Excel
+                    </button>
+                    <button onClick={copy} className="inline-flex items-center gap-1.5 text-[11px] font-medium text-gray-600 hover:text-primary px-2 py-1 rounded-md transition-colors" title="Copy text">
+                        {copied ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
+                    </button>
+                    <button onClick={onClose} className="text-gray-400 hover:text-gray-700 p-1.5 rounded-md hover:bg-gray-100 transition" title="Close document">
+                        <X className="w-4 h-4" />
+                    </button>
+                </div>
+            </div>
+            <div className="flex-1 overflow-y-auto p-4 md:p-6">
+                <div className="bg-white shadow-sm border border-gray-200 rounded-lg mx-auto max-w-[680px] p-6 md:p-8 markdown-body prose-sm">
+                    <RichMarkdown text={artifact.text} />
+                </div>
+            </div>
+        </div>
+    );
 };
 
 export default ChatFullscreen;
