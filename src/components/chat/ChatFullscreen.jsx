@@ -10,7 +10,7 @@ import { exportMessageToPDF, exportMessageToXLSX } from './exportUtils';
 import ChatChart from './ChatChart';
 
 const WEBHOOK_URL = 'https://n8n.juntosfarmn8n.cloud/webhook/sales-chat';
-const MODEL_LABEL = 'GPT-5 mini · OpenRouter';
+const MODEL_LABEL = 'Gemini 3.5 Flash · OpenRouter';
 
 const newSessionId = () => `s_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`;
 
