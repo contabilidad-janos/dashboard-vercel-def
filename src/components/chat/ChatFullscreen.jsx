@@ -10,7 +10,32 @@ import { exportMessageToPDF, exportMessageToXLSX } from './exportUtils';
 import ChatChart from './ChatChart';
 
 const WEBHOOK_URL = 'https://n8n.juntosfarmn8n.cloud/webhook/sales-chat';
-const MODEL_LABEL = 'Gemini 3.5 Flash · OpenRouter';
+const MODEL_LABEL = 'Gemini Flash · auto-routing';
+
+// Per-question model routing to save tokens: simple single-fact lookups go to the
+// cheap model; anything needing comparison, ranges, multi-BU, trends or a chart
+// goes to the smart model. Conservative — defaults to SMART on any signal.
+const SMART_MODEL = 'google/gemini-3.5-flash';
+const CHEAP_MODEL = 'google/gemini-3.1-flash-lite';
+const pickModel = (q) => {
+    const s = (q || '').toLowerCase();
+    const signals = [
+        /\bvs\b|versus|compar|tren|evolu|growth|crec|chang|cambi|diferen/,
+        /last (week|month|year)|previous year|same (month|period)|semana pasada|mes pasado|a[ñn]o pasado/,
+        /by day|by week|by month|per day|breakdown|desglos|por d[ií]a|por semana|por mes|each|cada|every|todas?/,
+        /all (bu|business|groups)|by bu|every bu/,
+        /chart|graph|gr[áa]fic|plot|bubble|visual/,
+        /top \d/,
+        /q[1-4]\b|quarter|trimestre|ytd|summer|temporada/,
+    ];
+    let score = signals.reduce((n, re) => n + (re.test(s) ? 1 : 0), 0);
+    if ((q || '').length > 90) score += 1;
+    const buHits = (s.match(/juntos house|tasting|picadeli|juntos deli|farm shop|boutique|distribution|products|activities/g) || []).length;
+    const timeHits = (s.match(/\b(week|semana|month|mes|year|a[ñn]o|jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec|enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)\b/g) || []).length;
+    if (buHits >= 2) score += 1;
+    if (timeHits >= 2) score += 1;
+    return score === 0 ? CHEAP_MODEL : SMART_MODEL;
+};
 
 const newSessionId = () => `s_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`;
 
@@ -159,7 +184,7 @@ const ChatFullscreen = ({ open, onClose }) => {
             const res = await fetch(WEBHOOK_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', Accept: 'text/event-stream, application/json' },
-                body: JSON.stringify({ message, sessionId: sessionIdRef.current, today, locale: 'en' }),
+                body: JSON.stringify({ message, sessionId: sessionIdRef.current, today, locale: 'en', model: pickModel(message) }),
                 signal: ctrl.signal,
             });
             if (!res.ok) {
