@@ -28,7 +28,7 @@ const N8N_HOST = 'n8n.juntosfarmn8n.cloud';
 const N8N_KEY = process.env.N8N_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZTUxOGRiOS01MzVkLTRiMDMtYjk5Zi0xM2QyOWI3YzVkMzQiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiZTBiZDljM2MtZDZmNi00MmU5LWJkYmItNjcxNTkyYjA0YzM5IiwiaWF0IjoxNzczMDAwMDcwfQ.t0VchsyvDrgYIVzuq0EClvp1nipbuZIJgM9IRsRqDBA';
 
 const WEBHOOK_PATH = 'sales-chat';
-const MODEL = 'z-ai/glm-5.2';
+const MODEL = 'openai/gpt-5-mini';
 const DISPATCHER_ID = '8Pvf8ZyvgBSirdN6'; // Sub-workflow id created by build_chat_tool_subworkflow.js
 const DISPATCHER_NAME = 'SALES DASHBOARD - Chat Tool Dispatcher';
 
@@ -188,7 +188,7 @@ function buildWorkflow() {
                 options: { temperature: 0.2 },
             },
             id: 'lm-openrouter',
-            name: 'Gemini 3 Flash (OpenRouter)',
+            name: 'OpenRouter LLM',
             type: '@n8n/n8n-nodes-langchain.lmChatOpenRouter',
             typeVersion: 1,
             position: [-320, 220],
@@ -268,7 +268,7 @@ function buildWorkflow() {
     const connections = {
         'Webhook':                       { main: [[{ node: 'AI Agent', type: 'main', index: 0 }]] },
         'AI Agent':                      { main: [[{ node: 'Respond to Webhook', type: 'main', index: 0 }]] },
-        'Gemini 3 Flash (OpenRouter)':   { ai_languageModel: [[{ node: 'AI Agent', type: 'ai_languageModel', index: 0 }]] },
+        'OpenRouter LLM':                { ai_languageModel: [[{ node: 'AI Agent', type: 'ai_languageModel', index: 0 }]] },
         'Memoria por sesión':            { ai_memory: [[{ node: 'AI Agent', type: 'ai_memory', index: 0 }]] },
         'sales_query':                   { ai_tool: [[{ node: 'AI Agent', type: 'ai_tool', index: 0 }]] },
     };
