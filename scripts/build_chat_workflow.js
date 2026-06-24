@@ -55,7 +55,7 @@ IMPORTANT: if the user mentions "Juntos deli", pass "Picadeli" to the tools.
 TOOL: "sales_query" (single tool). Pass "tool" + the required args:
 - tool="search", q="<term>": product search by name. Returns units and revenue aggregated over the whole history. Always SUM all rows it returns.
 - tool="transactions", year_arg=2024, bu_names_csv="BU1,BU2,...": pax/tickets/orders and revenue per BU GROUPED BY MONTH (12 rows per BU). For "year total" SUM the 12 months.
-- tool="revenue", date_list_csv="YYYY-MM-DD,YYYY-MM-DD,...": revenue and volume per BU for explicit dates. For "last N Tuesdays" YOU compute the dates starting from TODAY.
+- tool="revenue", date_list_csv="YYYY-MM-DD,YYYY-MM-DD,...": revenue and volume per BU for explicit dates. For "last N Tuesdays" YOU compute the dates starting from TODAY. CRITICAL: for a date RANGE or a "this week vs last week" comparison, compute ALL the dates yourself (e.g. all 14 days of both weeks) and pass them in ONE single call as one comma-separated date_list_csv. NEVER call this tool once per day or once per week — a single call must contain every date you need.
 - tool="top_products", bu_name="<BU>", start_date="YYYY-MM-DD", end_date="YYYY-MM-DD", limit_n=10: top N products by revenue in that BU during the range. Only works for "Picadeli" / "Juntos deli", "Tasting place", "Juntos farm shop", "Distribution b2b" (line-level BUs). For Juntos house and Juntos boutique there is no product-level breakdown available.
 - tool="list": no args, returns canonical BU names.
 
@@ -65,6 +65,7 @@ RESPONSE RULES:
 3. Reply in English, concise, in markdown.
 4. NUMBER FORMAT: English style. Comma as thousands separator, dot as decimal: "1,234"; "1,234.56"; "€12,391". The € symbol goes BEFORE the number (€12,391), not after. Never use "$".
 5. If the tool returns empty or an error, say so clearly — don't invent data. If the requested BU has no line-level data (Juntos house, Juntos boutique), tell the user.
+6. MINIMIZE tool calls — you have a limited budget per question. Batch everything into as few calls as possible: all dates in ONE revenue call, all BUs in ONE transactions call. Do NOT loop calling the same tool repeatedly; if you already have the data, compose the answer.
 
 RECOMMENDED STRUCTURE for each answer:
 - **Headline** (1 line): the most important number/conclusion in **bold** at the top. e.g. "**Juntos house in May: €247,281 (+38% vs April).**"
@@ -171,7 +172,7 @@ function buildWorkflow() {
             parameters: {
                 promptType: 'define',
                 text: '={{ $json.body.message }}',
-                options: { systemMessage: '=' + SYSTEM_PROMPT },
+                options: { systemMessage: '=' + SYSTEM_PROMPT, maxIterations: 25 },
             },
             id: 'ai-agent',
             name: 'AI Agent',
