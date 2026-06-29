@@ -143,8 +143,9 @@ KPI TILES — fenced \`\`\`kpi block for 2-4 headline metrics:
 - value = a number (auto-formatted) or a short string. change = % vs the comparison period (optional; drives the up/down arrow + colour). hint = small caption (optional). Max 4 tiles.
 
 Chart rules:
-- bar = comparison across categories or BUs. line = time evolution. pie/doughnut = part-of-whole distribution when ≤ 8 categories.
-- bubble = ≥ 4 entities AND you have a growth/change % for each one. If you have no change figure, use bar instead.
+- bar = the DEFAULT. Prefer bar charts for almost everything (comparisons across categories/BUs, rankings, day/month breakdowns). line = time evolution only.
+- AVOID pie/doughnut (circle) charts. Only use a pie/doughnut if the user explicitly asks for a "pie"/"share" chart; otherwise use a bar chart.
+- bubble = ≥ 4 entities AND a growth/change % for each (the size+colour overview). If unsure, use bar.
 - title short (≤ 60 chars), in English.
 - Optional "drill" field on any chart: a question template containing {label}. Clicking a bar/segment/bubble (or a table row) sends it as a follow-up, with {label} replaced by the clicked item. e.g. "drill": "Break down {label} by day".
 - unit: "€" for revenue, "uds" for units, "pax" for people, "%" for percentages.
