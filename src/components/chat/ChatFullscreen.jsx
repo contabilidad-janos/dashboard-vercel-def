@@ -82,6 +82,7 @@ const ChatFullscreen = ({ open, onClose }) => {
     const [statusIdx, setStatusIdx] = useState(0);
     const [showScrollDown, setShowScrollDown] = useState(false);
     const [artifact, setArtifact] = useState(null); // { title, text, question } — opens the left side panel
+    const [modelMode, setModelMode] = useState('smart'); // 'smart' (powerful) | 'auto' (by complexity) | 'fast' (cheap)
     const sessionIdRef = useRef(newSessionId());
     const abortRef = useRef(null);
     const lastQuestionRef = useRef(null);
@@ -184,7 +185,7 @@ const ChatFullscreen = ({ open, onClose }) => {
             const res = await fetch(WEBHOOK_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', Accept: 'text/event-stream, application/json' },
-                body: JSON.stringify({ message, sessionId: sessionIdRef.current, today, locale: 'en', model: pickModel(message) }),
+                body: JSON.stringify({ message, sessionId: sessionIdRef.current, today, locale: 'en', model: modelMode === 'fast' ? CHEAP_MODEL : modelMode === 'auto' ? pickModel(message) : SMART_MODEL }),
                 signal: ctrl.signal,
             });
             if (!res.ok) {
@@ -245,7 +246,7 @@ const ChatFullscreen = ({ open, onClose }) => {
             setBusy(false);
             abortRef.current = null;
         }
-    }, [input, busy, patchAssistant]);
+    }, [input, busy, patchAssistant, modelMode]);
 
     const cancel = () => abortRef.current?.abort();
 
@@ -296,7 +297,16 @@ const ChatFullscreen = ({ open, onClose }) => {
                     </div>
                     <div>
                         <h2 className="font-serif text-lg text-primary">Juntos Inteligence</h2>
-                        <p className="text-[11px] text-gray-500">{MODEL_LABEL}</p>
+                        <select
+                            value={modelMode}
+                            onChange={e => setModelMode(e.target.value)}
+                            className="text-[11px] text-gray-500 bg-transparent border-none focus:outline-none cursor-pointer -ml-0.5 hover:text-primary"
+                            title="Choose the model"
+                        >
+                            <option value="smart">Powerful · Gemini 3.5 Flash</option>
+                            <option value="auto">Auto · by complexity</option>
+                            <option value="fast">Fast · Gemini 3.1 Flash Lite</option>
+                        </select>
                     </div>
                 </div>
                 <div className="flex items-center gap-1">

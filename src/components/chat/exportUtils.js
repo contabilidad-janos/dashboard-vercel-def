@@ -2,6 +2,7 @@ import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import * as XLSX from 'xlsx';
 import Chart from 'chart.js/auto';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 // Dashboard palette so exports look like the rest of the site.
 const PRIMARY = [61, 76, 65];      // #3D4C41
@@ -10,9 +11,23 @@ const BG      = [249, 246, 242];   // #F9F6F2
 const MUTED   = [120, 120, 120];
 const PAL = ['#6E8C71', '#B09B80', '#D9825F', '#E8C89A', '#879FA8', '#566E7A', '#C4BFAA', '#A9A9A9'];
 
+// jsPDF's standard fonts only cover WinAnsi (cp1252). The model emits real minus
+// signs, dashes, smart quotes and emojis that would render as garbage (e.g. "−"
+// → " , "📈" → "Ø=ÜÈ"). Map the safe ones and strip the rest. Keep € and accents.
+const pdfSafe = (s) => (s == null ? '' : String(s))
+    .replace(/−/g, '-')                          // minus sign → hyphen
+    .replace(/[–—―]/g, '-')            // en/em dash, horizontal bar
+    .replace(/[‘’′]/g, "'")            // smart single quotes / prime
+    .replace(/[“”″]/g, '"')            // smart double quotes
+    .replace(/…/g, '...')                        // ellipsis
+    .replace(/[←-⇿⬀-⯿]/g, '')     // arrows
+    .replace(/[\u{1F000}-\u{1FAFF}]/gu, '')           // emoji
+    .replace(/[\u{2600}-\u{27BF}]/gu, '')             // misc symbols / dingbats
+    .replace(/[\u{FE00}-\u{FE0F}‍]/gu, '')       // variation selectors / ZWJ
+    .replace(/ {2,}/g, ' ');
+
 // ─── Markdown parsing ────────────────────────────────────────────────────────
 
-// Pull GFM tables out of an assistant message (used by the XLSX export).
 export const parseMarkdownTables = (text) => {
     if (!text) return { tables: [], narrative: '' };
     const lines = text.split('\n');
@@ -41,7 +56,7 @@ const splitRow = (line) => {
 };
 
 const cleanNarrative = (s) => s
-    .replace(/```[\s\S]*?```/g, '')               // drop any fenced code (chart/kpi specs)
+    .replace(/```[\s\S]*?```/g, '')
     .replace(/\*\*(.+?)\*\*/g, '$1')
     .replace(/\*(.+?)\*/g, '$1')
     .replace(/`([^`]+)`/g, '$1')
@@ -50,8 +65,7 @@ const cleanNarrative = (s) => s
     .replace(/\n{3,}/g, '\n\n')
     .trim();
 
-// Walk the message into ORDERED segments for the PDF: text / table / kpi / chart.
-// Chart specs (and bubble/pie/doughnut) are normalised to bar charts.
+// Ordered segments for the PDF. Chart specs (and bubble/pie/doughnut) → bar.
 export const parseSegments = (text) => {
     if (!text) return [];
     const lines = text.split('\n');
@@ -70,7 +84,6 @@ export const parseSegments = (text) => {
             let spec = null; try { spec = JSON.parse(raw); } catch { /* not a spec */ }
             if (spec?.type === 'kpi' && Array.isArray(spec.kpis)) { flush(); segs.push({ type: 'kpi', spec }); }
             else if (spec && (spec.type === 'bubble' || ['bar', 'line', 'pie', 'doughnut'].includes(spec.type))) { flush(); segs.push({ type: 'chart', spec: toBar(spec) }); }
-            // any other fenced block: dropped (no raw JSON in the PDF)
             i = j + 1; continue;
         }
         const next = lines[i + 1] || '';
@@ -87,7 +100,6 @@ export const parseSegments = (text) => {
     return segs;
 };
 
-// Normalise any chart spec to a bar chart (user prefers bars over pies/bubbles).
 const toBar = (spec) => {
     if (spec.type === 'bubble') {
         const bs = (spec.bubbles || []).filter(b => b && b.label != null);
@@ -97,8 +109,17 @@ const toBar = (spec) => {
     return spec;
 };
 
+const fmtAxis = (v, unit) => {
+    if (!Number.isFinite(v)) return v;
+    const n = Math.round(v).toLocaleString('en-US');
+    if (unit === '€') return '€' + n;
+    if (unit === '%') return v.toFixed(1) + '%';
+    return n;
+};
+
 const buildChartConfig = (spec) => {
     const datasets = (spec.datasets && spec.datasets.length) ? spec.datasets : [{ name: spec.title || '', values: spec.values || [] }];
+    const single = datasets.length === 1;
     const colorsByChange = Array.isArray(spec.changes)
         ? spec.changes.map(c => (Number.isFinite(c) ? (c >= 0 ? '#4C8C63' : '#C94A46') : '#A9A9A9'))
         : null;
@@ -118,17 +139,29 @@ const buildChartConfig = (spec) => {
         },
         options: {
             animation: false, responsive: false, devicePixelRatio: 2,
-            plugins: { legend: { display: datasets.length > 1, position: 'bottom', labels: { font: { size: 12 } } } },
-            scales: { x: { grid: { display: false }, ticks: { font: { size: 11 } } }, y: { beginAtZero: true, ticks: { font: { size: 11 } } } },
+            layout: { padding: { top: 24, right: 16, left: 8, bottom: 4 } },
+            plugins: {
+                legend: { display: !single, position: 'bottom', labels: { font: { size: 13 } } },
+                datalabels: {
+                    display: single && (spec.labels || []).length <= 14,
+                    anchor: 'end', align: 'end', offset: 2,
+                    color: '#3D4C41', font: { size: 11, weight: 'bold' },
+                    formatter: (v) => fmtAxis(v, spec.unit),
+                },
+            },
+            scales: {
+                x: { grid: { display: false }, ticks: { font: { size: 12 }, autoSkip: false, maxRotation: 35, minRotation: 0 } },
+                y: { beginAtZero: true, ticks: { font: { size: 11 }, callback: (v) => fmtAxis(v, spec.unit) } },
+            },
         },
+        plugins: [ChartDataLabels],
     };
 };
 
-// Render a chart spec to a PNG data URL via an off-screen ChartJS canvas.
 const chartToImage = (spec) => {
     try {
         const canvas = document.createElement('canvas');
-        canvas.width = 1000; canvas.height = 460;
+        canvas.width = 1200; canvas.height = 540;
         const chart = new Chart(canvas, buildChartConfig(spec));
         const url = canvas.toDataURL('image/png', 1.0);
         chart.destroy();
@@ -166,11 +199,10 @@ export const exportMessageToPDF = (markdown, opts = {}) => {
     const margin = 48;
     const contentW = pageW - 2 * margin;
 
-    // Header band
     doc.setFillColor(...BG);
     doc.rect(0, 0, pageW, 90, 'F');
     doc.setFont('helvetica', 'bold'); doc.setFontSize(20); doc.setTextColor(...PRIMARY);
-    doc.text(title, margin, 48);
+    doc.text(pdfSafe(title), margin, 48);
     doc.setFont('helvetica', 'normal'); doc.setFontSize(10); doc.setTextColor(...MUTED);
     doc.text(`Generado el ${new Date().toLocaleDateString('es-ES', { day: '2-digit', month: 'long', year: 'numeric' })}`, margin, 68);
     doc.setDrawColor(...ACCENT); doc.setLineWidth(1); doc.line(margin, 82, pageW - margin, 82);
@@ -181,7 +213,7 @@ export const exportMessageToPDF = (markdown, opts = {}) => {
     for (const seg of segments) {
         if (seg.type === 'text') {
             doc.setFont('helvetica', 'normal'); doc.setFontSize(11); doc.setTextColor(40, 40, 40);
-            const wrapped = doc.splitTextToSize(seg.text, contentW);
+            const wrapped = doc.splitTextToSize(pdfSafe(seg.text), contentW);
             for (const line of wrapped) { ensure(16); doc.text(line, margin, cursor); cursor += 16; }
             cursor += 8;
         } else if (seg.type === 'kpi') {
@@ -193,32 +225,34 @@ export const exportMessageToPDF = (markdown, opts = {}) => {
             kpis.forEach((k, i) => {
                 const tx = margin + i * (tileW + gap);
                 doc.setDrawColor(225); doc.setFillColor(255); doc.roundedRect(tx, cursor, tileW, tileH, 4, 4, 'FD');
-                doc.setFontSize(7); doc.setTextColor(...MUTED);
-                doc.text(String(k.label || '').toUpperCase().slice(0, 24), tx + 8, cursor + 15);
+                doc.setFont('helvetica', 'normal'); doc.setFontSize(7); doc.setTextColor(...MUTED);
+                doc.text(pdfSafe(String(k.label || '')).toUpperCase().slice(0, 24), tx + 8, cursor + 15);
                 doc.setFont('helvetica', 'bold'); doc.setFontSize(14); doc.setTextColor(...PRIMARY);
-                doc.text(String(fmtKpiVal(k)).slice(0, 16), tx + 8, cursor + 36);
+                doc.text(pdfSafe(fmtKpiVal(k)).slice(0, 16), tx + 8, cursor + 36);
                 doc.setFont('helvetica', 'normal'); doc.setFontSize(8);
                 if (Number.isFinite(Number(k.change))) {
                     const c = Number(k.change); doc.setTextColor(...(c >= 0 ? [40, 140, 90] : [200, 70, 70]));
                     doc.text(`${c >= 0 ? '+' : ''}${c}%`, tx + 8, cursor + 51);
-                } else if (k.hint) { doc.setTextColor(...MUTED); doc.text(String(k.hint).slice(0, 18), tx + 8, cursor + 51); }
+                } else if (k.hint) { doc.setTextColor(...MUTED); doc.text(pdfSafe(String(k.hint)).slice(0, 18), tx + 8, cursor + 51); }
             });
             cursor += tileH + 16;
         } else if (seg.type === 'chart') {
             const img = chartToImage(seg.spec);
             if (!img) continue;
-            const imgH = contentW * (460 / 1000);
+            const imgH = contentW * (540 / 1200);
             ensure(imgH + (seg.spec.title ? 22 : 8));
             if (seg.spec.title) {
                 doc.setFont('helvetica', 'bold'); doc.setFontSize(11); doc.setTextColor(...PRIMARY);
-                doc.text(String(seg.spec.title), margin, cursor); cursor += 16;
+                doc.text(pdfSafe(String(seg.spec.title)), margin, cursor); cursor += 16;
             }
             doc.addImage(img, 'PNG', margin, cursor, contentW, imgH);
             cursor += imgH + 16;
         } else if (seg.type === 'table') {
             ensure(60);
             autoTable(doc, {
-                startY: cursor, head: [seg.header], body: seg.rows,
+                startY: cursor,
+                head: [seg.header.map(pdfSafe)],
+                body: seg.rows.map(r => r.map(pdfSafe)),
                 margin: { left: margin, right: margin },
                 styles: { fontSize: 10, cellPadding: 6, textColor: [40, 40, 40], lineColor: [220, 220, 220], lineWidth: 0.5 },
                 headStyles: { fillColor: PRIMARY, textColor: 255, fontStyle: 'bold', fontSize: 10 },
@@ -228,7 +262,6 @@ export const exportMessageToPDF = (markdown, opts = {}) => {
         }
     }
 
-    // Footer
     const pageCount = doc.internal.getNumberOfPages();
     for (let p = 1; p <= pageCount; p++) {
         doc.setPage(p);
