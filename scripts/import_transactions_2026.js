@@ -25,6 +25,9 @@
 import fs from 'fs';
 import https from 'https';
 import { parse as csvParse } from 'csv-parse/sync';
+import { createClient } from '@supabase/supabase-js';
+import dotenv from 'dotenv';
+import path from 'path';
 
 const PAT = process.env.SUPA_PAT;
 const APPLY = process.argv.includes('--apply');
@@ -76,7 +79,7 @@ const add = (date, bu, count) => {
 
 // 1) Juntos house pax
 {
-    const raw = fs.readFileSync('downloadbyjanos/Juntos House  - Revenue Reporting 2026 - DataBase (2).csv', 'utf8');
+    const raw = fs.readFileSync('downloadbyjanos/Juntos House  - Revenue Reporting 2026 - DataBase (3).csv', 'utf8');
     const rows = csvParse(raw, { from_line: 3, relax_quotes: true, relax_column_count: true, skip_empty_lines: true });
     let n = 0;
     rows.forEach(r => {
@@ -89,7 +92,7 @@ const add = (date, bu, count) => {
 
 // 2) Juntos boutique tickets
 {
-    const raw = fs.readFileSync('downloadbyjanos/Juntos House  - Revenue Reporting 2026 - juntos boutique.csv', 'utf8');
+    const raw = fs.readFileSync('downloadbyjanos/Juntos House  - Revenue Reporting 2026 - juntos boutique (1).csv', 'utf8');
     const rows = csvParse(raw, { from_line: 3, relax_quotes: true, relax_column_count: true, skip_empty_lines: true });
     let n = 0;
     rows.forEach(r => {
@@ -162,34 +165,17 @@ if (!APPLY) {
     process.exit(0);
 }
 
-if (!PAT) { console.error('Set SUPA_PAT to apply.'); process.exit(1); }
-
-// ─── Upsert ─────────────────────────────────────────────────────────────────
-const sql = records.map(r =>
-    `insert into public.sales_records (date, business_unit_id, transaction_count) ` +
-    `values ('${r.date}', '${r.business_unit_id}', ${r.transaction_count}) ` +
-    `on conflict (date, business_unit_id) do update set transaction_count = ${r.transaction_count};`
-).join('\n');
-
-const body = JSON.stringify({ query: sql });
-const req = https.request({
-    method: 'POST',
-    host: 'api.supabase.com',
-    path: `/v1/projects/agjvhvjhrmwkvszyjitl/database/query`,
-    headers: {
-        'Authorization': `Bearer ${PAT}`,
-        'Content-Type': 'application/json',
-        'Content-Length': Buffer.byteLength(body),
-    },
-}, (res) => {
-    let chunks = '';
-    res.on('data', d => { chunks += d; });
-    res.on('end', () => {
-        console.log(`\nHTTP ${res.statusCode}`);
-        if (res.statusCode >= 400) console.log(chunks.slice(0, 400));
-        else console.log(`Upserted ${records.length} rows.`);
-    });
-});
-req.on('error', console.error);
-req.write(body);
-req.end();
+// ─── Upsert via supabase-js (anon RLS permits sales_records writes) ──────────
+const env = dotenv.parse(fs.readFileSync(path.resolve(process.cwd(), '.env')));
+const supabase = createClient(env.VITE_SUPABASE_URL, env.VITE_SUPABASE_ANON_KEY);
+const BATCH = 500;
+let upserted = 0, failed = 0;
+for (let i = 0; i < records.length; i += BATCH) {
+    const batch = records.slice(i, i + BATCH).map(r => ({
+        date: r.date, business_unit_id: r.business_unit_id, transaction_count: r.transaction_count,
+    }));
+    const { error } = await supabase.from('sales_records').upsert(batch, { onConflict: 'date,business_unit_id' });
+    if (error) { console.error(`batch ${i / BATCH + 1} error:`, error.message); failed += batch.length; }
+    else upserted += batch.length;
+}
+console.log(`Upserted ${upserted} rows${failed ? `, ${failed} failed` : ''}.`);
