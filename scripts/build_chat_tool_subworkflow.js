@@ -60,7 +60,42 @@ try {
   result = { error: String(e.message || e).slice(0, 300), tool };
 }
 
-return [{ json: { tool, rows: result } }];
+// Pre-aggregate totals server-side so the model NEVER sums many rows itself
+// (LLMs make arithmetic errors adding dozens of numbers). The model must read
+// summary.* for any total; rows[] stays for fine-grained per-day/per-BU detail.
+const rnd = (n) => Math.round((Number(n) || 0) * 100) / 100;
+let summary = null;
+if (Array.isArray(result)) {
+  if (tool === 'revenue') {
+    const byBu = {}, byDay = {}; let tR = 0, tV = 0;
+    for (const r of result) {
+      const rev = Number(r.revenue) || 0, vol = Number(r.volume) || 0, b = r.business_unit || '?';
+      tR += rev; tV += vol;
+      (byBu[b] = byBu[b] || { business_unit: b, revenue: 0, volume: 0 }); byBu[b].revenue += rev; byBu[b].volume += vol;
+      byDay[r.date] = (byDay[r.date] || 0) + rev;
+    }
+    summary = {
+      total_revenue: rnd(tR), total_volume: rnd(tV),
+      by_bu: Object.values(byBu).map(x => ({ business_unit: x.business_unit, revenue: rnd(x.revenue), volume: rnd(x.volume) })).sort((a, b) => b.revenue - a.revenue),
+      by_day: Object.entries(byDay).map(([date, revenue]) => ({ date, revenue: rnd(revenue) })).sort((a, b) => (a.date < b.date ? -1 : 1)),
+    };
+  } else if (tool === 'transactions') {
+    const byBu = {}; let tC = 0, tR = 0;
+    for (const r of result) {
+      const b = r.bu || r.business_unit || r.name || '?';
+      const c = Number(r.transaction_count ?? r.transactions ?? r.pax ?? r.total_transactions ?? 0);
+      const rev = Number(r.revenue ?? r.total_revenue ?? 0);
+      tC += c; tR += rev;
+      (byBu[b] = byBu[b] || { business_unit: b, transactions: 0, revenue: 0 }); byBu[b].transactions += c; byBu[b].revenue += rev;
+    }
+    summary = {
+      total_transactions: tC, total_revenue: rnd(tR),
+      by_bu: Object.values(byBu).map(x => ({ business_unit: x.business_unit, transactions: x.transactions, revenue: rnd(x.revenue) })).sort((a, b) => b.revenue - a.revenue),
+    };
+  }
+}
+
+return [{ json: { tool, summary, rows: result } }];
 `;
 
     return {
