@@ -15,6 +15,11 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 const CSV_FILE = 'downloadbyjanos/REPORTING PARA BASE DE DATOS - Sheet5 (19).csv';
 const TABLE_NAME = 'sales_daily_def';
 
+// House and Boutique have their own dedicated sources (DataBase sheet / boutique
+// POS sheet, re-applied by rebuild_house_revenue.js + override_bu_from_csv.js),
+// so skip them here — otherwise import_sheet5 would overwrite those corrections.
+const SKIP_BU = new Set(['juntos house', 'juntos boutique']);
+
 // The CSV is a Looker-style report with two pivot tables side by side on the
 // same row. We use both halves:
 //
@@ -71,7 +76,7 @@ async function importCsv() {
         const fechaL = (record[3] || '').trim();
         const udsL = (record[7] || '').trim();
         const buL = (record[9] || '').trim();
-        if (fechaL && udsL && buL && buL.toUpperCase() !== 'BU') {
+        if (fechaL && udsL && buL && buL.toUpperCase() !== 'BU' && !SKIP_BU.has(buL.toLowerCase())) {
             const date = formatMDYDate(fechaL);
             if (date) {
                 const uds = parseUds(udsL);
@@ -90,7 +95,7 @@ async function importCsv() {
             const fechaR = (record[11] || '').trim();
             const buR = (record[12] || '').trim();
             const totR = (record[13] || '').trim();
-            if (fechaR && buR && buR.toUpperCase() !== 'BU' && buR.toUpperCase() !== 'TOTAL') {
+            if (fechaR && buR && buR.toUpperCase() !== 'BU' && buR.toUpperCase() !== 'TOTAL' && !SKIP_BU.has(buR.toLowerCase())) {
                 const date = formatMDYDate(fechaR);
                 if (date) {
                     const k = keyOf(date, buR);
