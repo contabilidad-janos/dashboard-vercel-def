@@ -51,10 +51,73 @@ try {
       end_date: params.end_date || '2030-12-31',
       limit_n: Number(params.limit_n) || 10,
     });
+  } else if (tool === 'open_days') {
+    // Days open/closed per BU, aggregated HERE so the model never guesses.
+    const sd = String(params.start_date || '2025-01-01').slice(0, 10);
+    const ed = String(params.end_date || new Date().toISOString().slice(0, 10)).slice(0, 10);
+    const getAll = async (pathBase) => {
+      const all = [];
+      for (let offset = 0; ; offset += 1000) {
+        const page = await this.helpers.httpRequest({
+          method: 'GET',
+          url: supabaseUrl + pathBase + '&limit=1000&offset=' + offset,
+          headers: { 'apikey': apikey, 'Authorization': 'Bearer ' + apikey },
+          json: true,
+        });
+        if (Array.isArray(page)) all.push(...page);
+        if (!Array.isArray(page) || page.length < 1000) break;
+      }
+      return all;
+    };
+    const ddef = await getAll('/rest/v1/sales_daily_def?select=date,business_unit,revenue&date=gte.' + sd + '&date=lte.' + ed);
+    const recs = await getAll('/rest/v1/sales_records?select=date,transaction_count,business_units(name)&date=gte.' + sd + '&date=lte.' + ed);
+    const day = {}; // bu -> { date -> {r, t} }
+    for (const r of ddef) {
+      const bu = (r.business_unit || '').trim();
+      if (!bu || bu === 'OTROS') continue;
+      const d = (day[bu] = day[bu] || {});
+      const c = (d[r.date] = d[r.date] || { r: 0, t: 0 });
+      c.r += Number(r.revenue) || 0;
+    }
+    for (const r of recs) {
+      const bu = ((r.business_units && r.business_units.name) || '').trim();
+      if (!bu || bu === 'OTROS') continue;
+      const d = (day[bu] = day[bu] || {});
+      const c = (d[r.date] = d[r.date] || { r: 0, t: 0 });
+      c.t += Number(r.transaction_count) || 0;
+    }
+    const DOWN = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+    const byBu = [];
+    for (const bu of Object.keys(day).sort()) {
+      const byMonth = {}, byYear = {}, byDow = { mon: 0, tue: 0, wed: 0, thu: 0, fri: 0, sat: 0, sun: 0 };
+      let total = 0;
+      for (let d = new Date(sd + 'T00:00:00Z'); ; d.setUTCDate(d.getUTCDate() + 1)) {
+        const iso = d.toISOString().slice(0, 10);
+        if (iso > ed) break;
+        const ym = iso.slice(0, 7);
+        const m = (byMonth[ym] = byMonth[ym] || { open: 0, days: 0 });
+        m.days++;
+        const v = day[bu][iso];
+        if (v && (v.r > 0 || v.t > 0)) {
+          m.open++; total++;
+          byYear[iso.slice(0, 4)] = (byYear[iso.slice(0, 4)] || 0) + 1;
+          byDow[DOWN[d.getUTCDay()]]++;
+        }
+      }
+      byBu.push({
+        business_unit: bu,
+        days_open_total: total,
+        by_year: byYear,
+        by_month: Object.entries(byMonth).map(([month, v]) => ({ month, open: v.open, days_in_range: v.days })),
+        by_weekday_open: byDow,
+      });
+    }
+    byBu.sort((a, b) => b.days_open_total - a.days_open_total);
+    result = { definition: 'open = day with revenue > 0 or recorded volume > 0; closed = no sales/volume recorded (real closure OR missing data)', start_date: sd, end_date: ed, by_bu: byBu };
   } else if (tool === 'list') {
     result = await callRpc('chat_list_business_units', {});
   } else {
-    result = { error: 'Unknown tool. Use: search | transactions | revenue | top_products | list', received: tool };
+    result = { error: 'Unknown tool. Use: search | transactions | revenue | top_products | open_days | list', received: tool };
   }
 } catch (e) {
   result = { error: String(e.message || e).slice(0, 300), tool };
@@ -65,7 +128,11 @@ try {
 // summary.* for any total; rows[] stays for fine-grained per-day/per-BU detail.
 const rnd = (n) => Math.round((Number(n) || 0) * 100) / 100;
 let summary = null;
-if (Array.isArray(result)) {
+if (tool === 'open_days' && result && result.by_bu) {
+  // open_days already IS the aggregate: expose it as summary, no raw rows.
+  summary = result;
+  result = [];
+} else if (Array.isArray(result)) {
   if (tool === 'revenue') {
     const byBu = {}, byDay = {}; let tR = 0, tV = 0;
     for (const r of result) {

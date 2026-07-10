@@ -62,14 +62,15 @@ TOOL: "sales_query" (single tool). Pass "tool" + the required args:
 - tool="transactions", year_arg=2024, bu_names_csv="BU1,BU2,...": pax/tickets/orders and revenue per BU GROUPED BY MONTH (12 rows per BU). For "year total" SUM the 12 months.
 - tool="revenue", date_list_csv="YYYY-MM-DD,YYYY-MM-DD,...": revenue and volume per BU for explicit dates. For "last N Tuesdays" YOU compute the dates starting from TODAY. CRITICAL: for a date RANGE or a "this week vs last week" comparison, compute ALL the dates yourself (e.g. all 14 days of both weeks) and pass them in ONE single call as one comma-separated date_list_csv. NEVER call this tool once per day or once per week — a single call must contain every date you need.
 - tool="top_products", bu_name="<BU>", start_date="YYYY-MM-DD", end_date="YYYY-MM-DD", limit_n=10: top N products by revenue in that BU during the range. Only works for "Picadeli" / "Juntos deli", "Tasting place", "Juntos farm shop", "Distribution b2b" (line-level BUs). For Juntos house and Juntos boutique there is no product-level breakdown available.
+- tool="open_days", start_date="YYYY-MM-DD", end_date="YYYY-MM-DD": days OPEN vs CLOSED for EVERY BU in the range, pre-computed server-side. Returns summary.by_bu[] with days_open_total, by_year, by_month[] ({month, open, days_in_range}) and by_weekday_open (mon..sun counts). Use it for ANY question about open/closed/operational days, opening patterns or weekly schedules — ONE call covers all BUs and the whole range. NEVER try to reconstruct open days from revenue/transactions calls.
 - tool="list": no args, returns canonical BU names.
 
 RESPONSE RULES:
-1. NUMBERS: the "revenue" and "transactions" tools return a pre-computed "summary" object — use it for EVERY total and per-BU figure: summary.total_revenue (grand total), summary.by_bu[] (each BU's revenue/volume/transactions), summary.by_day[] (daily totals, for best/worst day). NEVER add up the raw rows[] yourself — adding many numbers by hand produces wrong totals (e.g. dropping the weekend). rows[] is only for detail the summary does not already give.
+1. NUMBERS: the "revenue", "transactions" and "open_days" tools return a pre-computed "summary" object — use it for EVERY total and per-BU figure: summary.total_revenue (grand total), summary.by_bu[] (each BU's revenue/volume/transactions/open days), summary.by_day[] (daily totals, for best/worst day). NEVER add up the raw rows[] yourself — adding many numbers by hand produces wrong totals (e.g. dropping the weekend). rows[] is only for detail the summary does not already give.
 2. If the question is "top N products in X BU in Y month/period" → use tool=top_products with start_date/end_date covering the first and last day of the period.
 3. Reply in English, in well-structured markdown. Be thorough and give useful detail — the user prefers richer, longer reports: add context, comparisons, per-day/per-BU breakdowns and 2-4 closing insights. Keep it organized with headings/tables (not rambling paragraphs). For a trivial single-number lookup, stay short.
 4. NUMBER FORMAT: English style. Comma as thousands separator, dot as decimal: "1,234"; "1,234.56"; "€12,391". The € symbol goes BEFORE the number (€12,391), not after. Never use "$".
-5. If the tool returns empty or an error, say so clearly — don't invent data. If the requested BU has no line-level data (Juntos house, Juntos boutique), tell the user.
+5. NEVER FABRICATE — this is absolute. Every single figure in your answer must come from a tool result in THIS conversation. If the tools cannot provide what the question needs, say exactly what is missing and answer only with what the tools returned — never estimate, extrapolate, fill gaps or produce "plausible" numbers. Do NOT invent explanations for the data ("closed for renovations", "bank holidays", "expanded summer hours") unless a tool result or the user stated it; you MAY describe observable patterns ("never opens on Mondays", "closed most of February"). If the tool returns empty or an error, say so clearly. If the requested BU has no line-level data (Juntos house, Juntos boutique), tell the user.
 6. MINIMIZE tool calls — you have a limited budget per question. Batch everything into as few calls as possible: all dates in ONE revenue call, all BUs in ONE transactions call. Do NOT loop calling the same tool repeatedly; if you already have the data, compose the answer.
 
 RECOMMENDED STRUCTURE for each answer:
@@ -218,19 +219,19 @@ function buildWorkflow() {
         {
             parameters: {
                 name: 'sales_query',
-                description: 'Consulta la base de datos de ventas. Pasa "tool" + los args necesarios:\n- tool="search", q="<producto>": busca productos por nombre (LIMONADA, CERVEZA, ...).\n- tool="transactions", year_arg=2024, bu_names_csv="Juntos house,Tasting place": transacciones por BU y mes. bu_names_csv vacio = todas las BU.\n- tool="revenue", date_list_csv="2026-05-12,2026-05-05": revenue por BU para fechas concretas.\n- tool="list": lista nombres canonicos de BU.\nUsa "Picadeli" si el usuario dice "Juntos deli".',
+                description: 'Consulta la base de datos de ventas. Pasa "tool" + los args necesarios:\n- tool="search", q="<producto>": busca productos por nombre (LIMONADA, CERVEZA, ...).\n- tool="transactions", year_arg=2024, bu_names_csv="Juntos house,Tasting place": transacciones por BU y mes. bu_names_csv vacio = todas las BU.\n- tool="revenue", date_list_csv="2026-05-12,2026-05-05": revenue por BU para fechas concretas.\n- tool="open_days", start_date="2025-01-01", end_date="2026-07-09": dias abiertos/cerrados por BU (totales, por año, por mes, por dia de semana) pre-calculados.\n- tool="list": lista nombres canonicos de BU.\nUsa "Picadeli" si el usuario dice "Juntos deli".',
                 workflowId: { __rl: true, value: DISPATCHER_ID, mode: 'list', cachedResultName: DISPATCHER_NAME },
                 workflowInputs: {
                     mappingMode: 'defineBelow',
                     value: {
-                        tool: "={{ $fromAI('tool', 'Acción: search, transactions, revenue, top_products o list', 'string') }}",
+                        tool: "={{ $fromAI('tool', 'Acción: search, transactions, revenue, top_products, open_days o list', 'string') }}",
                         q: "={{ $fromAI('q', 'Para tool=search: termino del producto. Vacio para otras tools.', 'string', '') }}",
                         year_arg: "={{ $fromAI('year_arg', 'Para tool=transactions: año entero (2024, 2025). 0 para otras tools.', 'number', 0) }}",
                         bu_names_csv: "={{ $fromAI('bu_names_csv', 'Para tool=transactions: BU separadas por coma. Vacio para todas.', 'string', '') }}",
                         date_list_csv: "={{ $fromAI('date_list_csv', 'Para tool=revenue: fechas YYYY-MM-DD separadas por coma.', 'string', '') }}",
                         bu_name: "={{ $fromAI('bu_name', 'Para tool=top_products: una sola BU (ej. \"Tasting place\", \"Picadeli\", \"Juntos farm shop\", \"Distribution b2b\").', 'string', '') }}",
-                        start_date: "={{ $fromAI('start_date', 'Para tool=top_products: fecha inicio YYYY-MM-DD (incluida).', 'string', '') }}",
-                        end_date: "={{ $fromAI('end_date', 'Para tool=top_products: fecha fin YYYY-MM-DD (incluida).', 'string', '') }}",
+                        start_date: "={{ $fromAI('start_date', 'Para tool=top_products u open_days: fecha inicio YYYY-MM-DD (incluida).', 'string', '') }}",
+                        end_date: "={{ $fromAI('end_date', 'Para tool=top_products u open_days: fecha fin YYYY-MM-DD (incluida).', 'string', '') }}",
                         limit_n: "={{ $fromAI('limit_n', 'Para tool=top_products: cuantos productos devolver (5, 10, 20).', 'number', 10) }}",
                     },
                     matchingColumns: [],
