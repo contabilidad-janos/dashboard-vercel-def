@@ -898,4 +898,37 @@ export const DataService = {
         _cache[cacheKey] = result;
         return result;
     },
+
+    // ── Product Intelligence ────────────────────────────────────────────────
+    // Pre-aggregated per (product × BU × year) from the pi_product_bu_year
+    // materialized view. One paginated fetch (~5k rows) powers the cross-channel,
+    // Pareto, menu-engineering and price-variance views entirely client-side.
+    getPiProductBuYear: async () => {
+        const cacheKey = 'pi_product_bu_year::all';
+        if (_cache[cacheKey]) return _cache[cacheKey];
+        let all = [];
+        let from = 0;
+        const chunk = 1000;
+        while (true) {
+            const { data, error } = await supabase
+                .from('pi_product_bu_year')
+                .select('descripcion, name, dept, seccion, bu, yr, uds, rev')
+                .range(from, from + chunk - 1);
+            if (error) { console.error('Error fetching pi_product_bu_year:', error); break; }
+            if (data && data.length) { all = all.concat(data); if (data.length < chunk) break; from += chunk; }
+            else break;
+        }
+        _cache[cacheKey] = all;
+        return all;
+    },
+
+    /** Monthly series (per BU) for ONE product — cross-channel drill + seasonality. */
+    getPiProductMonthly: async (product, startDate = '2024-01-01', endDate = '2030-12-31') => {
+        const cacheKey = `pi_product_monthly::${product}::${startDate}::${endDate}`;
+        if (_cache[cacheKey]) return _cache[cacheKey];
+        const { data, error } = await supabase.rpc('pi_product_monthly', { product, start_date: startDate, end_date: endDate });
+        if (error) { console.error('Error pi_product_monthly:', error); return []; }
+        _cache[cacheKey] = data || [];
+        return data || [];
+    },
 };

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, LineElement, PointElement, Title, Tooltip, Legend, ArcElement, Filler } from 'chart.js';
+import { Chart as ChartJS, CategoryScale, LinearScale, LogarithmicScale, BarElement, LineElement, PointElement, Title, Tooltip, Legend, ArcElement, Filler } from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import Header from './components/Header';
 import Tabs from './components/Tabs';
@@ -8,12 +8,14 @@ import Dashboard2025 from './components/Dashboard2025';
 import Dashboard2024 from './components/Dashboard2024';
 import DashboardDetails from './components/DashboardDetails';
 import BestSellingProducts from './components/BestSellingProducts';
+import ProductIntelligence from './components/ProductIntelligence';
 import ChatLauncher from './components/chat/ChatLauncher';
 
 // Register ChartJS components globally
 ChartJS.register(
   CategoryScale,
   LinearScale,
+  LogarithmicScale,
   BarElement,
   LineElement,
   PointElement,
@@ -66,6 +68,12 @@ function App() {
         {activeTab === 'best-selling' && (
           <div id="page-best-selling" className="animate-in fade-in duration-500">
             <BestSellingProducts />
+          </div>
+        )}
+
+        {activeTab === 'product-intel' && (
+          <div id="page-product-intel" className="animate-in fade-in duration-500">
+            <ProductIntelligence />
           </div>
         )}
       </main>

@@ -150,3 +150,9 @@ for (let i = 0; i < records.length; i += BATCH) {
     process.stdout.write(`\rUpserted ${up}/${records.length}...`);
 }
 console.log(`\nDone. Upserted ${up} rows${failed ? `, ${failed} failed` : ''}.`);
+
+// Refresh the Product Intelligence materialized view (pi_product_bu_year) so the
+// dashboard's cross-channel / Pareto / menu-eng / price views pick up new data.
+const { error: refErr } = await supabase.rpc('pi_refresh');
+if (refErr) console.error('pi_refresh failed (run manually):', refErr.message);
+else console.log('pi_product_bu_year refreshed.');
