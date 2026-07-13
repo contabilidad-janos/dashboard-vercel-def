@@ -12,7 +12,7 @@ const supabaseUrl = envConfig.VITE_SUPABASE_URL;
 const supabaseKey = envConfig.VITE_SUPABASE_SERVICE_ROLE_KEY || process.env.VITE_SUPABASE_SERVICE_ROLE_KEY || envConfig.VITE_SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-const CSV_FILE = 'downloadbyjanos/REPORTING PARA BASE DE DATOS - Sheet5 (19).csv';
+const CSV_FILE = 'downloadbyjanos/REPORTING PARA BASE DE DATOS - Sheet5 (20).csv';
 const TABLE_NAME = 'sales_daily_def';
 
 // House and Boutique have their own dedicated sources (DataBase sheet / boutique

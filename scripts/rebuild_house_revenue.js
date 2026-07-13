@@ -16,8 +16,8 @@ import { parse } from 'csv-parse/sync';
 const env = dotenv.parse(fs.readFileSync(path.resolve(process.cwd(), '.env')));
 const sb = createClient(env.VITE_SUPABASE_URL, env.VITE_SUPABASE_ANON_KEY);
 const APPLY = process.argv.includes('--apply');
-const DB_CSV = process.env.DB_CSV || 'downloadbyjanos/Juntos House  - Revenue Reporting 2026 - DataBase (3).csv';
-const S5_CSV = process.env.S5_CSV || 'downloadbyjanos/REPORTING PARA BASE DE DATOS - Sheet5 (19).csv';
+const DB_CSV = process.env.DB_CSV || 'downloadbyjanos/Juntos House  - Revenue Reporting 2026 - DataBase (4).csv';
+const S5_CSV = process.env.S5_CSV || 'downloadbyjanos/REPORTING PARA BASE DE DATOS - Sheet5 (20).csv';
 
 const ymd_dmy = (d) => { const m = String(d || '').match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/); return m ? `${m[3]}-${m[2].padStart(2, '0')}-${m[1].padStart(2, '0')}` : null; };
 const ymd_mdy = (d) => { const m = String(d || '').match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/); return m ? `${m[3]}-${m[1].padStart(2, '0')}-${m[2].padStart(2, '0')}` : null; };

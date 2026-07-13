@@ -79,7 +79,7 @@ const add = (date, bu, count) => {
 
 // 1) Juntos house pax
 {
-    const raw = fs.readFileSync('downloadbyjanos/Juntos House  - Revenue Reporting 2026 - DataBase (3).csv', 'utf8');
+    const raw = fs.readFileSync('downloadbyjanos/Juntos House  - Revenue Reporting 2026 - DataBase (4).csv', 'utf8');
     const rows = csvParse(raw, { from_line: 3, relax_quotes: true, relax_column_count: true, skip_empty_lines: true });
     let n = 0;
     rows.forEach(r => {
@@ -92,7 +92,7 @@ const add = (date, bu, count) => {
 
 // 2) Juntos boutique tickets
 {
-    const raw = fs.readFileSync('downloadbyjanos/Juntos House  - Revenue Reporting 2026 - juntos boutique (1).csv', 'utf8');
+    const raw = fs.readFileSync('downloadbyjanos/Juntos House  - Revenue Reporting 2026 - juntos boutique (2).csv', 'utf8');
     const rows = csvParse(raw, { from_line: 3, relax_quotes: true, relax_column_count: true, skip_empty_lines: true });
     let n = 0;
     rows.forEach(r => {
