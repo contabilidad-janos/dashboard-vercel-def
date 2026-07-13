@@ -2,20 +2,26 @@ import React, { useState } from 'react';
 import clsx from 'clsx';
 import PicadeliProducts from './PicadeliProducts';
 import CanEscarrerProducts from './CanEscarrerProducts';
+import GroupProducts from './GroupProducts';
 
 // BU selector for the Best Selling Products tab.
 // "Juntos deli" is the customer-facing label for what the data layer
 // still calls "Picadeli" (table picadeli_sales, BU name in sales_daily_def).
-// The other three all live in can_escarrer_sales filtered by `bu`.
+// Distribución / Shop / Tasting live in can_escarrer_sales filtered by `bu`.
+// Juntos house / Juntos boutique have no dedicated table — their products come
+// from group_article_sales (ICG VENTASARTICULOS export), rendered by GroupProducts.
 const BUS = [
-    { key: 'picadeli',     label: 'Juntos deli' },
-    { key: 'DISTRIBUCION', label: 'Distribución' },
-    { key: 'SHOP',         label: 'Shop' },
-    { key: 'TASTING',      label: 'Tasting' },
+    { key: 'picadeli',         label: 'Juntos deli' },
+    { key: 'Juntos house',     label: 'Juntos house',    group: true },
+    { key: 'Juntos boutique',  label: 'Juntos boutique', group: true },
+    { key: 'SHOP',             label: 'Shop' },
+    { key: 'DISTRIBUCION',     label: 'Distribución' },
+    { key: 'TASTING',          label: 'Tasting' },
 ];
 
 const BestSellingProducts = () => {
     const [bu, setBu] = useState('picadeli');
+    const isGroup = BUS.find(b => b.key === bu)?.group;
 
     return (
         <div className="animate-in fade-in duration-500">
@@ -38,7 +44,9 @@ const BestSellingProducts = () => {
 
             {bu === 'picadeli'
                 ? <PicadeliProducts />
-                : <CanEscarrerProducts bu={bu} />
+                : isGroup
+                    ? <GroupProducts bu={bu} />
+                    : <CanEscarrerProducts bu={bu} />
             }
         </div>
     );

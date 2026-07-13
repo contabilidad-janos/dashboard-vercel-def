@@ -832,4 +832,70 @@ export const DataService = {
         _cache[cacheKey] = result;
         return result;
     },
+
+    // ── group_article_sales: article-level sales for BUs sourced from the ICG
+    //    VENTASARTICULOS export (Juntos house / Juntos boutique, whose products
+    //    live only here — they have no dedicated per-BU table). `bu` is the
+    //    canonical name, e.g. 'Juntos house'. importe is NET (sin IVA).
+    getGroupArticleRaw: async (bu, startDate, endDate) => {
+        const cacheKey = `group_article_sales::${bu}::${startDate}::${endDate}`;
+        if (_cache[cacheKey]) return _cache[cacheKey];
+
+        let allData = [];
+        let from = 0;
+        const chunkSize = 1000;
+        let done = false;
+        while (!done) {
+            const { data, error } = await supabase
+                .from('group_article_sales')
+                .select('date, bu, numserie, cliente, descripcion, descripcion_raw, departamento, seccion, familia, uds, importe')
+                .eq('bu', bu)
+                .gte('date', startDate)
+                .lte('date', endDate)
+                .range(from, from + chunkSize - 1)
+                .order('date', { ascending: true });
+            if (error) { console.error('Error fetching group_article_sales:', error); break; }
+            if (data && data.length > 0) {
+                allData = allData.concat(data);
+                from += chunkSize;
+                if (data.length < chunkSize) done = true;
+            } else { done = true; }
+        }
+        _cache[cacheKey] = allData;
+        return allData;
+    },
+
+    /** Distinct departamento / seccion values for a group_article_sales BU. */
+    getGroupArticleFilterOptions: async (bu) => {
+        const cacheKey = `group_article_sales::filter_options::${bu}`;
+        if (_cache[cacheKey]) return _cache[cacheKey];
+
+        const { data, error } = await supabase
+            .from('group_article_sales')
+            .select('departamento, seccion')
+            .eq('bu', bu)
+            .limit(50000);
+        if (error) {
+            console.error('Error fetching group_article filter options:', error);
+            return { departamentos: [], secciones: [] };
+        }
+        const deps = new Set(), secs = new Set();
+        (data || []).forEach(r => { if (r.departamento) deps.add(r.departamento); if (r.seccion) secs.add(r.seccion); });
+        const result = { departamentos: [...deps].sort(), secciones: [...secs].sort() };
+        _cache[cacheKey] = result;
+        return result;
+    },
+
+    /** Min/max dates for a group_article_sales BU. */
+    getGroupArticleDateBounds: async (bu) => {
+        const cacheKey = `group_article_sales::date_bounds::${bu}`;
+        if (_cache[cacheKey]) return _cache[cacheKey];
+        const [minRes, maxRes] = await Promise.all([
+            supabase.from('group_article_sales').select('date').eq('bu', bu).order('date', { ascending: true }).limit(1),
+            supabase.from('group_article_sales').select('date').eq('bu', bu).order('date', { ascending: false }).limit(1),
+        ]);
+        const result = { min: minRes.data?.[0]?.date || null, max: maxRes.data?.[0]?.date || null };
+        _cache[cacheKey] = result;
+        return result;
+    },
 };
