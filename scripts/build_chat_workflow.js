@@ -58,7 +58,7 @@ BUSINESS UNITS (exact canonical names — always use them this way):
 IMPORTANT: if the user mentions "Juntos deli", pass "Picadeli" to the tools.
 
 TOOL: "sales_query" (single tool). Pass "tool" + the required args:
-- tool="search", q="<term>": product search by name. Returns units and revenue aggregated over the whole history. Always SUM all rows it returns.
+- tool="search", q="<term>", start_date="YYYY-MM-DD", end_date="YYYY-MM-DD" (both optional; default = full history): article search by name across ALL BUs (unified article table, 2024 → latest ICG export; accent-insensitive). Returns ONE ROW PER (product × BU) with total units, net revenue, first_sold and last_sold WITHIN the range. For "sales of X since <date>" or "X in <month>" ALWAYS pass the date range — the returned totals are then exactly the period asked, covering every BU and every matching product (even low-price ones that never appear in top_products). If it returns empty for the range, re-run once without dates to distinguish "never existed" from "no sales in that period".
 - tool="transactions", year_arg=2024, bu_names_csv="BU1,BU2,...": pax/tickets/orders and revenue per BU GROUPED BY MONTH (12 rows per BU). For "year total" SUM the 12 months.
 - tool="revenue", date_list_csv="YYYY-MM-DD,YYYY-MM-DD,...": revenue and volume per BU for explicit dates. For "last N Tuesdays" YOU compute the dates starting from TODAY. CRITICAL: for a date RANGE or a "this week vs last week" comparison, compute ALL the dates yourself (e.g. all 14 days of both weeks) and pass them in ONE single call as one comma-separated date_list_csv. NEVER call this tool once per day or once per week — a single call must contain every date you need.
 - tool="top_products", bu_name="<BU>", start_date="YYYY-MM-DD", end_date="YYYY-MM-DD", limit_n=10: top N products by revenue in that BU during the range. Works for EVERY BU (Juntos house, Juntos boutique, Picadeli/"Juntos deli", Tasting place, Juntos farm shop, Distribution b2b, Juntos Products) — all read from one unified article table with data from 2024 to today. Product revenue is NET (VAT-exc). Only "Activities" has no product breakdown. If it returns rows, present them; do NOT claim product data is missing for a period unless the tool truly returns an empty array. For a "top products" question with no explicit period, default to a broad range (year-to-date or all of the current year), never a single week.
@@ -230,8 +230,8 @@ function buildWorkflow() {
                         bu_names_csv: "={{ $fromAI('bu_names_csv', 'Para tool=transactions: BU separadas por coma. Vacio para todas.', 'string', '') }}",
                         date_list_csv: "={{ $fromAI('date_list_csv', 'Para tool=revenue: fechas YYYY-MM-DD separadas por coma.', 'string', '') }}",
                         bu_name: "={{ $fromAI('bu_name', 'Para tool=top_products: una sola BU (ej. \"Tasting place\", \"Picadeli\", \"Juntos farm shop\", \"Distribution b2b\").', 'string', '') }}",
-                        start_date: "={{ $fromAI('start_date', 'Para tool=top_products u open_days: fecha inicio YYYY-MM-DD (incluida).', 'string', '') }}",
-                        end_date: "={{ $fromAI('end_date', 'Para tool=top_products u open_days: fecha fin YYYY-MM-DD (incluida).', 'string', '') }}",
+                        start_date: "={{ $fromAI('start_date', 'Para tool=top_products, open_days o search: fecha inicio YYYY-MM-DD (incluida). Vacio = todo el historico.', 'string', '') }}",
+                        end_date: "={{ $fromAI('end_date', 'Para tool=top_products, open_days o search: fecha fin YYYY-MM-DD (incluida). Vacio = hasta hoy.', 'string', '') }}",
                         limit_n: "={{ $fromAI('limit_n', 'Para tool=top_products: cuantos productos devolver (5, 10, 20).', 'number', 10) }}",
                     },
                     matchingColumns: [],

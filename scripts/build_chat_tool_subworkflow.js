@@ -39,7 +39,11 @@ const callRpc = async (fn, body) => {
 let result;
 try {
   if (tool === 'search') {
-    result = await callRpc('chat_search_products', { q: params.q || '' });
+    result = await callRpc('chat_search_products', {
+      q: params.q || '',
+      start_date: params.start_date || '2024-01-01',
+      end_date: params.end_date || '2030-12-31',
+    });
   } else if (tool === 'transactions') {
     result = await callRpc('chat_transactions_by_bu', { year_arg: Number(params.year_arg), bu_names_csv: params.bu_names_csv || '' });
   } else if (tool === 'revenue') {
