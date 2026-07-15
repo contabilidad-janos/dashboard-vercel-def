@@ -15,9 +15,12 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 const CSV_FILE = 'downloadbyjanos/REPORTING PARA BASE DE DATOS - Sheet5 (20).csv';
 const TABLE_NAME = 'sales_daily_def';
 
-// House and Boutique have their own dedicated sources (DataBase sheet / boutique
-// POS sheet, re-applied by rebuild_house_revenue.js + override_bu_from_csv.js),
-// so skip them here — otherwise import_sheet5 would overwrite those corrections.
+// House and Boutique REVENUE comes from dedicated sources (DataBase sheet /
+// boutique POS sheet, re-applied by rebuild_house_revenue.js +
+// override_bu_from_csv.js), so their revenue is skipped here. Their VOLUME
+// (units, LEFT side) has no other weekly source though — skipping it too left
+// sales_daily_def."VOLUME" null from late June 2026 (audit 2026-07-15), so
+// these BUs get volume-only upserts that never touch revenue.
 const SKIP_BU = new Set(['juntos house', 'juntos boutique']);
 
 // The CSV is a Looker-style report with two pivot tables side by side on the
@@ -58,6 +61,8 @@ async function importCsv() {
 
     // (date, bu) → { revenue?, volume? }
     const merged = new Map();
+    // (date, bu) → volume — SKIP_BU units only (revenue never written for them here)
+    const volOnly = new Map();
     const keyOf = (date, bu) => `${date}__${bu}`;
 
     const parser = fs.createReadStream(CSV_FILE)
@@ -76,15 +81,19 @@ async function importCsv() {
         const fechaL = (record[3] || '').trim();
         const udsL = (record[7] || '').trim();
         const buL = (record[9] || '').trim();
-        if (fechaL && udsL && buL && buL.toUpperCase() !== 'BU' && !SKIP_BU.has(buL.toLowerCase())) {
+        if (fechaL && udsL && buL && buL.toUpperCase() !== 'BU') {
             const date = formatMDYDate(fechaL);
             if (date) {
                 const uds = parseUds(udsL);
                 if (uds > 0) {
                     const k = keyOf(date, buL);
-                    const cur = merged.get(k) || {};
-                    cur.volume = (cur.volume || 0) + uds;
-                    merged.set(k, cur);
+                    if (SKIP_BU.has(buL.toLowerCase())) {
+                        volOnly.set(k, (volOnly.get(k) || 0) + uds);
+                    } else {
+                        const cur = merged.get(k) || {};
+                        cur.volume = (cur.volume || 0) + uds;
+                        merged.set(k, cur);
+                    }
                     leftSeen++;
                 }
             }
@@ -133,6 +142,24 @@ async function importCsv() {
             .upsert(batch, { onConflict: 'date, business_unit' });
         if (error) {
             console.error(`Error in batch ${i / BATCH_SIZE + 1}:`, error.message);
+        }
+    }
+
+    // House/Boutique units — separate payload shape (never includes revenue, so
+    // their DataBase/POS-sheet revenue is preserved on conflict-update).
+    const volRecords = [];
+    for (const [k, v] of volOnly) {
+        const [date, business_unit] = k.split('__');
+        volRecords.push({ date, business_unit, VOLUME: Math.round(v * 100) / 100 });
+    }
+    console.log(`Volume-only cells for ${[...SKIP_BU].join(' + ')}: ${volRecords.length}`);
+    for (let i = 0; i < volRecords.length; i += BATCH_SIZE) {
+        const batch = volRecords.slice(i, i + BATCH_SIZE);
+        const { error } = await supabase
+            .from(TABLE_NAME)
+            .upsert(batch, { onConflict: 'date, business_unit' });
+        if (error) {
+            console.error(`Error in volume-only batch ${i / BATCH_SIZE + 1}:`, error.message);
         }
     }
     console.log('Finished uploading CSV.');

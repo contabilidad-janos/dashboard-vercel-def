@@ -63,12 +63,17 @@ const normalizeDesc = (s) => String(s || '').trim().toUpperCase().replace(/\s+/g
 const buFromSerie = (serie) => {
     const s = (serie || '').trim().toUpperCase();
     if (!s) return 'OTROS';
+    // Excluded from operating BUs (audit 2026-07-15, Janos's calls):
+    //  FVQ = intra-group re-invoiced services (HQ), not Juntos Products revenue.
+    //  AVT / FVD = event anticipos booked at invoice date — they distort
+    //  month-level article totals; house/tasting revenue truth is sales_daily_def.
+    if (s === 'FVQ' || s === 'AVT' || s === 'FVD') return 'OTROS';
+    if (s === 'FCF') return 'Tasting place';          // catering invoices
     if (s === 'AVB') return 'Juntos boutique';
     if (s.startsWith('A')) return 'Juntos house';
     if (s.startsWith('C')) return 'Picadeli';
     if (s.startsWith('FS')) return 'Juntos farm shop';
-    if (s.startsWith('FT') || ['FVE', 'FVD', 'FVM', 'FVT'].includes(s)) return 'Tasting place';
-    if (s === 'FVQ') return 'Juntos Products';        // FACTURA VENTA SERVICIOS
+    if (s.startsWith('FT') || ['FVE', 'FVM', 'FVT'].includes(s)) return 'Tasting place';
     if (s.startsWith('FV')) return 'Distribution b2b';
     if (s.startsWith('JV')) return 'Juntos Products';
     return 'OTROS';
