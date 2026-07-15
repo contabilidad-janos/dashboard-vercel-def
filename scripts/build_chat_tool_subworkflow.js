@@ -36,6 +36,22 @@ const callRpc = async (fn, body) => {
   });
 };
 
+// Paginated REST reads (PostgREST caps 1000 rows/request).
+const getAll = async (pathBase) => {
+  const all = [];
+  for (let offset = 0; ; offset += 1000) {
+    const page = await this.helpers.httpRequest({
+      method: 'GET',
+      url: supabaseUrl + pathBase + '&limit=1000&offset=' + offset,
+      headers: { 'apikey': apikey, 'Authorization': 'Bearer ' + apikey },
+      json: true,
+    });
+    if (Array.isArray(page)) all.push(...page);
+    if (!Array.isArray(page) || page.length < 1000) break;
+  }
+  return all;
+};
+
 let result;
 try {
   if (tool === 'search') {
@@ -61,24 +77,61 @@ try {
       end_date: params.end_date || '2030-12-31',
       limit_n: Number(params.limit_n) || 10,
     });
+  } else if (tool === 'revenue_range') {
+    // Period analytics aggregated HERE (by BU / month / weekday, best day, pax)
+    // so the model never enumerates hundreds of dates nor invents groupings.
+    const sd = String(params.start_date || '2024-01-01').slice(0, 10);
+    const ed = String(params.end_date || new Date().toISOString().slice(0, 10)).slice(0, 10);
+    const buFilter = String(params.bu_names_csv || '').split(',').map(s => s.trim()).filter(Boolean);
+    const wanted = (b) => b && b !== 'OTROS' && (!buFilter.length || buFilter.includes(b));
+    const ddef = await getAll('/rest/v1/sales_daily_def?select=date,business_unit,revenue&date=gte.' + sd + '&date=lte.' + ed);
+    const recs = await getAll('/rest/v1/sales_records?select=date,transaction_count,business_units(name)&date=gte.' + sd + '&date=lte.' + ed);
+    const DOWN = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+    const round2 = (n) => Math.round((Number(n) || 0) * 100) / 100;
+    const byBu = {}, byMonth = {}, byDay = {};
+    let tR = 0;
+    for (const r of ddef) {
+      const b = (r.business_unit || '').trim();
+      if (!wanted(b)) continue;
+      const rev = Number(r.revenue) || 0;
+      tR += rev;
+      (byBu[b] = byBu[b] || { business_unit: b, revenue: 0, pax: 0 }).revenue += rev;
+      const ym = String(r.date).slice(0, 7);
+      byMonth[ym] = (byMonth[ym] || 0) + rev;
+      byDay[r.date] = (byDay[r.date] || 0) + rev;
+    }
+    let tP = 0;
+    for (const r of recs) {
+      const b = ((r.business_units && r.business_units.name) || '').trim();
+      if (!wanted(b)) continue;
+      const c = Number(r.transaction_count) || 0;
+      tP += c;
+      (byBu[b] = byBu[b] || { business_unit: b, revenue: 0, pax: 0 }).pax += c;
+    }
+    const byDow = {};
+    for (const d of Object.keys(byDay)) {
+      const w = DOWN[new Date(d + 'T00:00:00Z').getUTCDay()];
+      (byDow[w] = byDow[w] || { weekday: w, revenue: 0, days: 0 });
+      byDow[w].revenue += byDay[d];
+      if (byDay[d] > 0) byDow[w].days++;
+    }
+    const dayEntries = Object.entries(byDay).filter(([, v]) => v > 0).sort((a, b) => b[1] - a[1]);
+    result = {
+      start_date: sd, end_date: ed,
+      bu_filter: buFilter.length ? buFilter : 'all',
+      total_revenue: round2(tR),
+      total_pax: tP,
+      by_bu: Object.values(byBu).map(x => ({ business_unit: x.business_unit, revenue: round2(x.revenue), pax: x.pax })).sort((a, b) => b.revenue - a.revenue),
+      by_month: Object.entries(byMonth).map(([month, revenue]) => ({ month, revenue: round2(revenue) })).sort((a, b) => (a.month < b.month ? -1 : 1)),
+      by_weekday: ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'].filter(w => byDow[w]).map(w => ({ weekday: w, revenue: round2(byDow[w].revenue), days: byDow[w].days, avg_per_day: round2(byDow[w].revenue / (byDow[w].days || 1)) })),
+      best_day: dayEntries.length ? { date: dayEntries[0][0], revenue: round2(dayEntries[0][1]) } : null,
+      worst_day: dayEntries.length ? { date: dayEntries[dayEntries.length - 1][0], revenue: round2(dayEntries[dayEntries.length - 1][1]) } : null,
+      days_with_sales: dayEntries.length,
+    };
   } else if (tool === 'open_days') {
     // Days open/closed per BU, aggregated HERE so the model never guesses.
     const sd = String(params.start_date || '2025-01-01').slice(0, 10);
     const ed = String(params.end_date || new Date().toISOString().slice(0, 10)).slice(0, 10);
-    const getAll = async (pathBase) => {
-      const all = [];
-      for (let offset = 0; ; offset += 1000) {
-        const page = await this.helpers.httpRequest({
-          method: 'GET',
-          url: supabaseUrl + pathBase + '&limit=1000&offset=' + offset,
-          headers: { 'apikey': apikey, 'Authorization': 'Bearer ' + apikey },
-          json: true,
-        });
-        if (Array.isArray(page)) all.push(...page);
-        if (!Array.isArray(page) || page.length < 1000) break;
-      }
-      return all;
-    };
     const ddef = await getAll('/rest/v1/sales_daily_def?select=date,business_unit,revenue&date=gte.' + sd + '&date=lte.' + ed);
     const recs = await getAll('/rest/v1/sales_records?select=date,transaction_count,business_units(name)&date=gte.' + sd + '&date=lte.' + ed);
     const day = {}; // bu -> { date -> {r, t} }
@@ -127,7 +180,7 @@ try {
   } else if (tool === 'list') {
     result = await callRpc('chat_list_business_units', {});
   } else {
-    result = { error: 'Unknown tool. Use: search | transactions | revenue | top_products | product_daily | open_days | list', received: tool };
+    result = { error: 'Unknown tool. Use: search | transactions | revenue | revenue_range | top_products | product_daily | open_days | list', received: tool };
   }
 } catch (e) {
   result = { error: String(e.message || e).slice(0, 300), tool };
@@ -138,10 +191,24 @@ try {
 // summary.* for any total; rows[] stays for fine-grained per-day/per-BU detail.
 const rnd = (n) => Math.round((Number(n) || 0) * 100) / 100;
 let summary = null;
-if (tool === 'open_days' && result && result.by_bu) {
-  // open_days already IS the aggregate: expose it as summary, no raw rows.
+if ((tool === 'open_days' || tool === 'revenue_range') && result && result.by_bu) {
+  // these tools already ARE the aggregate: expose as summary, no raw rows.
   summary = result;
   result = [];
+} else if (tool === 'search' && Array.isArray(result)) {
+  // headline totals for the search rows, so the model never sums them by hand
+  let tU = 0, tR = 0; const byBu = {};
+  for (const r of result) {
+    tU += Number(r.total_uds) || 0; tR += Number(r.total_revenue) || 0;
+    const b = r.source || '?';
+    (byBu[b] = byBu[b] || { business_unit: b, uds: 0, revenue: 0 });
+    byBu[b].uds += Number(r.total_uds) || 0; byBu[b].revenue += Number(r.total_revenue) || 0;
+  }
+  summary = {
+    matching_products: result.length,
+    total_uds: rnd(tU), total_revenue: rnd(tR),
+    by_bu: Object.values(byBu).map(x => ({ business_unit: x.business_unit, uds: rnd(x.uds), revenue: rnd(x.revenue) })).sort((a, b) => b.revenue - a.revenue),
+  };
 } else if (tool === 'product_daily' && Array.isArray(result)) {
   const byBu = {}; const days = new Set(); let tU = 0, tR = 0;
   for (const r of result) {
@@ -159,16 +226,17 @@ if (tool === 'open_days' && result && result.by_bu) {
   };
 } else if (Array.isArray(result)) {
   if (tool === 'revenue') {
-    const byBu = {}, byDay = {}; let tR = 0, tV = 0;
+    const byBu = {}, byDay = {}; let tR = 0, tU = 0, tP = 0;
     for (const r of result) {
-      const rev = Number(r.revenue) || 0, vol = Number(r.volume) || 0, b = r.business_unit || '?';
-      tR += rev; tV += vol;
-      (byBu[b] = byBu[b] || { business_unit: b, revenue: 0, volume: 0 }); byBu[b].revenue += rev; byBu[b].volume += vol;
+      const rev = Number(r.revenue) || 0, u = Number(r.units_sold ?? r.volume) || 0, px = Number(r.pax) || 0, b = r.business_unit || '?';
+      tR += rev; tU += u; tP += px;
+      (byBu[b] = byBu[b] || { business_unit: b, revenue: 0, units_sold: 0, pax: 0 });
+      byBu[b].revenue += rev; byBu[b].units_sold += u; byBu[b].pax += px;
       byDay[r.date] = (byDay[r.date] || 0) + rev;
     }
     summary = {
-      total_revenue: rnd(tR), total_volume: rnd(tV),
-      by_bu: Object.values(byBu).map(x => ({ business_unit: x.business_unit, revenue: rnd(x.revenue), volume: rnd(x.volume) })).sort((a, b) => b.revenue - a.revenue),
+      total_revenue: rnd(tR), total_units_sold: rnd(tU), total_pax: tP,
+      by_bu: Object.values(byBu).map(x => ({ business_unit: x.business_unit, revenue: rnd(x.revenue), units_sold: rnd(x.units_sold), pax: x.pax })).sort((a, b) => b.revenue - a.revenue),
       by_day: Object.entries(byDay).map(([date, revenue]) => ({ date, revenue: rnd(revenue) })).sort((a, b) => (a.date < b.date ? -1 : 1)),
     };
   } else if (tool === 'transactions') {
