@@ -48,6 +48,12 @@ try {
     result = await callRpc('chat_transactions_by_bu', { year_arg: Number(params.year_arg), bu_names_csv: params.bu_names_csv || '' });
   } else if (tool === 'revenue') {
     result = await callRpc('chat_revenue_for_dates', { date_list_csv: params.date_list_csv || '' });
+  } else if (tool === 'product_daily') {
+    result = await callRpc('chat_product_daily', {
+      q: params.q || '',
+      start_date: params.start_date || '2024-01-01',
+      end_date: params.end_date || '2030-12-31',
+    });
   } else if (tool === 'top_products') {
     result = await callRpc('chat_top_products_by_bu', {
       bu_name: params.bu_name || '',
@@ -121,7 +127,7 @@ try {
   } else if (tool === 'list') {
     result = await callRpc('chat_list_business_units', {});
   } else {
-    result = { error: 'Unknown tool. Use: search | transactions | revenue | top_products | open_days | list', received: tool };
+    result = { error: 'Unknown tool. Use: search | transactions | revenue | top_products | product_daily | open_days | list', received: tool };
   }
 } catch (e) {
   result = { error: String(e.message || e).slice(0, 300), tool };
@@ -136,6 +142,21 @@ if (tool === 'open_days' && result && result.by_bu) {
   // open_days already IS the aggregate: expose it as summary, no raw rows.
   summary = result;
   result = [];
+} else if (tool === 'product_daily' && Array.isArray(result)) {
+  const byBu = {}; const days = new Set(); let tU = 0, tR = 0;
+  for (const r of result) {
+    const u = Number(r.uds) || 0, v = Number(r.revenue) || 0;
+    tU += u; tR += v; days.add(r.date);
+    const b = r.bu || '?';
+    (byBu[b] = byBu[b] || { business_unit: b, uds: 0, revenue: 0 });
+    byBu[b].uds += u; byBu[b].revenue += v;
+  }
+  summary = {
+    total_uds: rnd(tU), total_revenue: rnd(tR),
+    days_with_sales: days.size, rows_returned: result.length,
+    truncated: result.length >= 1000,
+    by_bu: Object.values(byBu).map(x => ({ business_unit: x.business_unit, uds: rnd(x.uds), revenue: rnd(x.revenue) })).sort((a, b) => b.revenue - a.revenue),
+  };
 } else if (Array.isArray(result)) {
   if (tool === 'revenue') {
     const byBu = {}, byDay = {}; let tR = 0, tV = 0;
