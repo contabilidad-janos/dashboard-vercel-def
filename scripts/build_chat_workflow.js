@@ -74,6 +74,7 @@ RESPONSE RULES:
 4. NUMBER FORMAT: English style. Comma as thousands separator, dot as decimal: "1,234"; "1,234.56"; "€12,391". The € symbol goes BEFORE the number (€12,391), not after. Never use "$".
 5. NEVER FABRICATE — this is absolute. Every single figure in your answer must come from a tool result in THIS conversation. If the tools cannot provide what the question needs, say exactly what is missing and answer only with what the tools returned — never estimate, extrapolate, fill gaps or produce "plausible" numbers. In particular: NEVER split a total across dates, weekdays, weeks, months or BUs yourself — knowing a total does NOT tell you its distribution; every breakdown you present must be copied from a tool's summary/rows with that exact granularity (by_weekday from revenue_range, per-day from product_daily/revenue, etc.), even if you already know the total. Do NOT invent explanations for the data ("closed for renovations", "bank holidays") unless a tool result or the user stated it; you MAY describe observable patterns. If the tool returns empty or an error, say so clearly. If numbers you gave earlier in the conversation conflict with a fresh tool result, trust the fresh tool result and say you are correcting it.
 6. MINIMIZE tool calls — you have a limited budget per question. Batch everything into as few calls as possible: all dates in ONE revenue call, all BUs in ONE transactions call. Do NOT loop calling the same tool repeatedly; if you already have the data, compose the answer.
+7. Your reply must BE the answer — never a plan. NEVER write that you are going to call or consult a tool ("I will call open_days", "Let's call it", "Voy a consultar..."): if you still need data, MAKE the tool call instead of describing it; once you have the data, write the final answer directly. Never write the same sentence twice.
 
 RECOMMENDED STRUCTURE for each answer:
 - **Headline** (1 line): the most important number/conclusion in **bold** at the top. e.g. "**Juntos house in May: €247,281 (+38% vs April).**"
@@ -259,7 +260,42 @@ function buildWorkflow() {
             position: [200, 220],
         },
 
-        // 6. Respond to Webhook
+        // 6. Output guard — gemini occasionally degenerates into a repetition
+        //    loop of tool-call NARRATION instead of actually calling the tool
+        //    (exec #1037, 2026-07-15: 192KB of "Let's call open_days. Let's
+        //    call it." shown to the user as the final answer). Detect broken
+        //    output and replace it with a clean retry message.
+        {
+            parameters: {
+                jsCode: `
+const out = String($input.first().json.output ?? '');
+function fallback(reason) {
+  return '⚠️ I hit a temporary processing glitch while generating this answer (' + reason + '). Please send your question again — a fresh attempt will work. If it happens twice, start a new chat.';
+}
+let clean = out;
+if (!out.trim()) {
+  clean = fallback('empty output');
+} else if (out.length > 60000) {
+  clean = fallback('runaway output');
+} else {
+  // repetition loop: a 60-char window from the middle recurring 3+ times
+  const mid = out.slice(Math.floor(out.length / 2), Math.floor(out.length / 2) + 60).trim();
+  const probeHits = mid.length > 25 ? out.split(mid).length - 1 : 0;
+  // tool-call narration instead of tool calls
+  const narration = (out.match(/\\b(let'?s call|i will call|let'?s do (it|that|both)|voy a (llamar|consultar)|llamemos a)\\b/gi) || []).length;
+  if (probeHits >= 3 || narration >= 6) clean = fallback('repetition loop');
+}
+return [{ json: { output: clean } }];
+`,
+            },
+            id: 'output-guard',
+            name: 'Output guard',
+            type: 'n8n-nodes-base.code',
+            typeVersion: 2,
+            position: [30, 0],
+        },
+
+        // 7. Respond to Webhook
         {
             parameters: {
                 respondWith: 'json',
@@ -270,13 +306,14 @@ function buildWorkflow() {
             name: 'Respond to Webhook',
             type: 'n8n-nodes-base.respondToWebhook',
             typeVersion: 1.1,
-            position: [120, 0],
+            position: [200, 0],
         },
     ];
 
     const connections = {
         'Webhook':                       { main: [[{ node: 'AI Agent', type: 'main', index: 0 }]] },
-        'AI Agent':                      { main: [[{ node: 'Respond to Webhook', type: 'main', index: 0 }]] },
+        'AI Agent':                      { main: [[{ node: 'Output guard', type: 'main', index: 0 }]] },
+        'Output guard':                  { main: [[{ node: 'Respond to Webhook', type: 'main', index: 0 }]] },
         'OpenRouter LLM':                { ai_languageModel: [[{ node: 'AI Agent', type: 'ai_languageModel', index: 0 }]] },
         'Memoria por sesión':            { ai_memory: [[{ node: 'AI Agent', type: 'ai_memory', index: 0 }]] },
         'sales_query':                   { ai_tool: [[{ node: 'AI Agent', type: 'ai_tool', index: 0 }]] },
