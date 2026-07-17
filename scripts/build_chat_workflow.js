@@ -190,12 +190,20 @@ function buildWorkflow() {
             position: [-150, 0],
         },
 
-        // 3. LM — OpenRouter / Gemini 3.1 Flash Lite
+        // 3. LM — OpenRouter / Gemini Flash
         {
             parameters: {
                 // Dynamic per-request model (frontend sends body.model); default = SMART_MODEL.
                 model: `={{ $('Webhook').first().json.body.model || '${SMART_MODEL}' }}`,
-                options: { temperature: 0.2 },
+                // maxTokens caps gemini's degeneration loops (execs #1037/#1077
+                // emitted ~196KB of repeated tool-call narration over ~8 min —
+                // with the cap a runaway dies in <1 min and the Output guard
+                // replies cleanly). 8000 tokens ≈ 32KB, far above any legit
+                // answer incl. big daily tables (~6-7k tokens).
+                // frequencyPenalty discourages the exact-sentence repetition
+                // that feeds those loops; 0.3 is mild enough not to hurt
+                // markdown tables.
+                options: { temperature: 0.2, maxTokens: 8000, frequencyPenalty: 0.3 },
             },
             id: 'lm-openrouter',
             name: 'OpenRouter LLM',
