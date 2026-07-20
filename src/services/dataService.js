@@ -27,6 +27,7 @@ const _fetchPaginated = async (tableName, selectFields, filters = []) => {
     let from = 0;
     const chunkSize = 1000;
     let done = false;
+    let failed = false;
 
     while (!done) {
         let query = supabase
@@ -43,6 +44,7 @@ const _fetchPaginated = async (tableName, selectFields, filters = []) => {
 
         if (error) {
             console.error(`Error fetching ${tableName}:`, error);
+            failed = true;
             break;
         }
 
@@ -55,6 +57,10 @@ const _fetchPaginated = async (tableName, selectFields, filters = []) => {
         }
     }
 
+    // Never cache a partial/failed read: a single 401 during the auth redirect
+    // would otherwise pin an empty array for this key until a full reload, and
+    // the dashboard would render zeros instead of data.
+    if (failed) return allData;
     _cache[cacheKey] = allData;
     return allData;
 };
@@ -618,6 +624,7 @@ export const DataService = {
         let from = 0;
         const chunkSize = 1000;
         let done = false;
+        let failed = false;
 
         while (!done) {
             const { data, error } = await supabase
@@ -630,7 +637,7 @@ export const DataService = {
 
             if (error) {
                 console.error('Error fetching picadeli_sales:', error);
-                break;
+                failed = true; break;
             }
             if (data && data.length > 0) {
                 allData = allData.concat(data);
@@ -641,6 +648,7 @@ export const DataService = {
             }
         }
 
+        if (failed) return allData;   // don't cache a failed/partial read
         _cache[cacheKey] = allData;
         return allData;
     },
@@ -747,6 +755,7 @@ export const DataService = {
         let from = 0;
         const chunkSize = 1000;
         let done = false;
+        let failed = false;
 
         while (!done) {
             const { data, error } = await supabase
@@ -760,7 +769,7 @@ export const DataService = {
 
             if (error) {
                 console.error('Error fetching can_escarrer_sales:', error);
-                break;
+                failed = true; break;
             }
             if (data && data.length > 0) {
                 allData = allData.concat(data);
@@ -771,6 +780,7 @@ export const DataService = {
             }
         }
 
+        if (failed) return allData;   // don't cache a failed/partial read
         _cache[cacheKey] = allData;
         return allData;
     },
@@ -845,6 +855,7 @@ export const DataService = {
         let from = 0;
         const chunkSize = 1000;
         let done = false;
+        let failed = false;
         while (!done) {
             const { data, error } = await supabase
                 .from('group_article_sales')
@@ -854,13 +865,14 @@ export const DataService = {
                 .lte('date', endDate)
                 .range(from, from + chunkSize - 1)
                 .order('date', { ascending: true });
-            if (error) { console.error('Error fetching group_article_sales:', error); break; }
+            if (error) { console.error('Error fetching group_article_sales:', error); failed = true; break; }
             if (data && data.length > 0) {
                 allData = allData.concat(data);
                 from += chunkSize;
                 if (data.length < chunkSize) done = true;
             } else { done = true; }
         }
+        if (failed) return allData;   // don't cache a failed/partial read
         _cache[cacheKey] = allData;
         return allData;
     },
@@ -909,15 +921,17 @@ export const DataService = {
         let all = [];
         let from = 0;
         const chunk = 1000;
+        let failed = false;
         while (true) {
             const { data, error } = await supabase
                 .from('pi_product_bu_year')
                 .select('descripcion, name, dept, seccion, bu, yr, uds, rev')
                 .range(from, from + chunk - 1);
-            if (error) { console.error('Error fetching pi_product_bu_year:', error); break; }
+            if (error) { console.error('Error fetching pi_product_bu_year:', error); failed = true; break; }
             if (data && data.length) { all = all.concat(data); if (data.length < chunk) break; from += chunk; }
             else break;
         }
+        if (failed) return all;   // don't cache a failed/partial read
         _cache[cacheKey] = all;
         return all;
     },

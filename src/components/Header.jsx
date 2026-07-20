@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { exportFullDatabase } from '../utils/exportDatabase';
+import UserMenu from '../auth/UserMenu';
 
 const Header = () => {
     const [imgError, setImgError] = useState(false);
@@ -20,6 +21,10 @@ const Header = () => {
 
     return (
         <header className="mb-4 text-center relative">
+            {/* Signed-in user + (for admins) the approval panel. Renders nothing
+                while VITE_AUTH_ENABLED is off. */}
+            <UserMenu />
+
             {/* Full curated-DB Excel export — the boss reviews things in Excel */}
             <div className="absolute right-0 top-0 z-10">
                 <button
