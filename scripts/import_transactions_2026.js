@@ -79,7 +79,7 @@ const add = (date, bu, count) => {
 
 // 1) Juntos house pax
 {
-    const raw = fs.readFileSync('downloadbyjanos/Juntos House  - Revenue Reporting 2026 - DataBase (4).csv', 'utf8');
+    const raw = fs.readFileSync('downloadbyjanos/Juntos House  - Revenue Reporting 2026 - DataBase (5).csv', 'utf8');
     const rows = csvParse(raw, { from_line: 3, relax_quotes: true, relax_column_count: true, skip_empty_lines: true });
     let n = 0;
     rows.forEach(r => {
@@ -92,7 +92,7 @@ const add = (date, bu, count) => {
 
 // 2) Juntos boutique tickets
 {
-    const raw = fs.readFileSync('downloadbyjanos/Juntos House  - Revenue Reporting 2026 - juntos boutique (2).csv', 'utf8');
+    const raw = fs.readFileSync('downloadbyjanos/Juntos House  - Revenue Reporting 2026 - juntos boutique (3).csv', 'utf8');
     const rows = csvParse(raw, { from_line: 3, relax_quotes: true, relax_column_count: true, skip_empty_lines: true });
     let n = 0;
     rows.forEach(r => {
@@ -179,3 +179,49 @@ for (let i = 0; i < records.length; i += BATCH) {
     else upserted += batch.length;
 }
 console.log(`Upserted ${upserted} rows${failed ? `, ${failed} failed` : ''}.`);
+
+// ─── Prune orphans ──────────────────────────────────────────────────────────
+// The upsert is keyed on (date, business_unit_id), so a row whose SOURCE date
+// changed (or that a later rule now excludes) is never overwritten — it is
+// simply left behind, silently double-counting. Real cases found 2026-07-20:
+//   · Tasting 2026-02-01 71 pax — tracker row re-dated to 2026-01-02 (M/D typo)
+//   · Tasting 2026-06-13 37 pax — event re-dated to 2026-06-06 at source
+//   · Products 2026-05-28  1 pax — a JVF refund, excluded once the
+//     refund rule landed, but its old row survived
+// The four sources are complete for 2026, so anything in the DB for these BUs
+// that the sources no longer produce is an orphan and must go.
+{
+    const managed = Object.keys(BU_ID);
+    const idToName = Object.fromEntries(Object.entries(BU_ID).map(([n, i]) => [i, n]));
+    const expected = new Set(records.map(r => `${r.date}__${idToName[r.business_unit_id]}`));
+
+    let existing = [];
+    for (let from = 0; ; from += 1000) {
+        const { data, error } = await supabase
+            .from('sales_records')
+            .select('id, date, transaction_count, business_unit_id')
+            .gte('date', '2026-01-01').lte('date', '2026-12-31')
+            .range(from, from + 999);
+        if (error) { console.error('prune read failed:', error.message); existing = null; break; }
+        if (!data || !data.length) break;
+        existing = existing.concat(data);
+        if (data.length < 1000) break;
+    }
+
+    if (existing) {
+        const orphans = existing.filter(r => {
+            const bu = idToName[r.business_unit_id];
+            if (!bu || !managed.includes(bu)) return false;       // untouched BUs (e.g. Activities)
+            if (!(Number(r.transaction_count) > 0)) return false; // zero rows are harmless
+            return !expected.has(`${r.date}__${bu}`);
+        });
+        if (!orphans.length) console.log('Orphan check: none.');
+        else {
+            console.log(`Orphan rows (source no longer produces them): ${orphans.length}`);
+            orphans.forEach(o => console.log(`  ${o.date}  ${idToName[o.business_unit_id]}  pax=${o.transaction_count}`));
+            const { error } = await supabase.from('sales_records').delete().in('id', orphans.map(o => o.id));
+            if (error) console.error('  prune delete failed:', error.message);
+            else console.log(`  deleted ${orphans.length}.`);
+        }
+    }
+}
